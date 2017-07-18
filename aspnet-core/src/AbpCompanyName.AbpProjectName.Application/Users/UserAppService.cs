@@ -12,10 +12,11 @@ using Microsoft.EntityFrameworkCore;
 using Abp.IdentityFramework;
 using AbpCompanyName.AbpProjectName.Authorization.Roles;
 using AbpCompanyName.AbpProjectName.Roles.Dto;
+using System;
 
 namespace AbpCompanyName.AbpProjectName.Users
 {
-    public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedResultRequestDto, CreateUserDto, UserDto>, IUserAppService
+    public class UserAppService : AsyncCrudAppService<User, UserDto, long, GetAllUserInput, CreateUserDto, UserDto>, IUserAppService
     {
         private readonly UserManager _userManager;
         private readonly IPasswordHasher<User> _passwordHasher;
@@ -35,7 +36,7 @@ namespace AbpCompanyName.AbpProjectName.Users
             _passwordHasher = passwordHasher;
             _roleRepository = roleRepository;
         }
-        
+
         public override async Task<UserDto> Create(CreateUserDto input)
         {
             CheckCreatePermission();
@@ -80,7 +81,7 @@ namespace AbpCompanyName.AbpProjectName.Users
         {
             var user = await _userManager.GetUserByIdAsync(input.Id);
             await _userManager.DeleteAsync(user);
-		}
+        }
 
         public async Task<ListResultDto<RoleDto>> GetRoles()
         {
@@ -100,25 +101,98 @@ namespace AbpCompanyName.AbpProjectName.Users
             ObjectMapper.Map(input, user);
             user.SetNormalizedNames();
         }
-        
-        protected override IQueryable<User> CreateFilteredQuery(PagedResultRequestDto input)
+
+        protected override IQueryable<User> CreateFilteredQuery(GetAllUserInput input)
         {
-            return Repository.GetAllIncluding(x => x.Roles);
+            var data = Repository.GetAllIncluding(x => x.Roles);
+
+            if (!string.IsNullOrEmpty(input.searchKey))
+                data=data.Where(a => a.UserName.ToLower().Contains(input.searchKey.ToLower())
+                    || a.FullName.ToLower().Contains(input.searchKey.ToLower())
+                    );
+            if (input.roleId != null && input.roleId != -1)
+
+                data =from u in data
+                from r in u.Roles
+                where r.RoleId == input.roleId
+                select u;
+
+            return data;
+        }
+        protected override IQueryable<User> ApplySorting(IQueryable<User> query, GetAllUserInput input)
+        {
+
+            if (!string.IsNullOrEmpty(input.Sorting))
+            {
+                string column = input.Sorting.Split(',')[0];
+                string direction = input.Sorting.Split(',')[1];
+
+                switch (column)
+                {
+                    case "UserName":
+                        if (direction.ToLower() == "desc")
+                            query = query.OrderByDescending(r => r.UserName);
+                        else
+                            query = query.OrderBy(r => r.UserName);
+                        break;
+
+                    case "FullName":
+                        if (direction.ToLower() == "desc")
+                            query = query.OrderByDescending(r => r.FullName);
+                        else
+                            query = query.OrderBy(r => r.FullName);
+                        break;
+
+                    case "EmailAddress":
+                        if (direction.ToLower() == "desc")
+                            query = query.OrderByDescending(r => r.EmailAddress);
+                        else
+                            query = query.OrderBy(r => r.EmailAddress);
+                        break;
+
+                    default:
+                        query = query.OrderBy(r => r.UserName);
+                        break;
+                }
+
+            }
+
+            return query;
         }
 
         protected override async Task<User> GetEntityByIdAsync(long id)
         {
             return await Repository.GetAllIncluding(x => x.Roles).FirstOrDefaultAsync(x => x.Id == id);
         }
-        
-        protected override IQueryable<User> ApplySorting(IQueryable<User> query, PagedResultRequestDto input)
-        {
-            return query.OrderBy(r => r.UserName);
-        }
+
+
 
         protected virtual void CheckErrors(IdentityResult identityResult)
         {
             identityResult.CheckErrors(LocalizationManager);
         }
+
+        //public PagedResultDto<UserDto> GetAll2(PagedResultSearchRequestDto input)
+        //{
+
+        //    var data = CreateFilteredQuery(input);
+        //    if (!string.IsNullOrEmpty(input.searchKey))
+        //         data = data
+        //            .Where(a => a.UserName.ToLower().Contains(input.searchKey.ToLower())
+        //            || a.FullName.ToLower().Contains(input.searchKey.ToLower())
+        //            );
+
+        //    var count = data.Count();
+        //    data = ApplySorting(data, input).Skip(input.SkipCount).Take(input.MaxResultCount);
+
+        //    var lstDto = new ListResultDto<UserDto>(ObjectMapper.Map<List<UserDto>>(data.ToList()));
+        //    PagedResultDto<UserDto> results = new PagedResultDto<UserDto>()
+        //    {
+        //        Items = lstDto.Items,
+        //        TotalCount = count
+        //    };
+        //    return results;
+        //}
+
     }
 }

@@ -6,8 +6,9 @@ using AbpCompanyName.AbpProjectName.Users.Dto;
 
 namespace AbpCompanyName.AbpProjectName.Users
 {
-    public interface IUserAppService : IAsyncCrudAppService<UserDto, long, PagedResultRequestDto, CreateUserDto, UserDto>
+    public interface IUserAppService : IAsyncCrudAppService<UserDto, long, GetAllUserInput, CreateUserDto, UserDto>
     {
         Task<ListResultDto<RoleDto>> GetRoles();
+        //PagedResultDto<UserDto> GetAll2(PagedResultSearchRequestDto input);
     }
 }

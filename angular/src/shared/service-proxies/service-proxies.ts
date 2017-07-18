@@ -1178,7 +1178,7 @@ export class UserServiceProxy {
     /**
      * @return Success
      */
-    getAll(skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfUserDto> {
+    getAll(skipCount: number, maxResultCount: number,searchKey:string,Sorting:string,roleId:number): Observable<PagedResultDtoOfUserDto> {
         let url_ = this.baseUrl + "/api/services/app/User/GetAll?";
         if (skipCount !== undefined)
         
@@ -1188,8 +1188,18 @@ export class UserServiceProxy {
         
             url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
 
+        if (searchKey !== undefined)
+            url_ += "searchKey=" + encodeURIComponent("" + searchKey) + "&"
+        if (Sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + Sorting) + "&"
+        if (roleId !== undefined)
+            url_ += "roleId=" + encodeURIComponent("" + roleId) + "&"
+
+        console.log(url_)
+
         const content_ = "";
-        
+
+        console.log(url_);
         return this.http.request(url_, {
             body: content_,
             method: "get",

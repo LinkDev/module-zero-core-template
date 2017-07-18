@@ -15,6 +15,10 @@ export class PagedRequestDto {
     maxResultCount: number;
 }
 
+//export class GetAllUserInput extends PagedAndSortedRequestDto  {
+//    searchKey: string;
+//}
+
 export abstract class PagedListingComponentBase<EntityDto> extends AppComponentBase implements OnInit {
 
     public pageSize: number = 10;
@@ -28,6 +32,7 @@ export abstract class PagedListingComponentBase<EntityDto> extends AppComponentB
     }
 
     ngOnInit(): void {
+        this.externalMethod();
         this.refresh();
     }
 
@@ -55,4 +60,6 @@ export abstract class PagedListingComponentBase<EntityDto> extends AppComponentB
 
     protected abstract list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void;
     protected abstract delete(entity: EntityDto): void;
+
+    protected abstract externalMethod(): void;
 }
