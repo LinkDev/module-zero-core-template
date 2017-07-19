@@ -61,5 +61,5 @@ export abstract class PagedListingComponentBase<EntityDto> extends AppComponentB
     protected abstract list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void;
     protected abstract delete(entity: EntityDto): void;
 
-    protected abstract externalMethod(): void;
+    protected externalMethod?(): void;
 }

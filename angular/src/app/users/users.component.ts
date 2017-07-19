@@ -17,7 +17,7 @@ export class UsersComponent extends PagedAndSortedListingComponentBase<UserDto> 
 
     active: boolean = false;
     users: UserDto[] = [];
-    searchKey: string = "";
+    searchKey: string;
     roleId: number = -1;
     roles: RoleDto[] = null;
     constructor(
