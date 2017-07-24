@@ -17,7 +17,7 @@ export class UsersComponent extends PagedAndSortedListingComponentBase<UserDto> 
 
     active: boolean = false;
     users: UserDto[] = [];
-    searchKey: string;
+    searchKey:string;
     roleId: number = -1;
     roles: RoleDto[] = null;
     constructor(
@@ -25,7 +25,7 @@ export class UsersComponent extends PagedAndSortedListingComponentBase<UserDto> 
         private _userService: UserServiceProxy
 
     ) {
-
+        
         super(injector);
     }
     
@@ -42,6 +42,7 @@ export class UsersComponent extends PagedAndSortedListingComponentBase<UserDto> 
     }
 
     search() {
+        console.log(this.searchKey);
         this.refresh();
     }
     protected delete(user: UserDto): void {

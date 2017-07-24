@@ -1,5 +1,5 @@
 ﻿import { AppComponentBase } from "shared/app-component-base";
-import { Injector, OnInit } from '@angular/core';
+import { Injector, OnInit, AfterViewInit } from '@angular/core';
 
 export class PagedResultDto {
     items: any[];
@@ -35,7 +35,6 @@ export abstract class PagedListingComponentBase<EntityDto> extends AppComponentB
         this.externalMethod();
         this.refresh();
     }
-
     refresh(): void {
         this.getDataPage(this.pageNumber);
     }
@@ -61,5 +60,5 @@ export abstract class PagedListingComponentBase<EntityDto> extends AppComponentB
     protected abstract list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void;
     protected abstract delete(entity: EntityDto): void;
 
-    protected externalMethod?(): void;
+    protected externalMethod?(): void { };
 }

@@ -23,7 +23,7 @@ namespace AbpCompanyName.AbpProjectName.Web.Controllers
 
         public async Task<ActionResult> Index()
         {
-            var users = (await _userAppService.GetAll(new PagedResultRequestDto {MaxResultCount = int.MaxValue})).Items; //Paging not implemented yet
+            var users = (await _userAppService.GetAll(new GetAllUserInput {MaxResultCount = int.MaxValue})).Items; //Paging not implemented yet
             var roles = (await _userAppService.GetRoles()).Items;
             var model = new UserListViewModel
             {

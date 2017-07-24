@@ -1195,11 +1195,8 @@ export class UserServiceProxy {
         if (roleId !== undefined)
             url_ += "roleId=" + encodeURIComponent("" + roleId) + "&"
 
-        console.log(url_)
-
         const content_ = "";
 
-        console.log(url_);
         return this.http.request(url_, {
             body: content_,
             method: "get",

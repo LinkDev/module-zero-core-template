@@ -35,7 +35,9 @@
         "../src/bsb-theme/css/materialize.css",
         "../src/bsb-theme/css/style.css",
         "../src/bsb-theme/css/themes/all-themes.css",
-        "../src/shared/core.less"
+        "../src/shared/core.less",
+        "../node_modules/bootstrap-select/dist/css/bootstrap-select.css",
+        "../src/assets/css/style.css"
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
@@ -72,7 +74,8 @@
         "../node_modules/abp-web-resources/Abp/Framework/scripts/libs/abp.moment.js",
         "../src/bsb-theme/js/admin.js",
         "../src/bsb-theme/js/demo.js",
-        "../src/bsb-theme/js/jquery.validate.js"
+        "../src/bsb-theme/js/jquery.validate.js",
+        "../node_modules/bootstrap-select/dist/js/bootstrap-select.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

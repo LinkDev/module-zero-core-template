@@ -119,46 +119,6 @@ namespace AbpCompanyName.AbpProjectName.Users
 
             return data;
         }
-        protected override IQueryable<User> ApplySorting(IQueryable<User> query, GetAllUserInput input)
-        {
-
-            if (!string.IsNullOrEmpty(input.Sorting))
-            {
-                string column = input.Sorting.Split(',')[0];
-                string direction = input.Sorting.Split(',')[1];
-
-                switch (column)
-                {
-                    case "UserName":
-                        if (direction.ToLower() == "desc")
-                            query = query.OrderByDescending(r => r.UserName);
-                        else
-                            query = query.OrderBy(r => r.UserName);
-                        break;
-
-                    case "FullName":
-                        if (direction.ToLower() == "desc")
-                            query = query.OrderByDescending(r => r.FullName);
-                        else
-                            query = query.OrderBy(r => r.FullName);
-                        break;
-
-                    case "EmailAddress":
-                        if (direction.ToLower() == "desc")
-                            query = query.OrderByDescending(r => r.EmailAddress);
-                        else
-                            query = query.OrderBy(r => r.EmailAddress);
-                        break;
-
-                    default:
-                        query = query.OrderBy(r => r.UserName);
-                        break;
-                }
-
-            }
-
-            return query;
-        }
 
         protected override async Task<User> GetEntityByIdAsync(long id)
         {
