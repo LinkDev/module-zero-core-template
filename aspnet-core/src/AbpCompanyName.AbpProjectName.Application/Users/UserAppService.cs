@@ -13,10 +13,11 @@ using Abp.IdentityFramework;
 using AbpCompanyName.AbpProjectName.Authorization.Roles;
 using AbpCompanyName.AbpProjectName.Roles.Dto;
 using System;
+using AbpCompanyName.AbpProjectName.Shared;
 
 namespace AbpCompanyName.AbpProjectName.Users
 {
-    public class UserAppService : AsyncCrudAppService<User, UserDto, long, GetAllUserInput, CreateUserDto, UserDto>, IUserAppService
+    public class UserAppService : AsyncCrudAppService<User, UserDto, long, FilteredResultRequestDto, CreateUserDto, UserDto>, IUserAppService
     {
         private readonly UserManager _userManager;
         private readonly IPasswordHasher<User> _passwordHasher;
@@ -102,36 +103,90 @@ namespace AbpCompanyName.AbpProjectName.Users
             user.SetNormalizedNames();
         }
 
-        protected override IQueryable<User> CreateFilteredQuery(GetAllUserInput input)
+        protected override IQueryable<User> CreateFilteredQuery(FilteredResultRequestDto input)
         {
             var data = Repository.GetAllIncluding(x => x.Roles);
 
-            if (!string.IsNullOrEmpty(input.searchKey))
-                data=data.Where(a => a.UserName.ToLower().Contains(input.searchKey.ToLower())
-                    || a.FullName.ToLower().Contains(input.searchKey.ToLower())
-                    );
-            if (input.roleId != null && input.roleId != -1)
-
-                data =from u in data
-                from r in u.Roles
-                where r.RoleId == input.roleId
-                select u;
+            if (!string.IsNullOrEmpty(input.search))
+            {
+                IList<FilterCriteria> FilterCriteria = new List<FilterCriteria>();
+                var SearchCriteria = input.search.Split(new string[] {" and "},StringSplitOptions.None);
+                foreach (var item in SearchCriteria)
+                {
+                    if (string.IsNullOrEmpty(item) || string.IsNullOrWhiteSpace(item))
+                        continue;
+                    string value;
+                    var keyValue = item.Split(' ');
+                    var index = item.IndexOf('"') + 1;
+                    if (index != 0)
+                        value = item.Substring(index, item.Length - index - 1);
+                    else
+                        value = keyValue[2];
+                    
+                    FilterType fe = GetFilterType(keyValue[1]);
+                    var searchItem = new FilterCriteria(keyValue[0],fe, value);
+                    FilterCriteria.Add(searchItem);
+                }
+                var Filtereddata = Helpers.LinqExtension.ConvertToLinq(data, FilterCriteria);
+                return Filtereddata;
+            }
 
             return data;
+            //if (!string.IsNullOrEmpty(input.searchKey))
+            //    data=data.Where(a => a.UserName.ToLower().Contains(input.searchKey.ToLower())
+            //        || a.FullName.ToLower().Contains(input.searchKey.ToLower())
+            //        );
+            //if (input.roleId != null && input.roleId != -1)
+
+            //    data =from u in data
+            //    from r in u.Roles
+            //    where r.RoleId == input.roleId
+            //    select u;
+
+            
         }
 
         protected override async Task<User> GetEntityByIdAsync(long id)
         {
             return await Repository.GetAllIncluding(x => x.Roles).FirstOrDefaultAsync(x => x.Id == id);
         }
-
-
-
         protected virtual void CheckErrors(IdentityResult identityResult)
         {
             identityResult.CheckErrors(LocalizationManager);
         }
 
+
+        private FilterType GetFilterType(string filter)
+        {
+            FilterType fe = new FilterType();
+            switch (filter)
+            {
+                case "eq":
+                    fe = FilterType.Equals;
+                    break;
+                case "ne":
+                    fe = FilterType.Equals;
+                    break;
+                case "gt":
+                    fe = FilterType.GreaterThan;
+                    break;
+                case "ge":
+                    fe = FilterType.GreaterOrEquals;
+                    break;
+                case "lt":
+                    fe = FilterType.LessThan;
+                    break;
+                case "le":
+                    fe = FilterType.LessOrEquals;
+                    break;
+                case "like":
+                    fe = FilterType.Like;
+                    break;
+                default:
+                    break;
+            }
+            return fe;
+        }
         //public PagedResultDto<UserDto> GetAll2(PagedResultSearchRequestDto input)
         //{
 

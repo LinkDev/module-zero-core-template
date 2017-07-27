@@ -7,8 +7,8 @@ export class PagedAndSortedRequestDto extends PagedRequestDto {
 }
 
 export abstract class PagedAndSortedListingComponentBase<EntityDto> extends PagedListingComponentBase<EntityDto> implements AfterViewInit {
-    private sortColumn: string = "";
-    private sortDirection: string = "ASC";
+    protected sortColumn: string = "";
+    protected sortDirection: string = "ASC";
 
     ngAfterViewInit() {
         $.getScript('assets/js/arrowDirection.js');

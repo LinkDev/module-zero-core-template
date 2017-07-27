@@ -538,6 +538,259 @@ export class SessionServiceProxy {
 }
 
 @Injectable()
+export class StudentServiceProxy {
+    private http: Http = null; 
+    private baseUrl: string = undefined; 
+    protected jsonParseReviver: (key: string, value: any) => any = undefined;
+
+    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http; 
+        this.baseUrl = baseUrl ? baseUrl : ""; 
+    }
+
+    /**
+     * @return Success
+     */
+    get(id: number): Observable<StudentDto> {
+        let url_ = this.baseUrl + "/api/services/app/Student/Get?";
+        if (id !== undefined)
+        
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
+
+        const content_ = "";
+        
+        return this.http.request(url_, {
+            body: content_,
+            method: "get",
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8", 
+				"Accept": "application/json; charset=UTF-8"
+            })
+        }).map((response) => {
+            return this.processGet(response);
+        }).catch((response: any, caught: any) => {
+            if (response instanceof Response) {
+                try {
+                    return Observable.of(this.processGet(response));
+                } catch (e) {
+                    return <Observable<StudentDto>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<StudentDto>><any>Observable.throw(response);
+        });
+    }
+
+    protected processGet(response: Response): StudentDto {
+        const responseText = response.text();
+        const status = response.status; 
+
+        if (status === 200) {
+            let result200: StudentDto = null;
+            let resultData200 = responseText === "" ? null : JSON.parse(responseText, this.jsonParseReviver);
+            result200 = resultData200 ? StudentDto.fromJS(resultData200) : new StudentDto();
+            return result200;
+        } else if (status !== 200 && status !== 204) {
+            this.throwException("An unexpected server error occurred.", status, responseText);
+        }
+        return null;
+    }
+
+    /**
+     * @return Success
+     */
+    getAll(sorting: string, skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfStudentDto> {
+        let url_ = this.baseUrl + "/api/services/app/Student/GetAll?";
+        if (sorting !== undefined)
+        
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        
+        if (skipCount !== undefined)
+        
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        
+        if (maxResultCount !== undefined)
+        
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
+
+        const content_ = "";
+        
+        return this.http.request(url_, {
+            body: content_,
+            method: "get",
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8", 
+				"Accept": "application/json; charset=UTF-8"
+            })
+        }).map((response) => {
+            return this.processGetAll(response);
+        }).catch((response: any, caught: any) => {
+            if (response instanceof Response) {
+                try {
+                    return Observable.of(this.processGetAll(response));
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfStudentDto>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfStudentDto>><any>Observable.throw(response);
+        });
+    }
+
+    protected processGetAll(response: Response): PagedResultDtoOfStudentDto {
+        const responseText = response.text();
+        const status = response.status; 
+
+        if (status === 200) {
+            let result200: PagedResultDtoOfStudentDto = null;
+            let resultData200 = responseText === "" ? null : JSON.parse(responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfStudentDto.fromJS(resultData200) : new PagedResultDtoOfStudentDto();
+            return result200;
+        } else if (status !== 200 && status !== 204) {
+            this.throwException("An unexpected server error occurred.", status, responseText);
+        }
+        return null;
+    }
+
+    /**
+     * @return Success
+     */
+    create(input: StudentDto): Observable<StudentDto> {
+        let url_ = this.baseUrl + "/api/services/app/Student/Create";
+
+        const content_ = JSON.stringify(input ? input.toJS() : null);
+        
+        return this.http.request(url_, {
+            body: content_,
+            method: "post",
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8", 
+				"Accept": "application/json; charset=UTF-8"
+            })
+        }).map((response) => {
+            return this.processCreate(response);
+        }).catch((response: any, caught: any) => {
+            if (response instanceof Response) {
+                try {
+                    return Observable.of(this.processCreate(response));
+                } catch (e) {
+                    return <Observable<StudentDto>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<StudentDto>><any>Observable.throw(response);
+        });
+    }
+
+    protected processCreate(response: Response): StudentDto {
+        const responseText = response.text();
+        const status = response.status; 
+
+        if (status === 200) {
+            let result200: StudentDto = null;
+            let resultData200 = responseText === "" ? null : JSON.parse(responseText, this.jsonParseReviver);
+            result200 = resultData200 ? StudentDto.fromJS(resultData200) : new StudentDto();
+            return result200;
+        } else if (status !== 200 && status !== 204) {
+            this.throwException("An unexpected server error occurred.", status, responseText);
+        }
+        return null;
+    }
+
+    /**
+     * @return Success
+     */
+    update(input: StudentDto): Observable<StudentDto> {
+        let url_ = this.baseUrl + "/api/services/app/Student/Update";
+
+        const content_ = JSON.stringify(input ? input.toJS() : null);
+        
+        return this.http.request(url_, {
+            body: content_,
+            method: "put",
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8", 
+				"Accept": "application/json; charset=UTF-8"
+            })
+        }).map((response) => {
+            return this.processUpdate(response);
+        }).catch((response: any, caught: any) => {
+            if (response instanceof Response) {
+                try {
+                    return Observable.of(this.processUpdate(response));
+                } catch (e) {
+                    return <Observable<StudentDto>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<StudentDto>><any>Observable.throw(response);
+        });
+    }
+
+    protected processUpdate(response: Response): StudentDto {
+        const responseText = response.text();
+        const status = response.status; 
+
+        if (status === 200) {
+            let result200: StudentDto = null;
+            let resultData200 = responseText === "" ? null : JSON.parse(responseText, this.jsonParseReviver);
+            result200 = resultData200 ? StudentDto.fromJS(resultData200) : new StudentDto();
+            return result200;
+        } else if (status !== 200 && status !== 204) {
+            this.throwException("An unexpected server error occurred.", status, responseText);
+        }
+        return null;
+    }
+
+    /**
+     * @return Success
+     */
+    delete(id: number): Observable<void> {
+        let url_ = this.baseUrl + "/api/services/app/Student/Delete?";
+        if (id !== undefined)
+        
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
+
+        const content_ = "";
+        
+        return this.http.request(url_, {
+            body: content_,
+            method: "delete",
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8", 
+				"Accept": "application/json; charset=UTF-8"
+            })
+        }).map((response) => {
+            return this.processDelete(response);
+        }).catch((response: any, caught: any) => {
+            if (response instanceof Response) {
+                try {
+                    return Observable.of(this.processDelete(response));
+                } catch (e) {
+                    return <Observable<void>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<void>><any>Observable.throw(response);
+        });
+    }
+
+    protected processDelete(response: Response): void {
+        const responseText = response.text();
+        const status = response.status; 
+
+        if (status === 200) {
+            return null;
+        } else if (status !== 200 && status !== 204) {
+            this.throwException("An unexpected server error occurred.", status, responseText);
+        }
+        return null;
+    }
+
+    protected throwException(message: string, status: number, response: string, result?: any): any {
+        if(result !== null && result !== undefined)
+            throw result;
+        else
+            throw new SwaggerException(message, status, response);
+    }
+}
+
+@Injectable()
 export class TenantServiceProxy {
     private http: Http = null; 
     private baseUrl: string = undefined; 
@@ -1178,8 +1431,16 @@ export class UserServiceProxy {
     /**
      * @return Success
      */
-    getAll(skipCount: number, maxResultCount: number,searchKey:string,Sorting:string,roleId:number): Observable<PagedResultDtoOfUserDto> {
+    getAll(search: string, sorting: string, skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfUserDto> {
         let url_ = this.baseUrl + "/api/services/app/User/GetAll?";
+        if (search !== undefined)
+        
+            url_ += "search=" + encodeURIComponent("" + search) + "&"; 
+        
+        if (sorting !== undefined)
+        
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        
         if (skipCount !== undefined)
         
             url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
@@ -1188,15 +1449,8 @@ export class UserServiceProxy {
         
             url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
 
-        if (searchKey !== undefined)
-            url_ += "searchKey=" + encodeURIComponent("" + searchKey) + "&"
-        if (Sorting !== undefined)
-            url_ += "Sorting=" + encodeURIComponent("" + Sorting) + "&"
-        if (roleId !== undefined)
-            url_ += "roleId=" + encodeURIComponent("" + roleId) + "&"
-
         const content_ = "";
-
+        
         return this.http.request(url_, {
             body: content_,
             method: "get",
@@ -1767,6 +2021,85 @@ export class TenantLoginInfoDto {
     clone() {
         const json = this.toJSON();
         return new TenantLoginInfoDto(JSON.parse(json));
+    }
+}
+
+export class StudentDto { 
+    name: string; 
+    bio: string; 
+    age: number; 
+    isActive: boolean; 
+    id: number;
+    constructor(data?: any) {
+        if (data !== undefined) {
+            this.name = data["name"] !== undefined ? data["name"] : null;
+            this.bio = data["bio"] !== undefined ? data["bio"] : null;
+            this.age = data["age"] !== undefined ? data["age"] : null;
+            this.isActive = data["isActive"] !== undefined ? data["isActive"] : null;
+            this.id = data["id"] !== undefined ? data["id"] : null;
+        }
+    }
+
+    static fromJS(data: any): StudentDto {
+        return new StudentDto(data);
+    }
+
+    toJS(data?: any) {
+        data = data === undefined ? {} : data;
+        data["name"] = this.name !== undefined ? this.name : null;
+        data["bio"] = this.bio !== undefined ? this.bio : null;
+        data["age"] = this.age !== undefined ? this.age : null;
+        data["isActive"] = this.isActive !== undefined ? this.isActive : null;
+        data["id"] = this.id !== undefined ? this.id : null;
+        return data; 
+    }
+
+    toJSON() {
+        return JSON.stringify(this.toJS());
+    }
+
+    clone() {
+        const json = this.toJSON();
+        return new StudentDto(JSON.parse(json));
+    }
+}
+
+export class PagedResultDtoOfStudentDto { 
+    totalCount: number; 
+    items: StudentDto[];
+    constructor(data?: any) {
+        if (data !== undefined) {
+            this.totalCount = data["totalCount"] !== undefined ? data["totalCount"] : null;
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(StudentDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfStudentDto {
+        return new PagedResultDtoOfStudentDto(data);
+    }
+
+    toJS(data?: any) {
+        data = data === undefined ? {} : data;
+        data["totalCount"] = this.totalCount !== undefined ? this.totalCount : null;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJS());
+        }
+        return data; 
+    }
+
+    toJSON() {
+        return JSON.stringify(this.toJS());
+    }
+
+    clone() {
+        const json = this.toJSON();
+        return new PagedResultDtoOfStudentDto(JSON.parse(json));
     }
 }
 

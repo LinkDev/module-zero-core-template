@@ -1,0 +1,47 @@
+<div bsModal #editStudentModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="editStudentModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #editStudentForm="ngForm" id="frm_edit_student" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("EditStudent")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input id="name" class="form-control" type="text" name="Name" [(ngModel)]="item.name"  maxlength="50" />
+                            <label for="name" class="form-label">{{l("Name")}}</label>
+                        </div>
+                    </div>
+                    <div class="form-group form-float">
+                        <div class="form-line">
+                            <input id="bio" class="form-control" type="text" name="Bio" [(ngModel)]="item.bio"  required maxlength="1073741823" />
+                            <label for="bio" class="form-label">{{l("Bio")}}</label>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <div class="form-line">
+                            <input id="isActive" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="item.isActive" checked />
+                            <label for="isActive" class="form-label">{{l("IsActive")}}</label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="!editStudentForm.form.valid || saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

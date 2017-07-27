@@ -23,7 +23,7 @@ namespace AbpCompanyName.AbpProjectName.Tests.Users
         public async Task GetUsers_Test()
         {
             //Act
-            var output = await _userAppService.GetAll(new GetAllUserInput{MaxResultCount=20, SkipCount=0} );
+            var output = await _userAppService.GetAll(new FilteredResultRequestDto { MaxResultCount=20, SkipCount=0} );
 
             //Assert
             output.Items.Count.ShouldBeGreaterThan(0);
