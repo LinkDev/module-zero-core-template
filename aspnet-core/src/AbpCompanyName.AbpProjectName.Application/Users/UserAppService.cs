@@ -18,12 +18,7 @@ using AbpCompanyName.AbpProjectName.Shared;
 
 namespace AbpCompanyName.AbpProjectName.Users
 {
-<<<<<<< HEAD
     public class UserAppService : AsyncCrudAppService<User, UserDto, long, FilteredResultRequestDto, CreateUserDto, UserDto>, IUserAppService
-=======
-    [AbpAuthorize(PermissionNames.Pages_Users)]
-    public class UserAppService : AsyncCrudAppService<User, UserDto, long, PagedResultRequestDto, CreateUserDto, UserDto>, IUserAppService
->>>>>>> ea53e1a3d600f3f978c4e53006db40e25f93c46e
     {
         private readonly UserManager _userManager;
         private readonly IPasswordHasher<User> _passwordHasher;
