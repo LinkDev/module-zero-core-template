@@ -7,8 +7,9 @@ import { AboutComponent } from './about/about.component';
 import { UsersComponent } from './users/users.component';
 import { TenantsComponent } from './tenants/tenants.component';
 import { RolesComponent } from "app/roles/roles.component";
-import { StudentsComponent } from "app/students/students.component";
 
+import { StudentsComponent } from '@app/students/students.component';
+//{ path: 'students', component: StudentsComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
 @NgModule({
     imports: [
         RouterModule.forChild([

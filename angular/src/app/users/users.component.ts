@@ -1,4 +1,4 @@
-﻿import { Component, Injector, ViewChild } from '@angular/core';
+﻿import { Component, Injector, ViewChild, Input, ViewChildren,QueryList,ElementRef} from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { UserServiceProxy, UserDto, PagedResultDtoOfUserDto, RoleDto } from '@shared/service-proxies/service-proxies';
 import { PagedListingComponentBase, PagedRequestDto } from "shared/paged-listing-component-base";
@@ -11,7 +11,7 @@ import { EditUserComponent } from "app/users/edit-user/edit-user.component";
     templateUrl: './users.component.html',
     animations: [appModuleAnimation()]
 })
-export class UsersComponent extends FilteredComponentBase<UserDto> {
+export class UsersComponent extends FilteredComponentBase<UserDto>  {
 
     @ViewChild('createUserModal') createUserModal: CreateUserComponent;
     @ViewChild('editUserModal') editUserModal: EditUserComponent;
@@ -51,7 +51,7 @@ export class UsersComponent extends FilteredComponentBase<UserDto> {
             items.push({ FilterName: "UserName", FilterType: FilterType.like, FilterValue: this.userNameSearch });
 
         if (this.fullNameSearch !== undefined && this.fullNameSearch !== null && this.fullNameSearch !== '')
-            items.push({ FilterName: "FullName", FilterType: FilterType.like, FilterValue:this.fullNameSearch });
+            items.push({ FilterName: "FullName", FilterType: FilterType.like, FilterValue: this.fullNameSearch });
         this.Filter(items);
     }
     protected delete(user: UserDto): void {
@@ -79,11 +79,11 @@ export class UsersComponent extends FilteredComponentBase<UserDto> {
         this.editUserModal.show(user.id);
     }
 
-    externalMethod(): void {
+    ngOnInit(): void {
+        super.ngOnInit();
         this._userService.getRoles()
             .subscribe((result) => {
                 this.roles = result.items;
-                //$('.bs-select').selectpicker('refresh');
             });
     }
 }

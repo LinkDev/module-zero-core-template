@@ -6,13 +6,15 @@ using Microsoft.EntityFrameworkCore;
 
 namespace AbpCompanyName.AbpProjectName.EntityFrameworkCore
 {
-    public partial class AbpProjectNameDbContext : AbpZeroDbContext<Tenant, Role, User, AbpProjectNameDbContext>
+    public partial class AbpProjectNameDbContext 
     {
-        /* Define an IDbSet for each entity of the application */
-        
-        public AbpProjectNameDbContext(DbContextOptions<AbpProjectNameDbContext> options)
-            : base(options)
+		public virtual DbSet<Student> Students { get; set; }
+		
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+			base.OnModelCreating(modelBuilder);
+
+
 
         }
     }

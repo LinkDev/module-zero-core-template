@@ -13,7 +13,7 @@ export class CreateRoleComponent extends AppComponentBase implements OnInit {
 
     active: boolean = false;
     saving: boolean = false;
-
+    isNew: boolean = true;
     permissions: ListResultDtoOfPermissionDto = null;
     role: CreateRoleDto = null;
 
@@ -32,15 +32,21 @@ export class CreateRoleComponent extends AppComponentBase implements OnInit {
             });
     }
 
-    show(): void {
-        this.active = true;
-        this.role = new CreateRoleDto({ isStatic: false });
+    show(id?: number): void {
+        if (!id) {
+            this.active = true;
+            this.role = new CreateRoleDto({ isStatic: false });
+            this.modal.show();
+        }
+        else {
 
-        this.modal.show();
+        }
+        
     }
 
     onShown(): void {
         $.AdminBSB.input.activate($(this.modalContent.nativeElement));
+        $('form').find('input[type=text],textarea,select').filter(':visible:first').focus();
     }
 
     save(): void {
@@ -56,6 +62,7 @@ export class CreateRoleComponent extends AppComponentBase implements OnInit {
         this.role.permissions = permissions;
 
         this.saving = true;
+        console.log(this.role);
         this._roleService.create(this.role)
             .finally(() => { this.saving = false; })
             .subscribe(() => {
