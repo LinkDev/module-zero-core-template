@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Threading.Tasks;
 using Abp.Application.Services;
 using Abp.Application.Services.Dto;
+using Abp.Extensions;
 using Abp.Domain.Repositories;
 using AbpCompanyName.AbpProjectName.Authorization;
 using AbpCompanyName.AbpProjectName.Authorization.Users;
@@ -13,7 +14,6 @@ using Abp.IdentityFramework;
 using AbpCompanyName.AbpProjectName.Authorization.Roles;
 using AbpCompanyName.AbpProjectName.Roles.Dto;
 using System;
-using AbpCompanyName.AbpProjectName.Shared;
 
 namespace AbpCompanyName.AbpProjectName.Users
 {
@@ -127,23 +127,11 @@ namespace AbpCompanyName.AbpProjectName.Users
                     var searchItem = new FilterCriteria(keyValue[0],fe, value);
                     FilterCriteria.Add(searchItem);
                 }
-                var Filtereddata = Helpers.LinqExtension.ConvertToLinq(data, FilterCriteria);
+                var Filtereddata = data.Filter(FilterCriteria);
                 return Filtereddata;
             }
 
             return data;
-            //if (!string.IsNullOrEmpty(input.searchKey))
-            //    data=data.Where(a => a.UserName.ToLower().Contains(input.searchKey.ToLower())
-            //        || a.FullName.ToLower().Contains(input.searchKey.ToLower())
-            //        );
-            //if (input.roleId != null && input.roleId != -1)
-
-            //    data =from u in data
-            //    from r in u.Roles
-            //    where r.RoleId == input.roleId
-            //    select u;
-
-            
         }
 
         protected override async Task<User> GetEntityByIdAsync(long id)
@@ -187,27 +175,6 @@ namespace AbpCompanyName.AbpProjectName.Users
             }
             return fe;
         }
-        //public PagedResultDto<UserDto> GetAll2(PagedResultSearchRequestDto input)
-        //{
-
-        //    var data = CreateFilteredQuery(input);
-        //    if (!string.IsNullOrEmpty(input.searchKey))
-        //         data = data
-        //            .Where(a => a.UserName.ToLower().Contains(input.searchKey.ToLower())
-        //            || a.FullName.ToLower().Contains(input.searchKey.ToLower())
-        //            );
-
-        //    var count = data.Count();
-        //    data = ApplySorting(data, input).Skip(input.SkipCount).Take(input.MaxResultCount);
-
-        //    var lstDto = new ListResultDto<UserDto>(ObjectMapper.Map<List<UserDto>>(data.ToList()));
-        //    PagedResultDto<UserDto> results = new PagedResultDto<UserDto>()
-        //    {
-        //        Items = lstDto.Items,
-        //        TotalCount = count
-        //    };
-        //    return results;
-        //}
 
     }
 }

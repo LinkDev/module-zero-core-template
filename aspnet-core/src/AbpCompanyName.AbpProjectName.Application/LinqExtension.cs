@@ -7,22 +7,25 @@ using System.Linq.Expressions;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
-using AbpCompanyName.AbpProjectName.Shared;
-namespace AbpCompanyName.AbpProjectName.Helpers
-{
-    public static class LinqExtension
-    {
 
-        public static IQueryable<T> ConvertToLinq<T>(IQueryable<T> query, IList<FilterCriteria> searchCriteria)
+namespace Abp.Extensions
+{
+    public static class LinqFilterExtensions
+    {
+        public static IQueryable<T> Filter<T>(this IQueryable<T> query, IEnumerable<FilterCriteria> filterCriteria)
         {
-            if (searchCriteria != null)
+            if (filterCriteria != null)
             {
-                query = ConvertFiltersToLinq<T>(query, searchCriteria);
-                
+                foreach (var item in filterCriteria)
+                {
+                    query = query.Filter(item.FilterName, GetPropertyType<T>(item.FilterName), item.FilterType, item.FilterValue);
+                }
+                return query;
             }
 
             return query;
         }
+
         public static IQueryable<T> Filter<T>(this IQueryable<T> query, string fieldName, Type fieldType,
             FilterType fieldOp, object fieldValue)
         {
@@ -65,7 +68,6 @@ namespace AbpCompanyName.AbpProjectName.Helpers
       
         public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
         {
-
             HashSet<TKey> seenKeys = new HashSet<TKey>();
             foreach (TSource element in source)
             {
@@ -94,15 +96,6 @@ namespace AbpCompanyName.AbpProjectName.Helpers
             }
             return propertyType;
         }
-        private static IQueryable<T> ConvertFiltersToLinq<T>(IQueryable<T> query, IList<FilterCriteria> filterList)
-        {
-            foreach (var item in filterList)
-            {
-                query = Filter<T>(query, item.FilterName, GetPropertyType<T>(item.FilterName), item.FilterType, item.FilterValue);
-            }
-            return query;
-        }
-
 
         private static object ChangeType(object value, Type conversionType)
         {
@@ -133,5 +126,42 @@ namespace AbpCompanyName.AbpProjectName.Helpers
         #endregion
 
 
+    }
+
+    public class FilterCriteria
+    {
+        #region #Property#
+        public string FilterName { set; get; }
+        public FilterType FilterType { set; get; }
+        public object FilterValue { set; get; }
+        public object FilterValue2 { set; get; }
+        public string FilterDataType { set; get; }
+        #endregion
+
+        #region #Constractors#
+        public FilterCriteria(string filterName, FilterType filterType, object filterValue, object filterValue2 = null, string filterDataType = null)
+        {
+            FilterName = filterName;
+            FilterType = filterType;
+            FilterValue = filterValue;
+            FilterValue2 = filterValue2;
+            FilterDataType = filterDataType;
+        }
+
+        #endregion
+    }
+
+    public enum FilterType
+    {
+        Between,
+        GreaterOrEquals,
+        GreaterThan,
+        LessOrEquals,
+        LessThan,
+        Equals,
+        NotEquals,
+        Like,
+        NotLike,
+        IsNull
     }
 }

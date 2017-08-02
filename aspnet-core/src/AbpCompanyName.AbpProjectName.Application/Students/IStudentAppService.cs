@@ -6,7 +6,7 @@ using AbpCompanyName.AbpProjectName.Students.Dto;
 
 namespace AbpCompanyName.AbpProjectName.Students
 {
-	public interface IStudentAppService : IAsyncCrudAppService<StudentDto, int, PagedAndSortedResultRequestDto>
+	public interface IStudentAppService : IFilteredRestoreDeletedAppService<StudentDto, int, FilteredResultRequestDto>
 	{
 		
 	}
