@@ -17,7 +17,7 @@ export class StudentsComponent extends PagedAndSortedListingComponentBase<Studen
 
     active: boolean = false;
     items: StudentDto[] = [];
-    
+    deletedItem: boolean = false;
 	constructor(
         injector: Injector,
         private _studentService: StudentServiceProxy
@@ -29,6 +29,7 @@ export class StudentsComponent extends PagedAndSortedListingComponentBase<Studen
     
 
     protected list(request: PagedAndSortedRequestDto, pageNumber: number, finishedCallback: Function): void {
+        if(!this.deletedItem){
         this._studentService.getAll(request.sorting, request.skipCount, request.maxResultCount)
             .finally(() => {
                 finishedCallback();
@@ -36,7 +37,18 @@ export class StudentsComponent extends PagedAndSortedListingComponentBase<Studen
             .subscribe((result: PagedResultDtoOfStudentDto) => {
                 this.items = result.items;
                 this.showPaging(result, pageNumber);
-            });
+                });
+        }
+        else {
+            this._studentService.getAllDeleted(request.sorting, request.skipCount, request.maxResultCount)
+                .finally(() => {
+                    finishedCallback();
+                })
+                .subscribe((result: PagedResultDtoOfStudentDto) => {
+                    this.items = result.items;
+                    this.showPaging(result, pageNumber);
+                });
+        }
     }
 
     protected delete(item: StudentDto): void {
@@ -62,6 +74,9 @@ export class StudentsComponent extends PagedAndSortedListingComponentBase<Studen
 
     edit(item: StudentDto): void {
         this.studentFormModal.show(item.id);
+    }
+    getDeleted(value) {
+        this.refresh();
     }
 
 }

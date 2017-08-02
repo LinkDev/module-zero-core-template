@@ -90,7 +90,7 @@
                     <button [disabled]="saving" type="button" class="btn btn-default waves-effect" (click)="close()">
                         {{l("Cancel")}}
                     </button>
-                    <button [disabled]="!createRoleForm.form.valid || saving" type="submit" class="btn btn-primary waves-effect">
+                    <button [disabled]="saving" type="submit" class="btn btn-primary waves-effect">
                         {{l("Save")}}
                     </button>
                 </div>

@@ -551,6 +551,108 @@ export class StudentServiceProxy {
     /**
      * @return Success
      */
+    getAllDeleted(sorting: string, skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfStudentDto> {
+        let url_ = this.baseUrl + "/api/services/app/Student/GetAllDeleted?";
+        if (sorting !== undefined)
+        
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
+        
+        if (skipCount !== undefined)
+        
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        
+        if (maxResultCount !== undefined)
+        
+            url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&";
+
+        const content_ = "";
+        
+        return this.http.request(url_, {
+            body: content_,
+            method: "get",
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8", 
+				"Accept": "application/json; charset=UTF-8"
+            })
+        }).map((response) => {
+            return this.processGetAllDeleted(response);
+        }).catch((response: any, caught: any) => {
+            if (response instanceof Response) {
+                try {
+                    return Observable.of(this.processGetAllDeleted(response));
+                } catch (e) {
+                    return <Observable<PagedResultDtoOfStudentDto>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<PagedResultDtoOfStudentDto>><any>Observable.throw(response);
+        });
+    }
+
+    protected processGetAllDeleted(response: Response): PagedResultDtoOfStudentDto {
+        const responseText = response.text();
+        const status = response.status; 
+
+        if (status === 200) {
+            let result200: PagedResultDtoOfStudentDto = null;
+            let resultData200 = responseText === "" ? null : JSON.parse(responseText, this.jsonParseReviver);
+            result200 = resultData200 ? PagedResultDtoOfStudentDto.fromJS(resultData200) : new PagedResultDtoOfStudentDto();
+            return result200;
+        } else if (status !== 200 && status !== 204) {
+            this.throwException("An unexpected server error occurred.", status, responseText);
+        }
+        return null;
+    }
+
+    /**
+     * @return Success
+     */
+    restore(id: number): Observable<StudentDto> {
+        let url_ = this.baseUrl + "/api/services/app/Student/Restore?";
+        if (id !== undefined)
+        
+            url_ += "Id=" + encodeURIComponent("" + id) + "&";
+
+        const content_ = "";
+        
+        return this.http.request(url_, {
+            body: content_,
+            method: "post",
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8", 
+				"Accept": "application/json; charset=UTF-8"
+            })
+        }).map((response) => {
+            return this.processRestore(response);
+        }).catch((response: any, caught: any) => {
+            if (response instanceof Response) {
+                try {
+                    return Observable.of(this.processRestore(response));
+                } catch (e) {
+                    return <Observable<StudentDto>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<StudentDto>><any>Observable.throw(response);
+        });
+    }
+
+    protected processRestore(response: Response): StudentDto {
+        const responseText = response.text();
+        const status = response.status; 
+
+        if (status === 200) {
+            let result200: StudentDto = null;
+            let resultData200 = responseText === "" ? null : JSON.parse(responseText, this.jsonParseReviver);
+            result200 = resultData200 ? StudentDto.fromJS(resultData200) : new StudentDto();
+            return result200;
+        } else if (status !== 200 && status !== 204) {
+            this.throwException("An unexpected server error occurred.", status, responseText);
+        }
+        return null;
+    }
+
+    /**
+     * @return Success
+     */
     get(id: number): Observable<StudentDto> {
         let url_ = this.baseUrl + "/api/services/app/Student/Get?";
         if (id !== undefined)
@@ -2024,6 +2126,45 @@ export class TenantLoginInfoDto {
     }
 }
 
+export class PagedResultDtoOfStudentDto { 
+    totalCount: number; 
+    items: StudentDto[];
+    constructor(data?: any) {
+        if (data !== undefined) {
+            this.totalCount = data["totalCount"] !== undefined ? data["totalCount"] : null;
+            if (data["items"] && data["items"].constructor === Array) {
+                this.items = [];
+                for (let item of data["items"])
+                    this.items.push(StudentDto.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): PagedResultDtoOfStudentDto {
+        return new PagedResultDtoOfStudentDto(data);
+    }
+
+    toJS(data?: any) {
+        data = data === undefined ? {} : data;
+        data["totalCount"] = this.totalCount !== undefined ? this.totalCount : null;
+        if (this.items && this.items.constructor === Array) {
+            data["items"] = [];
+            for (let item of this.items)
+                data["items"].push(item.toJS());
+        }
+        return data; 
+    }
+
+    toJSON() {
+        return JSON.stringify(this.toJS());
+    }
+
+    clone() {
+        const json = this.toJSON();
+        return new PagedResultDtoOfStudentDto(JSON.parse(json));
+    }
+}
+
 export class StudentDto { 
     name: string; 
     bio: string; 
@@ -2061,45 +2202,6 @@ export class StudentDto {
     clone() {
         const json = this.toJSON();
         return new StudentDto(JSON.parse(json));
-    }
-}
-
-export class PagedResultDtoOfStudentDto { 
-    totalCount: number; 
-    items: StudentDto[];
-    constructor(data?: any) {
-        if (data !== undefined) {
-            this.totalCount = data["totalCount"] !== undefined ? data["totalCount"] : null;
-            if (data["items"] && data["items"].constructor === Array) {
-                this.items = [];
-                for (let item of data["items"])
-                    this.items.push(StudentDto.fromJS(item));
-            }
-        }
-    }
-
-    static fromJS(data: any): PagedResultDtoOfStudentDto {
-        return new PagedResultDtoOfStudentDto(data);
-    }
-
-    toJS(data?: any) {
-        data = data === undefined ? {} : data;
-        data["totalCount"] = this.totalCount !== undefined ? this.totalCount : null;
-        if (this.items && this.items.constructor === Array) {
-            data["items"] = [];
-            for (let item of this.items)
-                data["items"].push(item.toJS());
-        }
-        return data; 
-    }
-
-    toJSON() {
-        return JSON.stringify(this.toJS());
-    }
-
-    clone() {
-        const json = this.toJSON();
-        return new PagedResultDtoOfStudentDto(JSON.parse(json));
     }
 }
 

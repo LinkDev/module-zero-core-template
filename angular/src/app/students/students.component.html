@@ -18,10 +18,16 @@
                 </ul>
             </div>
 
-            <div class="row">
-                
-            </div>
+            
             <div class="body table-responsive">
+                <div class="row">
+                    <div class="col-xs-4">
+                        <div class="form-group">
+                            <input id="deletedItem" class="form-control" type="checkbox" name="deletedItem" [(ngModel)]="deletedItem" (change)="getDeleted($value)" />
+                            <label for="deletedItem" class="form-label">Show Deleted</label>
+                        </div>
+                    </div>
+                </div>
             <!-- ******************************************************** -->
                 <table class="table table-hover table-striped">
                     <thead>

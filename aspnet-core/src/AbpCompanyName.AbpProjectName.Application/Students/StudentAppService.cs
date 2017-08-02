@@ -9,7 +9,7 @@ using AbpCompanyName.AbpProjectName.Students.Dto;
 
 namespace AbpCompanyName.AbpProjectName.Students
 {
-	public class StudentAppService : AsyncCrudAppService<Student, StudentDto, int, PagedAndSortedResultRequestDto>, IStudentAppService
+	public class StudentAppService : AsyncCrudRestoreAppService<Student, StudentDto, int, PagedAndSortedResultRequestDto>, IStudentAppService
 	{
 		public StudentAppService(IRepository<Student, int> repository)
             : base(repository)
