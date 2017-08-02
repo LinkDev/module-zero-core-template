@@ -13,7 +13,14 @@ namespace AbpCompanyName.AbpProjectName.Web.Models.Users
 
         public bool UserIsInRole(RoleDto role)
         {
-            return User.Roles != null && User.Roles.Any(r => r == role.DisplayName);
+            return User.Roles != null && User.Roles.Any(r => r == role.Name);
         }
+    }
+
+    public class UserListViewModel
+    {
+        public IReadOnlyList<UserDto> Users { get; set; }
+
+        public IReadOnlyList<RoleDto> Roles { get; set; }
     }
 }

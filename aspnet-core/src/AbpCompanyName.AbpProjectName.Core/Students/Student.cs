@@ -1,6 +1,7 @@
 using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using Abp.Domain.Entities;
 using Abp.Domain.Entities.Auditing;
 
@@ -13,7 +14,6 @@ namespace AbpCompanyName.AbpProjectName
 		public string Name { get; set; }
 		
 		[Required]
-		[StringLength(1073741823)]
 		public string Bio { get; set; }
 		
 		public int Age { get; set; }
@@ -21,6 +21,7 @@ namespace AbpCompanyName.AbpProjectName
 		public bool IsDeleted { get; set; }
 		
 		public bool IsActive { get; set; }
+
 
 	}
 }

@@ -19,7 +19,7 @@ export class PagedRequestDto {
 //    searchKey: string;
 //}
 
-export abstract class PagedListingComponentBase<EntityDto> extends AppComponentBase implements OnInit {
+export abstract class PagedListingComponentBase<EntityDto> extends AppComponentBase implements OnInit, AfterViewInit {
 
     public pageSize: number = 10;
     public pageNumber: number = 1;
@@ -32,8 +32,10 @@ export abstract class PagedListingComponentBase<EntityDto> extends AppComponentB
     }
 
     ngOnInit(): void {
-        this.externalMethod();
+        //this.onInit();
         this.refresh();
+    }
+    ngAfterViewInit() {
     }
     refresh(): void {
         this.getDataPage(this.pageNumber);
@@ -60,5 +62,4 @@ export abstract class PagedListingComponentBase<EntityDto> extends AppComponentB
     protected abstract list(request: PagedRequestDto, pageNumber: number, finishedCallback: Function): void;
     protected abstract delete(entity: EntityDto): void;
 
-    protected externalMethod?(): void { };
 }

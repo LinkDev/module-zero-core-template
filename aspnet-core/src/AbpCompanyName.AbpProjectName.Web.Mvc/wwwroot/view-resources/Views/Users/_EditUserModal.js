@@ -12,7 +12,7 @@
 
         var user = _$form.serializeFormToObject(); //serializeFormToObject is defined in main.js
         user.roles = [];
-        var _$roleCheckboxes = $("input[name='role']:checked:visible");
+        var _$roleCheckboxes = $("input[name='role']:checked");
         if (_$roleCheckboxes) {
             for (var roleIndex = 0; roleIndex < _$roleCheckboxes.length; roleIndex++) {
                 var _$roleCheckbox = $(_$roleCheckboxes[roleIndex]);
@@ -23,7 +23,7 @@
         abp.ui.setBusy(_$form);
         _userService.update(user).done(function () {
             _$modal.modal('hide');
-            location.reload(true); //reload page to see edited user!
+            location.reload(true); //reload page to see edited tenant!
         }).always(function () {
             abp.ui.clearBusy(_$modal);
         });

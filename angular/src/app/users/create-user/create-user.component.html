@@ -62,6 +62,8 @@
                                 </div>
                             </div>
 
+
+
                             <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
@@ -84,6 +86,7 @@
                                 </div>
                             </div>
 
+
                             <div class="row clearfix">
                                 <div class="col-sm-12">
                                     <div class="form-group form-float">
@@ -101,7 +104,7 @@
                                 <div class="col-sm-12 ">
                                     <ng-template ngFor let-role [ngForOf]="roles" let-roleIndex="index">
                                         <div class="col-sm-6">
-                                            <input type="checkbox" name="role" value="{{role.normalizedName}}" title="{{role.description}}" class="filled-in" id="role-{{roleIndex}}" checked="checked" />
+                                            <input type="checkbox" name="role" value="{{role.normalizedName}}" title="{{role.description}}" class="filled-in" id="role-{{roleIndex}}" checked="Checked" />
                                             <label for="role-{{roleIndex}}" title="{{role.displayName}}">{{role.name}}</label>
                                         </div>
                                     </ng-template>

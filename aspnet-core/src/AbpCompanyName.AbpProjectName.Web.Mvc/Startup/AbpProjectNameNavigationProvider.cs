@@ -38,15 +38,6 @@ namespace AbpCompanyName.AbpProjectName.Web.Startup
                     )
                 ).AddItem(
                     new MenuItemDefinition(
-                        PageNames.Roles,
-                        L("Roles"),
-                        url: "Roles",
-                        icon: "local_offer",
-                        requiredPermissionName: PermissionNames.Pages_Roles
-                    )
-                )
-                .AddItem(
-                    new MenuItemDefinition(
                         PageNames.About,
                         L("About"),
                         url: "About",
@@ -65,25 +56,25 @@ namespace AbpCompanyName.AbpProjectName.Web.Startup
                             new MenuItemDefinition(
                                 "AspNetBoilerplateHome",
                                 new FixedLocalizableString("Home"),
-                                url: "https://aspnetboilerplate.com?ref=abptmpl"
+                                url: "https://aspnetboilerplate.com/ref=abptmpl"
                             )
                         ).AddItem(
                             new MenuItemDefinition(
                                 "AspNetBoilerplateTemplates",
                                 new FixedLocalizableString("Templates"),
-                                url: "https://aspnetboilerplate.com/Templates?ref=abptmpl"
+                                url: "https://aspnetboilerplate.com/Templatesref=abptmpl"
                             )
                         ).AddItem(
                             new MenuItemDefinition(
                                 "AspNetBoilerplateSamples",
                                 new FixedLocalizableString("Samples"),
-                                url: "https://aspnetboilerplate.com/Samples?ref=abptmpl"
+                                url: "https://aspnetboilerplate.com/Samplesref=abptmpl"
                             )
                         ).AddItem(
                             new MenuItemDefinition(
                                 "AspNetBoilerplateDocuments",
                                 new FixedLocalizableString("Documents"),
-                                url: "https://aspnetboilerplate.com/Pages/Documents?ref=abptmpl"
+                                url: "https://aspnetboilerplate.com/Pages/Documentsref=abptmpl"
                             )
                         )
                     ).AddItem(

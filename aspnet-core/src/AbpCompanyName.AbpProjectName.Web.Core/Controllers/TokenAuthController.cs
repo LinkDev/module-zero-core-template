@@ -65,8 +65,7 @@ namespace AbpCompanyName.AbpProjectName.Controllers
             {
                 AccessToken = accessToken,
                 EncryptedAccessToken = GetEncrpyedAccessToken(accessToken),
-                ExpireInSeconds = (int)_configuration.Expiration.TotalSeconds,
-                UserId = loginResult.User.Id
+                ExpireInSeconds = (int)_configuration.Expiration.TotalSeconds
             };
         }
 

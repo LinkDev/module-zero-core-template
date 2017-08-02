@@ -1,8 +1,8 @@
-import { Component, Injector, ViewChild } from '@angular/core';
+﻿import { Component, Injector, ViewChild } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { StudentServiceProxy, StudentDto, PagedResultDtoOfStudentDto } from '@shared/service-proxies/service-proxies';
 import { PagedAndSortedListingComponentBase, PagedAndSortedRequestDto } from "shared/paged-sorted-listing-component-base"
-import { CreateStudentComponent } from "app/students/create-student/create-student.component";
+import { StudentFormComponent } from "app/students/student-form/student.form.component";
 import { EditStudentComponent } from "app/students/edit-student/edit-student.component";
 
 @Component({
@@ -12,7 +12,7 @@ import { EditStudentComponent } from "app/students/edit-student/edit-student.com
 })
 export class StudentsComponent extends PagedAndSortedListingComponentBase<StudentDto> {
 
-    @ViewChild('createStudentModal') createStudentModal: CreateStudentComponent;
+    @ViewChild('studentFormModal') studentFormModal: StudentFormComponent;
     @ViewChild('editStudentModal') editStudentModal: EditStudentComponent;
 
     active: boolean = false;
@@ -41,12 +41,12 @@ export class StudentsComponent extends PagedAndSortedListingComponentBase<Studen
 
     protected delete(item: StudentDto): void {
         abp.message.confirm(
-            "Delete Student '" + item.name + "'?",
+            "Delete Student '" + item.id + "'?",
             (result: boolean) => {
                 if (result) {
                     this._studentService.delete(item.id)
                         .finally(() => {
-                            abp.notify.info("Deleted Student: " + item.name);
+                            abp.notify.info("Deleted Student: " + item.id);
                             this.refresh();
                         })
                         .subscribe(() => { });
@@ -57,11 +57,11 @@ export class StudentsComponent extends PagedAndSortedListingComponentBase<Studen
 
     // Show Modals
     create(): void {
-        this.createStudentModal.show();
+        this.studentFormModal.show();
     }
 
     edit(item: StudentDto): void {
-        this.editStudentModal.show(item.id);
+        this.studentFormModal.show(item.id);
     }
 
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Linq;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using Abp.Domain.Repositories;
@@ -14,5 +15,6 @@ namespace AbpCompanyName.AbpProjectName.Students
             : base(repository)
         {
 		}
+
 	}
 }

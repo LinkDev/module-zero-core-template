@@ -6,8 +6,8 @@ import { AppComponentBase } from '@shared/app-component-base';
 import * as _ from "lodash";
 
 @Component({
-  selector: 'create-user-modal',
-  templateUrl: './create-user.component.html'
+    selector: 'create-user-modal',
+    templateUrl: './create-user.component.html'
 })
 export class CreateUserComponent extends AppComponentBase implements OnInit {
 
@@ -30,15 +30,16 @@ export class CreateUserComponent extends AppComponentBase implements OnInit {
 
     ngOnInit(): void {
         this._userService.getRoles()
-        .subscribe((result) => {
-            this.roles = result.items;
-        });
+            .subscribe((result) => {
+                this.roles = result.items;
+            });
     }
 
     show(): void {
         this.active = true;
         this.modal.show();
         this.user = new CreateUserDto({ isActive: true });
+
     }
 
     onShown(): void {
@@ -48,8 +49,8 @@ export class CreateUserComponent extends AppComponentBase implements OnInit {
     save(): void {
         //TODO: Refactor this, don't use jQuery style code
         var roles = [];
-        $(this.modalContent.nativeElement).find("[name=role]").each((ind:number, elem:Element) => {
-            if($(elem).is(":checked") == true){
+        $(this.modalContent.nativeElement).find("[name=role]").each((ind: number, elem: Element) => {
+            if ($(elem).is(":checked") == true) {
                 roles.push(elem.getAttribute("value").valueOf());
             }
         });
@@ -63,6 +64,8 @@ export class CreateUserComponent extends AppComponentBase implements OnInit {
                 this.close();
                 this.modalSave.emit(null);
             });
+
+
     }
 
     close(): void {
