@@ -48,7 +48,7 @@
                                 <i class="material-icons" *ngIf="item.isActive" style="color:green;">check_box</i>
                                 <i class="material-icons" *ngIf="!item.isActive" style="color:red;">indeterminate_check_box</i>
                             </td>
-                            <td class="dropdown">
+                            <td class="dropdown" *ngIf="!deletedItem">
                                 <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                                     <i class="material-icons">menu</i>
                                 </a>
@@ -56,6 +56,9 @@
                                     <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="edit(item)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
                                     <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(item)"><i class="material-icons">delete_sweep</i>{{l('Delete')}}</a></li>
                                 </ul>
+                            </td>
+                            <td *ngIf="deletedItem">
+                                <button class="btn btn-primary" (click)="restore(item.id)">Restore</button>
                             </td>
                         </tr>
                     </tbody>

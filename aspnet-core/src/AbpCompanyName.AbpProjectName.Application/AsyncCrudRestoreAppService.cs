@@ -31,11 +31,12 @@ namespace Abp.Application.Services
             }
 
             var totalCount = query.Count();
+            
 
             query = ApplySorting(query, input);
             query = ApplyPaging(query, input);
 
-            var entities = query.ToList();
+            var entities =query.ToList();
 
             return new PagedResultDto<TEntityDto>(
                 totalCount,
@@ -46,11 +47,13 @@ namespace Abp.Application.Services
 
         public virtual async Task<TEntityDto> Restore(TPrimaryKey Id)
         {
-            var entity = await GetEntityByIdAsync(Id);
-            entity.IsDeleted = false;
-            
-            return await Update(MapToEntityDto(entity));
-            
+            using (CurrentUnitOfWork.DisableFilter(AbpDataFilters.SoftDelete))
+            {
+                var entity = await GetEntityByIdAsync(Id);
+                entity.IsDeleted = false;
+
+                return await Update(MapToEntityDto(entity));
+            }
         }
     }
 }

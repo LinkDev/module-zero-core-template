@@ -79,4 +79,13 @@ export class StudentsComponent extends PagedAndSortedListingComponentBase<Studen
         this.refresh();
     }
 
+    restore(id: number) {
+        this._studentService.restore(id).finally(() => {
+            abp.notify.info("Student Restored");
+            this.refresh();
+        }).subscribe(() => {
+            this.refresh();
+        })
+    }
+
 }
