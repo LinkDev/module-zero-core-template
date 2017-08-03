@@ -21,6 +21,9 @@ namespace AbpCompanyName.AbpProjectName
 		public bool IsDeleted { get; set; }
 		
 		public bool IsActive { get; set; }
+		
+		[Required]
+		public int? RoleId { get; set; }
 
 
 	}

@@ -22,6 +22,9 @@ namespace AbpCompanyName.AbpProjectName.Students.Dto
 		public int Age { get; set; }
 		
 		public bool IsActive { get; set; }
+		
+		[Required]
+		public int? RoleId { get; set; }
 
 	}
 }

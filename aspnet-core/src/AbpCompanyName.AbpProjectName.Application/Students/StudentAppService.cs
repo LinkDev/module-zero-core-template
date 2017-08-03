@@ -14,6 +14,7 @@ namespace AbpCompanyName.AbpProjectName.Students
 		public StudentAppService(IRepository<Student, int> repository)
             : base(repository)
         {
+            
 		}
     }
 }

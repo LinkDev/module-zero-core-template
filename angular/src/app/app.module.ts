@@ -34,11 +34,9 @@ import { RightSideBarComponent } from '@app/layout/right-sidebar.component';
 import { MaterialInput } from '@shared/directives/material-input.directive';
 
 import { StudentsComponent } from '@app/students/students.component';
-import { StudentFormComponent } from '@app/students/student-form/student.form.component';
-import { EditStudentComponent } from './students/edit-student/edit-student.component';
-//		StudentsComponent,
-//		CreateStudentComponent,
-//		EditStudentComponent,
+import { StudentFormComponent } from '@app/students/student-form/student-form.component';
+
+
 @NgModule({
     declarations: [
         AppComponent,
@@ -60,8 +58,7 @@ import { EditStudentComponent } from './students/edit-student/edit-student.compo
         SideBarFooterComponent,
         RightSideBarComponent,
         StudentsComponent,
-        StudentFormComponent,
-        EditStudentComponent
+        StudentFormComponent
     ],
     imports: [
         CommonModule,

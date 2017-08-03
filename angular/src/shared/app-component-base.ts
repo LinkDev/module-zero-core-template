@@ -1,4 +1,4 @@
-import { Injector, ElementRef } from '@angular/core';
+﻿import { Injector, ElementRef } from '@angular/core';
 import { AppConsts } from '@shared/AppConsts';
 import { LocalizationService } from '@abp/localization/localization.service';
 import { PermissionCheckerService } from '@abp/auth/permission-checker.service';
@@ -37,9 +37,9 @@ export abstract class AppComponentBase {
 
     l(key: string, ...args: any[]): string {
         let localizedText = this.localization.localize(key, this.localizationSourceName);
-
         if (!localizedText) {
             localizedText = key;
+            
         }
 
         if (!args || !args.length) {

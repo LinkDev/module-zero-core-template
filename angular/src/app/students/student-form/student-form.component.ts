@@ -1,17 +1,18 @@
-﻿import { Component, ViewChild, Injector, Output, EventEmitter, ElementRef, OnInit } from '@angular/core';
+﻿import { Component, ViewChild, Injector, Output, EventEmitter, ElementRef, OnInit, AfterViewInit,ViewChildren,QueryList } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 import { StudentServiceProxy, StudentDto } from '@shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/app-component-base';
+import { RoleServiceProxy, RoleDto,PagedResultDtoOfRoleDto } from '@shared/service-proxies/service-proxies';
 
 import * as _ from "lodash";
 
 @Component({
     selector: 'student-form-modal',
-    templateUrl: './student.form.component.html'
+    templateUrl: './student-form.component.html'
 })
-export class StudentFormComponent extends AppComponentBase implements OnInit {
+export class StudentFormComponent extends AppComponentBase implements OnInit, AfterViewInit {
 
-    @ViewChild('createStudentModal') modal: ModalDirective;
+    @ViewChild('studentFormModal') modal: ModalDirective;
     @ViewChild('modalContent') modalContent: ElementRef;
 
     @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
@@ -20,15 +21,30 @@ export class StudentFormComponent extends AppComponentBase implements OnInit {
     saving: boolean = false;
     item: StudentDto = null;
     isNew: boolean = true;
+    roles: RoleDto[] = null;
+
+    @ViewChildren("options")
+    options: QueryList<any>;
+
     constructor(
         injector: Injector,
-        private _studentService: StudentServiceProxy,
+        private _studentService: StudentServiceProxy, private _roleService:RoleServiceProxy
     ) {
         super(injector);
     }
 
     ngOnInit(): void {
+        this._roleService.getAll(0, 1000).subscribe((data: PagedResultDtoOfRoleDto) => {
+            this.roles = data.items;
+        });
+    }
 
+    ngAfterViewInit() {
+        this.options.changes.subscribe(() => {
+            //(<any>$(this.select.nativeElement)).selectpicker('refresh');
+            //Or
+            (<any>$("select")).selectpicker('refresh');
+        });
     }
 
     show(id?: number): void {
@@ -57,6 +73,7 @@ export class StudentFormComponent extends AppComponentBase implements OnInit {
 
     onShown(): void {
         $.AdminBSB.input.activate($(this.modalContent.nativeElement));
+        $('form').find('input[type=text],textarea,select').filter(':visible:first').focus();
     }
 
     save(): void {
@@ -68,7 +85,7 @@ export class StudentFormComponent extends AppComponentBase implements OnInit {
             }
         });
 
-
+        console.log(this.item);
         this.saving = true;
         if (this.isNew) {
             this._studentService.create(this.item)

@@ -551,8 +551,12 @@ export class StudentServiceProxy {
     /**
      * @return Success
      */
-    getAllDeleted(sorting: string, skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfStudentDto> {
+    getAllDeleted(search: string, sorting: string, skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfStudentDto> {
         let url_ = this.baseUrl + "/api/services/app/Student/GetAllDeleted?";
+        if (search !== undefined)
+        
+            url_ += "search=" + encodeURIComponent("" + search) + "&"; 
+        
         if (sorting !== undefined)
         
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
@@ -700,8 +704,12 @@ export class StudentServiceProxy {
     /**
      * @return Success
      */
-    getAll(sorting: string, skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfStudentDto> {
+    getAll(search: string, sorting: string, skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfStudentDto> {
         let url_ = this.baseUrl + "/api/services/app/Student/GetAll?";
+        if (search !== undefined)
+        
+            url_ += "search=" + encodeURIComponent("" + search) + "&"; 
+        
         if (sorting !== undefined)
         
             url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
@@ -2170,6 +2178,7 @@ export class StudentDto {
     bio: string; 
     age: number; 
     isActive: boolean; 
+    roleId: number; 
     id: number;
     constructor(data?: any) {
         if (data !== undefined) {
@@ -2177,6 +2186,7 @@ export class StudentDto {
             this.bio = data["bio"] !== undefined ? data["bio"] : null;
             this.age = data["age"] !== undefined ? data["age"] : null;
             this.isActive = data["isActive"] !== undefined ? data["isActive"] : null;
+            this.roleId = data["roleId"] !== undefined ? data["roleId"] : null;
             this.id = data["id"] !== undefined ? data["id"] : null;
         }
     }
@@ -2191,6 +2201,7 @@ export class StudentDto {
         data["bio"] = this.bio !== undefined ? this.bio : null;
         data["age"] = this.age !== undefined ? this.age : null;
         data["isActive"] = this.isActive !== undefined ? this.isActive : null;
+        data["roleId"] = this.roleId !== undefined ? this.roleId : null;
         data["id"] = this.id !== undefined ? this.id : null;
         return data; 
     }
