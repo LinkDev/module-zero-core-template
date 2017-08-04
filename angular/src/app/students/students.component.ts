@@ -17,13 +17,12 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
 
     @ViewChild('studentFormModal') studentFormModal: StudentFormComponent;
 
-    active: boolean = false;
     items: StudentDto[] = [];
     nameSearch: string;
     ageSearch: number;
     roleId: number = -1;
     roles: RoleDto[] = null;
-    deletedItem: boolean = false;
+    showDeleted: boolean = false;
 	constructor(
         injector: Injector,
         private _studentService: StudentServiceProxy, private _roleService: RoleServiceProxy
@@ -34,14 +33,14 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
     }
 
     ngOnInit() {
-        this._roleService.getAll(0, 1000).subscribe((data: PagedResultDtoOfRoleDto) => {
+        this._roleService.getAll().subscribe((data: PagedResultDtoOfRoleDto) => {
             this.roles = data.items;
         });
         super.ngOnInit();
     }
 
     protected list(request: FilteredResultRequestDto, pageNumber: number, finishedCallback: Function): void {
-        if(!this.deletedItem){
+        if(!this.showDeleted){
         this._studentService.getAll(request.search,request.sorting, request.skipCount, request.maxResultCount)
             .finally(() => {
                 finishedCallback();

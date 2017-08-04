@@ -51,8 +51,8 @@
                     <div class="col-sm-3">
                         <div class="form-group form-float">
                             <button (click)="search()" class="btn btn-primary waves-effect">{{l('Search')}}</button>
-                            <input id="deletedItem" class="form-control" type="checkbox" name="deletedItem" [(ngModel)]="deletedItem" (change)="getDeleted()" />
-                            <label for="deletedItem" class="form-label">Show Deleted</label>
+                            <input id="showDeleted" class="form-control" type="checkbox" name="showDeleted" [(ngModel)]="showDeleted" (change)="getDeleted()" />
+                            <label for="showDeleted" class="form-label">Show Deleted</label>
                         </div>
                     </div>
                 </div>
