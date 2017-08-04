@@ -8,7 +8,7 @@ namespace AbpCompanyName.AbpProjectName.EntityFrameworkCore
 {
     public partial class AbpProjectNameDbContext 
     {
-		public virtual DbSet<Student> Students { get; set; }
+		
 		
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

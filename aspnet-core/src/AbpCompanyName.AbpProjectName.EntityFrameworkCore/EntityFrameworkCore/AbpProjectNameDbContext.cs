@@ -9,7 +9,8 @@ namespace AbpCompanyName.AbpProjectName.EntityFrameworkCore
     public partial class AbpProjectNameDbContext : AbpZeroDbContext<Tenant, Role, User, AbpProjectNameDbContext>
     {
         /* Define an IDbSet for each entity of the application */
-        
+        public virtual DbSet<Student> Students { get; set; }
+
         public AbpProjectNameDbContext(DbContextOptions<AbpProjectNameDbContext> options)
             : base(options)
         {
