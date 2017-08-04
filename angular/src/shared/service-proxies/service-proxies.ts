@@ -551,11 +551,11 @@ export class StudentServiceProxy {
     /**
      * @return Success
      */
-    getAllDeleted(search: string, sorting: string, skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfStudentDto> {
+    getAllDeleted(filter: string, sorting: string, skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfStudentDto> {
         let url_ = this.baseUrl + "/api/services/app/Student/GetAllDeleted?";
-        if (search !== undefined)
+        if (filter !== undefined)
         
-            url_ += "search=" + encodeURIComponent("" + search) + "&"; 
+            url_ += "Filter=" + encodeURIComponent("" + filter) + "&"; 
         
         if (sorting !== undefined)
         
@@ -704,11 +704,11 @@ export class StudentServiceProxy {
     /**
      * @return Success
      */
-    getAll(search: string, sorting: string, skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfStudentDto> {
+    getAll(filter: string, sorting: string, skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfStudentDto> {
         let url_ = this.baseUrl + "/api/services/app/Student/GetAll?";
-        if (search !== undefined)
+        if (filter !== undefined)
         
-            url_ += "search=" + encodeURIComponent("" + search) + "&"; 
+            url_ += "Filter=" + encodeURIComponent("" + filter) + "&"; 
         
         if (sorting !== undefined)
         
@@ -1541,11 +1541,11 @@ export class UserServiceProxy {
     /**
      * @return Success
      */
-    getAll(search: string, sorting: string, skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfUserDto> {
+    getAll(filter: string, sorting: string, skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfUserDto> {
         let url_ = this.baseUrl + "/api/services/app/User/GetAll?";
-        if (search !== undefined)
+        if (filter !== undefined)
         
-            url_ += "search=" + encodeURIComponent("" + search) + "&"; 
+            url_ += "Filter=" + encodeURIComponent("" + filter) + "&"; 
         
         if (sorting !== undefined)
         

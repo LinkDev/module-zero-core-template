@@ -107,10 +107,10 @@ namespace AbpCompanyName.AbpProjectName.Users
         {
             var data = Repository.GetAllIncluding(x => x.Roles);
 
-            if (!string.IsNullOrEmpty(input.search))
+            if (!string.IsNullOrEmpty(input.Filter))
             {
                 IList<FilterCriteria> FilterCriteria = new List<FilterCriteria>();
-                var SearchCriteria = input.search.Split(new string[] {" and "},StringSplitOptions.None);
+                var SearchCriteria = input.Filter.Split(new string[] {" and "},StringSplitOptions.None);
                 foreach (var item in SearchCriteria)
                 {
                     if (string.IsNullOrEmpty(item) || string.IsNullOrWhiteSpace(item))

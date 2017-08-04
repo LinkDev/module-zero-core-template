@@ -13,7 +13,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="LinkDev.Abp" Version="1.0.1" />
+    <PackageReference Include="LinkDev.Abp" Version="1.0.4" />
   </ItemGroup>
 
   <ItemGroup>
