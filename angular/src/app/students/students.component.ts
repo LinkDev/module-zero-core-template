@@ -18,10 +18,10 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
     @ViewChild('studentFormModal') studentFormModal: StudentFormComponent;
 
     items: StudentDto[] = [];
-    nameSearch: string;
-    ageSearch: number;
-    roleId: number = -1;
-    roles: RoleDto[] = null;
+    nameFilter: string;
+    ageFilter: number;
+    roleIdFilter: number = -1;
+    roleIdList: RoleDto[] = null;
     showDeleted: boolean = false;
 	constructor(
         injector: Injector,
@@ -34,7 +34,7 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
 
     ngOnInit() {
         this._roleService.getAll().subscribe((data: PagedResultDtoOfRoleDto) => {
-            this.roles = data.items;
+            this.roleIdList = data.items;
         });
         super.ngOnInit();
     }
@@ -85,14 +85,14 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
 
     search() {
         let items = new Array<FilterCriteria>();
-        if (this.nameSearch !== undefined && this.nameSearch !== null && this.nameSearch.trim() !== '')
-            items.push({ FilterName: "Name", FilterType: FilterType.like, FilterValue: this.nameSearch });
+        if (this.nameFilter !== undefined && this.nameFilter !== null && this.nameFilter.trim() !== '')
+            items.push({ FilterName: "Name", FilterType: FilterType.like, FilterValue: this.nameFilter });
 
-        if (this.ageSearch !== undefined && this.ageSearch !== null)
-            items.push({ FilterName: "Age", FilterType: FilterType.eq, FilterValue: this.ageSearch });
+        if (this.ageFilter !== undefined && this.ageFilter !== null)
+            items.push({ FilterName: "Age", FilterType: FilterType.eq, FilterValue: this.ageFilter });
 
-        if (this.roleId !== undefined && this.roleId !== null && this.roleId!=-1)
-            items.push({ FilterName: "RoleId", FilterType: FilterType.eq, FilterValue: parseInt(this.roleId.toString()) });
+        if (this.roleIdFilter !== undefined && this.roleIdFilter !== null && this.roleIdFilter!=-1)
+            items.push({ FilterName: "RoleId", FilterType: FilterType.eq, FilterValue: parseInt(this.roleIdFilter.toString()) });
 
         this.Filter(items);
     }

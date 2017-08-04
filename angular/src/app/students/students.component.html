@@ -25,7 +25,7 @@
                     <div class="col-sm-3">
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input id="Name" type="text" name="Name" [(ngModel)]="nameSearch" class="form-control">
+                                <input id="NameFilter" type="text" name="NameFilter" [(ngModel)]="nameFilter" class="form-control">
                                 <label class="form-label">{{l('Name')}}</label>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                     <div class="col-sm-3">
                         <div class="form-group form-float">
                             <div class="form-line">
-                                <input id="Age" type="number" name="Age" [(ngModel)]="ageSearch" class="form-control">
+                                <input id="AgeFilter" type="number" name="AgeFilter" [(ngModel)]="ageFilter" class="form-control">
                                 <label class="form-label">Age</label>
                             </div>
                         </div>
@@ -42,9 +42,9 @@
 
                     <div class="col-sm-3">
                         <div class="form-group form-float">
-                            <select id="selectMenu" class="form-control" [(ngModel)]="roleId">
-                                <option value=-1>--select Role--</option>
-                                <option #options *ngFor="let role of roles" value={{role.id}}>{{role.name}}</option>
+                            <select id="selectMenu" class="form-control" [(ngModel)]="roleIdFilter">
+                                <option value=-1>--All Roles--</option>
+                                <option #options *ngFor="let role of roleIdList" value={{role.id}}>{{role.name}}</option>
                             </select>
                         </div>
                     </div>
