@@ -20,3 +20,16 @@
 .headerSortUp {
     padding-right: 10px;
 }
+
+.sidebar .user-info {height: inherit;}
+.sidebar .user-info .info-container {top:inherit;}
+
+.bootstrap-select.btn-group.show-tick .dropdown-menu li.selected a span.check-mark {
+    margin-top: 9px;
+}
+
+.bootstrap-select .dropdown-toggle:focus, .bootstrap-select .dropdown-toggle:active {
+    outline: none !important;
+}
+
+.bootstrap-select.form-control { margin-bottom: 26px}

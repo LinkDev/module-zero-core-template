@@ -1,5 +1,12 @@
 ﻿$(document).ready(function () {
     $('th.sort').click(function () {
-        $(this).toggleClass('headerSortUp headerSortDown');
+        if($(this).hasClass("headerSortUp")){
+            $(this).removeClass('headerSortUp');
+            $(this).addClass('headerSortDown');
+        }
+        else{
+            $(this).removeClass('headerSortDown');
+            $(this).addClass('headerSortUp');
+        }
     });
 });
