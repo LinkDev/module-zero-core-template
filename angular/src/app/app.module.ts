@@ -32,7 +32,7 @@ import { SideBarNavComponent } from '@app/layout/sidebar-nav.component';
 import { SideBarFooterComponent } from '@app/layout/sidebar-footer.component';
 import { RightSideBarComponent } from '@app/layout/right-sidebar.component';
 import { MaterialInput } from '@shared/directives/material-input.directive';
-
+import { PaginationComponent} from '@shared/pagination/pagination.component';
 import { StudentsComponent } from '@app/students/students.component';
 import { StudentFormComponent } from '@app/students/student-form/student-form.component';
 
@@ -40,6 +40,7 @@ import { StudentFormComponent } from '@app/students/student-form/student-form.co
 @NgModule({
     declarations: [
         AppComponent,
+        PaginationComponent,
         HomeComponent,
         AboutComponent,
         TenantsComponent,

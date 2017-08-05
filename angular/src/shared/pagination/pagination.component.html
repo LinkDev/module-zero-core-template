@@ -1,0 +1,27 @@
+<pagination-template  #p="paginationApi"
+                         [id]="id"
+                         [maxSize]="maxSize"
+                         (pageChange)="pageChange.emit($event)">
+                         <nav class="text-center">
+    <ul class="pagination" 
+        role="navigation" 
+        [attr.aria-label]="screenReaderPaginationLabel" 
+        *ngIf="!(autoHide && p.pages.length <= 1)">
+        <li class="pagination-previous" [class.disabled]="p.isFirstPage()" *ngIf="directionLinks"> 
+            <a (click)="p.previous()" [attr.aria-label]="previousLabel + ' ' + screenReaderPageLabel">                
+                <i class="material-icons">chevron_left</i><span class="sr-only">{{ screenReaderPageLabel }}</span>
+            </a>
+        </li>
+        <li [class.active]="p.getCurrent() === page.value" *ngFor="let page of p.pages">
+            <a (click)="p.setCurrent(page.value)">
+                <span class="sr-only">{{ screenReaderPageLabel }} </span>
+                <span>{{ page.label }}</span>
+            </a>
+        </li>
+        <li [class.disabled]="p.isLastPage()" *ngIf="directionLinks">
+            <a (click)="p.next()" [attr.aria-label]="nextLabel + ' ' + screenReaderPageLabel" class="wave-effect">
+                 <i class="material-icons">chevron_right</i> <span class="sr-only">{{ screenReaderPageLabel }}</span>
+            </a>
+        </li>
+    </ul></nav>
+    </pagination-template>
