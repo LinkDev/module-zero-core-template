@@ -1,7 +1,7 @@
-﻿import { AppComponentBase } from "shared/app-component-base";
-import { Injector, OnInit, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
+﻿import { AppComponentBase} from "shared/app-component-base";
+import { Injector, OnInit, AfterViewInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base'
-
+import { sortData } from 'assets/js/sortData';
 export class PagedAndSortedRequestDto extends PagedRequestDto {
     sorting: string;
 }
@@ -23,10 +23,11 @@ export abstract class PagedAndSortedListingComponentBase<EntityDto> extends Page
         });
     }
 
-    order(sort: string) {
+    order(sort: string, event) {
         this.sortDirection == "DESC" ? this.sortDirection = "ASC" : this.sortDirection = "DESC";
         this.sortColumn = sort;
         this.refresh();
+        sortData(event.target, this.sortDirection);
     }
 
     public getDataPage(page: number): void {
