@@ -1,7 +1,7 @@
 ﻿import { AppComponentBase} from "shared/app-component-base";
 import { Injector, OnInit, AfterViewInit, ViewChildren, QueryList, ElementRef } from '@angular/core';
 import { PagedListingComponentBase, PagedRequestDto } from 'shared/paged-listing-component-base'
-import { sortData } from 'assets/js/sortData';
+import { sortData } from 'shared/helpers/sortData';
 export class PagedAndSortedRequestDto extends PagedRequestDto {
     sorting: string;
 }
@@ -15,17 +15,19 @@ export abstract class PagedAndSortedListingComponentBase<EntityDto> extends Page
 
     ngAfterViewInit() {
         super.ngAfterViewInit();
-        $.getScript('assets/js/arrowDirection.js');
         this.options.changes.subscribe(() => {
-            //(<any>$(this.select.nativeElement)).selectpicker('refresh');
-            //Or
             (<any>$("select")).selectpicker('refresh');
         });
     }
 
     order(sort: string, event) {
-        this.sortDirection == "DESC" ? this.sortDirection = "ASC" : this.sortDirection = "DESC";
-        this.sortColumn = sort;
+        if(this.sortColumn!== sort){
+            this.sortColumn = sort;
+            this.sortDirection = "ASC";
+        }
+        else {
+            this.sortDirection == "DESC" ? this.sortDirection = "ASC" : this.sortDirection = "DESC";
+        }
         this.refresh();
         sortData(event.target, this.sortDirection);
     }
