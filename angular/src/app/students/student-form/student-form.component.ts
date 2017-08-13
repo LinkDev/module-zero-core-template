@@ -4,27 +4,18 @@ import { StudentServiceProxy, StudentDto } from '@shared/service-proxies/service
 import { AppComponentBase } from '@shared/app-component-base';
 import { RoleServiceProxy, RoleDto,PagedResultDtoOfRoleDto } from '@shared/service-proxies/service-proxies';
 
+import { FormComponentBase } from '@shared/form-component-base';
+
 import * as _ from "lodash";
 
 @Component({
     selector: 'student-form-modal',
     templateUrl: './student-form.component.html'
 })
-export class StudentFormComponent extends AppComponentBase implements OnInit, AfterViewInit {
+export class StudentFormComponent extends FormComponentBase<StudentDto> implements OnInit, AfterViewInit {
 
-    @ViewChild('studentFormModal') modal: ModalDirective;
-    @ViewChild('modalContent') modalContent: ElementRef;
-
-    @Output() modalSave: EventEmitter<any> = new EventEmitter<any>();
-
-    active: boolean = false;
-    saving: boolean = false;
-    item: StudentDto = null;
-    isNew: boolean = true;
+    
     roles: RoleDto[] = null;
-
-    @ViewChildren("options")
-    options: QueryList<any>;
 
     constructor(
         injector: Injector,
@@ -34,16 +25,8 @@ export class StudentFormComponent extends AppComponentBase implements OnInit, Af
     }
 
     ngOnInit(): void {
-        this._roleService.getAll(0, 1000).subscribe((data: PagedResultDtoOfRoleDto) => {
+        this._roleService.getAll().subscribe((data: PagedResultDtoOfRoleDto) => {
             this.roles = data.items;
-        });
-    }
-
-    ngAfterViewInit() {
-        this.options.changes.subscribe(() => {
-            //(<any>$(this.select.nativeElement)).selectpicker('refresh');
-            //Or
-            (<any>$("select")).selectpicker('refresh');
         });
     }
 
@@ -70,12 +53,6 @@ export class StudentFormComponent extends AppComponentBase implements OnInit, Af
             this.isNew = false;
         }
     }
-
-    onShown(): void {
-        $.AdminBSB.input.activate($(this.modalContent.nativeElement));
-        $('form').find('input[type=text],textarea,select').filter(':visible:first').focus();
-    }
-
     save(): void {
         //TODO: Refactor this, don't use jQuery style code
         var roles = [];
@@ -84,8 +61,6 @@ export class StudentFormComponent extends AppComponentBase implements OnInit, Af
                 roles.push(elem.getAttribute("value").valueOf());
             }
         });
-
-        console.log(this.item);
         this.saving = true;
         if (this.isNew) {
             this._studentService.create(this.item)
@@ -107,8 +82,4 @@ export class StudentFormComponent extends AppComponentBase implements OnInit, Af
         }
     }
 
-    close(): void {
-        this.active = false;
-        this.modal.hide();
-    }
 }

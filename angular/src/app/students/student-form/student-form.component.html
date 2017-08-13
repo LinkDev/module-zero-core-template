@@ -1,9 +1,9 @@
-﻿<div bsModal #studentFormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="studentFormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+﻿<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
     <div class="modal-dialog">
 
         <div #modalContent class="modal-content">
 
-            <form *ngIf="active" #studentForm="ngForm" id="frm_create_student" novalidate (ngSubmit)="save()">
+            <form *ngIf="active" #studentForm="ngForm" id="frm_create_student"  (ngSubmit)="save()">
                 <div class="modal-header">
                     <button type="button" class="close" (click)="close()" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -48,13 +48,13 @@
                             <label for="age" class="form-label">{{l("Age")}}</label>
                         </div>
                     </div>
-                    <div class="form-group form-float">
+                    <div class="form-group">
+                        <label for="Roles" class="form-label">{{l("Roles")}}</label>
                         <div class="form-line">
                             <select id="selectMenu" #Roles="ngModel" class="form-control" required [(ngModel)]="item.roleId" name="Roles">
                                 <option value="">--Select Role--</option>
                                 <option #options *ngFor="let role of roles" value={{role.id}}>{{role.name}}</option>
                             </select>
-                            <label for="Roles" class="form-label">{{l("Roles")}}</label>
                         </div>
                         <div *ngIf="Roles.errors && (Roles.dirty || Roles.touched)">
                             <label [ngClass]="{error: Roles.errors.required, hide: !Roles.errors.required}">
@@ -66,11 +66,13 @@
                         <input id="isActive" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="item.isActive" checked />
                         <label for="isActive" class="form-label">{{l("IsActive")}}</label>
                     </div>
+
+                    
                 </div>
 
                 <div class="modal-footer">
                     <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
-                    <button [disabled]="!studentForm.form.valid || saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
                 </div>
 
             </form>
