@@ -24,8 +24,13 @@ export abstract class PagedAndSortedListingComponentBase<EntityDto> extends Page
     }
 
     order(sort: string, event) {
-        this.sortDirection == "DESC" ? this.sortDirection = "ASC" : this.sortDirection = "DESC";
-        this.sortColumn = sort;
+        if(this.sortColumn!== sort){
+            this.sortColumn = sort;
+            this.sortDirection = "ASC";
+        }
+        else {
+            this.sortDirection == "DESC" ? this.sortDirection = "ASC" : this.sortDirection = "DESC";
+        }
         this.refresh();
         sortData(event.target, this.sortDirection);
     }
