@@ -41,6 +41,8 @@ export abstract class FilteredComponentBase<EntityDto> extends PagedAndSortedLis
             this.req.search = searchItems.join(" and ");
             console.log(this.req.search);
         }
+
+        this.pageNumber = 1;
         this.refresh();
 
     }
