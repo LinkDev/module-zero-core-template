@@ -13,12 +13,13 @@ export abstract class InlineFormComponentBase<EntityDto> extends FormComponentBa
 
 
     item: EntityDto = null;
+    itemTemp: EntityDto = null;
     active: boolean = false;
     saving: boolean = false;
-    isNew: boolean = true;
 
     @Output() saveItem: EventEmitter<EntityDto> = new EventEmitter<EntityDto>();
-    @Input() isChild?: boolean = false;
+
+
     constructor(injector: Injector) {
         super(injector);
     }
@@ -29,15 +30,18 @@ export abstract class InlineFormComponentBase<EntityDto> extends FormComponentBa
         });
     }
 
-    bindData(data: EntityDto): void {
-        this.item = data;
+    bindData(data): void {
+        this.item = data.clone();
+        this.itemTemp = data;
         this.active = true;
         this.modal.show();
+        this.isNew = false
     }
 
     close(): void {
         this.active = false;
         this.modal.hide();
     }
+
 
 }
