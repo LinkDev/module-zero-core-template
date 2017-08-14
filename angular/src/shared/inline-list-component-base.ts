@@ -10,7 +10,6 @@ export abstract class InlineListComponentBase<EntityDto> extends AppComponentBas
     items?: EntityDto[] = [];
 
     @Input()
-    @Output() saveItems: EventEmitter<EntityDto[]> = new EventEmitter<EntityDto[]>();
     sortColumn: string;
     sortDirection:string;
 
@@ -29,7 +28,6 @@ export abstract class InlineListComponentBase<EntityDto> extends AppComponentBas
         if (this.items === undefined || this.items === null)
             this.items = [];
         this.items.push(data);
-        this.saveItems.emit(this.items);
     }
 
     order(sort: string, event) {

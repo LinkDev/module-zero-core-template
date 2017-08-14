@@ -30,14 +30,6 @@ export abstract class InlineFormComponentBase<EntityDto> extends FormComponentBa
         });
     }
 
-    bindData(data): void {
-        this.item = data.clone();
-        this.itemTemp = data;
-        this.active = true;
-        this.modal.show();
-        this.isNew = false
-    }
-
     close(): void {
         this.active = false;
         this.modal.hide();
