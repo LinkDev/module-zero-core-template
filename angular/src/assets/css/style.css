@@ -33,3 +33,12 @@
 }
 
 .bootstrap-select.form-control { margin-bottom: 26px}
+
+
+html[dir=rtl] {font-family: Amiri}
+html[dir=rtl] .sidebar{right: 0}
+html[dir=rtl] section.content{margin: 100px 315px 0 15px}
+html[dir=rtl] .sidebar .menu .list{padding-right: 0px}
+html[dir=rtl] .sidebar .menu .list i.material-icons {margin-left: 3px}
+
+html[dir=rtl] .card .header .header-dropdown{left: 15px}

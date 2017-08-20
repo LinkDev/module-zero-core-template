@@ -41,5 +41,8 @@ export class AppComponent extends AppComponentBase implements OnInit, AfterViewI
   ngAfterViewInit(): void {
     ($ as any).AdminBSB.activateAll();
     ($ as any).AdminBSB.activateDemo();
+
+    $("html").attr("lang", this.localization.currentLanguage.name);
+    this.localization.currentLanguage.name == "ar" ? $("html").attr("dir", "rtl") : $("html").attr("dir", "ltr"); 
   }
 }
