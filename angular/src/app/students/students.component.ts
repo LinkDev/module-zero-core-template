@@ -41,7 +41,7 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
 
     protected list(request: FilteredResultRequestDto, pageNumber: number, finishedCallback: Function): void {
         if(!this.showDeleted){
-        this._studentService.getAll(request.search,request.sorting, request.skipCount, request.maxResultCount)
+        this._studentService.getAll(request.search, request.maxResultCount,request.sorting, request.skipCount)
             .finally(() => {
                 finishedCallback();
             })
@@ -51,7 +51,7 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
                 });
         }
         else {
-            this._studentService.getAllDeleted(request.search,request.sorting, request.skipCount, request.maxResultCount)
+            this._studentService.getAllDeleted(request.search, request.maxResultCount,request.sorting, request.skipCount)
                 .finally(() => {
                     finishedCallback();
                 })
