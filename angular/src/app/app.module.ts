@@ -35,8 +35,9 @@ import { MaterialInput } from '@shared/directives/material-input.directive';
 import { PaginationComponent} from '@shared/pagination/pagination.component';
 import { StudentsComponent } from '@app/students/students.component';
 import { StudentFormComponent } from '@app/students/student-form/student-form.component';
-
-
+import { DropdownComponent } from "@app/students/dropdown/dropdown.component"
+import { TreeModule } from 'angular-tree-component';
+import { TreeComponent } from "@app/students/dropdown/tree.component"
 @NgModule({
     declarations: [
         AppComponent,
@@ -59,7 +60,9 @@ import { StudentFormComponent } from '@app/students/student-form/student-form.co
         SideBarFooterComponent,
         RightSideBarComponent,
         StudentsComponent,
-        StudentFormComponent
+        StudentFormComponent,
+        DropdownComponent,
+        TreeComponent
     ],
     imports: [
         CommonModule,
@@ -71,7 +74,8 @@ import { StudentFormComponent } from '@app/students/student-form/student-form.co
         AppRoutingModule,
         ServiceProxyModule,
         SharedModule,
-        NgxPaginationModule
+        NgxPaginationModule,
+        TreeModule
     ],
     providers: [
 
