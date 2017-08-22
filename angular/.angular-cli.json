@@ -24,7 +24,7 @@
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "styles": [
-        "../src/assets/fonts/GE_SS_Text_Light/GE_SS_Text_Light.css",        
+         
         "material-styles.css",
         "assets/fonts/roboto/roboto.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
@@ -39,7 +39,9 @@
         "../src/bsb-theme/css/themes/all-themes.css",
         "../src/shared/core.less",
         "../node_modules/bootstrap-select/dist/css/bootstrap-select.css",
-        "../src/assets/css/style.css"
+        "../src/assets/css/style.css",
+        "assets/fonts/GE_SS_Text_Light/GE_SS_Text_Light.css"
+    
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",

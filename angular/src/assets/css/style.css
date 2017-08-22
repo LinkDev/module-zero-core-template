@@ -37,7 +37,7 @@
 /*fixes*/
 
 .form-group .form-line.focused .form-label {color:#1f91f3}
-html[dir=rtl] {font-family: GE_SS_Text_Light}
+html[dir=rtl] * :not(i){font-family: GE_SS_Text_Light}
 html[dir=rtl] .sidebar{right: 0}
 html[dir=rtl] section.content{margin: 100px 315px 0 15px}
 html[dir=rtl] .sidebar .menu .list{padding-right: 0px}
