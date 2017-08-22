@@ -10,11 +10,15 @@ import { AppAuthService } from './auth/app-auth.service';
 import { AppRouteGuard } from './auth/auth-route-guard';
 import { MaterialInput } from "shared/directives/material-input.directive";
 import { DatePickerInput } from 'shared/components/date-picker-input';
+import { SelectInput } from 'shared/components/select-input';
 import { PaginationComponent } from 'shared/pagination/pagination.component';
 import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
+import { MdSelectModule } from '@angular/material';
 import 'hammerjs';
+import * as Proxies from "shared/service-proxies/service-proxies";
 @NgModule({
     imports: [
+        MdSelectModule,
         MaterialModule, MdDatepickerModule, MdNativeDateModule,
         CommonModule,
         AbpModule,
@@ -23,12 +27,15 @@ import 'hammerjs';
     ],
     declarations: [
         MaterialInput,
-        DatePickerInput
+        DatePickerInput,
+        SelectInput
     ],
     exports: [
         MaterialInput,
-        DatePickerInput
-    ]
+        DatePickerInput,
+        SelectInput
+    ],
+    providers:[{provide: 'RoleServiceProxy', useExisting: Proxies.RoleServiceProxy}]
 })
 export class SharedModule {
     static forRoot(): ModuleWithProviders {
