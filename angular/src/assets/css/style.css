@@ -613,3 +613,18 @@
         .breadcrumb-bg-white li + li:before {
             color: #fff;
         }
+
+/*fixes*/
+
+.form-group .form-line.focused .form-label {color:#1f91f3}
+html[dir=rtl] * :not(i){font-family: GE_SS_Text_Light}
+html[dir=rtl] .sidebar{right: 0}
+html[dir=rtl] section.content{margin: 100px 315px 0 15px}
+html[dir=rtl] .sidebar .menu .list{padding-right: 0px}
+html[dir=rtl] .sidebar .menu .list i.material-icons {margin-left: 3px}
+html[dir=rtl] .card .header .header-dropdown{left: 15px;right: auto}
+html[dir=rtl] .btn-circle i{right: -1px}
+html[dir=rtl] .sidebar .menu .list .menu-toggle:after, .sidebar .menu .list .menu-toggle:before{left: 17px;right: auto}
+html[dir=rtl] .form-group .form-line .form-label{right: 0px}
+html[dir=rtl] .bootstrap-select.btn-group .dropdown-toggle .filter-option{text-align: right}
+html[dir=rtl] .bootstrap-select.btn-group .dropdown-toggle .caret{left: 12px;right: auto}
