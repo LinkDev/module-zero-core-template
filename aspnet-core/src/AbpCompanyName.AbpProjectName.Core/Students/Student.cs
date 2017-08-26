@@ -9,7 +9,7 @@ namespace AbpCompanyName.AbpProjectName
 {
 	public class Student : Entity, IPassivable, ISoftDelete
 	{
-		
+       
 		[StringLength(50)]
 		public string Name { get; set; }
 		
@@ -24,7 +24,6 @@ namespace AbpCompanyName.AbpProjectName
 		
 		[Required]
 		public int? RoleId { get; set; }
-
-
-	}
+        public int? ParentId { get; set; }
+    }
 }
