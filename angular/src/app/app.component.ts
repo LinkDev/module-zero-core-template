@@ -45,10 +45,6 @@ export class AppComponent extends AppComponentBase implements OnInit, AfterViewI
     ($ as any).AdminBSB.activateDemo();
 
     $("html").attr("lang", this.localization.currentLanguage.name);
-<<<<<<< HEAD
-    this.localization.currentLanguage.name == "ar" ? $("html").attr("dir", "rtl") : $("html").attr("dir", "ltr"); 
-=======
     (this.localization.currentLanguage.name == "ar") ? $("html").attr("dir", "rtl") : $("html").attr("dir", "ltr");
->>>>>>> e60323631085830969114a2c463b1d1d0893c17c
   }
 }
