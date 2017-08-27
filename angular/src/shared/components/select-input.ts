@@ -13,9 +13,9 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 @Component({
     selector: 'select-input',
-    template: `<md-select id="selectMenu" class="form-control" [placeholder]="placeholder" [(ngModel)]="value">
-                                   <md-option>None</md-option>
-                                <md-option *ngFor="let item of items" [value]="item[dataValue]">
+    template: `<md-select [multiple]="multiple" id="selectMenu" class="form-control" [placeholder]="placeholder" [(ngModel)]="value">
+        <md-option *ngIf="!multiple">None</md-option>                            
+    <md-option *ngFor="let item of items" [value]="item[dataValue]">
                                     {{item[dataText]}}
                                 </md-option>
                             </md-select>`,
@@ -30,6 +30,7 @@ export class SelectInput implements ControlValueAccessor, OnInit {
     @Input() dataText: string;
     @Input() items: any[];
     @Input() proxy: string;
+    @Input() multiple:boolean=false;
     private innerValue: any = null;
     constructor(private injector:Injector) {
 
