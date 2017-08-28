@@ -1,4 +1,5 @@
-﻿.headerSortDown:after,
+﻿
+.headerSortDown:after,
 .headerSortUp:after {
     content: ' ';
     position: relative;
@@ -624,7 +625,7 @@
 .form-group .form-line.focused .form-label{margin-top: 5px}
 .form-group .form-line.focused .form-label {color:#1f91f3}
 .form-group .form-line.error:after {border-bottom: 2px solid #1f91f3}
-html[dir=rtl] * :not(i){font-family: GE_SS_Two_Light}
+html[dir=rtl] * :not(i){font-family: GESSTwoLight}
 html[dir=rtl] .sidebar{right: 0}
 html[dir=rtl] section.content{margin: 100px 315px 0 15px}
 html[dir=rtl] .sidebar .menu .list{padding-right: 0px}
@@ -636,7 +637,6 @@ html[dir=rtl] .form-group .form-line .form-label{right: 0px}
 html[dir=rtl] .bootstrap-select.btn-group .dropdown-toggle .filter-option{text-align: right}
 html[dir=rtl] .bootstrap-select.btn-group .dropdown-toggle .caret{left: 12px;right: auto}
 html[dir=rtl] .btn:not(.btn-link):not(.btn-circle){float: left}
-html[dir=rtl] .sidebar .menu .list a span{font-size:17px}
 html[dir=rtl] .table>thead:first-child>tr:first-child>th{text-align: right}
 html[dir=rtl] .close {float: left}
 html[dir=rtl] .headerSortDown:after,html[dir=rtl] .headerSortUp:after{right: 5px}
