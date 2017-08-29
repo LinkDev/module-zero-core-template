@@ -16,9 +16,33 @@ namespace Abp.Extensions
         {
             if (filterCriteria != null)
             {
-                foreach (var item in filterCriteria)
+
+                var lst = (from p in filterCriteria
+                           group p by p.FilterName into g
+                           select new { name = g.Key, value = g.ToList() }).AsQueryable();
+                
+                foreach (var item in lst.OrderByDescending(x => x.value.Count))
                 {
-                    query = query.Filter(item.FilterName, GetPropertyType<T>(item.FilterName), item.FilterType, item.FilterValue);
+
+                    if (item.value.Count > 1)
+                    {
+                        IQueryable<T> orQuery = null;
+                        //IQueryable<T> orQuery = null;
+                        foreach (var value in item.value.AsQueryable())
+                        {
+                            //List<T> queryResult = query.Filter(value.FilterName, GetPropertyType<T>(value.FilterName), value.FilterType, value.FilterValue).ToList();
+                            if (orQuery is null)
+                                orQuery = query.Filter(value.FilterName, GetPropertyType<T>(value.FilterName), value.FilterType, value.FilterValue);
+                            else
+                                orQuery=orQuery.Concat(query.Filter(value.FilterName, GetPropertyType<T>(value.FilterName), value.FilterType, value.FilterValue));
+                        }
+                        query = orQuery;
+                    }
+                    else
+                    {
+                        FilterCriteria itemValue = item.value.FirstOrDefault();
+                        query = query.Filter(itemValue.FilterName, GetPropertyType<T>(itemValue.FilterName), itemValue.FilterType, itemValue.FilterValue);
+                    }
                 }
                 return query;
             }
@@ -65,7 +89,7 @@ namespace Abp.Extensions
             query = query.Where(IsFieldExpression);
             return query;
         }
-      
+
         public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector)
         {
             HashSet<TKey> seenKeys = new HashSet<TKey>();
@@ -114,7 +138,17 @@ namespace Abp.Extensions
                 NullableConverter nullableConverter = new NullableConverter(conversionType);
                 conversionType = nullableConverter.UnderlyingType;
             }
-            return Convert.ChangeType((conversionType.FullName == "System.Guid") ? Guid.Parse(value.ToString()) : value, conversionType, CultureInfo.InvariantCulture);
+            switch (conversionType.FullName)
+            {
+                case "System.DateTime":
+                    return Convert.ChangeType(DateTime.ParseExact(value.ToString(), "ddd MMM dd yyyy HH:mm:ss 'GMT'+0000 '(Egypt Standard Time)'", CultureInfo.InvariantCulture)
+                        , conversionType, CultureInfo.InvariantCulture);
+                case "System.Guid":
+                    return Convert.ChangeType(Guid.Parse(value.ToString()), conversionType, CultureInfo.InvariantCulture);
+                default:
+                    return Convert.ChangeType(value, conversionType, CultureInfo.InvariantCulture);
+            }
+
         }
 
         #endregion
