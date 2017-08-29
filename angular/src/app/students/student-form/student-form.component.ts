@@ -88,6 +88,7 @@ export class StudentFormComponent extends FormComponentBase<StudentDto> implemen
         }
     }
     parentchanged(data) {
+        //alert("parent");
         this.item.parentId = data;
         //alert("here" + data);
     }
