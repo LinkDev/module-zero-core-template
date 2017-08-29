@@ -30,7 +30,6 @@ export class SelectInput implements ControlValueAccessor, OnInit {
     @Input() dataText: string;
     @Input() items: any[];
     @Input() proxy: string;
-    @Input() multiple:boolean=false;
     private innerValue: any = null;
     constructor(private injector:Injector) {
 

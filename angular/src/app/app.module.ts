@@ -1,4 +1,4 @@
-﻿import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
@@ -36,7 +36,7 @@ import { SideBarNavComponent } from '@app/layout/sidebar-nav.component';
 import { SideBarFooterComponent } from '@app/layout/sidebar-footer.component';
 import { RightSideBarComponent } from '@app/layout/right-sidebar.component';
 import { MaterialInput } from '@shared/directives/material-input.directive';
-import { PaginationComponent} from '@shared/pagination/pagination.component';
+import { PaginationComponent } from '@shared/pagination/pagination.component';
 import { StudentsComponent } from '@app/students/students.component';
 import { StudentFormComponent } from '@app/students/student-form/student-form.component';
 
@@ -84,14 +84,14 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
         HomeComponent,
         AboutComponent,
         TenantsComponent,
-		CreateTenantComponent,
-		EditTenantComponent,
+        CreateTenantComponent,
+        EditTenantComponent,
         UsersComponent,
-		CreateUserComponent,
-		EditUserComponent,
-      	RolesComponent,        
-		CreateRoleComponent,
-		EditRoleComponent,
+        CreateUserComponent,
+        EditUserComponent,
+        RolesComponent,
+        CreateRoleComponent,
+        EditRoleComponent,
         TopBarComponent,
         TopBarLanguageSwitchComponent,
         SideBarUserAreaComponent,
@@ -110,6 +110,8 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
         DomainGroupFormComponent,
         DomainsComponent,
         DomainFormComponent,
+        QuestionAnswersComponent,
+        QuestionAnswerFormComponent,
         QuestionsComponent,
         QuestionFormComponent,
         QuestionGroupsComponent,
@@ -117,9 +119,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
         SurveysComponent,
         SurveyFormComponent,
         QuestionAnswersComponent,
-        QuestionAnswerFormComponent,
-        TestDatesComponent,
-        TestDateFormComponent
+        QuestionAnswerFormComponent
     ],
     imports: [
         FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),

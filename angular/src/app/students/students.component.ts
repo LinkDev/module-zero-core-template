@@ -1,7 +1,7 @@
 ﻿import { Component, Injector, ViewChild } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { StudentServiceProxy, StudentDto, PagedResultDtoOfStudentDto } from '@shared/service-proxies/service-proxies';
-import { RoleServiceProxy, RoleDto, PagedResultDtoOfRoleDto } from '@shared/service-proxies/service-proxies';
+import { RoleDto, PagedResultDtoOfRoleDto } from '@shared/service-proxies/service-proxies';
 
 import { FilteredComponentBase, FilterCriteria, FilteredResultRequestDto, FilterType } from "shared/filtered-component-base";
 
@@ -26,11 +26,11 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
     showDeleted: boolean = false;
 	constructor(
         injector: Injector,
-        private _studentService: StudentServiceProxy
+        private _studentService: StudentServiceProxy//, private _roleService: RoleServiceProxy
 
     ) {
         super(injector);
-        this._roleService = injector.get(RoleServiceProxy);
+        //this._roleService = injector.get(RoleServiceProxy);
     }
 
     ngOnInit() {

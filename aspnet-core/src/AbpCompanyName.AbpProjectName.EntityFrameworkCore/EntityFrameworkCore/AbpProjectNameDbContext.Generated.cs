@@ -14,7 +14,10 @@ namespace AbpCompanyName.AbpProjectName.EntityFrameworkCore
 		public virtual DbSet<Question> Questions { get; set; }
 		public virtual DbSet<QuestionGroup> QuestionGroups { get; set; }
 		public virtual DbSet<Survey> Surveys { get; set; }
+<<<<<<< HEAD
 		public virtual DbSet<TestDate> TestDate { get; set; }
+=======
+>>>>>>> 25ba214d1fd50a0e65678bc0522e4cba935d0a7d
 		
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

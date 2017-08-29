@@ -941,8 +941,6 @@ namespace AbpCompanyName.AbpProjectName.Migrations
                     b.Property<string>("Name")
                         .HasMaxLength(50);
 
-                    b.Property<int?>("ParentId");
-
                     b.Property<int?>("RoleId")
                         .IsRequired();
 

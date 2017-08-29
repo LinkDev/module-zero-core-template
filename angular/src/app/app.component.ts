@@ -36,8 +36,6 @@ export class AppComponent extends AppComponentBase implements OnInit, AfterViewI
         }
       });
     });
-
-
   }
 
   ngAfterViewInit(): void {

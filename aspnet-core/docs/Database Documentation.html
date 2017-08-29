@@ -116,8 +116,29 @@
 			<td>Title</td>
 			<td>nvarchar</td>
 			<td></td>
+		</tr>
+		<tr>
+			<td>ParentDomainId</td>
+			<td>uniqueidentifier</td>
+			<td>&#8226;</td>
+			<td>Foreign key for table: [dbo].[Domains] </td>
+		</tr>
+		<tr>
+			<td>DomainGroupId</td>
+			<td>uniqueidentifier</td>
+			<td>&#8226;</td>
+			<td>Foreign key for table: [dbo].[DomainGroups] </td>
+		</tr>
+		<tr>
+			<td>UR</td>
+			<td>smallint</td>
+			<td>&#8226;</td>
 			<td></td>
 		</tr>
+	</table>
+	<h2>[dbo].[QuestionAnswers]</h2>
+	<h4>Columns</h4>
+	<table class="table table-condensed table-striped table-bordered">
 		<tr>
 			<td>IsActive</td>
 			<td>bit</td>
@@ -219,6 +240,64 @@
 		<tr>
 			<td>IsActive</td>
 			<td>bit</td>
+			<td>&#8226;</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>IsHidden</td>
+			<td>bit</td>
+			<td>&#8226;</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Description</td>
+			<td>nvarchar(500)</td>
+			<td>&#8226;</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>QuestionNumber</td>
+			<td>nvarchar(50)</td>
+			<td>&#8226;</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>Help</td>
+			<td>ntext</td>
+			<td>&#8226;</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>DefaultAnswerValue</td>
+			<td>nvarchar</td>
+			<td>&#8226;</td>
+			<td></td>
+		</tr>
+		<tr>
+			<td>IsUsedInCallBack</td>
+			<td>bit</td>
+			<td>&#8226;</td>
+			<td></td>
+		</tr>
+	</table>
+	<h2>[dbo].[Surveys]</h2>
+	<h4>Columns</h4>
+	<table class="table table-condensed table-striped table-bordered">
+		<tr>
+			<th>Field</th>
+			<th>Type</th>
+			<th>Nullable</th>
+			<th>Description</th>
+		</tr>
+		<tr>
+			<td>SurveyId</td>
+			<td>uniqueidentifier</td>
+			<td></td>
+			<td>Primary key. </td>
+		</tr>
+		<tr>
+			<td>Name</td>
+			<td>nvarchar(200)</td>
 			<td></td>
 			<td></td>
 		</tr>

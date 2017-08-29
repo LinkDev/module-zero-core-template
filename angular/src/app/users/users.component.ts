@@ -35,7 +35,7 @@ export class UsersComponent extends FilteredComponentBase<UserDto>  {
 
 
     protected list(request: FilteredResultRequestDto, pageNumber: number, finishedCallback: Function): void {
-        this._userService.getAll(request.search, request.sorting, request.skipCount, request.maxResultCount)
+        this._userService.getAll(request.search, request.maxResultCount, request.sorting, request.skipCount)
             .finally(() => {
                 finishedCallback();
             })
