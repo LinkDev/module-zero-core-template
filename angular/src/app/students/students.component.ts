@@ -21,11 +21,8 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
     nameFilter: string;
     ageFilter: number;
     roleIdFilter: number = -1;
-    parentIdFilter: number = -1;
     roleIdList: RoleDto[] = null;
     showDeleted: boolean = false;
-    breadcrumbs: StudentDto[] = [];
-
 	constructor(
         injector: Injector,
         private _studentService: StudentServiceProxy//, private _roleService: RoleServiceProxy
@@ -35,7 +32,6 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
         super(injector);
     }
 
-
     ngOnInit() {
         this.parentIdFilter = null;
         this.search();
@@ -43,12 +39,15 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
         //    this.roleIdList = data.items;
         //});
 
+        this._roleService.getAll().subscribe((data: PagedResultDtoOfRoleDto) => {
+            this.roleIdList = data.items;
+        });
         super.ngOnInit();
     }
 
     protected list(request: FilteredResultRequestDto, pageNumber: number, finishedCallback: Function): void {
         if(!this.showDeleted){
-        this._studentService.getAll(request.search,request.maxResultCount,request.sorting, request.skipCount)
+        this._studentService.getAll(request.search, request.maxResultCount,request.sorting, request.skipCount)
             .finally(() => {
                 finishedCallback();
             })
@@ -58,7 +57,7 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
                 });
         }
         else {
-            this._studentService.getAllDeleted(request.search,request.maxResultCount,request.sorting, request.skipCount)
+            this._studentService.getAllDeleted(request.search, request.maxResultCount,request.sorting, request.skipCount)
                 .finally(() => {
                     finishedCallback();
                 })
@@ -101,30 +100,7 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
         if (this.roleIdFilter !== undefined && this.roleIdFilter !== null && this.roleIdFilter!=-1)
             items.push({ FilterName: "RoleId", FilterType: FilterType.eq, FilterValue: parseInt(this.roleIdFilter.toString()) });
 
-        if (this.parentIdFilter !== undefined && this.parentIdFilter != -1) {
-            let value: number = this.parentIdFilter == null ? this.parentIdFilter : parseInt(this.parentIdFilter.toString());
-            items.push({ FilterName: "ParentId", FilterType: FilterType.eq, FilterValue: value });
-        }
-        
-
         this.Filter(items);
-    }
-    getStudentByParent(student: StudentDto) {
-        this.parentIdFilter = student.id;
-        this.breadcrumbs.push(student);
-        this.search();
-    }
-    setbreadcrumbs(student: StudentDto) {
-        if (student == null) {
-            this.parentIdFilter = null;
-            this.breadcrumbs = [];
-        }
-        else {
-            this.parentIdFilter = student.id;
-            let index: number = this.breadcrumbs.indexOf(student) + 1;
-            this.breadcrumbs.splice(index, this.breadcrumbs.length);
-        }
-        this.search();
     }
 
     edit(item: StudentDto): void {

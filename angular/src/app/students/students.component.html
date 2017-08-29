@@ -18,10 +18,10 @@
                 </ul>
             </div>
 
-
+            
             <div class="body table-responsive">
                 <div class="row">
-
+                    
                     <div class="col-sm-3">
                         <div class="form-group form-float">
                             <div class="form-line">
@@ -46,6 +46,7 @@
                                 </select-input>
                         </div>
                     </div>
+<<<<<<< HEAD
                     <!--<div class="col-sm-3">
                         <div class="form-group form-float">
                             <select id="selectMenu" class="form-control" [(ngModel)]="parentIdFilter">
@@ -55,6 +56,9 @@
                         </div>
                     </div>-->
                     <div class="col-sm-3">                        
+=======
+                    <div class="col-sm-3">
+>>>>>>> 1441be11d8a5026ce3963713c937b2b4729bcb5c
                         <div class="form-group form-float">
                             <button (click)="search()" class="btn btn-primary waves-effect">{{l('Search')}}</button>
                             <input id="showDeleted" class="form-control" type="checkbox" name="showDeleted" [(ngModel)]="showDeleted" (change)="getDeleted()" />
@@ -62,6 +66,7 @@
                         </div>
                     </div>
                 </div>
+<<<<<<< HEAD
                 <!--Breadcrumbs-->
                 <ol class="breadcrumb">
                     <li *ngIf="breadcrumbs.length > 0"><a href="javascript:void(0);" (click)="setbreadcrumbs(null)"> Home</a></li>
@@ -74,6 +79,9 @@
                 </ol>
                 <tree-nodes [proxy]="'StudentServiceProxy'"></tree-nodes>
                 <!-- ******************************************************** -->
+=======
+            <!-- ******************************************************** -->
+>>>>>>> 1441be11d8a5026ce3963713c937b2b4729bcb5c
                 <table class="table table-hover table-striped">
                     <thead>
                         <tr>
@@ -86,10 +94,10 @@
                     </thead>
                     <tbody>
                         <tr *ngFor="let item of items | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalItems }">
-                            <td class="btn-link" (click)="getStudentByParent(item)"><a>{{item.name}}</a></td>
+                            <td>{{item.name}}</td>
                             <td>{{item.bio}}</td>
                             <td>{{item.age}}</td>
-                            <td align="left">
+                            <td align="center">
                                 <i class="material-icons" *ngIf="item.isActive" style="color:green;">check_box</i>
                                 <i class="material-icons" *ngIf="!item.isActive" style="color:red;">indeterminate_check_box</i>
                             </td>
@@ -102,14 +110,17 @@
                                     <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(item)"><i class="material-icons">delete_sweep</i>{{l('Delete')}}</a></li>
                                 </ul>
                             </td>
-                            <td *ngIf="showDeleted">
+                            <td *ngIf="deletedItem">
                                 <button class="btn btn-primary" (click)="restore(item.id)">Restore</button>
                             </td>
-
                         </tr>
                     </tbody>
                 </table>
+<<<<<<< HEAD
                 <!-- ******************************************************** -->
+=======
+            <!-- ******************************************************** -->
+>>>>>>> 1441be11d8a5026ce3963713c937b2b4729bcb5c
 
                 <div class="text-align: center;" *ngIf="totalItems > pageSize">
                     <pagination-controls (pageChange)="getDataPage($event)" id="server"></pagination-controls>

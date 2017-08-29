@@ -35,31 +35,19 @@ import { MaterialInput } from '@shared/directives/material-input.directive';
 import { PaginationComponent } from '@shared/pagination/pagination.component';
 import { StudentsComponent } from '@app/students/students.component';
 import { StudentFormComponent } from '@app/students/student-form/student-form.component';
+import { SurveyFormComponent } from "app/surveys/survey-form/survey-form.component";
+import { SurveysComponent } from "app/surveys/surveys.component";
+import { QuestionGroupFormComponent } from "app/question-groups/question-group-form/question-group-form.component";
+import { DomainGroupsComponent } from "app/domain-groups/domain-groups.component";
+import { DomainGroupFormComponent } from "app/domain-groups/domain-group-form/domain-group-form.component";
+import { DomainsComponent } from "app/domains/domains.component";
+import { DomainFormComponent } from "app/domains/domain-form/domain-form.component";
+import { QuestionAnswersComponent } from "app/question-answers/question-answers.component";
+import { QuestionAnswerFormComponent } from "app/question-answers/question-answer-form/question-answer-form.component";
+import { QuestionsComponent } from "app/questions/questions.component";
+import { QuestionFormComponent } from "app/questions/question-form/question-form.component";
+import { QuestionGroupsComponent } from "app/question-groups/question-groups.component";
 
-import { DomainGroupsComponent } from '@app/domain-groups/domain-groups.component';
-import { DomainGroupFormComponent } from '@app/domain-groups/domain-group-form/domain-group-form.component';
-//		DomainGroupsComponent,
-//		DomainGroupFormComponent,
-import { DomainsComponent } from '@app/domains/domains.component';
-import { DomainFormComponent } from '@app/domains/domain-form/domain-form.component';
-//		DomainsComponent,
-//		DomainFormComponent,
-import { QuestionAnswersComponent } from '@app/question-answers/question-answers.component';
-import { QuestionAnswerFormComponent } from '@app/question-answers/question-answer-form/question-answer-form.component';
-//		QuestionAnswersComponent,
-//		QuestionAnswerFormComponent,
-import { QuestionsComponent } from '@app/questions/questions.component';
-import { QuestionFormComponent } from '@app/questions/question-form/question-form.component';
-//		QuestionsComponent,
-//		QuestionFormComponent,
-import { QuestionGroupsComponent } from '@app/question-groups/question-groups.component';
-import { QuestionGroupFormComponent } from '@app/question-groups/question-group-form/question-group-form.component';
-//		QuestionGroupsComponent,
-//		QuestionGroupFormComponent,
-import { SurveysComponent } from '@app/surveys/surveys.component';
-import { SurveyFormComponent } from '@app/surveys/survey-form/survey-form.component';
-//		SurveysComponent,
-//		SurveyFormComponent,
 @NgModule({
     declarations: [
         AppComponent,

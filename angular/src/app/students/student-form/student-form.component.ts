@@ -1,8 +1,8 @@
-﻿import { Component, ViewChild, Injector, Output, EventEmitter, ElementRef, OnInit, AfterViewInit, ViewChildren, QueryList, Input } from '@angular/core';
+﻿import { Component, ViewChild, Injector, Output, EventEmitter, ElementRef, OnInit, AfterViewInit,ViewChildren,QueryList } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
-import { StudentServiceProxy, StudentDto, PagedResultDtoOfStudentDto } from '@shared/service-proxies/service-proxies';
+import { StudentServiceProxy, StudentDto } from '@shared/service-proxies/service-proxies';
 import { AppComponentBase } from '@shared/app-component-base';
-import { RoleServiceProxy, RoleDto, PagedResultDtoOfRoleDto } from '@shared/service-proxies/service-proxies';
+import { RoleServiceProxy, RoleDto,PagedResultDtoOfRoleDto } from '@shared/service-proxies/service-proxies';
 
 import { FormComponentBase } from '@shared/form-component-base';
 
@@ -14,9 +14,8 @@ import * as _ from "lodash";
 })
 export class StudentFormComponent extends FormComponentBase<StudentDto> implements OnInit, AfterViewInit {
 
-    //@Input() parentId: number;
+    
     roles: RoleDto[] = null;
-    studentParents: StudentDto[] = null;
 
     constructor(
         injector: Injector,
@@ -28,9 +27,6 @@ export class StudentFormComponent extends FormComponentBase<StudentDto> implemen
     ngOnInit(): void {
         this._roleService.getAll().subscribe((data: PagedResultDtoOfRoleDto) => {
             this.roles = data.items;
-        });
-        this._studentService.getAll().subscribe((data: PagedResultDtoOfStudentDto) => {
-            this.studentParents = data.items;
         });
     }
 
@@ -60,8 +56,6 @@ export class StudentFormComponent extends FormComponentBase<StudentDto> implemen
     save(): void {
         //TODO: Refactor this, don't use jQuery style code
         var roles = [];
-        var studentParents = [];
-
         $(this.modalContent.nativeElement).find("[name=role]").each((ind: number, elem: Element) => {
             if ($(elem).is(":checked") == true) {
                 roles.push(elem.getAttribute("value").valueOf());
@@ -87,9 +81,13 @@ export class StudentFormComponent extends FormComponentBase<StudentDto> implemen
                 });
         }
     }
+<<<<<<< HEAD
     parentchanged(data) {
         //alert("parent");
         this.item.parentId = data;
         //alert("here" + data);
     }
+=======
+
+>>>>>>> 1441be11d8a5026ce3963713c937b2b4729bcb5c
 }
