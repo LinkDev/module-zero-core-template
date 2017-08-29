@@ -1,7 +1,7 @@
 ﻿import { Component, Injector, ViewChild } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { StudentServiceProxy, StudentDto, PagedResultDtoOfStudentDto } from '@shared/service-proxies/service-proxies';
-import { RoleServiceProxy, RoleDto, PagedResultDtoOfRoleDto } from '@shared/service-proxies/service-proxies';
+import { RoleDto, PagedResultDtoOfRoleDto } from '@shared/service-proxies/service-proxies';
 
 import { FilteredComponentBase, FilterCriteria, FilteredResultRequestDto, FilterType } from "shared/filtered-component-base";
 
@@ -28,7 +28,7 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
 
 	constructor(
         injector: Injector,
-        private _studentService: StudentServiceProxy, private _roleService: RoleServiceProxy
+        private _studentService: StudentServiceProxy//, private _roleService: RoleServiceProxy
 
     ) {
 
@@ -39,16 +39,16 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
     ngOnInit() {
         this.parentIdFilter = null;
         this.search();
-        this._roleService.getAll().subscribe((data: PagedResultDtoOfRoleDto) => {
-            this.roleIdList = data.items;
-        });
+        //this._roleService.getAll().subscribe((data: PagedResultDtoOfRoleDto) => {
+        //    this.roleIdList = data.items;
+        //});
 
         super.ngOnInit();
     }
 
     protected list(request: FilteredResultRequestDto, pageNumber: number, finishedCallback: Function): void {
         if(!this.showDeleted){
-        this._studentService.getAll(request.search,request.sorting, request.skipCount,request.maxResultCount)
+        this._studentService.getAll(request.search,request.maxResultCount,request.sorting, request.skipCount)
             .finally(() => {
                 finishedCallback();
             })
@@ -58,7 +58,7 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
                 });
         }
         else {
-            this._studentService.getAllDeleted(request.search, request.sorting, request.skipCount, request.maxResultCount)
+            this._studentService.getAllDeleted(request.search,request.maxResultCount,request.sorting, request.skipCount)
                 .finally(() => {
                     finishedCallback();
                 })
