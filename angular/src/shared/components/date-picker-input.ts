@@ -1,6 +1,6 @@
 ﻿import { Component, Input, Output, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-
+import * as moment from 'moment';
 const noop = () => {
 };
 
@@ -27,19 +27,19 @@ export class DatePickerInput implements ControlValueAccessor {
     @Input() placeholder: string;
     @Input() min: Date;
     @Input() max: Date;
-    private innerValue: any = '';
+    private innerValue: moment.Moment;
     constructor() { }
     //by the Control Value Accessor
     private onTouchedCallback: () => void = noop;
     private onChangeCallback: (_: any) => void = noop;
 
     //get accessor
-    get value(): any {
+    get value(): moment.Moment {
         return this.innerValue;
     };
 
     //set accessor including call the onchange callback
-    set value(v: any) {
+    set value(v: moment.Moment) {
         if (v !== this.innerValue) {
             this.innerValue = v;
             this.onChangeCallback(v);

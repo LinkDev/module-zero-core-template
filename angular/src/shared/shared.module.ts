@@ -35,7 +35,7 @@ import * as Proxies from "shared/service-proxies/service-proxies";
         DatePickerInput,
         SelectInput
     ],
-    providers:[{provide: 'RoleServiceProxy', useExisting: Proxies.RoleServiceProxy}]
+    providers:[{provide: 'RoleServiceProxy', useExisting: Proxies.RoleServiceProxy},{provide: 'QuestionGroupServiceProxy', useClass: Proxies.QuestionGroupServiceProxy}]
 })
 export class SharedModule {
     static forRoot(): ModuleWithProviders {

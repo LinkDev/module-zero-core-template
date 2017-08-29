@@ -33,13 +33,31 @@ export abstract class FilteredComponentBase<EntityDto> extends PagedAndSortedLis
         if (FilterCriteria !== undefined && FilterCriteria !== null && FilterCriteria.length > 0) {
             let searchItems: Array<string> = []
             FilterCriteria.forEach((element, index) => {
-                if (typeof (element.FilterValue) ==="string")
-                    searchItems.push(element.FilterName + ' ' + FilterType[element.FilterType] + ' "' + element.FilterValue + '"');
+                if (typeof (element.FilterValue) === "string") {
+                    if (element.FilterValue.split(',').length > 0) {
+                        let str: Array<string> = [];
+                        element.FilterValue.split(',').forEach((item) => {
+                            str.push(element.FilterName + ' ' + FilterType[element.FilterType] + ' "' + item + '"');
+                        });
+                        searchItems.push(str.join(" or "))
+                    }
+                    else
+                        searchItems.push(element.FilterName + ' ' + FilterType[element.FilterType] + ' "' + element.FilterValue + '"');
+                }
+                else if (element.FilterValue instanceof Array) {
+                    let str: Array<string> = [];
+                    element.FilterValue.forEach((item) => {
+                        str.push(element.FilterName + ' ' + FilterType[element.FilterType] + ' "' + item + '"');
+                    });
+                    console.log(str);
+                    searchItems.push(str.join(" or "));
+                    console.log(searchItems);
+                }
                 else
                     searchItems.push(element.FilterName + ' ' + FilterType[element.FilterType] + ' ' + element.FilterValue);
             });
             this.req.search = searchItems.join(" and ");
-            console.log(this.req.search);
+            console.log("all " + this.req.search);
         }
 
         this.pageNumber = 1;

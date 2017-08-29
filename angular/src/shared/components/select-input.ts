@@ -13,7 +13,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 
 @Component({
     selector: 'select-input',
-    template: `<md-select [multiple]="multiple" id="selectMenu" class="form-control" [placeholder]="placeholder" [(ngModel)]="value">
+    template: `<md-select [multiple]="multiple"  id="selectMenu" class="form-control" [placeholder]="placeholder" [(ngModel)]="value">
         <md-option *ngIf="!multiple">None</md-option>                            
     <md-option *ngFor="let item of items" [value]="item[dataValue]">
                                     {{item[dataText]}}
