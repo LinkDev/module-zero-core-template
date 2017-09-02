@@ -1,16 +1,15 @@
 # Introduction
 
-This is a template to create ASP.NET **Core** / **Angular2** based startup projects for [ASP.NET Boilerplate](https://aspnetboilerplate.com/Pages/Documents).
+This is a template to create **ASP.NET Core MVC / Angular** based startup projects for [ASP.NET Boilerplate](https://aspnetboilerplate.com/Pages/Documents). It has 2 different versions:
 
+1. [ASP.NET Core MVC & jQuery](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Core) (server rendered multi-page application).
+2. [ASP.NET Core & Angular](https://aspnetboilerplate.com/Pages/Documents/Zero/Startup-Template-Angular) (single page application).
+ 
 User Interface is based on [BSB Admin theme](https://github.com/gurayyarar/AdminBSBMaterialDesign).
  
 # Download
 
-Download the project template from here: https://github.com/LinkDev/module-zero-core-template/archive/master.zip
-
-Follow one of the installation steps using:
-* [Visual Studio 2017](VS2017.md)
-* [Visual Studio Code](VSCode.md)
+Create & download your project from https://aspnetboilerplate.com/Templates
 
 # Screenshots
 

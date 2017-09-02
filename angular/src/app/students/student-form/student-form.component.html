@@ -49,19 +49,18 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="Roles" class="form-label">{{l("Roles")}}</label>
-                        <div class="form-line">
-                            <select id="selectMenu" #Roles="ngModel" class="form-control" required [(ngModel)]="item.roleId" name="Roles">
-                                <option value="">--Select Role--</option>
-                                <option #options *ngFor="let role of roles" value={{role.id}}>{{role.name}}</option>
-                            </select>
-                        </div>
+                        <select-input name="'roles'" [items]="roles" #Roles="ngModel" 
+                        [proxy]="'RoleServiceProxy'"  [placeholder]="'Role'" 
+                        [(ngModel)]="item.roleId" 
+                        [dataValue]="'id'" [dataText]="'name'"></select-input>
+                        
                         <div *ngIf="Roles.errors && (Roles.dirty || Roles.touched)">
                             <label [ngClass]="{error: Roles.errors.required, hide: !Roles.errors.required}">
                                 Role is required
                             </label>
                         </div>
                     </div>
+
                     <!--<div class="form-group">
                         <label for="StudentParents" class="form-label">{{l("StudentParents")}}</label>
                         <div class="form-line">
@@ -74,9 +73,17 @@
                     <div class="form-group">
                         <label for="StudentParents" class="form-label">{{l("StudentParents")}}</label>
                         <div class="form-line">
-                            <dropdown [dropdownValues]="studentParents" (select)="parentchanged($event)" ></dropdown>
+                            <dropdown (select)="parentchanged($event)" ></dropdown>
                         </div>
                     </div>
+                    <!--<div class="form-group">
+                        <label for="StudentParents" class="form-label">{{l("StudentParents")}}</label>
+                        <div class="form-line">
+                            <tree-nodes [proxy]="'StudentServiceProxy'"></tree-nodes>
+                        </div>
+                    </div>-->
+                    
+
                     <div class="form-group">
                         <input id="isActive" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="item.isActive" checked />
                         <label for="isActive" class="form-label">{{l("IsActive")}}</label>
