@@ -6,7 +6,7 @@
 - .NET Core SDK
 - ReplaceInFiles.exe
 - LinkDev.CodeGenerator.exe
-
+ 
 Using the project template:
 - Download the project template from here: https://github.com/LinkDev/module-zero-core-template/archive/master.zip
 
