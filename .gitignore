@@ -6,23 +6,17 @@ obj/
 bin/
 aspnet-core/src/AbpCompanyName.AbpProjectName.Web.Host/App_Data/Logs/
 aspnet-core/src/AbpCompanyName.AbpProjectName.Web.Mvc/App_Data/Logs/
+aspnet-core/build/outputs/
 /angular/.vscode
-<<<<<<< HEAD
 angular/src/shared/service-proxies/service-proxies.ts
 angular/src/app/domainGroups/domainGroups.component.ts
-=======
-angular/src/app/domain-groups/domain-groups.component.html
->>>>>>> 25ba214d1fd50a0e65678bc0522e4cba935d0a7d
 angular/src/app/domain-groups/domain-groups.component.html
 angular/src/app/domain-groups/domain-groups.component.ts
 angular/src/app/domain-groups/domain-group-form/domain-group-form.component.html
 angular/src/app/domain-groups/domain-group-form/domain-group-form.component.ts
-<<<<<<< HEAD
 angular/src/app/domainGroups/domainGroups.component.html
 angular/src/app/domainGroups/domainGroup-form/domainGroup-form.component.html
 angular/src/app/domainGroups/domainGroup-form/domainGroup-form.component.ts
-=======
->>>>>>> 25ba214d1fd50a0e65678bc0522e4cba935d0a7d
 angular/src/app/domains/domains.component.html
 angular/src/app/domains/domains.component.ts
 angular/src/app/domains/domain-form/domain-form.component.html
@@ -35,28 +29,21 @@ angular/src/app/question-groups/question-groups.component.html
 angular/src/app/question-groups/question-groups.component.ts
 angular/src/app/question-groups/question-group-form/question-group-form.component.html
 angular/src/app/question-groups/question-group-form/question-group-form.component.ts
-<<<<<<< HEAD
 angular/src/app/questionGroups/questionGroups.component.html
 angular/src/app/questionGroups/questionGroups.component.ts
 angular/src/app/questionGroups/questionGroup-form/questionGroup-form.component.html
 angular/src/app/questionGroups/questionGroup-form/questionGroup-form.component.ts
-=======
->>>>>>> 25ba214d1fd50a0e65678bc0522e4cba935d0a7d
 angular/src/app/questions/questions.component.html
 angular/src/app/questions/questions.component.ts
 angular/src/app/questions/question-form/question-form.component.html
 angular/src/app/questions/question-form/question-form.component.ts
-<<<<<<< HEAD
 angular/src/app/test-dates/test-dates.component.html
-=======
 angular/src/app/students/students.component.html
 angular/src/app/students/students.component.ts
->>>>>>> 25ba214d1fd50a0e65678bc0522e4cba935d0a7d
 angular/src/app/surveys/surveys.component.html
 angular/src/app/surveys/surveys.component.ts
 angular/src/app/surveys/survey-form/survey-form.component.html
 angular/src/app/surveys/survey-form/survey-form.component.ts
-<<<<<<< HEAD
 angular/src/app/test-dates/test-dates.component.ts
 angular/src/app/test-dates/test-date-form/test-date-form.component.html
 angular/src/app/test-dates/test-date-form/test-date-form.component.ts
@@ -123,9 +110,7 @@ aspnet-core/src/AbpCompanyName.AbpProjectName.Core/Students/Student.cs
 aspnet-core/src/AbpCompanyName.AbpProjectName.EntityFrameworkCore/EntityFrameworkCore/AbpProjectNameDbContext.Generated.cs
 aspnet-core/src/AbpCompanyName.AbpProjectName.Web.Host/Startup/Startup.cs
 aspnet-core/src/AbpCompanyName.AbpProjectName.Application/Shared/Extensions/LinqFilterExtension.cs
-=======
 angular/src/shared/service-proxies/service-proxies.ts
 angular/src/shared/service-proxies/service-proxy.module.ts
 angular/src/shared/service-proxies/service-proxies.ts
 angular/src/shared/service-proxies/service-proxy.module.ts
->>>>>>> 25ba214d1fd50a0e65678bc0522e4cba935d0a7d
