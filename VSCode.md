@@ -1,10 +1,9 @@
 ## Download and install these tools first
 - [NodeJS](https://nodejs.org/en/download/)
 - SQL Server database (doesn't have to be local)
-- Visual Studio Code
-- Git for Windows
-- .NET Core SDK
-- ReplaceInFiles.exe
+- [Visual Studio Code](https://code.visualstudio.com/download)
+- [Git for Windows](https://git-scm.com/download/win)
+- [.NET Core SDK](https://download.microsoft.com/download/B/9/F/B9F1AF57-C14A-4670-9973-CDF47209B5BF/dotnet-dev-win-x64.1.0.4.exe)
 - LinkDev.CodeGenerator.exe
  
 Using the project template:
