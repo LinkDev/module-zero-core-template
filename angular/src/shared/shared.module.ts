@@ -10,32 +10,48 @@ import { AppAuthService } from './auth/app-auth.service';
 import { AppRouteGuard } from './auth/auth-route-guard';
 import { MaterialInput } from "shared/directives/material-input.directive";
 import { DatePickerInput } from 'shared/components/date-picker-input';
-import { SelectInput } from 'shared/components/select-input';
 import { PaginationComponent } from 'shared/pagination/pagination.component';
 import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
-import { MdSelectModule } from '@angular/material';
 import 'hammerjs';
 import * as Proxies from "shared/service-proxies/service-proxies";
+import { DropdownComponent } from "shared/components/dropdown.component"
+import { TreeModule } from 'angular-tree-component';
+import { TreeComponent } from "shared/components/tree.component"
+
+import { SelectInput } from "shared/components/select-input";
+import { RichEditorInput } from "shared/components/rich-editor-input";
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+
 @NgModule({
     imports: [
-        MdSelectModule,
         MaterialModule, MdDatepickerModule, MdNativeDateModule,
+        FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
         CommonModule,
         AbpModule,
         RouterModule,
-        FormsModule
+        FormsModule,
+        TreeModule
     ],
     declarations: [
         MaterialInput,
         DatePickerInput,
-        SelectInput
+        SelectInput,
+        DropdownComponent,
+        TreeComponent,
+        RichEditorInput
+
     ],
     exports: [
         MaterialInput,
         DatePickerInput,
-        SelectInput
+        SelectInput,
+        DropdownComponent,
+        TreeComponent,
+        RichEditorInput
     ],
-    providers:[{provide: 'RoleServiceProxy', useExisting: Proxies.RoleServiceProxy}]
+    providers:[{provide: 'RoleServiceProxy', useExisting: Proxies.RoleServiceProxy},
+    {provide: 'QuestionGroupServiceProxy', useClass: Proxies.QuestionGroupServiceProxy}
+]
 })
 export class SharedModule {
     static forRoot(): ModuleWithProviders {
