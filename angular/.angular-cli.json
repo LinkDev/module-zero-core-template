@@ -29,6 +29,8 @@
         "assets/fonts/roboto/roboto.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/simple-line-icons/css/simple-line-icons.css",
+        "../node_modules/froala-editor/css/froala_editor.pkgd.min.css",
+        "../node_modules/froala-editor/css/froala_style.min.css",
         "../node_modules/font-awesome/css/font-awesome.css",
         "../node_modules/famfamfam-flags/dist/sprite/famfamfam-flags.css",
         "../node_modules/toastr/build/toastr.css",
@@ -79,7 +81,8 @@
         "../src/bsb-theme/js/admin.js",
         "../src/bsb-theme/js/demo.js",
         "../src/bsb-theme/js/jquery.validate.js",
-        "../node_modules/bootstrap-select/dist/js/bootstrap-select.js"
+        "../node_modules/bootstrap-select/dist/js/bootstrap-select.js",
+        "../node_modules/froala-editor/js/froala_editor.pkgd.min.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {
