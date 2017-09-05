@@ -1,4 +1,42 @@
-﻿.headerSortDown:after,
+﻿.selectParent {width:100%}
+div .selectParent :hover{background-color:#eee}
+.selectParent > a {
+        text-decoration: none;
+        color: #555
+    }
+.treeDiv {
+    max-height: 294px;
+    overflow: hidden;
+    min-height: 0px;
+    z-index: 100;
+    background-color: white;
+    min-width: 100%;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 1000;
+    float: left;
+    padding: 5px 0;
+    margin: 2px 0 0;
+    font-size: 14px;
+    text-align: left;
+    background-color: #fff;
+    background-clip: padding-box;
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    padding: 7px 18px;
+    color: #666;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+    transition: all 0.5s;
+    font-size: 14px;
+    line-height: 25px;
+    top: 5px
+}
+
+.headerSortDown:after,
 .headerSortUp:after {
     content: ' ';
     position: relative;
@@ -621,15 +659,27 @@
 
 /*fixes*/
 
+.form-group .form-line.focused .form-label{margin-top: 5px}
 .form-group .form-line.focused .form-label {color:#1f91f3}
-html[dir=rtl] * :not(i){font-family: GE_SS_Text_Light}
+.form-group .form-line.error:after {border-bottom: 2px solid #1f91f3}
+html[dir=rtl] * :not(i){font-family: GESSTwoLight}
 html[dir=rtl] .sidebar{right: 0}
 html[dir=rtl] section.content{margin: 100px 315px 0 15px}
 html[dir=rtl] .sidebar .menu .list{padding-right: 0px}
 html[dir=rtl] .sidebar .menu .list i.material-icons {margin-left: 3px}
 html[dir=rtl] .card .header .header-dropdown{left: 15px;right: auto}
 html[dir=rtl] .btn-circle i{right: -1px}
-html[dir=rtl] .sidebar .menu .list .menu-toggle:after, .sidebar .menu .list .menu-toggle:before{left: 17px;right: auto}
+html[dir=rtl] .sidebar .menu .list .menu-toggle:after,html[dir=rtl] .sidebar .menu .list .menu-toggle:before{left: 17px;right: auto}
 html[dir=rtl] .form-group .form-line .form-label{right: 0px}
 html[dir=rtl] .bootstrap-select.btn-group .dropdown-toggle .filter-option{text-align: right}
 html[dir=rtl] .bootstrap-select.btn-group .dropdown-toggle .caret{left: 12px;right: auto}
+html[dir=rtl] .btn:not(.btn-link):not(.btn-circle){float: left}
+html[dir=rtl] .table>thead:first-child>tr:first-child>th{text-align: right}
+html[dir=rtl] .close {float: left}
+html[dir=rtl] .headerSortDown:after,html[dir=rtl] .headerSortUp:after{right: 5px}
+html[dir=rtl] .dropdown-menu.pull-right {right: auto;left: 0}
+html[dir=rtl] .dropdown-menu > li > a {text-align: right}
+html[dir=rtl] .dropdown-menu > li > a i.material-icons {float: right;margin-left: 7px}
+html[dir=rtl] [type="checkbox"]:not(:checked), [type="checkbox"]:checked{left: 0}
+html[dir=rtl] .demo-choose-skin li span {right: 5px}
+html[dir=rtl] .right-sidebar #settings .setting-list li .switch {right: auto;left: 5px}
