@@ -26,7 +26,7 @@ export class DropdownComponent {
     @Output() select: EventEmitter<any>;
 
     hideDiv: boolean = true;
-    firstTime: boolean = false;
+    firstTime: boolean = false; 
     default: string = "--Select Parent--";
     selectedText: string = this.default;
     constructor() {
@@ -41,7 +41,7 @@ export class DropdownComponent {
         this.hideDiv = !this.hideDiv;
     }
     blur() {
-        //debugger;
+        //alert("here");
         var hidden = $('.treeDiv')[0].hidden;
         if (hidden == false) {
             this.hideDiv = true;

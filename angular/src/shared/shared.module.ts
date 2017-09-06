@@ -19,7 +19,7 @@ import { TreeModule } from 'angular-tree-component';
 import { TreeComponent } from "shared/components/tree.component"
 
 import { SelectInput } from "shared/components/select-input";
-
+import { ClickOutsideDirective } from 'angular2-click-outside/clickOutside.directive';
 
 @NgModule({
     imports: [
@@ -35,8 +35,8 @@ import { SelectInput } from "shared/components/select-input";
         DatePickerInput,
         SelectInput,
         DropdownComponent,
-        TreeComponent
-
+        TreeComponent,
+        ClickOutsideDirective
     ],
     exports: [
         MaterialInput,
@@ -45,7 +45,7 @@ import { SelectInput } from "shared/components/select-input";
         DropdownComponent,
         TreeComponent,
     ],
-    providers:[{provide: 'RoleServiceProxy', useExisting: Proxies.RoleServiceProxy},{provide: 'QuestionGroupServiceProxy', useClass: Proxies.QuestionGroupServiceProxy}]
+    providers:[{provide: 'RoleServiceProxy', useExisting: Proxies.RoleServiceProxy},{provide: 'StudentServiceProxy', useClass: Proxies.StudentServiceProxy}]
 })
 export class SharedModule {
     static forRoot(): ModuleWithProviders {

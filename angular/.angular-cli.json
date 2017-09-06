@@ -26,8 +26,6 @@
       "styles": [
          
         "material-styles.css",
-        "assets/fonts/roboto/roboto.css",
-        "assets/fonts/arabicFonts.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/simple-line-icons/css/simple-line-icons.css",
         "../node_modules/font-awesome/css/font-awesome.css",
@@ -41,7 +39,6 @@
         "../src/shared/core.less",
         "../node_modules/bootstrap-select/dist/css/bootstrap-select.css",
         "../src/assets/css/style.css",
-        "assets/fonts/GE_SS_Text_Light/GE_SS_Text_Light.css",
         "../node_modules/froala-editor/css/froala_editor.pkgd.min.css",
         "../node_modules/froala-editor/css/froala_style.min.css"
       ],

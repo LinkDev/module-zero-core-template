@@ -2,27 +2,7 @@
 import { TreeNode, ITreeOptions, IActionMapping, KEYS, TREE_ACTIONS } from "angular-tree-component/dist/angular-tree-component";
 import { StudentServiceProxy, StudentDto, PagedResultDtoOfStudentDto } from '@shared/service-proxies/service-proxies';
 
-const actionMapping: IActionMapping = {
-    mouse: {
-        contextMenu: (tree, node, $event) => {
-            $event.preventDefault();
-            alert(`context menu for ${node.data.name}`);
-        },
-        dblClick: (tree, node, $event) => {
-            if (node.hasChildren) TREE_ACTIONS.TOGGLE_EXPANDED(tree, node, $event);
-        },
-        click: (tree, node, $event) => {
 
-            //alert("clicked " + this.selected);
-            $event.shiftKey
-                ? TREE_ACTIONS.TOGGLE_SELECTED_MULTI(tree, node, $event)
-                : TREE_ACTIONS.TOGGLE_SELECTED(tree, node, $event)
-        }
-    },
-    keys: {
-        [KEYS.ENTER]: (tree, node, $event) => alert(`This is ${node.data.name}`)
-    }
-};
 
 @Component({
     selector: 'tree-nodes',
@@ -33,26 +13,45 @@ const actionMapping: IActionMapping = {
       [focused]="true"
       (event)="onEvent($event)"
       (initialized)="onInitialized(tree)">
-      <ng-template #treeNodeTemplate let-node>
-        <span title="{{node.data.subTitle}}">{{ node.data.name }}</span>
-        <span class="pull-right">{{ childrenCount(node) }}</span>
-      </ng-template>
-      <ng-template #loadingTemplate>Loading, please hold....</ng-template>
+      <ng-template #treeNodeTemplate let-node="node" let-index="index" >
+        <input style="position: static;opacity:100" id="{{node.data.id}}"
+         
+          type="checkbox"
+          [checked]="node.data.checked"/>
+          {{ node.data.name }}
+     </ng-template>
     </tree-root>`
 })
 
 export class TreeComponent implements OnInit {
+    actionMapping: IActionMapping = {
+        mouse: {
+            contextMenu: (tree, node, $event) => {
+                $event.preventDefault();
+                alert(`context menu for ${node.data.name}`);
+            },
+            dblClick: (tree, node, $event) => {
+                if (node.hasChildren) TREE_ACTIONS.TOGGLE_EXPANDED(tree, node, $event);
+            },
+            click: (tree, node, $event) => {
+                this.check(node, !node.data.checked, $event)
+                //alert("clicked " + this.selected);
+                TREE_ACTIONS.TOGGLE_SELECTED(tree, node, $event)
+            }
+        },
+        keys: {
+            [KEYS.ENTER]: (tree, node, $event) => alert(`This is ${node.data.name}`)
+        }
+    };
+
     @Input() public treeValues: any[];
     @Input() proxy: string;
     @Input() public rootValues: any[];
+    @Input() multiselect: boolean = false;
+    @Input() selectedvalued: any[];
     @Output() selected: EventEmitter<any>;
 
     @ViewChild('tree') treeRoot;
-
-    //ngAfterViewInit() {
-    //    console.log("heeeeeeeeeeeeeeeeeee");
-    //    console.log(this.treeRoot);
-    //}
 
     nodes: any[];
     service: any;
@@ -60,7 +59,6 @@ export class TreeComponent implements OnInit {
         this.selected = new EventEmitter();
     }
     ngOnInit() {
-
         //console.log(this.proxy);
         this.service = this.injector.get(this.proxy);
 
@@ -83,18 +81,17 @@ export class TreeComponent implements OnInit {
             setTimeout(() => {
                 this.nodes = [];
                 for (let i = 0; i < this.treeValues.length; i++) {
+                    
                     this.nodes.push({
                         id: this.treeValues[i].id,
                         name: this.treeValues[i].name,
                         subTitle: this.treeValues[i].bio,
+                        checked: false,
                         hasChildren: true
                     });
                 }
             }, 1)
-
         });
-
-
     }
 
     getChildren(node: any) {
@@ -105,10 +102,8 @@ export class TreeComponent implements OnInit {
                     //console.log("data " + data);
                     if (data != undefined) {
                         let children = data.items;
-
-                        //console.log("children " + children);
                         resolve(children.map(c =>
-                            Object.assign({ hasChildren: true }, c)
+                            Object.assign({ hasChildren: true, checked: false }, c)
                         ));
                     }
                     else {
@@ -130,16 +125,22 @@ export class TreeComponent implements OnInit {
         console.log(event);
         if (event.eventName == "activate") {
             console.log(event);
-            if (this.selected == undefined)
-                this.selected = new EventEmitter();
-            //alert("emit");
-            this.selected.emit(event.node.data.id + ',' + event.node.data.name);
+            event.node.data.checked = true;
+            this.SendSelectedNode(event.node.data.id + ',' + event.node.data.name);
         }
         else if (event.eventName == "deactivate") {
-            if (this.selected == undefined)
-                this.selected = new EventEmitter();
-            //alert("emit");
-            this.selected.emit("");
+            if (!this.multiselect)
+                event.node.data.checked = false;
+            this.SendSelectedNode("");
+        }
+    }
+
+    check(node, checked, event) {
+        //alert(node.checked);
+        //debugger;
+        if (event.type == "change") {
+            node.data.checked = checked;
+            this.SendSelectedNode(node.data.id + ',' + node.data.name);
         }
     }
 
@@ -152,16 +153,16 @@ export class TreeComponent implements OnInit {
         isExpandedField: 'expanded',
         idField: 'uuid',
         getChildren: this.getChildren.bind(this),
-        actionMapping,
+        actionMapping: this.actionMapping,
         nodeHeight: 23,
-        allowDrag: (node) => {
-            // console.log('allowDrag?');
-            return true;
-        },
-        allowDrop: (node) => {
-            // console.log('allowDrop?');
-            return true;
-        },
+        //allowDrag: (node) => {
+        //    // console.log('allowDrag?');
+        //    return true;
+        //},
+        //allowDrop: (node) => {
+        //    // console.log('allowDrop?');
+        //    return true;
+        //},
         animateExpand: true,
         animateSpeed: 30,
         animateAcceleration: 1.2
@@ -175,5 +176,11 @@ export class TreeComponent implements OnInit {
         }
         if (this.treeRoot != undefined && this.treeRoot.treeModel != undefined)
             this.treeRoot.treeModel.collapseAll();
+    }
+    SendSelectedNode(value) {
+        if (this.selected == undefined)
+            this.selected = new EventEmitter();
+        //alert("emit");
+        this.selected.emit(value);
     }
 }

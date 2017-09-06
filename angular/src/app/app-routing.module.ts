@@ -22,7 +22,7 @@ import { QuestionGroupsComponent } from '@app/question-groups/question-groups.co
 //{ path: 'questiongroups', component: QuestionGroupsComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
 import { SurveysComponent } from '@app/surveys/surveys.component';
 //{ path: 'surveys', component: SurveysComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
-import { TestDatesComponent } from '@app/test-dates/test-dates.component';
+
 //{ path: 'testdates', component: TestDatesComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
 @NgModule({
     imports: [

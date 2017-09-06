@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+﻿import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
@@ -71,8 +71,8 @@ import { QuestionGroupsComponent } from '@app/question-groups/question-groups.co
 import { QuestionGroupFormComponent } from '@app/question-groups/question-group-form/question-group-form.component';
 //		QuestionGroupsComponent,
 //		QuestionGroupFormComponent,
-import { TestDatesComponent } from '@app/test-dates/test-dates.component';
-import { TestDateFormComponent } from '@app/test-dates/test-date-form/test-date-form.component';
+
+
 //		TestDatesComponent,
 //		TestDateFormComponent,
 

@@ -7,7 +7,7 @@ using Abp.Domain.Entities.Auditing;
 
 namespace AbpCompanyName.AbpProjectName
 {
-	public class Student : Entity, IPassivable, ISoftDelete
+	public class Student : Entity, IPassivable, ISoftDelete,IHasParent
 	{
 		
 		[StringLength(50)]
@@ -25,6 +25,6 @@ namespace AbpCompanyName.AbpProjectName
 		[Required]
 		public int? RoleId { get; set; }
 
-
+        public int? ParentId { get; set; }
 	}
 }

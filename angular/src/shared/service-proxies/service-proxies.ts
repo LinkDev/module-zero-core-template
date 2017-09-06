@@ -4266,7 +4266,7 @@ export class StudentDto {
     isActive: boolean;
     roleId: number;
     id: number;
-
+    parentId: number;
     constructor(data?: any) {
         if (data !== undefined) {
             this.name = data["name"] !== undefined ? data["name"] : undefined;
@@ -4275,6 +4275,7 @@ export class StudentDto {
             this.isActive = data["isActive"] !== undefined ? data["isActive"] : undefined;
             this.roleId = data["roleId"] !== undefined ? data["roleId"] : undefined;
             this.id = data["id"] !== undefined ? data["id"] : undefined;
+            this.parentId = data["parentId"] !== undefined ? data["parentId"] : undefined;
         }
     }
 
@@ -4290,6 +4291,7 @@ export class StudentDto {
         data["isActive"] = this.isActive !== undefined ? this.isActive : undefined;
         data["roleId"] = this.roleId !== undefined ? this.roleId : undefined;
         data["id"] = this.id !== undefined ? this.id : undefined;
+        data["parentId"] = this.parentId !== undefined ? this.parentId : undefined;
         return data; 
     }
 
