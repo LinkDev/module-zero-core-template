@@ -41,42 +41,6 @@ import { StudentsComponent } from '@app/students/students.component';
 import { StudentFormComponent } from '@app/students/student-form/student-form.component';
 
 
-
-//		DomainGroupsComponent,
-//		DomainGroupFormComponent,
-import { DomainsComponent } from '@app/domains/domains.component';
-import { DomainFormComponent } from '@app/domains/domain-form/domain-form.component';
-//		DomainsComponent,
-//		DomainFormComponent,
-import { QuestionsComponent } from '@app/questions/questions.component';
-import { QuestionFormComponent } from '@app/questions/question-form/question-form.component';
-//		QuestionsComponent,
-//		QuestionFormComponent,
-
-//		QuestionGroupsComponent,
-//		QuestionGroupFormComponent,
-import { SurveysComponent } from '@app/surveys/surveys.component';
-import { SurveyFormComponent } from '@app/surveys/survey-form/survey-form.component';
-//		SurveysComponent,
-//		SurveyFormComponent,
-
-
-
-import { QuestionAnswerFormComponent } from '@app/question-answers/question-answer-form/question-answer-form.component';
-import { QuestionAnswersComponent } from '@app/question-answers/question-answers.component';
-import { DomainGroupsComponent } from '@app/domain-groups/domain-groups.component';
-import { DomainGroupFormComponent } from '@app/domain-groups/domain-group-form/domain-group-form.component';
-
-import { QuestionGroupsComponent } from '@app/question-groups/question-groups.component';
-import { QuestionGroupFormComponent } from '@app/question-groups/question-group-form/question-group-form.component';
-//		QuestionGroupsComponent,
-//		QuestionGroupFormComponent,
-import { TestDatesComponent } from '@app/test-dates/test-dates.component';
-import { TestDateFormComponent } from '@app/test-dates/test-date-form/test-date-form.component';
-//		TestDatesComponent,
-//		TestDateFormComponent,
-
-import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 @NgModule({
     declarations: [
         AppComponent,
@@ -100,29 +64,9 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
         RightSideBarComponent,
         StudentsComponent,
         StudentFormComponent,
-        QuestionsComponent,
-        QuestionFormComponent,
-        QuestionGroupsComponent,
-        QuestionGroupFormComponent,
-        SurveysComponent,
-        SurveyFormComponent,
-        DomainGroupsComponent,
-        DomainGroupFormComponent,
-        DomainsComponent,
-        DomainFormComponent,
-        QuestionAnswersComponent,
-        QuestionAnswerFormComponent,
-        QuestionsComponent,
-        QuestionFormComponent,
-        QuestionGroupsComponent,
-        QuestionGroupFormComponent,
-        SurveysComponent,
-        SurveyFormComponent,
-        QuestionAnswersComponent,
-        QuestionAnswerFormComponent
+        
     ],
     imports: [
-        FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
         CommonModule,
         FormsModule,
         HttpModule,

@@ -10,19 +10,19 @@ import { RolesComponent } from "app/roles/roles.component";
 
 import { StudentsComponent } from '@app/students/students.component';
 //{ path: 'students', component: StudentsComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
-import { DomainGroupsComponent } from '@app/domain-groups/domain-groups.component';
+//import { DomainGroupsComponent } from '@app/domain-groups/domain-groups.component';
 //{ path: 'domaingroups', component: DomainGroupsComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
-import { DomainsComponent } from '@app/domains/domains.component';
+//import { DomainsComponent } from '@app/domains/domains.component';
 //{ path: 'domains', component: DomainsComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
-import { QuestionAnswersComponent } from '@app/question-answers/question-answers.component';
-//{ path: 'questionanswers', component: QuestionAnswersComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
-import { QuestionsComponent } from '@app/questions/questions.component';
+//import { QuestionAnswersComponent } from '@app/question-answers/question-answers.component';
+///{ path: 'questionanswers', component: QuestionAnswersComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
+//import { QuestionsComponent } from '@app/questions/questions.component';
 //{ path: 'questions', component: QuestionsComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
-import { QuestionGroupsComponent } from '@app/question-groups/question-groups.component';
+//import { QuestionGroupsComponent } from '@app/question-groups/question-groups.component';
 //{ path: 'questiongroups', component: QuestionGroupsComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
-import { SurveysComponent } from '@app/surveys/surveys.component';
+//import { SurveysComponent } from '@app/surveys/surveys.component';
 //{ path: 'surveys', component: SurveysComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
-import { TestDatesComponent } from '@app/test-dates/test-dates.component';
+//import { TestDatesComponent } from '@app/test-dates/test-dates.component';
 //{ path: 'testdates', component: TestDatesComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
 @NgModule({
     imports: [
@@ -37,12 +37,7 @@ import { TestDatesComponent } from '@app/test-dates/test-dates.component';
                     { path: 'tenants', component: TenantsComponent, data: { permission: 'Pages.Tenants' }, canActivate: [AppRouteGuard] },
                     { path: 'students', component: StudentsComponent, data: { permission: 'Pages.Tenants' }, canActivate: [AppRouteGuard] },
                     { path: 'about', component: AboutComponent },
-                    { path: 'surveys', component: SurveysComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
-                    { path: 'questiongroups', component: QuestionGroupsComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
-                    { path: 'questions', component: QuestionsComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
-                    { path: 'questionanswers', component: QuestionAnswersComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
-                    { path: 'domains', component: DomainsComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
-                    { path: 'domaingroups', component: DomainGroupsComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] }
+                    
                 ]
             }
         ])
