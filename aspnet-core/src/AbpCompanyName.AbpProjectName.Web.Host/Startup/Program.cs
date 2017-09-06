@@ -12,6 +12,7 @@ namespace AbpCompanyName.AbpProjectName.Web.Host.Startup
                 .UseContentRoot(Directory.GetCurrentDirectory())
                 .UseIISIntegration()
                 .UseStartup<Startup>()
+                .UseUrls("http://localhost:21021")
                 .Build();
 
             host.Run();
