@@ -39,6 +39,7 @@ import { SamplesComponent } from '@app/samples/samples.component';
 import { SampleFormComponent } from '@app/samples/sample-form/sample-form.component';
 
 
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 @NgModule({
     declarations: [
         AppComponent,
