@@ -13,8 +13,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="LinkDev.Abp" Version="1.0.6" />
-    <PackageReference Include="LinkDev.CodeGenerator" Version="0.5.0" />
+    <PackageReference Include="LinkDev.Abp" Version="1.0.9" />
+    <PackageReference Include="LinkDev.CodeGenerator" Version="0.7.0" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,10 +24,6 @@
   <ItemGroup Condition=" '$(TargetFramework)' == 'net461' ">
     <Reference Include="System" />
     <Reference Include="Microsoft.CSharp" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Shared\" />
   </ItemGroup>
 
 </Project>

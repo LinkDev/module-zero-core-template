@@ -15,7 +15,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     selector: 'date-picker',
     template: `<md-input-container>
   <input mdInput [mdDatepicker]="picker" [name]="name" [id]="id" [min]="min" [max]="max" [placeholder]="placeholder" [(ngModel)]="value">
-  <button mdSuffix [mdDatepickerToggle]="picker"></button>
+  <md-datepicker-toggle mdSuffix [for]="picker"></md-datepicker-toggle>
 </md-input-container>
 <md-datepicker #picker></md-datepicker>`,
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
