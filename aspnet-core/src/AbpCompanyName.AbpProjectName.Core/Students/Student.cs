@@ -9,7 +9,7 @@ namespace AbpCompanyName.AbpProjectName
 {
 	public class Student : Entity, IPassivable, ISoftDelete,IHasParent
 	{
-		
+       
 		[StringLength(50)]
 		public string Name { get; set; }
 		
