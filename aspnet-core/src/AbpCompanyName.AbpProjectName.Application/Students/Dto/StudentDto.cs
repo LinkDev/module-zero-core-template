@@ -10,7 +10,7 @@ using AbpCompanyName.AbpProjectName.Students;
 namespace AbpCompanyName.AbpProjectName.Students.Dto
 {
 	[AutoMap(typeof(Student))]
-	public class StudentDto : EntityDto
+	public class StudentDto : EntityDto, IHasParent
 	{
 		
 		[StringLength(50)]
@@ -25,6 +25,6 @@ namespace AbpCompanyName.AbpProjectName.Students.Dto
 		
 		[Required]
 		public int? RoleId { get; set; }
-
-	}
+        public int? ParentId { get; set; }
+    }
 }

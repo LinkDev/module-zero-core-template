@@ -25,6 +25,6 @@ namespace AbpCompanyName.AbpProjectName
 		[Required]
 		public int? RoleId { get; set; }
 
-
-	}
+        public int? ParentId { get; set; }
+    }
 }
