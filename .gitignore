@@ -4,6 +4,12 @@
 .vs/
 obj/
 bin/
+aspnet-core/build/outputs/
 aspnet-core/src/AbpCompanyName.AbpProjectName.Web.Host/App_Data/Logs/
 aspnet-core/src/AbpCompanyName.AbpProjectName.Web.Mvc/App_Data/Logs/
 /angular/.vscode
+angular/src/app/students/student-form/student-form.component.ts
+angular/src/app/students/students.component.ts
+angular/src/app/students/student-form/student-form.component.html
+angular/src/app/users/users.component.ts
+angular/yarn.lock

@@ -26,6 +26,8 @@
       "styles": [
          
         "material-styles.css",
+        "assets/fonts/roboto/roboto.css",
+        "assets/fonts/arabicFonts.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/simple-line-icons/css/simple-line-icons.css",
         "../node_modules/font-awesome/css/font-awesome.css",
@@ -38,9 +40,8 @@
         "../src/bsb-theme/css/themes/all-themes.css",
         "../src/shared/core.less",
         "../node_modules/bootstrap-select/dist/css/bootstrap-select.css",
-        "../src/assets/css/style.css",
-        "../node_modules/froala-editor/css/froala_editor.pkgd.min.css",
-        "../node_modules/froala-editor/css/froala_style.min.css"
+        "../src/assets/css/style.css"
+    
       ],
       "scripts": [
         "../node_modules/jquery/dist/jquery.min.js",
@@ -78,8 +79,7 @@
         "../src/bsb-theme/js/admin.js",
         "../src/bsb-theme/js/demo.js",
         "../src/bsb-theme/js/jquery.validate.js",
-        "../node_modules/bootstrap-select/dist/js/bootstrap-select.js",
-        "../node_modules/froala-editor/js/froala_editor.pkgd.min.js"
+        "../node_modules/bootstrap-select/dist/js/bootstrap-select.js"
       ],
       "environmentSource": "environments/environment.ts",
       "environments": {

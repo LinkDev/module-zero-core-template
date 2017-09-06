@@ -13,39 +13,22 @@ import { DatePickerInput } from 'shared/components/date-picker-input';
 import { PaginationComponent } from 'shared/pagination/pagination.component';
 import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
 import 'hammerjs';
-import * as Proxies from "shared/service-proxies/service-proxies";
-import { DropdownComponent } from "shared/components/dropdown.component"
-import { TreeModule } from 'angular-tree-component';
-import { TreeComponent } from "shared/components/tree.component"
-
-import { SelectInput } from "shared/components/select-input";
-import { ClickOutsideDirective } from 'angular2-click-outside/clickOutside.directive';
-
 @NgModule({
     imports: [
         MaterialModule, MdDatepickerModule, MdNativeDateModule,
         CommonModule,
         AbpModule,
         RouterModule,
-        FormsModule,
-        TreeModule
+        FormsModule
     ],
     declarations: [
         MaterialInput,
-        DatePickerInput,
-        SelectInput,
-        DropdownComponent,
-        TreeComponent,
-        ClickOutsideDirective
+        DatePickerInput
     ],
     exports: [
         MaterialInput,
-        DatePickerInput,
-        SelectInput,
-        DropdownComponent,
-        TreeComponent,
-    ],
-    providers:[{provide: 'RoleServiceProxy', useExisting: Proxies.RoleServiceProxy},{provide: 'StudentServiceProxy', useClass: Proxies.StudentServiceProxy}]
+        DatePickerInput
+    ]
 })
 export class SharedModule {
     static forRoot(): ModuleWithProviders {

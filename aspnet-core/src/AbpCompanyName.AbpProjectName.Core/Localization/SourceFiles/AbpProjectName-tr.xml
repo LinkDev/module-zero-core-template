@@ -1,11 +1,13 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8" ?>
 <localizationDictionary culture="tr">
   <texts>
     <text name="HomePage" value="Ana Sayfa" />
     <text name="About" value="Hakkında" />
     <text name="WellcomeMessage" value="AbpProjectName projesine hoşgeldiniz!" />
+
     <text name="FormIsNotValidMessage" value="Form geçerli değil. Lütfen kontrol edip hataları düzeltin." />
     <text name="TenantNameCanNotBeEmpty" value="Müşteri adı boş bırakılamaz." />
+
     <text name="InvalidUserNameOrPassword" value="Kullanıcı adı ya da şifre hatalı." />
     <text name="ThereIsNoTenantDefinedWithName{0}" value="{0} isminde bir müşteri tanımlı değildir." />
     <text name="TenantIsNotActive" value="{0} isimli müşteri aktif edilmemiştir." />
@@ -18,12 +20,15 @@
     <text name="Password" value="Şifre" />
     <text name="RememberMe" value="Beni hatırla" />
     <text name="LogIn" value="Giriş" />
+
     <text name="LoginFailed" value="Giriş başarısız!" />
+
     <text name="NameSurname" value="Ad soyad" />
     <text name="UserName" value="Kullanıcı adı" />
     <text name="Name" value="İsim" />
     <text name="Surname" value="Soyisim" />
     <text name="EmailAddress" value="E-posta adresi" />
+
     <text name="Tenants" value="Müşteriler" />
     <text name="SavedSuccessfully" value="Başarıyla kaydedildi" />
     <text name="CreateNewTenant" value="Yeni müşteri oluştur" />
@@ -39,7 +44,9 @@
     <text name="TenantSelection" value="Müşteri seçimi" />
     <text name="TenantSelection_Detail" value="Lütfen aşağıdaki müşterilerden birisini seçin." />
     <text name="Logout" value="Çıkış" />
+
     <text name="RegisterFormUserNameInvalidMessage">Lütfen kullanıcı adı alanına e-posta adresi girmeyin.</text>
+
     <text name="DatabaseConnectionString" value="Veritabanı bağlantı cümlesi" />
     <text name="Users" value="Kullanıcılar" />
     <text name="IsActive" value="Etkin mi" />
@@ -49,74 +56,20 @@
     <text name="No" value="Hayır" />
     <text name="Optional" value="Opsiyonel" />
     <text name="LeaveEmptyToSwitchToHost">Üst kullanıcıya geçiş için boş değer girin.</text>
+
     <text name="CurrentTenant">Geçerli müşteri</text>
     <text name="NotSelected">Seçilmemiş</text>
     <text name="Change">Değiştir</text>
     <text name="ChangeTenant">Müşteri değiştir</text>
+
     <text name="MultiLevelMenu">Çok Seviyeli Menü</text>
     <text name="Back">Geri</text>
     <text name="SuccessfullyRegistered">Başarıyla kayıt olundu</text>
     <text name="WaitingForEmailActivation">E-posta adresiniz etkinleştirilmeli.</text>
     <text name="Roles">Roller</text>
     <text name="DisplayName">Görünen ad</text>
+
     <text name="Edit">Düzenle</text>
     <text name="Delete">Sil</text>
-    <text name="Domain group" value="Domain group" />
-    <text name="Domain groups" value="Domain groups" />
-    <text name="Name is required" value="Name is required" />
-    <text name="Name cannot be more than 200 characters long" value="Name cannot be more than 200 characters long" />
-    <text name="Type" value="Type" />
-    <text name="Is active" value="Is active" />
-    <text name="Created date" value="Created date" />
-    <text name="Created date is required" value="Created date is required" />
-    <text name="Last update time" value="Last update time" />
-    <text name="Domain" value="Domain" />
-    <text name="Domains" value="Domains" />
-    <text name="Name cannot be more than 1000 characters long" value="Name cannot be more than 1000 characters long" />
-    <text name="Code" value="Code" />
-    <text name="Code cannot be more than 50 characters long" value="Code cannot be more than 50 characters long" />
-    <text name="Parent domain" value="Parent domain" />
-    <text name="UR" value="UR" />
-    <text name="Question answer" value="Question answer" />
-    <text name="Question answers" value="Question answers" />
-    <text name="Title" value="Title" />
-    <text name="Title is required" value="Title is required" />
-    <text name="Is active is required" value="Is active is required" />
-    <text name="Order" value="Order" />
-    <text name="Order is required" value="Order is required" />
-    <text name="Question" value="Question" />
-    <text name="Allow text" value="Allow text" />
-    <text name="Allow text is required" value="Allow text is required" />
-    <text name="Questions" value="Questions" />
-    <text name="Question type" value="Question type" />
-    <text name="Question type is required" value="Question type is required" />
-    <text name="Domain group levels number" value="Domain group levels number" />
-    <text name="Question group" value="Question group" />
-    <text name="Is required" value="Is required" />
-    <text name="Is hidden" value="Is hidden" />
-    <text name="Description" value="Description" />
-    <text name="Description cannot be more than 500 characters long" value="Description cannot be more than 500 characters long" />
-    <text name="Question number" value="Question number" />
-    <text name="Question number cannot be more than 50 characters long" value="Question number cannot be more than 50 characters long" />
-    <text name="Help" value="Help" />
-    <text name="Default answer value" value="Default answer value" />
-    <text name="Is used in call back" value="Is used in call back" />
-    <text name="Question groups" value="Question groups" />
-    <text name="Survey" value="Survey" />
-    <text name="Surveys" value="Surveys" />
-    <text name="Parent survey" value="Parent survey" />
-    <text name="Parent survey relation" value="Parent survey relation" />
-    <text name="Is enabled" value="Is enabled" />
-    <text name="Is enabled is required" value="Is enabled is required" />
-    <text name="Icon" value="Icon" />
-    <text name="Icon cannot be more than 200 characters long" value="Icon cannot be more than 200 characters long" />
-    <text name="Allow add response" value="Allow add response" />
-    <text name="Allow add response is required" value="Allow add response is required" />
-    <text name="Type text" value="Type text" />
-    <text name="Type text cannot be more than 50 characters long" value="Type text cannot be more than 50 characters long" />
-    <text name="Serial digits count" value="Serial digits count" />
-    <text name="Mapped to survey id" value="Mapped to survey id" />
-    <text name="Min minutes" value="Min minutes" />
-    <text name="Daily target" value="Daily target" />
   </texts>
 </localizationDictionary>
