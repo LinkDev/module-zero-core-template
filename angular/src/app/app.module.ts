@@ -3,6 +3,9 @@ import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 
+
+//import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
+
 import { ModalModule } from 'ngx-bootstrap';
 import { NgxPaginationModule } from 'ngx-pagination';
 
@@ -13,6 +16,7 @@ import { AbpModule } from '@abp/abp.module';
 
 import { ServiceProxyModule } from '@shared/service-proxies/service-proxy.module';
 import { SharedModule } from '@shared/shared.module';
+import { DatePickerInput } from '@shared/components/date-picker-input';
 
 import { HomeComponent } from '@app/home/home.component';
 import { AboutComponent } from '@app/about/about.component';
@@ -32,11 +36,47 @@ import { SideBarNavComponent } from '@app/layout/sidebar-nav.component';
 import { SideBarFooterComponent } from '@app/layout/sidebar-footer.component';
 import { RightSideBarComponent } from '@app/layout/right-sidebar.component';
 import { MaterialInput } from '@shared/directives/material-input.directive';
-import { PaginationComponent} from '@shared/pagination/pagination.component';
+import { PaginationComponent } from '@shared/pagination/pagination.component';
 import { StudentsComponent } from '@app/students/students.component';
 import { StudentFormComponent } from '@app/students/student-form/student-form.component';
 
 
+
+//		DomainGroupsComponent,
+//		DomainGroupFormComponent,
+import { DomainsComponent } from '@app/domains/domains.component';
+import { DomainFormComponent } from '@app/domains/domain-form/domain-form.component';
+//		DomainsComponent,
+//		DomainFormComponent,
+import { QuestionsComponent } from '@app/questions/questions.component';
+import { QuestionFormComponent } from '@app/questions/question-form/question-form.component';
+//		QuestionsComponent,
+//		QuestionFormComponent,
+
+//		QuestionGroupsComponent,
+//		QuestionGroupFormComponent,
+import { SurveysComponent } from '@app/surveys/surveys.component';
+import { SurveyFormComponent } from '@app/surveys/survey-form/survey-form.component';
+//		SurveysComponent,
+//		SurveyFormComponent,
+
+
+
+import { QuestionAnswerFormComponent } from '@app/question-answers/question-answer-form/question-answer-form.component';
+import { QuestionAnswersComponent } from '@app/question-answers/question-answers.component';
+import { DomainGroupsComponent } from '@app/domain-groups/domain-groups.component';
+import { DomainGroupFormComponent } from '@app/domain-groups/domain-group-form/domain-group-form.component';
+
+import { QuestionGroupsComponent } from '@app/question-groups/question-groups.component';
+import { QuestionGroupFormComponent } from '@app/question-groups/question-group-form/question-group-form.component';
+//		QuestionGroupsComponent,
+//		QuestionGroupFormComponent,
+
+
+//		TestDatesComponent,
+//		TestDateFormComponent,
+
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
 @NgModule({
     declarations: [
         AppComponent,
@@ -44,14 +84,14 @@ import { StudentFormComponent } from '@app/students/student-form/student-form.co
         HomeComponent,
         AboutComponent,
         TenantsComponent,
-		CreateTenantComponent,
-		EditTenantComponent,
+        CreateTenantComponent,
+        EditTenantComponent,
         UsersComponent,
-		CreateUserComponent,
-		EditUserComponent,
-      	RolesComponent,        
-		CreateRoleComponent,
-		EditRoleComponent,
+        CreateUserComponent,
+        EditUserComponent,
+        RolesComponent,
+        CreateRoleComponent,
+        EditRoleComponent,
         TopBarComponent,
         TopBarLanguageSwitchComponent,
         SideBarUserAreaComponent,
@@ -59,7 +99,8 @@ import { StudentFormComponent } from '@app/students/student-form/student-form.co
         SideBarFooterComponent,
         RightSideBarComponent,
         StudentsComponent,
-        StudentFormComponent
+        StudentFormComponent,
+        
     ],
     imports: [
         CommonModule,
@@ -74,7 +115,7 @@ import { StudentFormComponent } from '@app/students/student-form/student-form.co
         NgxPaginationModule
     ],
     providers: [
-
+        
     ]
 })
 export class AppModule { }

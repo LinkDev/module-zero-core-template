@@ -1,0 +1,237 @@
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+                <h2>
+                    {{l('Surveys')}}
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <i class="fa fa-spin fa-spinner" *ngIf="isTableLoading"></i>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block()" (click)="refresh();"><i class="material-icons">refresh</i> {{l('Refresh')}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+			<div class="body table-responsive">
+				<div class="filters row">
+				
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input id="NameFilter" type="text" name="NameFilter" [(ngModel)]="nameFilter" class="form-control">
+								<label class="form-label">{{l('Name')}}</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<div class="form-line">
+								<select id="IsActive" name="IsActive" class="form-control show-tick" [(ngModel)]="isActiveFilter">
+									<option value="">{{l('-- All --')}}</option>
+									<option value=true>{{l('True')}}</option>
+									<option value=false>{{l('False')}}</option>
+								</select>
+								<label class="form-label">{{l('Is active')}}</label>
+							</div>
+						</div>
+					</div>
+				
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<div class="form-line">
+								<select id="ParentSurveyId" name="ParentSurveyId" class="form-control show-tick" [(ngModel)]="parentSurveyIdFilter">
+									<option value="">{{l('-- All --')}}</option>
+									<option #options *ngFor="let item of parentSurveyIdList" value={{item.id}}>{{item.name}}</option>
+								</select>
+								<label class="form-label">{{l('Parent survey')}}</label>
+							</div>
+						</div>
+					</div>
+				
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input id="ParentSurveyRelationFilter" type="text" name="ParentSurveyRelationFilter" [(ngModel)]="parentSurveyRelationFilter" class="form-control">
+								<label class="form-label">{{l('Parent survey relation')}}</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<div class="form-line">
+								<select id="IsEnabled" name="IsEnabled" class="form-control show-tick" [(ngModel)]="isEnabledFilter">
+									<option value="">{{l('-- All --')}}</option>
+									<option value=true>{{l('True')}}</option>
+									<option value=false>{{l('False')}}</option>
+								</select>
+								<label class="form-label">{{l('Is enabled')}}</label>
+							</div>
+						</div>
+					</div>
+				
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input id="CodeFilter" type="text" name="CodeFilter" [(ngModel)]="codeFilter" class="form-control">
+								<label class="form-label">{{l('Code')}}</label>
+							</div>
+						</div>
+					</div>
+				
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input id="IconFilter" type="text" name="IconFilter" [(ngModel)]="iconFilter" class="form-control">
+								<label class="form-label">{{l('Icon')}}</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<div class="form-line">
+								<select id="AllowAddResponse" name="AllowAddResponse" class="form-control show-tick" [(ngModel)]="allowAddResponseFilter">
+									<option value="">{{l('-- All --')}}</option>
+									<option value=true>{{l('True')}}</option>
+									<option value=false>{{l('False')}}</option>
+								</select>
+								<label class="form-label">{{l('Allow add response')}}</label>
+							</div>
+						</div>
+					</div>
+				
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input id="TypeTextFilter" type="text" name="TypeTextFilter" [(ngModel)]="typeTextFilter" class="form-control">
+								<label class="form-label">{{l('Type text')}}</label>
+							</div>
+						</div>
+					</div>
+				
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input id="SerialDigitsCountFilter" type="text" name="SerialDigitsCountFilter" [(ngModel)]="serialDigitsCountFilter" class="form-control">
+								<label class="form-label">{{l('Serial digits count')}}</label>
+							</div>
+						</div>
+					</div>
+				
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input id="LastUpdateTimeFilter" type="text" name="LastUpdateTimeFilter" [(ngModel)]="lastUpdateTimeFilter" class="form-control">
+								<label class="form-label">{{l('Last update time')}}</label>
+							</div>
+						</div>
+					</div>
+				
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input id="MappedToSurveyIdFilter" type="text" name="MappedToSurveyIdFilter" [(ngModel)]="mappedToSurveyIdFilter" class="form-control">
+								<label class="form-label">{{l('Mapped to survey id')}}</label>
+							</div>
+						</div>
+					</div>
+				
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input id="MinMinutesFilter" type="text" name="MinMinutesFilter" [(ngModel)]="minMinutesFilter" class="form-control">
+								<label class="form-label">{{l('Min minutes')}}</label>
+							</div>
+						</div>
+					</div>
+				
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<div class="form-line">
+								<input id="DailyTargetFilter" type="text" name="DailyTargetFilter" [(ngModel)]="dailyTargetFilter" class="form-control">
+								<label class="form-label">{{l('Daily target')}}</label>
+							</div>
+						</div>
+					</div>
+
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<button (click)="search()" class="btn btn-primary waves-effect">{{l('Search')}}</button>
+							</div>
+					</div>
+				</div>
+            <!-- ******************************************************** -->
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th class="btn-link sort" (click)="order('Name',$event)"><a>{{l('Name')}}</a></th>
+                            <th class="btn-link sort" (click)="order('IsActive',$event)"><a>{{l('Is active')}}</a></th>
+							<th class="btn-link sort" (click)="order('ParentSurveyName',$event)"><a>{{l('Parent survey name')}}</a></th>
+                            <th class="btn-link sort" (click)="order('ParentSurveyRelation',$event)"><a>{{l('Parent survey relation')}}</a></th>
+                            <th class="btn-link sort" (click)="order('IsEnabled',$event)"><a>{{l('Is enabled')}}</a></th>
+                            <th class="btn-link sort" (click)="order('Code',$event)"><a>{{l('Code')}}</a></th>
+                            <th class="btn-link sort" (click)="order('Icon',$event)"><a>{{l('Icon')}}</a></th>
+                            <th class="btn-link sort" (click)="order('AllowAddResponse',$event)"><a>{{l('Allow add response')}}</a></th>
+                            <th class="btn-link sort" (click)="order('TypeText',$event)"><a>{{l('Type text')}}</a></th>
+                            <th class="btn-link sort" (click)="order('SerialDigitsCount',$event)"><a>{{l('Serial digits count')}}</a></th>
+                            <th class="btn-link sort" (click)="order('LastUpdateTime',$event)"><a>{{l('Last update time')}}</a></th>
+                            <th class="btn-link sort" (click)="order('MappedToSurveyId',$event)"><a>{{l('Mapped to survey id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('MinMinutes',$event)"><a>{{l('Min minutes')}}</a></th>
+                            <th class="btn-link sort" (click)="order('DailyTarget',$event)"><a>{{l('Daily target')}}</a></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalItems }">
+                            <td>{{item.name}}</td>
+                            <td align="center">
+                                <i class="material-icons" *ngIf="item.isActive" style="color:green;">check_box</i>
+                                <i class="material-icons" *ngIf="!item.isActive" style="color:red;">indeterminate_check_box</i>
+                            </td>
+							<td>{{item.parentSurveyName}}</td>
+                            <td>{{item.parentSurveyRelation}}</td>
+                            <td>{{item.isEnabled}}</td>
+                            <td>{{item.code}}</td>
+                            <td>{{item.icon}}</td>
+                            <td>{{item.allowAddResponse}}</td>
+                            <td>{{item.typeText}}</td>
+                            <td>{{item.serialDigitsCount}}</td>
+                            <td>{{item.lastUpdateTime}}</td>
+                            <td>{{item.mappedToSurveyId}}</td>
+                            <td>{{item.minMinutes}}</td>
+                            <td>{{item.dailyTarget}}</td>
+                            <td class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">menu</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="edit(item)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(item)"><i class="material-icons">delete_sweep</i>{{l('Delete')}}</a></li>
+									<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="navigate('/app/questiongroups?key=surveyId&value=' + item.id)"><i class="material-icons">list</i>{{l('Question groups')}}</a></li>
+									<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="navigate('/app/surveys?key=parentSurveyId&value=' + item.id)"><i class="material-icons">list</i>{{l('Surveys')}}</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <!-- ******************************************************** -->
+
+                <div class="text-align: center;" *ngIf="totalItems > pageSize">
+                    <pagination (pageChange)="getDataPage($event)" id="server"></pagination>
+                </div>
+                <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="create()">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<survey-form-modal #surveyFormModal (modalSave)="refresh()"></survey-form-modal>

@@ -13,6 +13,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
 using Abp.Extensions;
+using Abp.Timing;
 
 #if FEATURE_SIGNALR
 using Owin;
@@ -38,6 +39,8 @@ namespace AbpCompanyName.AbpProjectName.Web.Host.Startup
 
         public IServiceProvider ConfigureServices(IServiceCollection services)
         {
+            Clock.Provider = ClockProviders.Utc;
+
             //MVC
             services.AddMvc(options =>
             {

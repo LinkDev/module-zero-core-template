@@ -1,0 +1,71 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #questionAnswerForm="ngForm" id="frm_edit_questionAnswer" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Question answer")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: Title.errors && (Title.dirty || Title.touched)}" class="form-line">
+                            <input id="title" #Title="ngModel" class="form-control" type="string" name="Title" [(ngModel)]="item.title"  required />
+                            <label for="title" class="form-label">{{l("Title")}}</label>
+                        </div>
+                        <div *ngIf="Title.errors && (Title.dirty || Title.touched)">
+                            <label [ngClass]="{error: Title.errors.required, hide: !Title.errors.required}" for="title">
+                                {{l("Title is required")}}
+                            </label>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <input id="isActive" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="item.isActive" checked />
+                        <label for="isActive" class="form-label">{{l("Is active")}}</label>
+                    </div>
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: Order.errors && (Order.dirty || Order.touched)}" class="form-line">
+                            <input id="order" #Order="ngModel" class="form-control" type="number" name="Order" [(ngModel)]="item.order"  required />
+                            <label for="order" class="form-label">{{l("Order")}}</label>
+                        </div>
+                        <div *ngIf="Order.errors && (Order.dirty || Order.touched)">
+                            <label [ngClass]="{error: Order.errors.required, hide: !Order.errors.required}" for="order">
+                                {{l("Order is required")}}
+                            </label>
+                        </div>
+                    </div>
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: Code.errors && (Code.dirty || Code.touched)}" class="form-line">
+                            <input id="code" #Code="ngModel" class="form-control" type="string" name="Code" [(ngModel)]="item.code"  maxlength="50" />
+                            <label for="code" class="form-label">{{l("Code")}}</label>
+                        </div>
+                        <div *ngIf="Code.errors && (Code.dirty || Code.touched)">
+                            <label [ngClass]="{error: Code.errors.maxlength, hide: !Code.errors.maxlength}" for="code">
+                                    {{l("Code cannot be more than 50 characters long")}}
+                            </label>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <input id="allowText" class="form-control" type="checkbox" name="AllowText" [(ngModel)]="item.allowText" checked />
+                        <label for="allowText" class="form-label">{{l("Allow text")}}</label>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

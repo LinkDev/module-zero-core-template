@@ -1,0 +1,134 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #surveyForm="ngForm" id="frm_edit_survey" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Survey")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: Name.errors && (Name.dirty || Name.touched)}" class="form-line">
+                            <input id="name" #Name="ngModel" class="form-control" type="string" name="Name" [(ngModel)]="item.name"  required maxlength="200" />
+                            <label for="name" class="form-label">{{l("Name")}}</label>
+                        </div>
+                        <div *ngIf="Name.errors && (Name.dirty || Name.touched)">
+                            <label [ngClass]="{error: Name.errors.required, hide: !Name.errors.required}" for="name">
+                                {{l("Name is required")}}
+                            </label>
+                            <label [ngClass]="{error: Name.errors.maxlength, hide: !Name.errors.maxlength}" for="name">
+                                    {{l("Name cannot be more than 200 characters long")}}
+                            </label>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <input id="isActive" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="item.isActive" checked />
+                        <label for="isActive" class="form-label">{{l("Is active")}}</label>
+                    </div>
+					<div class="form-group form-float">
+                        <div class="form-line">
+                            <select id="parentSurveyId" #ParentSurveyId="ngModel" class="form-control show-tick" name="ParentSurveyId" [(ngModel)]="item.parentSurveyId" >
+                                <option value="">-- Select Survey --</option>
+                                <option #options *ngFor="let survey of parentSurveyIdList" value={{survey.id}}>{{survey.name}}</option>
+                            </select>
+                            <label for="ParentSurveyId" class="form-label">{{l("Parent survey")}}</label>
+                        </div>
+                    </div>
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: ParentSurveyRelation.errors && (ParentSurveyRelation.dirty || ParentSurveyRelation.touched)}" class="form-line">
+                            <input id="parentSurveyRelation" #ParentSurveyRelation="ngModel" class="form-control" type="number" name="ParentSurveyRelation" [(ngModel)]="item.parentSurveyRelation"  />
+                            <label for="parentSurveyRelation" class="form-label">{{l("Parent survey relation")}}</label>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <input id="isEnabled" class="form-control" type="checkbox" name="IsEnabled" [(ngModel)]="item.isEnabled" checked />
+                        <label for="isEnabled" class="form-label">{{l("Is enabled")}}</label>
+                    </div>
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: Code.errors && (Code.dirty || Code.touched)}" class="form-line">
+                            <input id="code" #Code="ngModel" class="form-control" type="string" name="Code" [(ngModel)]="item.code"  maxlength="50" />
+                            <label for="code" class="form-label">{{l("Code")}}</label>
+                        </div>
+                        <div *ngIf="Code.errors && (Code.dirty || Code.touched)">
+                            <label [ngClass]="{error: Code.errors.maxlength, hide: !Code.errors.maxlength}" for="code">
+                                    {{l("Code cannot be more than 50 characters long")}}
+                            </label>
+                        </div>
+                    </div>
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: Icon.errors && (Icon.dirty || Icon.touched)}" class="form-line">
+                            <input id="icon" #Icon="ngModel" class="form-control" type="string" name="Icon" [(ngModel)]="item.icon"  maxlength="200" />
+                            <label for="icon" class="form-label">{{l("Icon")}}</label>
+                        </div>
+                        <div *ngIf="Icon.errors && (Icon.dirty || Icon.touched)">
+                            <label [ngClass]="{error: Icon.errors.maxlength, hide: !Icon.errors.maxlength}" for="icon">
+                                    {{l("Icon cannot be more than 200 characters long")}}
+                            </label>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <input id="allowAddResponse" class="form-control" type="checkbox" name="AllowAddResponse" [(ngModel)]="item.allowAddResponse" checked />
+                        <label for="allowAddResponse" class="form-label">{{l("Allow add response")}}</label>
+                    </div>
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: TypeText.errors && (TypeText.dirty || TypeText.touched)}" class="form-line">
+                            <input id="typeText" #TypeText="ngModel" class="form-control" type="string" name="TypeText" [(ngModel)]="item.typeText"  maxlength="50" />
+                            <label for="typeText" class="form-label">{{l("Type text")}}</label>
+                        </div>
+                        <div *ngIf="TypeText.errors && (TypeText.dirty || TypeText.touched)">
+                            <label [ngClass]="{error: TypeText.errors.maxlength, hide: !TypeText.errors.maxlength}" for="typeText">
+                                    {{l("Type text cannot be more than 50 characters long")}}
+                            </label>
+                        </div>
+                    </div>
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: SerialDigitsCount.errors && (SerialDigitsCount.dirty || SerialDigitsCount.touched)}" class="form-line">
+                            <input id="serialDigitsCount" #SerialDigitsCount="ngModel" class="form-control" type="number" name="SerialDigitsCount" [(ngModel)]="item.serialDigitsCount"  />
+                            <label for="serialDigitsCount" class="form-label">{{l("Serial digits count")}}</label>
+                        </div>
+                    </div>
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: LastUpdateTime.errors && (LastUpdateTime.dirty || LastUpdateTime.touched)}" class="form-line">
+                            <input id="lastUpdateTime" #LastUpdateTime="ngModel" class="form-control" type="string" name="LastUpdateTime" [(ngModel)]="item.lastUpdateTime"  />
+                            <label for="lastUpdateTime" class="form-label">{{l("Last update time")}}</label>
+                        </div>
+                    </div>
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: MappedToSurveyId.errors && (MappedToSurveyId.dirty || MappedToSurveyId.touched)}" class="form-line">
+                            <input id="mappedToSurveyId" #MappedToSurveyId="ngModel" class="form-control" type="string" name="MappedToSurveyId" [(ngModel)]="item.mappedToSurveyId"  />
+                            <label for="mappedToSurveyId" class="form-label">{{l("Mapped to survey id")}}</label>
+                        </div>
+                    </div>
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: MinMinutes.errors && (MinMinutes.dirty || MinMinutes.touched)}" class="form-line">
+                            <input id="minMinutes" #MinMinutes="ngModel" class="form-control" type="number" name="MinMinutes" [(ngModel)]="item.minMinutes"  />
+                            <label for="minMinutes" class="form-label">{{l("Min minutes")}}</label>
+                        </div>
+                    </div>
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: DailyTarget.errors && (DailyTarget.dirty || DailyTarget.touched)}" class="form-line">
+                            <input id="dailyTarget" #DailyTarget="ngModel" class="form-control" type="number" name="DailyTarget" [(ngModel)]="item.dailyTarget"  />
+                            <label for="dailyTarget" class="form-label">{{l("Daily target")}}</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

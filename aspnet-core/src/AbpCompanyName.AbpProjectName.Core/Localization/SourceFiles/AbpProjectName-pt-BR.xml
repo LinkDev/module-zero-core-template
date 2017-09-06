@@ -1,13 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <localizationDictionary culture="pt-BR">
   <texts>
     <text name="HomePage" value="Página Inicial" />
     <text name="About" value="Sobre" />
     <text name="WellcomeMessage" value="Bem Vindo ao AbpProjectName!" />
-    
     <text name="FormIsNotValidMessage" value="Formulário não é válido. Por favor, verifique e corrija os erros." />
     <text name="TenantNameCanNotBeEmpty" value="Tenant não pode estar vazio" />
-
     <text name="InvalidUserNameOrPassword" value="Nome de usuário ou senha inválida" />
     <text name="ThereIsNoTenantDefinedWithName{0}" value="Não há Tenant definido com o nome {0}" />
     <text name="TenantIsNotActive" value="Tenant {0} não está ativo." />
@@ -18,15 +16,12 @@
     <text name="Password" value="Senha" />
     <text name="RememberMe" value="Lembre de mim" />
     <text name="LogIn" value="Entrar" />
-
     <text name="LoginFailed" value="Falha no login!" />
-
     <text name="NameSurname" value="Nome sobrenome" />
     <text name="UserName" value="Nome de usuário" />
     <text name="Name" value="Nome" />
     <text name="Surname" value="Sobrenome" />
     <text name="EmailAddress" value="Endereço de e-mail" />
-
     <text name="Tenants" value="Tenants" />
     <text name="SavedSuccessfully" value="Salvo com sucesso" />
     <text name="CreateNewTenant" value="Crie um novo tenant" />
@@ -42,6 +37,62 @@
     <text name="TenantSelection" value="Seleção de Tenant" />
     <text name="TenantSelection_Detail" value="Por favor selecione um dos seguintes tenants." />
     <text name="Logout" value="Sair" />
-
+    <text name="Domain group" value="Domain group" />
+    <text name="Domain groups" value="Domain groups" />
+    <text name="Name is required" value="Name is required" />
+    <text name="Name cannot be more than 200 characters long" value="Name cannot be more than 200 characters long" />
+    <text name="Type" value="Type" />
+    <text name="Is active" value="Is active" />
+    <text name="Created date" value="Created date" />
+    <text name="Created date is required" value="Created date is required" />
+    <text name="Last update time" value="Last update time" />
+    <text name="Domain" value="Domain" />
+    <text name="Domains" value="Domains" />
+    <text name="Name cannot be more than 1000 characters long" value="Name cannot be more than 1000 characters long" />
+    <text name="Code" value="Code" />
+    <text name="Code cannot be more than 50 characters long" value="Code cannot be more than 50 characters long" />
+    <text name="Parent domain" value="Parent domain" />
+    <text name="UR" value="UR" />
+    <text name="Question answer" value="Question answer" />
+    <text name="Question answers" value="Question answers" />
+    <text name="Title" value="Title" />
+    <text name="Title is required" value="Title is required" />
+    <text name="Is active is required" value="Is active is required" />
+    <text name="Order" value="Order" />
+    <text name="Order is required" value="Order is required" />
+    <text name="Question" value="Question" />
+    <text name="Allow text" value="Allow text" />
+    <text name="Allow text is required" value="Allow text is required" />
+    <text name="Questions" value="Questions" />
+    <text name="Question type" value="Question type" />
+    <text name="Question type is required" value="Question type is required" />
+    <text name="Domain group levels number" value="Domain group levels number" />
+    <text name="Question group" value="Question group" />
+    <text name="Is required" value="Is required" />
+    <text name="Is hidden" value="Is hidden" />
+    <text name="Description" value="Description" />
+    <text name="Description cannot be more than 500 characters long" value="Description cannot be more than 500 characters long" />
+    <text name="Question number" value="Question number" />
+    <text name="Question number cannot be more than 50 characters long" value="Question number cannot be more than 50 characters long" />
+    <text name="Help" value="Help" />
+    <text name="Default answer value" value="Default answer value" />
+    <text name="Is used in call back" value="Is used in call back" />
+    <text name="Question groups" value="Question groups" />
+    <text name="Survey" value="Survey" />
+    <text name="Surveys" value="Surveys" />
+    <text name="Parent survey" value="Parent survey" />
+    <text name="Parent survey relation" value="Parent survey relation" />
+    <text name="Is enabled" value="Is enabled" />
+    <text name="Is enabled is required" value="Is enabled is required" />
+    <text name="Icon" value="Icon" />
+    <text name="Icon cannot be more than 200 characters long" value="Icon cannot be more than 200 characters long" />
+    <text name="Allow add response" value="Allow add response" />
+    <text name="Allow add response is required" value="Allow add response is required" />
+    <text name="Type text" value="Type text" />
+    <text name="Type text cannot be more than 50 characters long" value="Type text cannot be more than 50 characters long" />
+    <text name="Serial digits count" value="Serial digits count" />
+    <text name="Mapped to survey id" value="Mapped to survey id" />
+    <text name="Min minutes" value="Min minutes" />
+    <text name="Daily target" value="Daily target" />
   </texts>
 </localizationDictionary>

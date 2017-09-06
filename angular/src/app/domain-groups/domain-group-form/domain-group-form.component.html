@@ -1,0 +1,71 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #domainGroupForm="ngForm" id="frm_edit_domainGroup" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Domain group")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: Name.errors && (Name.dirty || Name.touched)}" class="form-line">
+                            <input id="name" #Name="ngModel" class="form-control" type="string" name="Name" [(ngModel)]="item.name"  required maxlength="200" />
+                            <label for="name" class="form-label">{{l("Name")}}</label>
+                        </div>
+                        <div *ngIf="Name.errors && (Name.dirty || Name.touched)">
+                            <label [ngClass]="{error: Name.errors.required, hide: !Name.errors.required}" for="name">
+                                {{l("Name is required")}}
+                            </label>
+                            <label [ngClass]="{error: Name.errors.maxlength, hide: !Name.errors.maxlength}" for="name">
+                                    {{l("Name cannot be more than 200 characters long")}}
+                            </label>
+                        </div>
+                    </div>
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: Type.errors && (Type.dirty || Type.touched)}" class="form-line">
+                            <input id="type" #Type="ngModel" class="form-control" type="number" name="Type" [(ngModel)]="item.type"  />
+                            <label for="type" class="form-label">{{l("Type")}}</label>
+                        </div>
+                    </div>
+					<div class="form-group">
+                        <input id="isActive" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="item.isActive" checked />
+                        <label for="isActive" class="form-label">{{l("Is active")}}</label>
+                    </div>
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: CreatedDate.errors && (CreatedDate.dirty || CreatedDate.touched)}" class="form-line">
+                            <input id="createdDate" #CreatedDate="ngModel" class="form-control" type="string" name="CreatedDate" [(ngModel)]="item.createdDate"  required />
+                            <label for="createdDate" class="form-label">{{l("Created date")}}</label>
+                        </div>
+                        <div *ngIf="CreatedDate.errors && (CreatedDate.dirty || CreatedDate.touched)">
+                            <label [ngClass]="{error: CreatedDate.errors.required, hide: !CreatedDate.errors.required}" for="createdDate">
+                                {{l("Created date is required")}}
+                            </label>
+                        </div>
+                    </div>
+					<div class="form-group form-float">
+                        <div [ngClass]="{error: LastUpdateTime.errors && (LastUpdateTime.dirty || LastUpdateTime.touched)}" class="form-line">
+                            <input id="lastUpdateTime" #LastUpdateTime="ngModel" class="form-control" type="string" name="LastUpdateTime" [(ngModel)]="item.lastUpdateTime"  />
+                            <label for="lastUpdateTime" class="form-label">{{l("Last update time")}}</label>
+                        </div>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>
