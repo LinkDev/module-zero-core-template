@@ -48,6 +48,7 @@ export class StudentFormComponent extends FormComponentBase<StudentDto> implemen
                     this.active = true;
                     this.modal.show();
                     
+                    
                 }
                 );
             this.isNew = false;
@@ -81,5 +82,7 @@ export class StudentFormComponent extends FormComponentBase<StudentDto> implemen
                 });
         }
     }
+
+
 
 }

@@ -1,7 +1,7 @@
 ﻿import { Component, Injector, ViewChild } from '@angular/core';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
 import { StudentServiceProxy, StudentDto, PagedResultDtoOfStudentDto } from '@shared/service-proxies/service-proxies';
-import { RoleServiceProxy, RoleDto, PagedResultDtoOfRoleDto } from '@shared/service-proxies/service-proxies';
+import { RoleDto, PagedResultDtoOfRoleDto } from '@shared/service-proxies/service-proxies';
 
 import { FilteredComponentBase, FilterCriteria, FilteredResultRequestDto, FilterType } from "shared/filtered-component-base";
 
@@ -17,25 +17,26 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
 
     @ViewChild('studentFormModal') studentFormModal: StudentFormComponent;
 
+    private _roleService: any;
     items: StudentDto[] = [];
     nameFilter: string;
     ageFilter: number;
-    roleIdFilter: number = -1;
+    roleIdFilter: number;
     roleIdList: RoleDto[] = null;
     showDeleted: boolean = false;
 	constructor(
         injector: Injector,
-        private _studentService: StudentServiceProxy, private _roleService: RoleServiceProxy
+        private _studentService: StudentServiceProxy//, private _roleService: RoleServiceProxy
 
     ) {
-
         super(injector);
+        //this._roleService = injector.get(RoleServiceProxy);
     }
 
     ngOnInit() {
-        this._roleService.getAll().subscribe((data: PagedResultDtoOfRoleDto) => {
-            this.roleIdList = data.items;
-        });
+        //this._roleService.getAll().subscribe((data: PagedResultDtoOfRoleDto) => {
+        //    this.roleIdList = data.items;
+        //});
         super.ngOnInit();
     }
 
@@ -84,6 +85,7 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
     }
 
     search() {
+        console.log(this.roleIdFilter);
         let items = new Array<FilterCriteria>();
         if (this.nameFilter !== undefined && this.nameFilter !== null && this.nameFilter.trim() !== '')
             items.push({ FilterName: "Name", FilterType: FilterType.like, FilterValue: this.nameFilter });
@@ -91,7 +93,7 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
         if (this.ageFilter !== undefined && this.ageFilter !== null)
             items.push({ FilterName: "Age", FilterType: FilterType.eq, FilterValue: this.ageFilter });
 
-        if (this.roleIdFilter !== undefined && this.roleIdFilter !== null && this.roleIdFilter!=-1)
+        if (this.roleIdFilter !== undefined && this.roleIdFilter !== null && this.roleIdFilter.toString()!="")
             items.push({ FilterName: "RoleId", FilterType: FilterType.eq, FilterValue: parseInt(this.roleIdFilter.toString()) });
 
         this.Filter(items);

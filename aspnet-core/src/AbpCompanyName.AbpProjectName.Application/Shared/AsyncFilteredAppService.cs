@@ -49,7 +49,11 @@ namespace Abp.Application.Services
             if (!string.IsNullOrEmpty(input.Filter))
             {
                 IList<FilterCriteria> FilterCriteria = new List<FilterCriteria>();
+<<<<<<< HEAD
                 var SearchCriteria = input.Filter.Split(new string[] { " and " }, StringSplitOptions.None);
+=======
+                var SearchCriteria = input.Filter.Split(new string[] { " and " , " or "}, StringSplitOptions.None);
+>>>>>>> bdb3ec03b9ad1e2f1973b81e7ee32a94202fceb5
                 foreach (var item in SearchCriteria)
                 {
                     if (string.IsNullOrEmpty(item) || string.IsNullOrWhiteSpace(item))
@@ -60,7 +64,11 @@ namespace Abp.Application.Services
                     if (index != 0)
                         value = item.Substring(index, item.Length - index - 1);
                     else
+<<<<<<< HEAD
                         value = keyValue[2] == "null" ? null : keyValue[2];
+=======
+                        value = keyValue[2] == "null" ? null : String.Join(" ",keyValue,2,keyValue.Length-2);
+>>>>>>> bdb3ec03b9ad1e2f1973b81e7ee32a94202fceb5
 
                     FilterType fe = GetFilterType(keyValue[1]);
                     var searchItem = new FilterCriteria(keyValue[0], fe, value);

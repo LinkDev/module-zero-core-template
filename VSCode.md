@@ -1,12 +1,20 @@
 ## Download and install these tools first
 - [NodeJS](https://nodejs.org/en/download/)
 - SQL Server database (doesn't have to be local)
+<<<<<<< HEAD
 - Visual Studio Code
 - Git for Windows
 - .NET Core SDK
 - ReplaceInFiles.exe
 - LinkDev.CodeGenerator.exe
 
+=======
+- [Visual Studio Code](https://code.visualstudio.com/download)
+- [Git for Windows](https://git-scm.com/download/win)
+- [.NET Core SDK](https://download.microsoft.com/download/B/9/F/B9F1AF57-C14A-4670-9973-CDF47209B5BF/dotnet-dev-win-x64.1.0.4.exe)
+- LinkDev.CodeGenerator.exe
+ 
+>>>>>>> bdb3ec03b9ad1e2f1973b81e7ee32a94202fceb5
 Using the project template:
 - Download the project template from here: https://github.com/LinkDev/module-zero-core-template/archive/master.zip
 

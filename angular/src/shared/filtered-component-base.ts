@@ -12,6 +12,7 @@ export enum FilterType {
     lt,
     le,
     like,
+    in
 }
 
 export class FilterCriteria {
@@ -33,13 +34,17 @@ export abstract class FilteredComponentBase<EntityDto> extends PagedAndSortedLis
         if (FilterCriteria !== undefined && FilterCriteria !== null && FilterCriteria.length > 0) {
             let searchItems: Array<string> = []
             FilterCriteria.forEach((element, index) => {
-                if (typeof (element.FilterValue) ==="string")
+                if (typeof (element.FilterValue) === "string") {
                     searchItems.push(element.FilterName + ' ' + FilterType[element.FilterType] + ' "' + element.FilterValue + '"');
+                }
+                else if (element.FilterValue instanceof Array) {
+                    searchItems.push(element.FilterName + ' ' + FilterType[element.FilterType] + ' "' + element.FilterValue.join(",") + '"');
+                }
                 else
                     searchItems.push(element.FilterName + ' ' + FilterType[element.FilterType] + ' ' + element.FilterValue);
             });
             this.req.search = searchItems.join(" and ");
-            console.log(this.req.search);
+            console.log("all " + this.req.search);
         }
 
         this.pageNumber = 1;

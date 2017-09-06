@@ -1,4 +1,4 @@
-﻿import { Component, Input, Output, forwardRef } from '@angular/core';
+import { Component, Input, Output, forwardRef } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 import * as moment from 'moment';
 const noop = () => {
@@ -6,40 +6,33 @@ const noop = () => {
 
 export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     provide: NG_VALUE_ACCESSOR,
-    useExisting: forwardRef(() => DatePickerInput),
+    useExisting: forwardRef(() => RichEditorInput),
     multi: true
 };
 
 
 @Component({
-    selector: 'date-picker',
-    template: `<md-input-container>
-  <input mdInput [mdDatepicker]="picker" [name]="name" [id]="id" [min]="min" [max]="max" [placeholder]="placeholder" [(ngModel)]="value">
-  <button mdSuffix [mdDatepickerToggle]="picker"></button>
-</md-input-container>
-<md-datepicker #picker></md-datepicker>`,
+    selector: 'rich-editor',
+    template: `<div [froalaEditor] [id]="id" [name]="name" [(ngModel)]="value"></div>`,
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
-export class DatePickerInput implements ControlValueAccessor {
+export class RichEditorInput implements ControlValueAccessor {
 
     @Input() id: string;
     @Input() name: string;
-    @Input() placeholder: string;
-    @Input() min: Date;
-    @Input() max: Date;
-    private innerValue: moment.Moment;
+    private innerValue: any;
     constructor() { }
     //by the Control Value Accessor
     private onTouchedCallback: () => void = noop;
     private onChangeCallback: (_: any) => void = noop;
 
     //get accessor
-    get value(): moment.Moment {
+    get value(): any {
         return this.innerValue;
     };
 
     //set accessor including call the onchange callback
-    set value(v: moment.Moment) {
+    set value(v: any) {
         if (v !== this.innerValue) {
             this.innerValue = v;
             this.onChangeCallback(v);
