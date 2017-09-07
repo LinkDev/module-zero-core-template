@@ -10,7 +10,7 @@ Using the project template:
 - Download the project template from here: https://github.com/LinkDev/module-zero-core-template/archive/master.zip
 
 - Run ReplaceInFiles to rename the project files and code namespaces from AbpCompanyName.AbpProjectName to something like LinkDev.MyProject
-ReplaceInFiles.exe AbpCompanyName LinkDev AbpProjectName MyProject
+`ReplaceInFiles.exe AbpCompanyName LinkDev AbpProjectName MyProject`
 
 ## Build and run aspnet-core
 
@@ -24,7 +24,9 @@ aspnet-core/src/AbpCompanyName.AbpProjectName.Web.Mvc/appsettings.json
 
 - Inside the aspnet-core/src/AbpCompanyName.AbpProjectName.Web.Host folder run the following commands:
 `dotnet restore`
+
 `dotnet build`
+
 `dotnet run`
 
 You can browse http://localhost:21021/ to see swagger UI for the WebAPIs available in this host.
@@ -33,7 +35,9 @@ You can browse http://localhost:21021/ to see swagger UI for the WebAPIs availab
 Inside the angular folder run the following commands:
 
 `npm install`
+
 `nswag\refresh.bat` (optional) this updates the angular service proxies from the swagger interface running in the above steps
+
 `npm start`
 
 You can browse http://localhost:4200/ to see the Angular admin interface.
