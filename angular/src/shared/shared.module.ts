@@ -27,7 +27,8 @@ import { ClickOutsideDirective } from 'angular2-click-outside/clickOutside.direc
         CommonModule,
         AbpModule,
         RouterModule,
-        FormsModule
+        FormsModule,
+        TreeModule
     ],
     declarations: [
         MaterialInput,

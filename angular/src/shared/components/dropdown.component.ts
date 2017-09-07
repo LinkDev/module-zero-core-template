@@ -14,11 +14,6 @@ import { TreeComponent } from "shared/components/tree.component";
 <a (click)="selectParentOption();treeRoot.deactivate()" >--Select Parent--</a></div>
  <tree-nodes #treeRoot [proxy]="'StudentServiceProxy'" (selected)="getTreeValues($event)"></tree-nodes> </div>
 </div>`
-    //    template: `<ng-container *ngTemplateOutlet="greet"></ng-container>
-    //    <hr>
-    //<ng-template #greet><tree-nodes [proxy]="'StudentServiceProxy'"></tree-nodes></ng-template>
-
-    //      `
 })
 //[selected]="student.Id == parentId"
 export class DropdownComponent {

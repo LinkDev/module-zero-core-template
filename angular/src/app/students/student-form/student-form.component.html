@@ -49,12 +49,9 @@
                         </div>
                     </div>
                     <div class="form-group">
-                        <label for="Roles" class="form-label">{{l("Roles")}}</label>
                         <div class="form-line">
-                            <select id="selectMenu" #Roles="ngModel" class="form-control" required [(ngModel)]="item.roleId" name="Roles">
-                                <option value="">--Select Role--</option>
-                                <option #options *ngFor="let role of roles" value={{role.id}}>{{role.name}}</option>
-                            </select>
+                                <select-input #Roles [proxy] ="'RoleServiceProxy'"  [placeholder]="'Role'"  [(ngModel)]="item.roleId" [name]="'Role'" [dataValue]="'id'"  [dataText]="'name'">
+                                </select-input>
                         </div>
                         <div *ngIf="Roles.errors && (Roles.dirty || Roles.touched)">
                             <label [ngClass]="{error: Roles.errors.required, hide: !Roles.errors.required}">
@@ -72,9 +69,10 @@
                         </div>                        
                     </div>-->
                     <div class="form-group">
-                        <label for="StudentParents" class="form-label">{{l("StudentParents")}}</label>
                         <div class="form-line">
+                                <label for="StudentParents" class="form-label">{{l("Parent")}}</label>
                             <dropdown (select)="parentchanged($event)" ></dropdown>
+                            
                         </div>
                     </div>
                     <!--<div class="form-group">
