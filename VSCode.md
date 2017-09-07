@@ -23,6 +23,7 @@ aspnet-core/src/AbpCompanyName.AbpProjectName.Web.Mvc/appsettings.json
 `dotnet ef database update`
 
 - Inside the aspnet-core/src/AbpCompanyName.AbpProjectName.Web.Host folder run the following commands:
+
 `dotnet restore`
 
 `dotnet build`
