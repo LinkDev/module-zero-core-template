@@ -12,6 +12,7 @@ export enum FilterType {
     lt,
     le,
     like,
+    in
 }
 
 export class FilterCriteria {
