@@ -35,6 +35,8 @@ import { MaterialInput } from '@shared/directives/material-input.directive';
 import { PaginationComponent} from '@shared/pagination/pagination.component';
 import { StudentsComponent } from '@app/students/students.component';
 import { StudentFormComponent } from '@app/students/student-form/student-form.component';
+import { SamplesComponent } from '@app/samples/samples.component';
+import { SampleFormComponent } from '@app/samples/sample-form/sample-form.component';
 
 
 @NgModule({
@@ -59,7 +61,9 @@ import { StudentFormComponent } from '@app/students/student-form/student-form.co
         SideBarFooterComponent,
         RightSideBarComponent,
         StudentsComponent,
-        StudentFormComponent
+        StudentFormComponent,
+        SamplesComponent,
+        SampleFormComponent
     ],
     imports: [
         CommonModule,
