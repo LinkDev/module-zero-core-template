@@ -1,3 +1,4 @@
+# Using Visual Studio Code
 ## Download and install these tools first
 - [NodeJS](https://nodejs.org/en/download/)
 - SQL Server database (doesn't have to be local)
@@ -9,7 +10,7 @@ Using the project template:
 - Download the project template from here: https://github.com/LinkDev/module-zero-core-template/archive/master.zip
 
 - Run ReplaceInFiles to rename the project files and code namespaces from AbpCompanyName.AbpProjectName to something like LinkDev.MyProject
-ReplaceInFiles.exe AbpCompanyName:LinkDev AbpProjectName:MyProject
+ReplaceInFiles.exe AbpCompanyName LinkDev AbpProjectName MyProject
 
 ## Build and run aspnet-core
 
@@ -43,3 +44,5 @@ password: 123qwe
 
 ## Generate Code for your databse:
 `LinkDev.CodeGenerator -namespace <namespace> -connectionString <connectionString> -directory <repo-root>`
+
+[Check here](https://link-dev.visualstudio.com/Technology%20Team/_wiki?pagePath=/Welcome/LinkDev.CodeGenerator) for more documentation on using the Code Generator.

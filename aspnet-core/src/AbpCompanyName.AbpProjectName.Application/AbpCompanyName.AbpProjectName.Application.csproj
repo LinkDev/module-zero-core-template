@@ -14,7 +14,7 @@
 
   <ItemGroup>
     <PackageReference Include="LinkDev.Abp" Version="1.10.0" />
-    <PackageReference Include="LinkDev.CodeGenerator" Version="0.7.0" />
+    <PackageReference Include="LinkDev.CodeGenerator" Version="0.8.0" />
   </ItemGroup>
 
   <ItemGroup>
