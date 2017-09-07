@@ -2594,7 +2594,7 @@ export class StudentDto {
     roleId: number;
     parentId: number;
     id: number;
-    parentId: number;
+
     constructor(data?: any) {
         if (data !== undefined) {
             this.name = data["name"] !== undefined ? data["name"] : undefined;
@@ -2604,7 +2604,6 @@ export class StudentDto {
             this.roleId = data["roleId"] !== undefined ? data["roleId"] : undefined;
             this.parentId = data["parentId"] !== undefined ? data["parentId"] : undefined;
             this.id = data["id"] !== undefined ? data["id"] : undefined;
-            this.parentId = data["parentId"] !== undefined ? data["parentId"] : undefined;
         }
     }
 
@@ -2621,7 +2620,6 @@ export class StudentDto {
         data["roleId"] = this.roleId !== undefined ? this.roleId : undefined;
         data["parentId"] = this.parentId !== undefined ? this.parentId : undefined;
         data["id"] = this.id !== undefined ? this.id : undefined;
-        data["parentId"] = this.parentId !== undefined ? this.parentId : undefined;
         return data; 
     }
 
