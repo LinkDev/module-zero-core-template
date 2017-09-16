@@ -13,6 +13,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Swashbuckle.AspNetCore.Swagger;
 using Abp.Extensions;
+using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
+using AbpCompanyName.AbpProjectName.Authentication.JwtBearer;
 
 #if FEATURE_SIGNALR
 using Owin;
@@ -45,6 +48,7 @@ namespace AbpCompanyName.AbpProjectName.Web.Host.Startup
             });
 
             IdentityRegistrar.Register(services);
+            AuthConfigurer.Configure(services, _appConfiguration);
 
             //Configure CORS for angular2 UI
             services.AddCors(options =>
@@ -64,6 +68,17 @@ namespace AbpCompanyName.AbpProjectName.Web.Host.Startup
             {
                 options.SwaggerDoc("v1", new Info { Title = "AbpProjectName API", Version = "v1" });
                 options.DocInclusionPredicate((docName, description) => true);
+
+                // Define the BearerAuth scheme that's in use
+                options.AddSecurityDefinition("bearerAuth", new ApiKeyScheme()
+                {
+                    Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+                    Name = "Authorization",
+                    In = "header",
+                    Type = "apiKey"
+                });
+                // Assign scope requirements to operations based on AuthorizeAttribute
+                options.OperationFilter<SecurityRequirementsOperationFilter>();
             });
 
             //Configure Abp and Dependency Injection
@@ -82,9 +97,10 @@ namespace AbpCompanyName.AbpProjectName.Web.Host.Startup
 
             app.UseCors(DefaultCorsPolicyName); //Enable CORS!
 
-            AuthConfigurer.Configure(app, _appConfiguration);
-
             app.UseStaticFiles();
+
+            app.UseAuthentication();
+            app.UseJwtTokenMiddleware();
 
 #if FEATURE_SIGNALR
             //Integrate to OWIN
@@ -107,6 +123,8 @@ namespace AbpCompanyName.AbpProjectName.Web.Host.Startup
             // Enable middleware to serve swagger-ui assets (HTML, JS, CSS etc.)
             app.UseSwaggerUI(options =>
             {
+                options.InjectOnCompleteJavaScript("/swagger/ui/abp.js");
+                options.InjectOnCompleteJavaScript("/swagger/ui/on-complete.js");
                 options.SwaggerEndpoint("/swagger/v1/swagger.json", "AbpProjectName API V1");
             }); //URL: /swagger
         }
@@ -114,7 +132,7 @@ namespace AbpCompanyName.AbpProjectName.Web.Host.Startup
 #if FEATURE_SIGNALR
         private static void ConfigureOwinServices(IAppBuilder app)
         {
-            app.Properties["host.AppName"] = "AbpZeroTemplate";
+            app.Properties["host.AppName"] = "AbpProjectName";
 
             app.UseAbp();
             
