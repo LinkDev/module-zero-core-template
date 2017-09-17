@@ -41,7 +41,9 @@ namespace AbpCompanyName.AbpProjectName
 
         public override void PreInitialize()
         {
-            Configuration.Modules.Zero().UserManagement.ExternalAuthenticationSources.Add<LdapAuthenticationSource>();
+            // Uncomment For LDAP Authentication 
+            //Configuration.Modules.Zero().UserManagement.ExternalAuthenticationSources.Add<LdapAuthenticationSource>();
+
             Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(
                 AbpProjectNameConsts.ConnectionStringName
             );

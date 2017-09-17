@@ -30,7 +30,7 @@ namespace AbpCompanyName.AbpProjectName.Authentication.Windows
 
         public async override Task<User> CreateUserAsync(string userNameOrEmailAddress, Tenant tenant)
         {
-            var user= await base.CreateUserAsync(userNameOrEmailAddress, tenant);
+            var user = await base.CreateUserAsync(userNameOrEmailAddress, tenant);
             user.IsEmailConfirmed = true;
             user.IsActive = true;
             user.NormalizedEmailAddress = userNameOrEmailAddress;
@@ -45,7 +45,10 @@ namespace AbpCompanyName.AbpProjectName.Authentication.Windows
         }
         public async override Task<bool> TryAuthenticateAsync(string userNameOrEmailAddress, string plainPassword, Tenant tenant)
         {
-            
+
+            if (!userNameOrEmailAddress.ToLower().Contains("bigbluedc"))
+                return false;
+
             using (var cn = new LdapConnection())
             {
                 try
@@ -53,8 +56,8 @@ namespace AbpCompanyName.AbpProjectName.Authentication.Windows
                     var host = _appConfiguration["LDAP:host"];
                     var port = _appConfiguration["LDAP:port"];
                     cn.Connect(host, int.Parse(port));
-
                     cn.Bind(userNameOrEmailAddress, plainPassword);
+
                     return true;
 
                 }
@@ -65,6 +68,6 @@ namespace AbpCompanyName.AbpProjectName.Authentication.Windows
                 }
 
             }
-        }        
+        }
     }
 }
