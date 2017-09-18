@@ -54,6 +54,7 @@ namespace AbpCompanyName.AbpProjectName.Controllers
         public async Task<AuthenticateResultModel> Authenticate([FromBody] AuthenticateModel model)
         {
             var loginResult = await GetLoginResultAsync(
+                model.LoggingSource,
                 model.UserNameOrEmailAddress,
                 model.Password,
                 GetTenancyNameOrNull()
@@ -193,6 +194,18 @@ namespace AbpCompanyName.AbpProjectName.Controllers
             }
         }
 
+        private async Task<AbpLoginResult<Tenant, User>> GetLoginResultAsync(string LoggingSource, string usernameOrEmailAddress, string password, string tenancyName)
+        {
+            var loginResult = await _logInManager.LoginAsync(LoggingSource, usernameOrEmailAddress, password, tenancyName);
+
+            switch (loginResult.Result)
+            {
+                case AbpLoginResultType.Success:
+                    return loginResult;
+                default:
+                    throw _abpLoginResultTypeHelper.CreateExceptionForFailedLoginAttempt(loginResult.Result, usernameOrEmailAddress, tenancyName);
+            }
+        }
         private string CreateAccessToken(IEnumerable<Claim> claims, TimeSpan? expiration = null)
         {
             var now = DateTime.UtcNow;

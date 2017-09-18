@@ -16,6 +16,14 @@ export class LoginComponent extends AppComponentBase {
 
     @ViewChild('cardBody') cardBody: ElementRef;
 
+    authenticationItems: any = [{
+        dataText: "Normal Authentication",
+        dataValue: ""
+    }, {
+        dataText: "Widnows Authentication",
+        dataValue: "LdapAuthenticationSource"
+    }];
+
     submitting: boolean = false;
 
     constructor(

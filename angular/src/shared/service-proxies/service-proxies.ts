@@ -2756,12 +2756,14 @@ export class AuthenticateModel {
     userNameOrEmailAddress: string;
     password: string;
     rememberClient: boolean;
+    loggingSource: string;
 
     constructor(data?: any) {
         if (data !== undefined) {
             this.userNameOrEmailAddress = data["userNameOrEmailAddress"] !== undefined ? data["userNameOrEmailAddress"] : undefined;
             this.password = data["password"] !== undefined ? data["password"] : undefined;
             this.rememberClient = data["rememberClient"] !== undefined ? data["rememberClient"] : undefined;
+            this.loggingSource = data["loggingSource"] !== undefined ? data["loggingSource"] : undefined;
         }
     }
 
@@ -2774,6 +2776,7 @@ export class AuthenticateModel {
         data["userNameOrEmailAddress"] = this.userNameOrEmailAddress !== undefined ? this.userNameOrEmailAddress : undefined;
         data["password"] = this.password !== undefined ? this.password : undefined;
         data["rememberClient"] = this.rememberClient !== undefined ? this.rememberClient : undefined;
+        data["loggingSource"] = this.loggingSource !== undefined ? this.loggingSource : undefined;
         return data; 
     }
 

@@ -45,10 +45,6 @@ namespace AbpCompanyName.AbpProjectName.Authentication.Windows
         }
         public async override Task<bool> TryAuthenticateAsync(string userNameOrEmailAddress, string plainPassword, Tenant tenant)
         {
-
-            if (!userNameOrEmailAddress.ToLower().Contains("bigbluedc"))
-                return false;
-
             using (var cn = new LdapConnection())
             {
                 try

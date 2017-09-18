@@ -37,10 +37,12 @@ export class SelectInput implements ControlValueAccessor, OnInit {
     }
 
     ngOnInit() {
+        if(this.proxy !== undefined && this.proxy!==null && this.proxy !==""){
             let service= this.injector.get(this.proxy);
             service.getAll().subscribe((data) => {
                 this.items = data.items;
             });
+        }
     }
     //by the Control Value Accessor
     private onTouchedCallback: () => void = noop;
