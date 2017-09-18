@@ -20,6 +20,14 @@
                     <input materialInput type="password" [(ngModel)]="loginService.authenticateModel.password" class="form-control" name="password" placeholder="{{l('Password')}}" required maxlength="32">
                 </div>
             </div>
+            <div class="input-group">
+                <span class="input-group-addon">
+                        <i class="material-icons">security</i>
+                </span>
+                <div class="form-line">
+                    <select-input [name]="'AuthenticationType'" [dataText]="'dataText'" [dataValue]="'dataValue'" [items]="authenticationItems" [placeholder]="'Logging Source'" [(ngModel)]="loginService.authenticateModel.loggingSource"></select-input>
+                </div>
+            </div>
             <div class="row">
                 <div class="col-xs-8 p-t-5">
                     <input type="checkbox"  [(ngModel)]="loginService.rememberMe" name="rememberMe" id="rememberme" class="filled-in chk-col-pink" value="true">
@@ -36,16 +44,5 @@
                 </div>
             </div>
         </form>
-
-        <div class="login-options" *ngIf="multiTenancySideIsTeanant && loginService.externalLoginProviders.length > 0">
-            <h4>{{l("OrLoginWith")}}</h4>
-            <ul class="social-icons">
-                <li *ngFor="let provider of loginService.externalLoginProviders">
-                    <a class="btn btn-default btn-sm fa fa-{{provider.icon == 'googleplus' ? 'google-plus' : provider.icon}}"
-                       (click)="externalLogin(provider)"
-                       title="{{provider.name}}"></a>
-                </li>
-            </ul>
-        </div>
     </div>
 </div>

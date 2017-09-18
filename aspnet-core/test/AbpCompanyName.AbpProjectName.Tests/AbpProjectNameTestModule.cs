@@ -6,6 +6,7 @@ using Abp.Configuration.Startup;
 using Abp.Net.Mail;
 using Abp.TestBase;
 using Abp.Zero.Configuration;
+using Abp.Zero.EntityFrameworkCore;
 using AbpCompanyName.AbpProjectName.EntityFrameworkCore;
 using AbpCompanyName.AbpProjectName.Tests.DependencyInjection;
 using Castle.MicroKernel.Registration;
@@ -28,6 +29,7 @@ namespace AbpCompanyName.AbpProjectName.Tests
         public override void PreInitialize()
         {
             Configuration.UnitOfWork.Timeout = TimeSpan.FromMinutes(30);
+            Configuration.UnitOfWork.IsTransactional = false;
 
             //Disable static mapper usage since it breaks unit tests (see https://github.com/aspnetboilerplate/aspnetboilerplate/issues/2052)
             Configuration.Modules.AbpAutoMapper().UseStaticMapper = false;
@@ -37,7 +39,7 @@ namespace AbpCompanyName.AbpProjectName.Tests
             //Use database for language management
             Configuration.Modules.Zero().LanguageManagement.EnableDbLocalization();
 
-            RegisterFakeService<AbpZeroDbMigrator>();
+            RegisterFakeService<AbpZeroDbMigrator<AbpProjectNameDbContext>>();
 
             Configuration.ReplaceService<IEmailSender, NullEmailSender>(DependencyLifeStyle.Transient);
         }

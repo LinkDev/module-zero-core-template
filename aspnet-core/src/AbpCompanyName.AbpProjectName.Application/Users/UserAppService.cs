@@ -9,6 +9,8 @@ using AbpCompanyName.AbpProjectName.Authorization.Users;
 using AbpCompanyName.AbpProjectName.Users.Dto;
 using Microsoft.AspNetCore.Identity;
 using System.Linq;
+using Abp.Authorization;
+using Abp.Authorization.Users;
 using Microsoft.EntityFrameworkCore;
 using Abp.IdentityFramework;
 using AbpCompanyName.AbpProjectName.Authorization.Roles;
@@ -20,10 +22,16 @@ namespace AbpCompanyName.AbpProjectName.Users
     public class UserAppService : AsyncCrudAppService<User, UserDto, long, FilteredResultRequestDto, CreateUserDto, UserDto>, IUserAppService
     {
         private readonly UserManager _userManager;
+        private readonly RoleManager _roleManager;
         private readonly IPasswordHasher<User> _passwordHasher;
         private readonly IRepository<Role> _roleRepository;
 
-        public UserAppService(IRepository<User, long> repository, UserManager userManager, IPasswordHasher<User> passwordHasher, IRepository<Role> roleRepository)
+        public UserAppService(
+            IRepository<User, long> repository,
+            UserManager userManager,
+            IPasswordHasher<User> passwordHasher,
+            IRepository<Role> roleRepository,
+            RoleManager roleManager)
             : base(repository)
         {
             //todo@ismail: move to AbpAuthorize attribute when this is resolved https://github.com/aspnetboilerplate/aspnetboilerplate/issues/2253
@@ -36,6 +44,7 @@ namespace AbpCompanyName.AbpProjectName.Users
             _userManager = userManager;
             _passwordHasher = passwordHasher;
             _roleRepository = roleRepository;
+            _roleManager = roleManager;
         }
 
         public override async Task<UserDto> Create(CreateUserDto input)
@@ -50,9 +59,9 @@ namespace AbpCompanyName.AbpProjectName.Users
 
             CheckErrors(await _userManager.CreateAsync(user));
 
-            if (input.Roles != null)
+            if (input.RoleNames != null)
             {
-                CheckErrors(await _userManager.SetRoles(user, input.Roles));
+                CheckErrors(await _userManager.SetRoles(user, input.RoleNames));
             }
 
             CurrentUnitOfWork.SaveChanges();
@@ -70,9 +79,9 @@ namespace AbpCompanyName.AbpProjectName.Users
 
             CheckErrors(await _userManager.UpdateAsync(user));
 
-            if (input.Roles != null)
+            if (input.RoleNames != null)
             {
-                CheckErrors(await _userManager.SetRoles(user, input.Roles));
+                CheckErrors(await _userManager.SetRoles(user, input.RoleNames));
             }
 
             return await Get(input);
@@ -101,6 +110,14 @@ namespace AbpCompanyName.AbpProjectName.Users
         {
             ObjectMapper.Map(input, user);
             user.SetNormalizedNames();
+        }
+
+        protected override UserDto MapToEntityDto(User user)
+        {
+            var roles = _roleManager.Roles.Where(r => user.Roles.Any(ur => ur.RoleId == r.Id)).Select(r => r.NormalizedName);
+            var userDto = base.MapToEntityDto(user);
+            userDto.RoleNames = roles.ToArray();
+            return userDto;
         }
 
         protected override IQueryable<User> CreateFilteredQuery(FilteredResultRequestDto input)
@@ -138,12 +155,12 @@ namespace AbpCompanyName.AbpProjectName.Users
         {
             return await Repository.GetAllIncluding(x => x.Roles).FirstOrDefaultAsync(x => x.Id == id);
         }
-        protected virtual void CheckErrors(IdentityResult identityResult)
+
+        protected override IQueryable<User> ApplySorting(IQueryable<User> query, FilteredResultRequestDto input)
         {
-            identityResult.CheckErrors(LocalizationManager);
+            return query.OrderBy(r => r.UserName);
         }
-
-
+        
         private FilterType GetFilterType(string filter)
         {
             FilterType fe = new FilterType();
@@ -174,6 +191,11 @@ namespace AbpCompanyName.AbpProjectName.Users
                     break;
             }
             return fe;
+        }
+
+        protected virtual void CheckErrors(IdentityResult identityResult)
+        {
+            identityResult.CheckErrors(LocalizationManager);
         }
 
     }

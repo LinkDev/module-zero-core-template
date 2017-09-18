@@ -12,6 +12,7 @@ using AbpCompanyName.AbpProjectName.EntityFrameworkCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
+using AbpCompanyName.AbpProjectName.Authentication.Windows;
 
 #if FEATURE_SIGNALR
 using Abp.Web.SignalR;
@@ -40,6 +41,9 @@ namespace AbpCompanyName.AbpProjectName
 
         public override void PreInitialize()
         {
+            // Uncomment For LDAP Authentication 
+            //Configuration.Modules.Zero().UserManagement.ExternalAuthenticationSources.Add<LdapAuthenticationSource>();
+
             Configuration.DefaultNameOrConnectionString = _appConfiguration.GetConnectionString(
                 AbpProjectNameConsts.ConnectionStringName
             );

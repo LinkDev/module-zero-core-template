@@ -1,7 +1,6 @@
 ﻿{
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "project": {
-    "version": "1.0.0",
     "name": "abp-project-name-template"
   },
   "apps": [
@@ -24,7 +23,7 @@
       "tsconfig": "tsconfig.json",
       "prefix": "app",
       "styles": [
-         
+        "assets/fonts/roboto/roboto.css",
         "material-styles.css",
         "../node_modules/bootstrap/dist/css/bootstrap.min.css",
         "../node_modules/simple-line-icons/css/simple-line-icons.css",
@@ -51,7 +50,7 @@
         "../node_modules/moment/min/moment.min.js",
         "../node_modules/signalr/jquery.signalR.js",
         "../node_modules/toastr/toastr.js",
-        "../node_modules/sweetalert/dist/sweetalert-dev.js",
+        "../node_modules/sweetalert/dist/sweetalert.min.js",
         "../node_modules/block-ui/jquery.blockUI.js",
         "../node_modules/spin.js/spin.min.js",
         "../node_modules/spin.js/jquery.spin.js",
