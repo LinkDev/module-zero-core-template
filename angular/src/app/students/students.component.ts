@@ -18,6 +18,7 @@ export class StudentsComponent extends FilteredComponentBase<StudentDto> {
     @ViewChild('studentFormModal') studentFormModal: StudentFormComponent;
 
     items: StudentDto[] = [];
+parentIdList: StudentDto[] = null;
     nameFilter: string;
     ageFilter: number;
     roleIdFilter: number = -1;

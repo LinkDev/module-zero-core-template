@@ -11,10 +11,16 @@ namespace AbpCompanyName.AbpProjectName.Students
 {
 	public class StudentAppService : AsyncFilteredRestoreDeletedAppService<Student, StudentDto, int, FilteredResultRequestDto>, IStudentAppService
 	{
-		public StudentAppService(IRepository<Student, int> repository)
+        public StudentAppService(IRepository<Student, int> repository)
             : base(repository)
         {
-            
-		}
+        }
+
+        protected override IQueryable<Student> CreateQuery()
+        {
+            return Repository.GetAllIncluding(
+                e => e.Parent
+            );
+        }
     }
 }
