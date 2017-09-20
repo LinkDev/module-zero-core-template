@@ -2,7 +2,7 @@
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { AbpModule } from '@abp/abp.module';
 import { RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms'
+import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 
 import { AppSessionService } from './session/app-session.service';
 import { AppUrlService } from './nav/app-url.service';
@@ -30,7 +30,8 @@ import { ClickOutsideDirective } from 'angular2-click-outside/clickOutside.direc
         AbpModule,
         RouterModule,
         FormsModule,
-        TreeModule
+        TreeModule,
+        ReactiveFormsModule
     ],
     declarations: [
         MaterialInput,
@@ -47,7 +48,8 @@ import { ClickOutsideDirective } from 'angular2-click-outside/clickOutside.direc
         SelectInput,
         DropdownComponent,
         TreeComponent,
-        UploadInput
+        UploadInput,
+        ClickOutsideDirective
     ],
     providers:[{provide: 'RoleServiceProxy', useExisting: Proxies.RoleServiceProxy},{provide: 'StudentServiceProxy', useClass: Proxies.StudentServiceProxy}]
 })

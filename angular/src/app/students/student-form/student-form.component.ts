@@ -13,14 +13,15 @@ import * as _ from "lodash";
     templateUrl: './student-form.component.html'
 })
 export class StudentFormComponent extends FormComponentBase<StudentDto> implements OnInit, AfterViewInit {
-
+    parentIdList: StudentDto[] = null;  
     //@Input() parentId: number;
     roles: RoleDto[] = null;
     studentParents: StudentDto[] = null;
-
+    parent: any = {};
+    private _parents: any[] = [];
     constructor(
         injector: Injector,
-        private _studentService: StudentServiceProxy, private _roleService:RoleServiceProxy
+        private _studentService: StudentServiceProxy, private _roleService: RoleServiceProxy
     ) {
         super(injector);
     }
@@ -43,15 +44,22 @@ export class StudentFormComponent extends FormComponentBase<StudentDto> implemen
                 isActive: true,
             });
             this.isNew = true;
+            this.parent = null;
         }
         else {
             this._studentService.get(id)
                 .subscribe(
                 (result) => {
                     this.item = result;
+                    console.log(this.item);
                     this.active = true;
                     this.modal.show();
-                    
+                    console.log(this.item);
+                    //this.parent = (this.studentParents.find(x => x.id == result.parentId));
+                    //if (this.parent != undefined) {
+                    //    this._parents = [];
+                    //    this.parent.parents = this.getParents(this.parent.parentId);
+                    //}
                 }
                 );
             this.isNew = false;
@@ -78,6 +86,9 @@ export class StudentFormComponent extends FormComponentBase<StudentDto> implemen
                 });
         }
         else {
+            //console.log(this.parent.id);
+            if (this.parent != undefined)
+                this.item.parentId = this.parent.id;
             this._studentService.update(this.item)
                 .finally(() => { this.saving = false; })
                 .subscribe(() => {
@@ -87,9 +98,34 @@ export class StudentFormComponent extends FormComponentBase<StudentDto> implemen
                 });
         }
     }
-    parentchanged(data) {
-        //alert("parent");
-        this.item.parentId = data;
-        //alert("here" + data);
+    getParents(parentid: number) {
+        //debugger;
+        if (parentid != null) {
+            let _parent = this.studentParents.find(x => x.id == parentid);
+
+            if (_parent != null) {
+                this._parents.push(_parent);
+                parentid = _parent.parentId;
+                this.getParents(_parent.parentId);
+            }
+            return this._parents;
+        }
     }
+    blur(input) {
+        //var target = event.target || event.srcElement || event.currentTarget;
+        console.log(input);
+        //console.log($('.form-line:after'));
+        //console.log($('#divname:after'));
+        //console.log($(input(':after')));
+        //input.nativeElement.querySelector(':after').remove();
+        //$('#divname:after').css('display', 'none');
+        //console.log(input.style);
+        
+        //input.renderer.setElementStyle(input, 'transform', "scaleX(0)");
+    }
+    //parentchanged(data) {
+    //    //alert("parent");
+    //    this.item.parentId = data;
+    //    //alert("here" + data);
+    //}
 }
