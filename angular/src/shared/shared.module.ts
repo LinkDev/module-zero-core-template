@@ -12,6 +12,7 @@ import { MaterialInput } from "shared/directives/material-input.directive";
 import { DatePickerInput } from 'shared/components/date-picker-input';
 import { PaginationComponent } from 'shared/pagination/pagination.component';
 import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
+import { FileUploadModule } from 'ng2-file-upload';
 import 'hammerjs';
 import * as Proxies from "shared/service-proxies/service-proxies";
 import { DropdownComponent } from "shared/components/dropdown.component"
@@ -19,6 +20,7 @@ import { TreeModule } from 'angular-tree-component';
 import { TreeComponent } from "shared/components/tree.component"
 
 import { SelectInput } from "shared/components/select-input";
+import { UploadInput } from "shared/components/upload-input";
 import { ClickOutsideDirective } from 'angular2-click-outside/clickOutside.directive';
 
 @NgModule({
@@ -36,7 +38,8 @@ import { ClickOutsideDirective } from 'angular2-click-outside/clickOutside.direc
         SelectInput,
         DropdownComponent,
         TreeComponent,
-        ClickOutsideDirective
+        ClickOutsideDirective,
+        UploadInput
     ],
     exports: [
         MaterialInput,
@@ -44,6 +47,7 @@ import { ClickOutsideDirective } from 'angular2-click-outside/clickOutside.direc
         SelectInput,
         DropdownComponent,
         TreeComponent,
+        UploadInput
     ],
     providers:[{provide: 'RoleServiceProxy', useExisting: Proxies.RoleServiceProxy},{provide: 'StudentServiceProxy', useClass: Proxies.StudentServiceProxy}]
 })
