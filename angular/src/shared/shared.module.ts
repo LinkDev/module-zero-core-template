@@ -25,6 +25,7 @@ import { ClickOutsideDirective } from 'angular2-click-outside/clickOutside.direc
 
 @NgModule({
     imports: [
+        FileUploadModule,
         MaterialModule, MdDatepickerModule, MdNativeDateModule,
         CommonModule,
         AbpModule,
