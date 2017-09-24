@@ -11,7 +11,7 @@ import { AppRouteGuard } from './auth/auth-route-guard';
 import { MaterialInput } from "shared/directives/material-input.directive";
 import { DatePickerInput } from 'shared/components/date-picker-input';
 import { PaginationComponent } from 'shared/pagination/pagination.component';
-import { MaterialModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
+import { MdInputModule,MdSelectModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
 import { FileUploadModule } from 'ng2-file-upload';
 import 'hammerjs';
 import * as Proxies from "shared/service-proxies/service-proxies";
@@ -26,7 +26,7 @@ import { ClickOutsideDirective } from 'angular2-click-outside/clickOutside.direc
 @NgModule({
     imports: [
         FileUploadModule,
-        MaterialModule, MdDatepickerModule, MdNativeDateModule,
+        MdInputModule,MdSelectModule, MdDatepickerModule, MdNativeDateModule,
         CommonModule,
         AbpModule,
         RouterModule,
