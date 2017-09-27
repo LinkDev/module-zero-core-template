@@ -22,6 +22,7 @@ import { TreeComponent } from "shared/components/tree.component"
 import { SelectInput } from "shared/components/select-input";
 import { UploadInput } from "shared/components/upload-input";
 import { ClickOutsideDirective } from 'angular2-click-outside/clickOutside.directive';
+import { UploadImageInput } from "shared/components/upload-image";
 
 @NgModule({
     imports: [
@@ -41,7 +42,8 @@ import { ClickOutsideDirective } from 'angular2-click-outside/clickOutside.direc
         DropdownComponent,
         TreeComponent,
         ClickOutsideDirective,
-        UploadInput
+        UploadInput,
+        UploadImageInput
     ],
     exports: [
         MaterialInput,
@@ -50,7 +52,8 @@ import { ClickOutsideDirective } from 'angular2-click-outside/clickOutside.direc
         DropdownComponent,
         TreeComponent,
         UploadInput,
-        ClickOutsideDirective
+        ClickOutsideDirective,
+        UploadImageInput
     ],
     providers:[{provide: 'RoleServiceProxy', useExisting: Proxies.RoleServiceProxy},{provide: 'StudentServiceProxy', useClass: Proxies.StudentServiceProxy}]
 })

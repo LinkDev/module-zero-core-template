@@ -1,7 +1,7 @@
 import { Component, Input, Output, EventEmitter, OnInit, Injector, Optional, Inject, OpaqueToken } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { FileUploaderOptions, FileLikeObject, FileItem } from "ng2-file-upload";
-export const API_BASE_URL = new OpaqueToken('API_BASE_URL');
+import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
 @Component({
   selector: 'upload-input',
   template: `
@@ -53,7 +53,7 @@ export class UploadInput implements OnInit {
   ngOnInit() {
     this.uploader = new FileUploader(
       {
-        url: this.baseUrl +"/api/services/app/upload/UploadFile",
+        url: this.baseUrl +"/api/Upload/UploadFile",
         autoUpload: this.autoUpload
       });
     this.uploader.onSuccessItem = (item: FileItem, response: any, status: number, headers) => {

@@ -13,3 +13,4 @@ angular/src/app/students/students.component.ts
 angular/src/app/students/student-form/student-form.component.html
 angular/src/app/users/users.component.ts
 angular/yarn.lock
+/aspnet-core/src/AbpCompanyName.AbpProjectName.Web.Host/Files
