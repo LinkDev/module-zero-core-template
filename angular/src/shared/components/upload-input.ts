@@ -1,7 +1,16 @@
-import { Component, Input, Output, EventEmitter, OnInit, Injector, Optional, Inject, OpaqueToken } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, Injector, Optional, Inject, OpaqueToken, forwardRef } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { FileUploaderOptions, FileLikeObject, FileItem } from "ng2-file-upload";
 import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
+
+export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => UploadInput),
+  multi: true
+};
+
+
 @Component({
   selector: 'upload-input',
   template: `
@@ -18,7 +27,9 @@ import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
               <td><strong>{{ item?.file?.name }}</strong></td>
               <td>
                 <div class="progress" style="margin-bottom: 0;">
-                  <div class="progress-bar" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }"></div>
+                  <div class="progress-bar progress-bar-striped" role="progressbar" [ngStyle]="{ 'width': item.progress + '%' }">
+                    {{item.progress| number}} %
+                  </div>
                 </div>
               </td>
               <td>
@@ -35,35 +46,84 @@ import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
             </tr>
           </table>
       </div>
-`
+`,
+  providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
-export class UploadInput implements OnInit {
+export class UploadInput implements OnInit, ControlValueAccessor {
+  onChange = (fn: string) => { };
+  onTouched = () => { };
+
   public hasBaseDropZoneOver: boolean = false;
   @Output() fileUploaded: EventEmitter<any> = new EventEmitter();
   @Input() autoUpload: boolean = true;
   @Input() multiple: boolean = false;
-  private baseUrl: string = undefined; 
+  private baseUrl: string = undefined;
   public uploader: FileUploader
-  constructor(private injector: Injector,@Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+
+  private innerValue: string[];
+
+  constructor(private injector: Injector, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
     this.baseUrl = baseUrl ? baseUrl : "";
   }
   public fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
   }
   ngOnInit() {
-    this.uploader = new FileUploader(
-      {
-        url: this.baseUrl +"/api/Upload/UploadFile",
-        autoUpload: this.autoUpload
-      });
+    if (!this.multiple) {
+      this.uploader = new FileUploader(
+        {
+          url: this.baseUrl + "/api/Upload/UploadFile",
+          autoUpload: this.autoUpload,
+          queueLimit: 1
+        });
+    }
+    else {
+      this.uploader = new FileUploader(
+        {
+          url: this.baseUrl + "/api/Upload/UploadFile",
+          autoUpload: this.autoUpload
+        });
+    }
+
     this.uploader.onSuccessItem = (item: FileItem, response: any, status: number, headers) => {
       let x = JSON.parse(response);
+      this.writeValue(x.result);
       this.fileUploaded.emit(x.result);
     }
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
   }
-  //by the Control Value Accessor
+
+  get value(): string {
+    return this.innerValue.toString();
+  };
+
+  //set accessor including call the onchange callback
+  set value(v: string) {
+    if (v === undefined || v === null) {
+      this.innerValue = [];
+    }
+    else if (v !== this.value)
+      this.innerValue.push(v);
+
+    this.onChange(v);
+  }
+
+
+  writeValue(obj: any): void {
+    this.value = obj
+    this.onChange(this.value);
+  }
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    throw new Error("Method not implemented.");
+  }
 
 }
+
 
 

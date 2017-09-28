@@ -1,8 +1,15 @@
-import { Component, Input, Output, EventEmitter, OnInit, Optional,Injector ,Inject, OpaqueToken,InjectionToken } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, Optional, Injector, Inject, OpaqueToken, InjectionToken, forwardRef } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { FileUploaderOptions, FileLikeObject, FileItem } from "ng2-file-upload";
 import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
+import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
+
+export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
+  provide: NG_VALUE_ACCESSOR,
+  useExisting: forwardRef(() => UploadImageInput),
+  multi: true
+};
 @Component({
   selector: 'upload-image',
   template: `
@@ -17,9 +24,13 @@ import { API_BASE_URL } from '@shared/service-proxies/service-proxies';
         </div>
       <img class="img-responsive" *ngIf="imgSrc!=null" [src]="imgSrc" />
     </div>
-`
+`,
+providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
 })
-export class UploadImageInput implements OnInit {
+export class UploadImageInput implements OnInit,ControlValueAccessor {
+  onChange = (fn: string) => { };
+  onTouched = () => { };
+
   public hasBaseDropZoneOver: boolean = false;
   @Output() fileUploaded: EventEmitter<any> = new EventEmitter();
   @Input() autoUpload: boolean = true;
@@ -28,11 +39,11 @@ export class UploadImageInput implements OnInit {
   private baseUrl: string = undefined;
   public uploader: FileUploader
   imgSrc: string = null;
+
+  private innerValue: string[];
+
   constructor(inject:Injector, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
-    //let x=inject.get(API_BASE_URL);
-    //console.log(baseUrl);
     this.baseUrl = baseUrl ? baseUrl : "";
-    //console.log(this.ApiUrl);
   }
   public fileOverBase(e: any): void {
     this.hasBaseDropZoneOver = e;
@@ -48,10 +59,40 @@ export class UploadImageInput implements OnInit {
     this.uploader.onSuccessItem = (item: FileItem, response: any, status: number, headers) => {
       let x = JSON.parse(response);
       this.fileUploaded.emit(x.result);
+      this.writeValue(x.result);
       this.imgSrc = this.baseUrl+"/api/Upload/GetImage?FileName=" + x.result;
       this.uploader.clearQueue();
     }
     this.uploader.onAfterAddingFile = (file) => { file.withCredentials = false; };
+  }
+
+  get value(): string {
+    return this.innerValue.toString();
+  };
+
+  //set accessor including call the onchange callback
+  set value(v: string) {
+    if (v === undefined || v === null) {
+      this.innerValue = [];
+    }
+    else if (v !== this.value)
+      this.innerValue.push(v);
+
+    this.onChange(v);
+  }
+
+  writeValue(obj: any): void {
+    this.value = obj
+    this.onChange(this.value);
+  }
+  registerOnChange(fn: any): void {
+    this.onChange = fn;
+  }
+  registerOnTouched(fn: any): void {
+    this.onTouched = fn;
+  }
+  setDisabledState?(isDisabled: boolean): void {
+    throw new Error("Method not implemented.");
   }
 }
 
