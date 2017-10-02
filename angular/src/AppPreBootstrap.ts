@@ -54,7 +54,7 @@ export class AppPreBootstrap {
         }).done(result => {
             $.extend(true, abp, result);
 
-            abp.clock.provider = this.getCurrentClockProvider(result.clock.provider);
+            //abp.clock.provider = this.getCurrentClockProvider(result.clock.provider);
 
             moment.locale(abp.localization.currentLanguage.name);
 
