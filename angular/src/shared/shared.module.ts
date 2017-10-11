@@ -11,7 +11,7 @@ import { AppRouteGuard } from './auth/auth-route-guard';
 import { MaterialInput } from "shared/directives/material-input.directive";
 import { DatePickerInput } from 'shared/components/date-picker-input';
 import { PaginationComponent } from 'shared/pagination/pagination.component';
-import { MdInputModule,MdSelectModule, MdDatepickerModule, MdNativeDateModule } from '@angular/material';
+import { SharedMaterialModule } from 'shared/shared-material.module';
 import { FileUploadModule } from 'ng2-file-upload';
 import 'hammerjs';
 import * as Proxies from "shared/service-proxies/service-proxies";
@@ -27,7 +27,7 @@ import { UploadImageInput } from "shared/components/upload-image";
 @NgModule({
     imports: [
         FileUploadModule,
-        MdInputModule,MdSelectModule, MdDatepickerModule, MdNativeDateModule,
+        SharedMaterialModule,
         CommonModule,
         AbpModule,
         RouterModule,
