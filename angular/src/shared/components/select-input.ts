@@ -14,11 +14,16 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 @Component({
     selector: 'select-input',
     template: `
-    <mat-form-field>
-    <mat-select [multiple]="multiple"  [id]="id" class="form-control" [placeholder]="placeholder" [(ngModel)]="val">
-    <mat-option *ngFor="let item of items" [value]="item[dataValue]">
-        {{item[dataText]}}
-    </mat-option>
+    <mat-form-field [ngSwitch]="dataValue">
+    <mat-select *ngSwitchCase="''" [multiple]="multiple"  [id]="id" class="form-control" [placeholder]="placeholder" [(ngModel)]="val">
+        <mat-option *ngFor="let item of items" [value]="item">
+            {{item[dataText]}}
+        </mat-option>
+    </mat-select>
+    <mat-select *ngSwitchDefault [multiple]="multiple"  [id]="id" class="form-control" [placeholder]="placeholder" [(ngModel)]="val">
+        <mat-option *ngFor="let item of items" [value]="item[dataValue]">
+            {{item[dataText]}}
+        </mat-option>
   </mat-select>
   </mat-form-field>`,
     providers: [CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR]
@@ -28,7 +33,7 @@ export class SelectInput implements ControlValueAccessor, OnInit {
     @Input() id: string;
     @Input() name: string;
     @Input() placeholder: string;
-    @Input() dataValue: string;
+    @Input() dataValue?: string='';
     @Input() dataText: string;
     @Input() items: any[];
     @Input() proxy: string;
@@ -57,6 +62,7 @@ export class SelectInput implements ControlValueAccessor, OnInit {
 
     //set accessor including call the onchange callback
     set val(v: any) {
+        console.log(v);
         if (v !== this.innerValue) {
             this.innerValue = v;
             this.onChangeCallback(v);
@@ -70,6 +76,7 @@ export class SelectInput implements ControlValueAccessor, OnInit {
 
     //From ControlValueAccessor interface
     writeValue(value: any) {
+        console.log(value);
         if (value !== this.innerValue) {
             this.innerValue = value;
         }
