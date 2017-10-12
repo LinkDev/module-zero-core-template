@@ -27,8 +27,8 @@ export class DatePickerInput implements ControlValueAccessor {
     @Input() id: string;
     @Input() name: string;
     @Input() placeholder: string;
-    @Input() min: Date;
-    @Input() max: Date;
+    @Input() min: moment.Moment;
+    @Input() max: moment.Moment;
     //@Input() required:boolean=false;
     private innerValue: moment.Moment;
     constructor() { }
@@ -37,14 +37,17 @@ export class DatePickerInput implements ControlValueAccessor {
     private onChangeCallback: (_: any) => void = noop;
 
     //get accessor
-    get value(): moment.Moment {
-        return this.innerValue;
+    get value():string {
+        if(this.innerValue!=undefined && this.innerValue!=null)
+            return this.innerValue.toISOString();
+        else 
+            return null;
     };
 
     //set accessor including call the onchange callback
-    set value(v: moment.Moment) {
-        if (v !== this.innerValue) {
-            this.innerValue = v;
+    set value(v:string) {
+        if ( (this.innerValue==undefined && this.innerValue==null) ||  v !== this.innerValue.toISOString()) {
+            this.innerValue=moment(v);
             this.onChangeCallback(v);
         }
     }
