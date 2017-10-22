@@ -1,39 +1,45 @@
-﻿import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { NgModule, ModuleWithProviders } from '@angular/core';
 import { AbpModule } from '@abp/abp.module';
 import { RouterModule } from '@angular/router';
-import { FormsModule, ReactiveFormsModule } from '@angular/forms'
+import { FormsModule,ReactiveFormsModule } from '@angular/forms'
 
 import { AppSessionService } from './session/app-session.service';
 import { AppUrlService } from './nav/app-url.service';
 import { AppAuthService } from './auth/app-auth.service';
 import { AppRouteGuard } from './auth/auth-route-guard';
 import { MaterialInput } from "shared/directives/material-input.directive";
-import { DatePickerInput } from 'shared/components/date-picker-input';
+import { DatePickerInput } from 'shared/input-controls/input-date';
 import { PaginationComponent } from 'shared/pagination/pagination.component';
-import { SharedMaterialModule } from 'shared/shared-material.module';
+import { SharedMaterialModule} from 'shared/shared-material.module';
 import { FileUploadModule } from 'ng2-file-upload';
 import 'hammerjs';
 import * as Proxies from "shared/service-proxies/service-proxies";
 import { DropdownComponent } from "shared/components/dropdown.component"
 import { TreeModule } from 'angular-tree-component';
 import { TreeComponent } from "shared/components/tree.component"
-
-import { SelectInput } from "shared/components/select-input";
+import { AppConsts } from '@shared/AppConsts';
+import { SelectInput } from "shared/input-controls/input-select";
 import { UploadInput } from "shared/components/upload-input";
-import { ClickOutsideDirective } from 'angular2-click-outside/clickOutside.directive';
 import { UploadImageInput } from "shared/components/upload-image";
-
+import { RichEditorInput } from "shared/input-controls/input-richEditor";
+import { InputComponent } from "shared/input-controls/input-text";
+import { ValidateComponent } from "shared/components/validation.component";
+import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+export function getRemoteServiceBaseUrl(): string {
+    return AppConsts.remoteServiceBaseUrl;
+  }
 @NgModule({
     imports: [
-        FileUploadModule,
         SharedMaterialModule,
+        FroalaEditorModule.forRoot(), FroalaViewModule.forRoot(),
         CommonModule,
         AbpModule,
         RouterModule,
         FormsModule,
+        ReactiveFormsModule,
         TreeModule,
-        ReactiveFormsModule
+        FileUploadModule
     ],
     declarations: [
         MaterialInput,
@@ -41,9 +47,12 @@ import { UploadImageInput } from "shared/components/upload-image";
         SelectInput,
         DropdownComponent,
         TreeComponent,
-        ClickOutsideDirective,
+        RichEditorInput,
         UploadInput,
-        UploadImageInput
+        UploadImageInput,
+        InputComponent,
+        ValidateComponent
+
     ],
     exports: [
         MaterialInput,
@@ -51,11 +60,17 @@ import { UploadImageInput } from "shared/components/upload-image";
         SelectInput,
         DropdownComponent,
         TreeComponent,
+        RichEditorInput,
         UploadInput,
-        ClickOutsideDirective,
-        UploadImageInput
+        UploadImageInput,
+        InputComponent,
+        ValidateComponent
     ],
-    providers:[{provide: 'RoleServiceProxy', useExisting: Proxies.RoleServiceProxy},{provide: 'StudentServiceProxy', useClass: Proxies.StudentServiceProxy}]
+    providers:[	
+    Proxies.ValidationServiceProxy,    
+    {provide: 'RoleServiceProxy', useExisting: Proxies.RoleServiceProxy},
+    {provide:'StudentServiceProxy',useClass:Proxies.StudentServiceProxy}
+]
 })
 export class SharedModule {
     static forRoot(): ModuleWithProviders {
