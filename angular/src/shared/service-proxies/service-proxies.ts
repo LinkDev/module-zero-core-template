@@ -1925,6 +1925,159 @@ export class UserServiceProxy {
     }
 }
 
+@Injectable()
+export class ValidationServiceProxy {
+    private http: Http = null; 
+    private baseUrl: string = undefined; 
+    protected jsonParseReviver: (key: string, value: any) => any = undefined;
+
+    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http; 
+        this.baseUrl = baseUrl ? baseUrl : ""; 
+    }
+
+    /**
+     * @return Success
+     */
+    getValidations(dtoName?: string): Observable<ValidationDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Validation/GetValidations?";
+        if (dtoName !== undefined)
+            url_ += "DtoName=" + encodeURIComponent("" + dtoName) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        const content_ = "";
+        
+        let options_ = {
+            body: content_,
+            method: "get",
+            headers: new Headers({
+                "Content-Type": "application/json; charset=UTF-8", 
+                "Accept": "application/json; charset=UTF-8"
+            })
+        };
+
+        return this. http.request(url_, options_).map((response) => {
+            return this.processGetValidations(response);
+        }).catch((response: any) => {
+            if (response instanceof Response) {
+                try {
+                    return Observable.of(this.processGetValidations(response));
+                } catch (e) {
+                    return <Observable<ValidationDto[]>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<ValidationDto[]>><any>Observable.throw(response);
+        });
+    }
+
+    protected processGetValidations(response: Response): ValidationDto[] {
+        const responseText = response.text();
+        const status = response.status; 
+
+        if (status === 200) {
+            let result200: ValidationDto[] = null;
+            let resultData200 = responseText === "" ? null : JSON.parse(responseText, this.jsonParseReviver);
+            if (resultData200 && resultData200.constructor === Array) {
+                result200 = [];
+                for (let item of resultData200)
+                    result200.push(ValidationDto.fromJS(item));
+            }
+            return result200;
+        } else if (status !== 200 && status !== 204) {
+            this.throwException("An unexpected server error occurred.", status, responseText);
+        }
+        return null;
+    }
+
+    protected throwException(message: string, status: number, response: string, result?: any): any {
+        if(result !== null && result !== undefined)
+            throw result;
+        else
+            throw new SwaggerException(message, status, response, null);
+    }
+}
+
+export class ValidationDto {
+    name: string;
+    displayName: string;
+    validationTypes: ValidationTypes[];
+
+    constructor(data?: any) {
+        if (data !== undefined) {
+            this.name = data["name"] !== undefined ? data["name"] : undefined;
+            this.displayName = data["displayName"] !== undefined ? data["displayName"] : undefined;
+            if (data["validationTypes"] && data["validationTypes"].constructor === Array) {
+                this.validationTypes = [];
+                for (let item of data["validationTypes"])
+                    this.validationTypes.push(ValidationTypes.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): ValidationDto {
+        return new ValidationDto(data);
+    }
+
+    toJS(data?: any) {
+        data = data === undefined ? {} : data;
+        data["name"] = this.name !== undefined ? this.name : undefined;
+        data["displayName"] = this.displayName !== undefined ? this.displayName : undefined;
+        if (this.validationTypes && this.validationTypes.constructor === Array) {
+            data["validationTypes"] = [];
+            for (let item of this.validationTypes)
+                data["validationTypes"].push(item.toJS());
+        }
+        return data; 
+    }
+
+    toJSON() {
+        return JSON.stringify(this.toJS());
+    }
+
+    clone() {
+        const json = this.toJSON();
+        return new ValidationDto(JSON.parse(json));
+    }
+}
+
+export class ValidationTypes {
+    validationName: string;
+    errorMessage: string;
+    minLength: number;
+    maxLength: number;
+
+    constructor(data?: any) {
+        if (data !== undefined) {
+            this.validationName = data["validationName"] !== undefined ? data["validationName"] : undefined;
+            this.errorMessage = data["errorMessage"] !== undefined ? data["errorMessage"] : undefined;
+            this.minLength = data["minLength"] !== undefined ? data["minLength"] : undefined;
+            this.maxLength = data["maxLength"] !== undefined ? data["maxLength"] : undefined;
+        }
+    }
+
+    static fromJS(data: any): ValidationTypes {
+        return new ValidationTypes(data);
+    }
+
+    toJS(data?: any) {
+        data = data === undefined ? {} : data;
+        data["validationName"] = this.validationName !== undefined ? this.validationName : undefined;
+        data["errorMessage"] = this.errorMessage !== undefined ? this.errorMessage : undefined;
+        data["minLength"] = this.minLength !== undefined ? this.minLength : undefined;
+        data["maxLength"] = this.maxLength !== undefined ? this.maxLength : undefined;
+        return data; 
+    }
+
+    toJSON() {
+        return JSON.stringify(this.toJS());
+    }
+
+    clone() {
+        const json = this.toJSON();
+        return new ValidationTypes(JSON.parse(json));
+    }
+}
+
 export class IsTenantAvailableInput {
     tenancyName: string;
 
