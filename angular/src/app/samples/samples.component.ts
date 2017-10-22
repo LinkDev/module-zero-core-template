@@ -1,6 +1,7 @@
 import { Component, Injector, ViewChild } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { appModuleAnimation } from '@shared/animations/routerTransition';
+import * as moment from 'moment';
 import { SampleServiceProxy, SampleDto, PagedResultDtoOfSampleDto } from '@shared/service-proxies/service-proxies';
 import { SampleFormComponent } from "app/samples/sample-form/sample-form.component";
 import { FilteredComponentBase, FilterCriteria, FilteredResultRequestDto, FilterType } from "shared/filtered-component-base";
@@ -14,14 +15,15 @@ import { FilteredComponentBase, FilterCriteria, FilteredResultRequestDto, Filter
 	]
 })
 export class SamplesComponent extends FilteredComponentBase<SampleDto> {
+	items: SampleDto[] = [];
 
     @ViewChild('sampleFormModal') sampleFormModal: SampleFormComponent;
-    
-    items: SampleDto[] = [];
-	bioFilter: string;
-	nameFilter: string;
-	publishDateFilter: string;
-	constructor(
+    trueFalseList:any=[{name:"True",value:"true"},{name:"False",value:"false"}];
+		bioFilter: string;
+		nameFilter: string;
+		publishDateFromFilter: moment.Moment=null;
+	publishDateToFilter: moment.Moment=null;
+		constructor(
         injector: Injector,
 		private route: Router,
 		private activatedRoute: ActivatedRoute,
@@ -35,7 +37,6 @@ export class SamplesComponent extends FilteredComponentBase<SampleDto> {
 	ngOnInit() {
 
 		this.activatedRoute.queryParams.subscribe((params: Params) => {
-            console.log(params);
             let key = params['key'];
             let value = params['value'];
             this[key + "Filter"] = value;
@@ -73,13 +74,16 @@ export class SamplesComponent extends FilteredComponentBase<SampleDto> {
     }
 	search(): void {
         let items = new Array<FilterCriteria>();
-        if (this.bioFilter !== undefined && this.bioFilter !== null && this.bioFilter.toString() !== '')
+		        if (this.bioFilter !== undefined && this.bioFilter !== null && this.bioFilter.toString() !== '')
         items.push({ FilterName: "Bio", FilterType: FilterType.like, FilterValue: this.bioFilter });
-        if (this.nameFilter !== undefined && this.nameFilter !== null && this.nameFilter.toString() !== '')
+				        if (this.nameFilter !== undefined && this.nameFilter !== null && this.nameFilter.toString() !== '')
         items.push({ FilterName: "Name", FilterType: FilterType.like, FilterValue: this.nameFilter });
-        if (this.publishDateFilter !== undefined && this.publishDateFilter !== null && this.publishDateFilter.toString() !== '')
-        items.push({ FilterName: "PublishDate", FilterType: FilterType.like, FilterValue: this.publishDateFilter });
-
+				  
+			if (this.publishDateFromFilter !== undefined && this.publishDateFromFilter !== null && this.publishDateFromFilter.toString() !== '')
+				items.push({ FilterName: "PublishDate", FilterType: FilterType.ge, FilterValue: moment(this.publishDateFromFilter).format("YYYY/MM/DD")  });
+			if (this.publishDateToFilter !== undefined && this.publishDateToFilter !== null && this.publishDateToFilter.toString() !== '')
+				items.push({ FilterName: "PublishDate", FilterType: FilterType.le, FilterValue: moment(this.publishDateToFilter).format("YYYY/MM/DD")  });
+		
         this.Filter(items);
     }
     // Show Modals

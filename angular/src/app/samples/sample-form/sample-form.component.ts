@@ -1,5 +1,6 @@
 import { Component, ViewChild, Injector, Output, EventEmitter, ElementRef, OnInit, AfterViewInit,ViewChildren,QueryList } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
+import * as moment from 'moment';
 import { SampleServiceProxy, SampleDto, PagedResultDtoOfSampleDto } from '@shared/service-proxies/service-proxies';
 import { FormComponentBase } from '@shared/form-component-base';
 import * as _ from "lodash";

@@ -21,30 +21,20 @@
 				<div class="filters row">
 				
 					<div class="col-sm-3">
-						<div class="form-group form-float">
-							<div class="form-line">
-								<input id="BioFilter" type="text" name="BioFilter" [(ngModel)]="bioFilter" class="form-control">
-								<label class="form-label">{{l('Bio')}}</label>
-							</div>
-						</div>
+						<input-text type="text" [placeholder]="l('Bio')" name="BioFilter" [(ngModel)]="bioFilter"></input-text>
 					</div>
 				
 					<div class="col-sm-3">
-						<div class="form-group form-float">
-							<div class="form-line">
-								<input id="NameFilter" type="text" name="NameFilter" [(ngModel)]="nameFilter" class="form-control">
-								<label class="form-label">{{l('Name')}}</label>
-							</div>
-						</div>
+						<input-text type="text" [placeholder]="l('Name')" name="NameFilter" [(ngModel)]="nameFilter"></input-text>
 					</div>
-				
+
 					<div class="col-sm-3">
-
-                            <date-picker [id]="'PublishDateFilter'" [name]="'PublishDateFilter'"
-                             [placeholder]="l('Publish date')" [(ngModel)]="publishDateFilter"></date-picker>
-
-						
-					</div>
+                            <input-date [id]="'PublishDateFromFilter'" [name]="'PublishDateFromFilter'" [placeholder]="l('From Publish date')" [(ngModel)]="publishDateFromFilter"></input-date>
+                    </div>
+					<div class="col-sm-3">
+                            <input-date id="PublishDateToFilter" name="PublishDateToFilter" [placeholder]="l('To Publish date')" [(ngModel)]="publishDateToFilter"></input-date>
+                    </div>
+					
 
 					<div class="col-sm-3">
 						<div class="form-group form-float">

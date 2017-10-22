@@ -15,39 +15,13 @@
                 </div>
 
                 <div class="modal-body">
-					<div class="form-group form-float">
-                        <div [ngClass]="{error: Bio.errors && (Bio.dirty || Bio.touched)}" class="form-line">
-                            <input id="bio" #Bio="ngModel" class="form-control" type="string" name="Bio" [(ngModel)]="item.bio"  required />
-                            <label for="bio" class="form-label">{{l("Bio")}}</label>
-                        </div>
-                        <div *ngIf="Bio.errors && (Bio.dirty || Bio.touched)">
-                            <label [ngClass]="{error: Bio.errors.required, hide: !Bio.errors.required}" for="bio">
-                                {{l("Bio is required")}}
-                            </label>
-                        </div>
-                    </div>
-					<div class="form-group form-float">
-                        <div [ngClass]="{error: Name.errors && (Name.dirty || Name.touched)}" class="form-line">
-                            <input id="name" #Name="ngModel" class="form-control" type="string" name="Name" [(ngModel)]="item.name"  maxlength="50" />
-                            <label for="name" class="form-label">{{l("Name")}}</label>
-                        </div>
-                        <div *ngIf="Name.errors && (Name.dirty || Name.touched)">
-                            <label [ngClass]="{error: Name.errors.maxlength, hide: !Name.errors.maxlength}" for="name">
-                                    {{l("Name cannot be more than 50 characters long")}}
-                            </label>
-                        </div>
-                    </div>
-					<div class="form-group form-float">
-                        <div [ngClass]="{error: PublishDate.errors && (PublishDate.dirty || PublishDate.touched)}" class="form-line">
-                            <input id="publishDate" #PublishDate="ngModel" class="form-control" type="string" name="PublishDate" [(ngModel)]="item.publishDate"  required />
-                            <label for="publishDate" class="form-label">{{l("Publish date")}}</label>
-                        </div>
-                        <div *ngIf="PublishDate.errors && (PublishDate.dirty || PublishDate.touched)">
-                            <label [ngClass]="{error: PublishDate.errors.required, hide: !PublishDate.errors.required}" for="publishDate">
-                                {{l("Publish date is required")}}
-                            </label>
-                        </div>
-                    </div>
+					<input-text id="bio" dto="SampleDto"  type="string" name="Bio" [(ngModel)]="item.bio"></input-text>
+
+					<input-text id="name" dto="SampleDto"  type="string" name="Name" [(ngModel)]="item.name"></input-text>
+
+	
+					<input-date id="publishDate" dto="SampleDto" name="publishDate" [placeholder]="l('Publish date')" [(ngModel)]="item.publishDate"></input-date>
+		
 
                 </div>
 

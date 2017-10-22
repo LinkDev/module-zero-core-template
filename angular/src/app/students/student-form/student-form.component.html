@@ -50,8 +50,8 @@
                     </div>
                     <div class="form-group">
                         <div class="form-line">
-                            <select-input #Roles [proxy]="'RoleServiceProxy'"  [placeholder]="'Role'"  [(ngModel)]="item.roleId" [name]="'Role'"  [dataValue]="'id'"  [dataText]="'name'">
-                            </select-input>
+                            <input-select #Roles [proxy]="'RoleServiceProxy'"  [placeholder]="'Role'"  [(ngModel)]="item.roleId" [name]="'Role'"  [dataValue]="'id'"  [dataText]="'name'">
+                            </input-select>
                         </div>
                         <div *ngIf="Roles.errors && (Roles.dirty || Roles.touched)">
                             <label [ngClass]="{error: Roles.errors.required, hide: !Roles.errors.required}">
