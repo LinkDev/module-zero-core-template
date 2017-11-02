@@ -24,8 +24,8 @@
                 <span class="input-group-addon">
                         <i class="material-icons">security</i>
                 </span>
-                <div class="form-line">
-                    <select-input [name]="'AuthenticationType'" [dataText]="'dataText'" [dataValue]="'dataValue'" [items]="authenticationItems" [placeholder]="'Logging Source'" [(ngModel)]="loginService.authenticateModel.loggingSource"></select-input>
+                <div>
+                    <input-select [name]="'AuthenticationType'" [dataText]="'dataText'" [dataValue]="'dataValue'" [items]="authenticationItems" [placeholder]="'Logging Source'" [(ngModel)]="loginService.authenticateModel.loggingSource"></input-select>
                 </div>
             </div>
             <div class="row">
