@@ -1,7 +1,6 @@
 import { Component, Input, Output, ViewChild, forwardRef, OnInit, Injector, ElementRef, asNativeElements } from '@angular/core';
 import { AppComponentBase } from 'shared/app-component-base';
 import { Validators, ValidatorFn, FormControl } from '@angular/forms';
-import { validation, validationTypes } from "shared/interfaces/validation.interface";
 import { ValidationDto } from "shared/service-proxies/service-proxies";
 @Component({
     selector: 'validate',
