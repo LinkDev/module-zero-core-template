@@ -68,8 +68,7 @@ export function getRemoteServiceBaseUrl(): string {
     ],
     providers:[	
     Proxies.ValidationServiceProxy,    
-    {provide: 'RoleServiceProxy', useExisting: Proxies.RoleServiceProxy},
-    {provide:'StudentServiceProxy',useClass:Proxies.StudentServiceProxy}
+    {provide: 'RoleServiceProxy', useExisting: Proxies.RoleServiceProxy}
 ]
 })
 export class SharedModule {

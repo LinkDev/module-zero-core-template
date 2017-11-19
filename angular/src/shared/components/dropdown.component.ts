@@ -1,5 +1,4 @@
 ﻿import { Component, Input, Output, EventEmitter, AfterViewInit, ViewChild, forwardRef } from "@angular/core";
-import { StudentServiceProxy, StudentDto } from "shared/service-proxies/service-proxies";
 import { TreeComponent } from "shared/components/tree.component";
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
 
@@ -26,7 +25,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
 })
 //[selected]="student.Id == parentId"
 export class DropdownComponent implements ControlValueAccessor {
-    @Input() public dropdownValues: StudentDto[] = [];
+    @Input() public dropdownValues: any[] = [];
     @Input() multiselect: boolean = false;
     @Input() name: string;
     @Input() proxy: string;

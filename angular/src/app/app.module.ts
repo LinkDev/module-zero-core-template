@@ -33,10 +33,7 @@ import { SideBarFooterComponent } from '@app/layout/sidebar-footer.component';
 import { RightSideBarComponent } from '@app/layout/right-sidebar.component';
 import { MaterialInput } from '@shared/directives/material-input.directive';
 import { PaginationComponent} from '@shared/pagination/pagination.component';
-import { StudentsComponent } from '@app/students/students.component';
-import { StudentFormComponent } from '@app/students/student-form/student-form.component';
-import { SamplesComponent } from '@app/samples/samples.component';
-import { SampleFormComponent } from '@app/samples/sample-form/sample-form.component';
+
 
 
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
@@ -60,11 +57,7 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
         SideBarUserAreaComponent,
         SideBarNavComponent,
         SideBarFooterComponent,
-        RightSideBarComponent,
-        StudentsComponent,
-        StudentFormComponent,
-        SamplesComponent,
-        SampleFormComponent
+        RightSideBarComponent
     ],
     imports: [
         CommonModule,

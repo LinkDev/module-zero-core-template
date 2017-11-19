@@ -1,7 +1,5 @@
 ﻿import { Component, Input, Injector, OnInit, Output, EventEmitter, ViewChild, AfterViewInit } from "@angular/core";
 import { TreeNode, ITreeOptions, IActionMapping, KEYS, TREE_ACTIONS } from "angular-tree-component/dist/angular-tree-component";
-import { StudentServiceProxy, StudentDto, PagedResultDtoOfStudentDto } from '@shared/service-proxies/service-proxies';
-
 
 @Component({
     selector: 'tree-nodes',
