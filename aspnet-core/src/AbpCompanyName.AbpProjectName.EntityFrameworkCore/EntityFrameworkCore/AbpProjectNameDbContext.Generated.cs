@@ -8,8 +8,6 @@ namespace AbpCompanyName.AbpProjectName.EntityFrameworkCore
 {
     public partial class AbpProjectNameDbContext 
     {
-
-        public virtual DbSet<Sample> Samples { get; set; }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 			base.OnModelCreating(modelBuilder);
