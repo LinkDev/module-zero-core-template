@@ -1,4 +1,5 @@
-﻿using Abp.Authorization;
+﻿using Microsoft.AspNetCore.Identity;
+using Abp.Authorization;
 using Abp.Authorization.Users;
 using Abp.Configuration;
 using Abp.Configuration.Startup;

@@ -1,12 +1,10 @@
 ﻿using System.Threading.Tasks;
-
-using Abp.Application.Services.Dto;
-
-using AbpCompanyName.AbpProjectName.Users;
-using AbpCompanyName.AbpProjectName.Users.Dto;
 using Microsoft.EntityFrameworkCore;
 using Shouldly;
 using Xunit;
+using Abp.Application.Services.Dto;
+using AbpCompanyName.AbpProjectName.Users;
+using AbpCompanyName.AbpProjectName.Users.Dto;
 
 namespace AbpCompanyName.AbpProjectName.Tests.Users
 {
@@ -25,14 +23,14 @@ namespace AbpCompanyName.AbpProjectName.Tests.Users
             //Act
             var output = await _userAppService.GetAll(new FilteredResultRequestDto { MaxResultCount=20, SkipCount=0} );
 
-            //Assert
+            // Assert
             output.Items.Count.ShouldBeGreaterThan(0);
         }
 
         [Fact]
         public async Task CreateUser_Test()
         {
-            //Act
+            // Act
             await _userAppService.Create(
                 new CreateUserDto
                 {

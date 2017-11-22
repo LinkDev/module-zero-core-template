@@ -1,18 +1,18 @@
 ﻿using System.Collections.Generic;
 using System.Threading.Tasks;
-using Abp.Application.Services;
-using Abp.Application.Services.Dto;
-using Abp.Domain.Repositories;
 using System.Linq;
-using Abp.Authorization;
-using AbpCompanyName.AbpProjectName.Authorization.Roles;
-using AbpCompanyName.AbpProjectName.Roles.Dto;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using Abp.Application.Services;
+using Abp.Application.Services.Dto;
+using Abp.Authorization;
+using Abp.Domain.Repositories;
 using Abp.IdentityFramework;
+using Abp.UI;
+using AbpCompanyName.AbpProjectName.Authorization.Roles;
 using AbpCompanyName.AbpProjectName.Authorization.Users;
 using AbpCompanyName.AbpProjectName.Authorization;
-using Abp.UI;
+using AbpCompanyName.AbpProjectName.Roles.Dto;
 
 namespace AbpCompanyName.AbpProjectName.Roles
 {
@@ -79,11 +79,6 @@ namespace AbpCompanyName.AbpProjectName.Roles
             CheckDeletePermission();
 
             var role = await _roleManager.FindByIdAsync(input.Id.ToString());
-            if (role.IsStatic)
-            {
-                throw new UserFriendlyException(L("CanNotDeleteStaticRole"));
-            }
-
             var users = await _userManager.GetUsersInRoleAsync(role.NormalizedName);
 
             foreach (var user in users)

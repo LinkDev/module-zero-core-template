@@ -1,6 +1,8 @@
 ﻿using System;
-using System.Reflection;
 using System.Text;
+using Microsoft.AspNetCore.Hosting;
+using Microsoft.Extensions.Configuration;
+using Microsoft.IdentityModel.Tokens;
 using Abp.AspNetCore;
 using Abp.AspNetCore.Configuration;
 using Abp.Modules;
@@ -48,7 +50,7 @@ namespace AbpCompanyName.AbpProjectName
                 AbpProjectNameConsts.ConnectionStringName
             );
 
-            //Use database for language management
+            // Use database for language management
             Configuration.Modules.Zero().LanguageManagement.EnableDbLocalization();
 
             Configuration.Modules.AbpAspNetCore()

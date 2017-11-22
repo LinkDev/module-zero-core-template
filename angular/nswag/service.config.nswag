@@ -1,4 +1,5 @@
-﻿{
+{
+  "runtime": "Default",
   "swaggerGenerator": {
     "fromSwagger": {
       "url": "http://localhost:21021/swagger/v1/swagger.json",
@@ -11,7 +12,7 @@
       "moduleName": "",
       "namespace": "",
       "typeScriptVersion": 1.8,
-      "template": "Angular2",
+      "template": "Angular",
       "promiseType": "Promise",
       "dateTimeType": "MomentJS",
       "nullValue": "Undefined",
@@ -19,12 +20,15 @@
       "generateClientInterfaces": false,
       "generateOptionalParameters": true,
       "wrapDtoExceptions": false,
+      "wrapResponses": false,
+      "generateResponseClasses": true,
+      "responseClass": "SwaggerResponse",
       "useTransformOptionsMethod": false,
       "useTransformResultMethod": false,
       "generateDtoTypes": true,
       "operationGenerationMode": "MultipleClientsFromPathSegments",
       "markOptionalProperties": false,
-      "generateCloneMethod": false,
+      "generateCloneMethod": true,
       "typeStyle": "Class",
       "extensionCode": "service.extensions.ts",
       "generateDefaultValues": true,
@@ -34,6 +38,7 @@
       "importRequiredTypes": true,
       "useGetBaseUrlMethod": false,
       "baseUrlTokenName": "API_BASE_URL",
+      "injectionTokenType": "InjectionToken",
       "output": "../src/shared/service-proxies/service-proxies.ts"
     },
     "swaggerToCSharpClient": {
@@ -54,6 +59,7 @@
       "generateContractsOutput": false,
       "parameterDateTimeFormat": "s",
       "generateUpdateJsonSerializerSettingsMethod": true,
+      "serializeTypeInformation": false,
       "className": "{controller}Client",
       "namespace": "MyNamespace",
       "generateOptionalParameters": false,
@@ -78,6 +84,8 @@
       "output": null
     },
     "swaggerToCSharpController": {
+      "controllerStyle": "Partial",
+      "useCancellationToken": false,
       "className": "{controller}",
       "namespace": "MyNamespace",
       "additionalNamespaceUsages": [

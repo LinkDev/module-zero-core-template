@@ -27,7 +27,6 @@ using AbpCompanyName.AbpProjectName.Controllers;
 using AbpCompanyName.AbpProjectName.Identity;
 using AbpCompanyName.AbpProjectName.Sessions;
 using AbpCompanyName.AbpProjectName.Web.Views.Shared.Components.TenantChange;
-using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 
 namespace AbpCompanyName.AbpProjectName.Web.Controllers
@@ -272,8 +271,7 @@ namespace AbpCompanyName.AbpProjectName.Web.Controllers
                 "Account",
                 new
                 {
-                    ReturnUrl = returnUrl,
-                    authSchema = provider
+                    ReturnUrl = returnUrl
                 });
 
             return Challenge(
@@ -288,7 +286,7 @@ namespace AbpCompanyName.AbpProjectName.Web.Controllers
         }
 
         [UnitOfWork]
-        public virtual async Task<ActionResult> ExternalLoginCallback(string returnUrl, string authSchema, string remoteError = null)
+        public virtual async Task<ActionResult> ExternalLoginCallback(string returnUrl, string remoteError = null)
         {
             returnUrl = NormalizeReturnUrl(returnUrl);
             
@@ -298,7 +296,7 @@ namespace AbpCompanyName.AbpProjectName.Web.Controllers
                 throw new UserFriendlyException(L("CouldNotCompleteLoginOperation"));
             }
 
-            var externalLoginInfo = await _signInManager.GetExternalLoginInfoAsync(authSchema);
+            var externalLoginInfo = await _signInManager.GetExternalLoginInfoAsync();
             if (externalLoginInfo == null)
             {
                 Logger.Warn("Could not get information from external login.");
