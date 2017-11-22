@@ -7,7 +7,6 @@ import { AboutComponent } from './about/about.component';
 import { UsersComponent } from './users/users.component';
 import { TenantsComponent } from './tenants/tenants.component';
 import { RolesComponent } from "app/roles/roles.component";
-
 @NgModule({
     imports: [
         RouterModule.forChild([

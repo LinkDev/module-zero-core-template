@@ -38,7 +38,7 @@ export class AccountServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    isTenantAvailable(input: IsTenantAvailableInput): Observable<IsTenantAvailableOutput> {
+    isTenantAvailable(input?: IsTenantAvailableInput): Observable<IsTenantAvailableOutput> {
         let url_ = this.baseUrl + "/api/services/app/Account/IsTenantAvailable";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -88,7 +88,7 @@ export class AccountServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    register(input: RegisterInput): Observable<RegisterOutput> {
+    register(input?: RegisterInput): Observable<RegisterOutput> {
         let url_ = this.baseUrl + "/api/services/app/Account/Register";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -150,7 +150,7 @@ export class ConfigurationServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    changeUiTheme(input: ChangeUiThemeInput): Observable<void> {
+    changeUiTheme(input?: ChangeUiThemeInput): Observable<void> {
         let url_ = this.baseUrl + "/api/services/app/Configuration/ChangeUiTheme";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -208,7 +208,7 @@ export class RoleServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    create(input: CreateRoleDto): Observable<RoleDto> {
+    create(input?: CreateRoleDto): Observable<RoleDto> {
         let url_ = this.baseUrl + "/api/services/app/Role/Create";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -247,12 +247,6 @@ export class RoleServiceProxy {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = resultData200 ? RoleDto.fromJS(resultData200) : new RoleDto();
             return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -264,7 +258,7 @@ export class RoleServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    update(input: RoleDto): Observable<RoleDto> {
+    update(input?: RoleDto): Observable<RoleDto> {
         let url_ = this.baseUrl + "/api/services/app/Role/Update";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -303,12 +297,6 @@ export class RoleServiceProxy {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = resultData200 ? RoleDto.fromJS(resultData200) : new RoleDto();
             return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -355,12 +343,6 @@ export class RoleServiceProxy {
         if (status === 200) {
             const _responseText = response.text();
             return Observable.of<void>(<any>null);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -407,12 +389,6 @@ export class RoleServiceProxy {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = resultData200 ? ListResultDtoOfPermissionDto.fromJS(resultData200) : new ListResultDtoOfPermissionDto();
             return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -463,12 +439,6 @@ export class RoleServiceProxy {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = resultData200 ? RoleDto.fromJS(resultData200) : new RoleDto();
             return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -523,12 +493,6 @@ export class RoleServiceProxy {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = resultData200 ? PagedResultDtoOfRoleDto.fromJS(resultData200) : new PagedResultDtoOfRoleDto();
             return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -610,7 +574,7 @@ export class TenantServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    create(input: CreateTenantDto): Observable<TenantDto> {
+    create(input?: CreateTenantDto): Observable<TenantDto> {
         let url_ = this.baseUrl + "/api/services/app/Tenant/Create";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -649,12 +613,6 @@ export class TenantServiceProxy {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = resultData200 ? TenantDto.fromJS(resultData200) : new TenantDto();
             return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -701,12 +659,6 @@ export class TenantServiceProxy {
         if (status === 200) {
             const _responseText = response.text();
             return Observable.of<void>(<any>null);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -757,12 +709,6 @@ export class TenantServiceProxy {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = resultData200 ? TenantDto.fromJS(resultData200) : new TenantDto();
             return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -817,12 +763,6 @@ export class TenantServiceProxy {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = resultData200 ? PagedResultDtoOfTenantDto.fromJS(resultData200) : new PagedResultDtoOfTenantDto();
             return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -834,7 +774,7 @@ export class TenantServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    update(input: TenantDto): Observable<TenantDto> {
+    update(input?: TenantDto): Observable<TenantDto> {
         let url_ = this.baseUrl + "/api/services/app/Tenant/Update";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -873,12 +813,6 @@ export class TenantServiceProxy {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = resultData200 ? TenantDto.fromJS(resultData200) : new TenantDto();
             return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -902,7 +836,7 @@ export class TokenAuthServiceProxy {
      * @model (optional) 
      * @return Success
      */
-    authenticate(model: AuthenticateModel): Observable<AuthenticateResultModel> {
+    authenticate(model?: AuthenticateModel): Observable<AuthenticateResultModel> {
         let url_ = this.baseUrl + "/api/TokenAuth/Authenticate";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -1002,7 +936,7 @@ export class TokenAuthServiceProxy {
      * @model (optional) 
      * @return Success
      */
-    externalAuthenticate(model: ExternalAuthenticateModel): Observable<ExternalAuthenticateResultModel> {
+    externalAuthenticate(model?: ExternalAuthenticateModel): Observable<ExternalAuthenticateResultModel> {
         let url_ = this.baseUrl + "/api/TokenAuth/ExternalAuthenticate";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -1050,6 +984,112 @@ export class TokenAuthServiceProxy {
 }
 
 @Injectable()
+export class UploadServiceProxy {
+    private http: Http;
+    private baseUrl: string;
+    protected jsonParseReviver: (key: string, value: any) => any = undefined;
+
+    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @fileName (optional) 
+     * @return Success
+     */
+    getImage(fileName?: string): Observable<void> {
+        let url_ = this.baseUrl + "/api/Upload/GetImage?";
+        if (fileName !== undefined)
+            url_ += "FileName=" + encodeURIComponent("" + fileName) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            method: "get",
+            headers: new Headers({
+                "Content-Type": "application/json", 
+            })
+        };
+
+        return this.http.request(url_, options_).flatMap((response_ : any) => {
+            return this.processGetImage(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof Response) {
+                try {
+                    return this.processGetImage(response_);
+                } catch (e) {
+                    return <Observable<void>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<void>><any>Observable.throw(response_);
+        });
+    }
+
+    protected processGetImage(response: Response): Observable<void> {
+        const status = response.status; 
+
+        let _headers: any = response.headers ? response.headers.toJSON() : {};
+        if (status === 200) {
+            const _responseText = response.text();
+            return Observable.of<void>(<any>null);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.text();
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Observable.of<void>(<any>null);
+    }
+
+    /**
+     * @file (optional) 
+     * @return Success
+     */
+    uploadFile(file?: any): Observable<string> {
+        let url_ = this.baseUrl + "/api/Upload/UploadFile?";
+        if (file !== undefined)
+            url_ += "file=" + encodeURIComponent("" + file) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            method: "post",
+            headers: new Headers({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request(url_, options_).flatMap((response_ : any) => {
+            return this.processUploadFile(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof Response) {
+                try {
+                    return this.processUploadFile(response_);
+                } catch (e) {
+                    return <Observable<string>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<string>><any>Observable.throw(response_);
+        });
+    }
+
+    protected processUploadFile(response: Response): Observable<string> {
+        const status = response.status; 
+
+        let _headers: any = response.headers ? response.headers.toJSON() : {};
+        if (status === 200) {
+            const _responseText = response.text();
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            result200 = resultData200 !== undefined ? resultData200 : <any>null;
+            return Observable.of(result200);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.text();
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Observable.of<string>(<any>null);
+    }
+}
+
+@Injectable()
 export class UserServiceProxy {
     private http: Http;
     private baseUrl: string;
@@ -1064,7 +1104,7 @@ export class UserServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    create(input: CreateUserDto): Observable<UserDto> {
+    create(input?: CreateUserDto): Observable<UserDto> {
         let url_ = this.baseUrl + "/api/services/app/User/Create";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -1103,12 +1143,6 @@ export class UserServiceProxy {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = resultData200 ? UserDto.fromJS(resultData200) : new UserDto();
             return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -1120,7 +1154,7 @@ export class UserServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    update(input: UserDto): Observable<UserDto> {
+    update(input?: UserDto): Observable<UserDto> {
         let url_ = this.baseUrl + "/api/services/app/User/Update";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -1159,12 +1193,6 @@ export class UserServiceProxy {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = resultData200 ? UserDto.fromJS(resultData200) : new UserDto();
             return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -1211,12 +1239,6 @@ export class UserServiceProxy {
         if (status === 200) {
             const _responseText = response.text();
             return Observable.of<void>(<any>null);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -1263,12 +1285,6 @@ export class UserServiceProxy {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = resultData200 ? ListResultDtoOfRoleDto.fromJS(resultData200) : new ListResultDtoOfRoleDto();
             return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -1280,7 +1296,7 @@ export class UserServiceProxy {
      * @input (optional) 
      * @return Success
      */
-    changeLanguage(input: ChangeUserLanguageDto): Observable<void> {
+    changeLanguage(input?: ChangeUserLanguageDto): Observable<void> {
         let url_ = this.baseUrl + "/api/services/app/User/ChangeLanguage";
         url_ = url_.replace(/[?&]$/, "");
 
@@ -1315,12 +1331,6 @@ export class UserServiceProxy {
         if (status === 200) {
             const _responseText = response.text();
             return Observable.of<void>(<any>null);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -1371,12 +1381,6 @@ export class UserServiceProxy {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = resultData200 ? UserDto.fromJS(resultData200) : new UserDto();
             return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
@@ -1385,18 +1389,24 @@ export class UserServiceProxy {
     }
 
     /**
+     * @filter (optional) 
+     * @sorting (optional) 
      * @return Success
      */
-    getAll(skipCount: number, maxResultCount: number): Observable<PagedResultDtoOfUserDto> {
+    getAll(maxResultCount: number, skipCount: number, filter?: string, sorting?: string): Observable<PagedResultDtoOfUserDto> {
         let url_ = this.baseUrl + "/api/services/app/User/GetAll?";
-        if (skipCount === undefined || skipCount === null)
-            throw new Error("The parameter 'skipCount' must be defined and cannot be null.");
-        else
-            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
         if (maxResultCount === undefined || maxResultCount === null)
             throw new Error("The parameter 'maxResultCount' must be defined and cannot be null.");
         else
             url_ += "MaxResultCount=" + encodeURIComponent("" + maxResultCount) + "&"; 
+        if (skipCount === undefined || skipCount === null)
+            throw new Error("The parameter 'skipCount' must be defined and cannot be null.");
+        else
+            url_ += "SkipCount=" + encodeURIComponent("" + skipCount) + "&"; 
+        if (filter !== undefined)
+            url_ += "Filter=" + encodeURIComponent("" + filter) + "&"; 
+        if (sorting !== undefined)
+            url_ += "Sorting=" + encodeURIComponent("" + sorting) + "&"; 
         url_ = url_.replace(/[?&]$/, "");
 
         let options_ : any = {
@@ -1431,17 +1441,76 @@ export class UserServiceProxy {
             let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
             result200 = resultData200 ? PagedResultDtoOfUserDto.fromJS(resultData200) : new PagedResultDtoOfUserDto();
             return Observable.of(result200);
-        } else if (status === 401) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
-        } else if (status === 403) {
-            const _responseText = response.text();
-            return throwException("A server error occurred.", status, _responseText, _headers);
         } else if (status !== 200 && status !== 204) {
             const _responseText = response.text();
             return throwException("An unexpected server error occurred.", status, _responseText, _headers);
         }
         return Observable.of<PagedResultDtoOfUserDto>(<any>null);
+    }
+}
+
+@Injectable()
+export class ValidationServiceProxy {
+    private http: Http;
+    private baseUrl: string;
+    protected jsonParseReviver: (key: string, value: any) => any = undefined;
+
+    constructor(@Inject(Http) http: Http, @Optional() @Inject(API_BASE_URL) baseUrl?: string) {
+        this.http = http;
+        this.baseUrl = baseUrl ? baseUrl : "";
+    }
+
+    /**
+     * @dtoName (optional) 
+     * @return Success
+     */
+    getValidations(dtoName?: string): Observable<ValidationDto[]> {
+        let url_ = this.baseUrl + "/api/services/app/Validation/GetValidations?";
+        if (dtoName !== undefined)
+            url_ += "DtoName=" + encodeURIComponent("" + dtoName) + "&"; 
+        url_ = url_.replace(/[?&]$/, "");
+
+        let options_ : any = {
+            method: "get",
+            headers: new Headers({
+                "Content-Type": "application/json", 
+                "Accept": "application/json"
+            })
+        };
+
+        return this.http.request(url_, options_).flatMap((response_ : any) => {
+            return this.processGetValidations(response_);
+        }).catch((response_: any) => {
+            if (response_ instanceof Response) {
+                try {
+                    return this.processGetValidations(response_);
+                } catch (e) {
+                    return <Observable<ValidationDto[]>><any>Observable.throw(e);
+                }
+            } else
+                return <Observable<ValidationDto[]>><any>Observable.throw(response_);
+        });
+    }
+
+    protected processGetValidations(response: Response): Observable<ValidationDto[]> {
+        const status = response.status; 
+
+        let _headers: any = response.headers ? response.headers.toJSON() : {};
+        if (status === 200) {
+            const _responseText = response.text();
+            let result200: any = null;
+            let resultData200 = _responseText === "" ? null : JSON.parse(_responseText, this.jsonParseReviver);
+            if (resultData200 && resultData200.constructor === Array) {
+                result200 = [];
+                for (let item of resultData200)
+                    result200.push(ValidationDto.fromJS(item));
+            }
+            return Observable.of(result200);
+        } else if (status !== 200 && status !== 204) {
+            const _responseText = response.text();
+            return throwException("An unexpected server error occurred.", status, _responseText, _headers);
+        }
+        return Observable.of<ValidationDto[]>(<any>null);
     }
 }
 
@@ -2371,6 +2440,7 @@ export class AuthenticateModel implements IAuthenticateModel {
     userNameOrEmailAddress: string;
     password: string;
     rememberClient: boolean;
+    loggingSource: string;
 
     constructor(data?: IAuthenticateModel) {
         if (data) {
@@ -2386,6 +2456,7 @@ export class AuthenticateModel implements IAuthenticateModel {
             this.userNameOrEmailAddress = data["userNameOrEmailAddress"];
             this.password = data["password"];
             this.rememberClient = data["rememberClient"];
+            this.loggingSource = data["loggingSource"];
         }
     }
 
@@ -2400,6 +2471,7 @@ export class AuthenticateModel implements IAuthenticateModel {
         data["userNameOrEmailAddress"] = this.userNameOrEmailAddress;
         data["password"] = this.password;
         data["rememberClient"] = this.rememberClient;
+        data["loggingSource"] = this.loggingSource;
         return data; 
     }
 
@@ -2415,6 +2487,7 @@ export interface IAuthenticateModel {
     userNameOrEmailAddress: string;
     password: string;
     rememberClient: boolean;
+    loggingSource: string;
 }
 
 export class AuthenticateResultModel implements IAuthenticateResultModel {
@@ -2619,6 +2692,80 @@ export interface IExternalAuthenticateResultModel {
     encryptedAccessToken: string;
     expireInSeconds: number;
     waitingForActivation: boolean;
+}
+
+export class IFormFile implements IIFormFile {
+    contentType: string;
+    contentDisposition: string;
+    headers: { [key: string] : string[]; };
+    length: number;
+    name: string;
+    fileName: string;
+
+    constructor(data?: IIFormFile) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.contentType = data["contentType"];
+            this.contentDisposition = data["contentDisposition"];
+            if (data["headers"]) {
+                this.headers = {};
+                for (let key in data["headers"]) {
+                    if (data["headers"].hasOwnProperty(key))
+                        this.headers[key] = data["headers"][key];
+                }
+            }
+            this.length = data["length"];
+            this.name = data["name"];
+            this.fileName = data["fileName"];
+        }
+    }
+
+    static fromJS(data: any): IFormFile {
+        let result = new IFormFile();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["contentType"] = this.contentType;
+        data["contentDisposition"] = this.contentDisposition;
+        if (this.headers) {
+            data["headers"] = {};
+            for (let key in this.headers) {
+                if (this.headers.hasOwnProperty(key))
+                    data["headers"][key] = this.headers[key];
+            }
+        }
+        data["length"] = this.length;
+        data["name"] = this.name;
+        data["fileName"] = this.fileName;
+        return data; 
+    }
+
+    clone() {
+        const json = this.toJSON();
+        let result = new IFormFile();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IIFormFile {
+    contentType: string;
+    contentDisposition: string;
+    headers: { [key: string] : string[]; };
+    length: number;
+    name: string;
+    fileName: string;
 }
 
 export class CreateUserDto implements ICreateUserDto {
@@ -2925,6 +3072,118 @@ export class PagedResultDtoOfUserDto implements IPagedResultDtoOfUserDto {
 export interface IPagedResultDtoOfUserDto {
     totalCount: number;
     items: UserDto[];
+}
+
+export class ValidationDto implements IValidationDto {
+    name: string;
+    displayName: string;
+    validationTypes: ValidationTypes[];
+
+    constructor(data?: IValidationDto) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.name = data["name"];
+            this.displayName = data["displayName"];
+            if (data["validationTypes"] && data["validationTypes"].constructor === Array) {
+                this.validationTypes = [];
+                for (let item of data["validationTypes"])
+                    this.validationTypes.push(ValidationTypes.fromJS(item));
+            }
+        }
+    }
+
+    static fromJS(data: any): ValidationDto {
+        let result = new ValidationDto();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["name"] = this.name;
+        data["displayName"] = this.displayName;
+        if (this.validationTypes && this.validationTypes.constructor === Array) {
+            data["validationTypes"] = [];
+            for (let item of this.validationTypes)
+                data["validationTypes"].push(item.toJSON());
+        }
+        return data; 
+    }
+
+    clone() {
+        const json = this.toJSON();
+        let result = new ValidationDto();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IValidationDto {
+    name: string;
+    displayName: string;
+    validationTypes: ValidationTypes[];
+}
+
+export class ValidationTypes implements IValidationTypes {
+    validationName: string;
+    errorMessage: string;
+    minLength: number;
+    maxLength: number;
+
+    constructor(data?: IValidationTypes) {
+        if (data) {
+            for (var property in data) {
+                if (data.hasOwnProperty(property))
+                    (<any>this)[property] = (<any>data)[property];
+            }
+        }
+    }
+
+    init(data?: any) {
+        if (data) {
+            this.validationName = data["validationName"];
+            this.errorMessage = data["errorMessage"];
+            this.minLength = data["minLength"];
+            this.maxLength = data["maxLength"];
+        }
+    }
+
+    static fromJS(data: any): ValidationTypes {
+        let result = new ValidationTypes();
+        result.init(data);
+        return result;
+    }
+
+    toJSON(data?: any) {
+        data = typeof data === 'object' ? data : {};
+        data["validationName"] = this.validationName;
+        data["errorMessage"] = this.errorMessage;
+        data["minLength"] = this.minLength;
+        data["maxLength"] = this.maxLength;
+        return data; 
+    }
+
+    clone() {
+        const json = this.toJSON();
+        let result = new ValidationTypes();
+        result.init(json);
+        return result;
+    }
+}
+
+export interface IValidationTypes {
+    validationName: string;
+    errorMessage: string;
+    minLength: number;
+    maxLength: number;
 }
 
 export enum IsTenantAvailableOutputState {

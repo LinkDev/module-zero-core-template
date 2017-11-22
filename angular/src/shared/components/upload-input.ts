@@ -1,4 +1,4 @@
-import { Component, Input, Output, EventEmitter, OnInit, Injector, Optional, Inject, OpaqueToken, forwardRef } from '@angular/core';
+import { Component, Input, Output, EventEmitter, OnInit, Injector, Optional, Inject, forwardRef } from '@angular/core';
 import { FileUploader } from 'ng2-file-upload/ng2-file-upload';
 import { FileUploaderOptions, FileLikeObject, FileItem } from "ng2-file-upload";
 import { API_BASE_URL } from '@shared/service-proxies/service-proxies';

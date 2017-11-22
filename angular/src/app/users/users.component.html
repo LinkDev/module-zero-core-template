@@ -34,10 +34,8 @@
                     </div>
 
                     <div class="col-sm-4 ">
-                        <select id="selectMenu" class="form-control" [(ngModel)]="roleId">
-                            <option value="-1">--select Role--</option>
-                            <option #options *ngFor="let role of roles" value={{role.id}}>{{role.name}}</option>
-                        </select>
+                        <input-select [items]="roles" dataText="name" dataValue="id" [(ngModel)]="roleId" placeholder="--Select Role--"></input-select>
+                        
                     </div>
 
             

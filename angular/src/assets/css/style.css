@@ -684,6 +684,5 @@ html[dir=rtl] [type="checkbox"]:not(:checked), [type="checkbox"]:checked{left: 0
 html[dir=rtl] .demo-choose-skin li span {right: 5px}
 html[dir=rtl] .right-sidebar #settings .setting-list li .switch {right: auto;left: 5px}
 
-.full-width{
-    width:100%;
-}
+.mat-form-field-infix{border-top:none}
+.mat-form-field-wrapper { padding-bottom: 20px; margin-bottom: -20px;}

@@ -14,12 +14,12 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     template: `
     <div class="form-group">
         <mat-form-field class="full-width" [ngSwitch]="dataValue">
-            <mat-select [formControl]="Model" *ngSwitchCase="''" [multiple]="multiple"  [id]="id" class="form-control" [placeholder]="placeholder" [(ngModel)]="value">
+            <mat-select [formControl]="Model" *ngSwitchCase="''" [multiple]="multiple"  [id]="id"  [placeholder]="placeholder" [(ngModel)]="value">
                 <mat-option *ngFor="let item of items" [value]="item">
                     {{item[dataText]}}
                 </mat-option>
             </mat-select>
-            <mat-select [formControl]="Model" *ngSwitchDefault [multiple]="multiple"  [id]="id" class="form-control" [placeholder]="placeholder" [(ngModel)]="value">
+            <mat-select [formControl]="Model" *ngSwitchDefault [multiple]="multiple"  [id]="id"  [placeholder]="placeholder" [(ngModel)]="value">
                 <mat-option *ngFor="let item of items" [value]="item[dataValue]">
                     {{item[dataText]}}
                 </mat-option>
