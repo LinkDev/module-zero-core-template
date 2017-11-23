@@ -1,13 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <localizationDictionary culture="nl-NL">
   <texts>
     <text name="HomePage" value="Startpagina" />
     <text name="About" value="Over" />
     <text name="WellcomeMessage" value="Welkom bij AbpProjectName!" />
-
     <text name="FormIsNotValidMessage" value="Formulier is onjuist ingevuld. Controleer en herstel de fouten." />
     <text name="TenantNameCanNotBeEmpty" value="Naam van de klant mag niet leeg zijn" />
-
     <text name="InvalidUserNameOrPassword" value="Onjuiste gebruikersnaam en/of wachtwoord" />
     <text name="ThereIsNoTenantDefinedWithName{0}" value="Er is geen klant aanwezig met de naam {0}" />
     <text name="TenantIsNotActive" value="Klant {0} is niet actief." />
@@ -18,15 +16,12 @@
     <text name="Password" value="Wachtwoord" />
     <text name="RememberMe" value="Onthoud mij" />
     <text name="LogIn" value="Log in" />
-
     <text name="LoginFailed" value="Inloggen mislukt!" />
-
     <text name="NameSurname" value="Naam achternaam" />
     <text name="UserName" value="Gebruikersnaam" />
     <text name="Name" value="Naam" />
     <text name="Surname" value="Achternaam" />
     <text name="EmailAddress" value="E-mailadres" />
-
     <text name="Tenants" value="Klanten" />
     <text name="SavedSuccessfully" value="Correct opgeslagen" />
     <text name="CreateNewTenant" value="Klant aanmaken" />
@@ -42,9 +37,7 @@
     <text name="TenantSelection" value="Klant selectie" />
     <text name="TenantSelection_Detail" value="Selecteer één van onderstaande klanten." />
     <text name="Logout" value="Uitloggen" />
-
     <text name="RegisterFormUserNameInvalidMessage">Voer a.u.b. geen e-mailadres in als gebruikersnaam.</text>
-
     <text name="DatabaseConnectionString" value="Database connectie string" />
     <text name="Users" value="Gebruikers" />
     <text name="IsActive" value="Is actief" />
@@ -53,5 +46,12 @@
     <text name="Yes" value="Ja" />
     <text name="No" value="Nee" />
     <text name="Optional" value="Optioneel" />
+    <text name="Sample" value="Sample" />
+    <text name="Samples" value="Samples" />
+    <text name="Bio" value="Bio" />
+    <text name="SampleBioRequired" value="Bio is required" />
+    <text name="SampleNameMaxLength" value="Name cannot be more than 50 characters long" />
+    <text name="PublishDate" value="Publish date" />
+    <text name="SamplePublishDateRequired" value="Publish date is required" />
   </texts>
 </localizationDictionary>

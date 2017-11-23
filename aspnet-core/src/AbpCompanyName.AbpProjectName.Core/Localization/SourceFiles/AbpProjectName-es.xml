@@ -1,13 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <localizationDictionary culture="es">
   <texts>
     <text name="HomePage" value="Página de inicio" />
     <text name="About" value="Acerca de" />
     <text name="WellcomeMessage" value="Bienvenido a WMS!" />
-
     <text name="FormIsNotValidMessage" value="Formulario no es válido. Por favor, compruebe y corrija los errores." />
     <text name="TenantNameCanNotBeEmpty" value="Nombre de la empresa no puede estar vacío" />
-
     <text name="InvalidUserNameOrPassword" value="Usuario o contraseña invalido" />
     <text name="ThereIsNoTenantDefinedWithName{0}" value="No hay empresa definida con el nombre {0}" />
     <text name="TenantIsNotActive" value="La empresa {0} no está activa." />
@@ -18,15 +16,12 @@
     <text name="Password" value="Contraseña" />
     <text name="RememberMe" value="Recuérdame" />
     <text name="LogIn" value="Iniciar sesión" />
-
     <text name="LoginFailed" value="¡Error de inicio de sesion!" />
-
     <text name="NameSurname" value="Nombre Apellido" />
     <text name="UserName" value="Nombre de usuario" />
     <text name="Name" value="Nombre" />
     <text name="Surname" value="Apellido" />
     <text name="EmailAddress" value="Dirección de correo electrónico" />
-
     <text name="Tenants" value="Empresas" />
     <text name="SavedSuccessfully" value="Guardado correctamente" />
     <text name="CreateNewTenant" value="Crear nueva empresa" />
@@ -42,6 +37,12 @@
     <text name="TenantSelection" value="Selección de Empresa" />
     <text name="TenantSelection_Detail" value="Por favor seleccione una de las siguientes empresas." />
     <text name="Logout" value="Cerrar sesión" />
-
+    <text name="Sample" value="Sample" />
+    <text name="Samples" value="Samples" />
+    <text name="Bio" value="Bio" />
+    <text name="SampleBioRequired" value="Bio is required" />
+    <text name="SampleNameMaxLength" value="Name cannot be more than 50 characters long" />
+    <text name="PublishDate" value="Publish date" />
+    <text name="SamplePublishDateRequired" value="Publish date is required" />
   </texts>
 </localizationDictionary>

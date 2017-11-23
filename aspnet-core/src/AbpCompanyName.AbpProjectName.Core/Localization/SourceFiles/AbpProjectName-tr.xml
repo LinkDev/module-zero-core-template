@@ -1,13 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <localizationDictionary culture="tr">
   <texts>
     <text name="HomePage" value="Ana Sayfa" />
     <text name="About" value="Hakkında" />
     <text name="WellcomeMessage" value="AbpProjectName projesine hoşgeldiniz!" />
-
     <text name="FormIsNotValidMessage" value="Form geçerli değil. Lütfen kontrol edip hataları düzeltin." />
     <text name="TenantNameCanNotBeEmpty" value="Müşteri adı boş bırakılamaz." />
-
     <text name="InvalidUserNameOrPassword" value="Kullanıcı adı ya da şifre hatalı." />
     <text name="ThereIsNoTenantDefinedWithName{0}" value="{0} isminde bir müşteri tanımlı değildir." />
     <text name="TenantIsNotActive" value="{0} isimli müşteri aktif edilmemiştir." />
@@ -20,15 +18,12 @@
     <text name="Password" value="Şifre" />
     <text name="RememberMe" value="Beni hatırla" />
     <text name="LogIn" value="Giriş" />
-
     <text name="LoginFailed" value="Giriş başarısız!" />
-
     <text name="NameSurname" value="Ad soyad" />
     <text name="UserName" value="Kullanıcı adı" />
     <text name="Name" value="İsim" />
     <text name="Surname" value="Soyisim" />
     <text name="EmailAddress" value="E-posta adresi" />
-
     <text name="Tenants" value="Müşteriler" />
     <text name="SavedSuccessfully" value="Başarıyla kaydedildi" />
     <text name="CreateNewTenant" value="Yeni müşteri oluştur" />
@@ -44,9 +39,7 @@
     <text name="TenantSelection" value="Müşteri seçimi" />
     <text name="TenantSelection_Detail" value="Lütfen aşağıdaki müşterilerden birisini seçin." />
     <text name="Logout" value="Çıkış" />
-
     <text name="RegisterFormUserNameInvalidMessage">Lütfen kullanıcı adı alanına e-posta adresi girmeyin.</text>
-
     <text name="DatabaseConnectionString" value="Veritabanı bağlantı cümlesi" />
     <text name="Users" value="Kullanıcılar" />
     <text name="IsActive" value="Etkin mi" />
@@ -56,20 +49,24 @@
     <text name="No" value="Hayır" />
     <text name="Optional" value="Opsiyonel" />
     <text name="LeaveEmptyToSwitchToHost">Üst kullanıcıya geçiş için boş değer girin.</text>
-
     <text name="CurrentTenant">Geçerli müşteri</text>
     <text name="NotSelected">Seçilmemiş</text>
     <text name="Change">Değiştir</text>
     <text name="ChangeTenant">Müşteri değiştir</text>
-
     <text name="MultiLevelMenu">Çok Seviyeli Menü</text>
     <text name="Back">Geri</text>
     <text name="SuccessfullyRegistered">Başarıyla kayıt olundu</text>
     <text name="WaitingForEmailActivation">E-posta adresiniz etkinleştirilmeli.</text>
     <text name="Roles">Roller</text>
     <text name="DisplayName">Görünen ad</text>
-
     <text name="Edit">Düzenle</text>
     <text name="Delete">Sil</text>
+    <text name="Sample" value="Sample" />
+    <text name="Samples" value="Samples" />
+    <text name="Bio" value="Bio" />
+    <text name="SampleBioRequired" value="Bio is required" />
+    <text name="SampleNameMaxLength" value="Name cannot be more than 50 characters long" />
+    <text name="PublishDate" value="Publish date" />
+    <text name="SamplePublishDateRequired" value="Publish date is required" />
   </texts>
 </localizationDictionary>

@@ -1,13 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <localizationDictionary culture="lt">
   <texts>
     <text name="HomePage" value="Pagrindinis" />
     <text name="About" value="Apie" />
     <text name="WellcomeMessage" value="Sveiki atvykė į AbpProjectName!" />
-
     <text name="FormIsNotValidMessage" value="Forma blogai užpildyta. Peržiūrėkite ir pataisykite klaidas." />
     <text name="TenantNameCanNotBeEmpty" value="Savininko pavadinimas negali būti tuščias" />
-
     <text name="InvalidUserNameOrPassword" value="Blogas vartotojo vardas ar slaptažodis" />
     <text name="ThereIsNoTenantDefinedWithName{0}" value="Nėra tokio savininko su pavadinimu {0}" />
     <text name="TenantIsNotActive" value="Savininkas {0} nėra aktyvus." />
@@ -20,15 +18,12 @@
     <text name="Password" value="Slaptažodis" />
     <text name="RememberMe" value="Prisiminti mane" />
     <text name="LogIn" value="Prisijungti" />
-
     <text name="LoginFailed" value="Prisijungimas nepavyko!" />
-
     <text name="NameSurname" value="Vardas pavardė" />
     <text name="UserName" value="Vartotojo vardas" />
     <text name="Name" value="Vardas" />
     <text name="Surname" value="Pavardė" />
     <text name="EmailAddress" value="El. pašto adresas" />
-
     <text name="Tenants" value="Savininkai" />
     <text name="SavedSuccessfully" value="Išsaugota sėkmingai" />
     <text name="CreateNewTenant" value="Sukurti naują savininką" />
@@ -44,9 +39,7 @@
     <text name="TenantSelection" value="Savininko Pasirinkimas" />
     <text name="TenantSelection_Detail" value="Pasirinkite vieną iš šių savininkų." />
     <text name="Logout" value="Atsijungti" />
-
     <text name="RegisterFormUserNameInvalidMessage">Neveskite el. pašto adreso kaip vartotojo vardo.</text>
-
     <text name="DatabaseConnectionString" value="Duomenų bazės prisijungimo eilutė" />
     <text name="Users" value="Vartotojai" />
     <text name="IsActive" value="Aktyvus" />
@@ -56,33 +49,34 @@
     <text name="No" value="Ne" />
     <text name="Optional" value="Neprivaloma" />
     <text name="LeaveEmptyToSwitchToHost">Palikite tuščią, kad perjungtumėte į priimantįjį</text>
-
     <text name="CurrentTenant">Dabartinis savininkas</text>
     <text name="NotSelected">Nepasirinkta</text>
     <text name="Change">Keisti</text>
     <text name="ChangeTenant">Keisti savininką</text>
-
     <text name="MultiLevelMenu">Multi Level Menu</text>
     <text name="Back">Atgal</text>
     <text name="SuccessfullyRegistered">Sėkmingai užregistruota</text>
     <text name="WaitingForEmailActivation">Jūsų el. pašto adresas turi būti aktyvuotas.</text>
     <text name="Roles">Rolės</text>
     <text name="DisplayName">Rodomas vardas</text>
-
     <text name="Edit">Keisti</text>
     <text name="Delete">Trinti</text>
-
     <text name="CreateNewRole">Kurti naują rolę</text>
     <text name="RoleName">Rolės pavadinimas</text>
     <text name="Actions">Veiksmai</text>
-
     <text name="CouldNotCompleteLoginOperation">Prisijungimo veiksmas nepavyko. Pabandykite vėliau.</text>
-
     <text name="CouldNotValidateExternalUser">Nepavyko patikrinti išorinio vartotojo</text>
     <text name="EditRole">Keisti rolę</text>
     <text name="EditTenant">Keisti savininką</text>
     <text name="EditUser">Keisti vartotoją</text>
     <text name="TenantIdIsNotActive{0}">Savininkas su Id {0} yra neaktyvus</text>
     <text name="UnknownTenantId{0}">Nežinomas savininko Id {0}</text>
+    <text name="Sample" value="Sample" />
+    <text name="Samples" value="Samples" />
+    <text name="Bio" value="Bio" />
+    <text name="SampleBioRequired" value="Bio is required" />
+    <text name="SampleNameMaxLength" value="Name cannot be more than 50 characters long" />
+    <text name="PublishDate" value="Publish date" />
+    <text name="SamplePublishDateRequired" value="Publish date is required" />
   </texts>
 </localizationDictionary>

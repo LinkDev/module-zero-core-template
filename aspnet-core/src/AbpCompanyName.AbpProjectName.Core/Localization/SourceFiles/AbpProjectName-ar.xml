@@ -1,13 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <localizationDictionary culture="ar">
   <texts>
     <text name="HomePage" value="الصفحة الرئيسية" />
     <text name="About" value="حول ال AbpProjectName" />
     <text name="WellcomeMessage" value="مرحبا بك فى AbpProjectName!" />
-
     <text name="FormIsNotValidMessage" value="Form is not valid. Please check and fix errors." />
     <text name="TenantNameCanNotBeEmpty" value="اسم المستاجر لايمكن ان يكون فارغا" />
-
     <text name="InvalidUserNameOrPassword" value="اسم المستخدم او كلمة السر غير صحيحة" />
     <text name="ThereIsNoTenantDefinedWithName{0}" value="لايوجد مستاجر معروف بهذ الاسم {0}" />
     <text name="TenantIsNotActive" value="المستاجر {0} غير فعال" />
@@ -20,15 +18,12 @@
     <text name="Password" value="كلمة السر" />
     <text name="RememberMe" value="تذكرنى" />
     <text name="LogIn" value="تسجيل الدخول" />
-
     <text name="LoginFailed" value="فشل فى تسجيل الدخول!" />
-
     <text name="NameSurname" value="اسم اللقب" />
     <text name="UserName" value="اسم المستخدم" />
     <text name="Name" value="الاسم" />
     <text name="Surname" value="اللقب" />
     <text name="EmailAddress" value="البريد الالكترونى" />
-
     <text name="Tenants" value="المستاجرين" />
     <text name="SavedSuccessfully" value="تم الحفظ بنجاح" />
     <text name="CreateNewTenant" value="انشاء مستاجر جديد" />
@@ -44,9 +39,7 @@
     <text name="TenantSelection" value="اختيار المستأجر" />
     <text name="TenantSelection_Detail" value="برجاء اختيار واحد من المستاجرين الحاليين" />
     <text name="Logout" value="تسجيل الخروج" />
-
     <text name="RegisterFormUserNameInvalidMessage">من فضلك لا تدخل البريد الالكترونى بدل اسم المستخدم</text>
-
     <text name="DatabaseConnectionString" value="سلسلة الاتصال بقاعدةالبيانات" />
     <text name="Users" value="المستخدمين" />
     <text name="IsActive" value="فعال؟" />
@@ -56,12 +49,10 @@
     <text name="No" value="لا" />
     <text name="Optional" value="اختيارى" />
     <text name="LeaveEmptyToSwitchToHost">Leave empty to switch to the host</text>
-
     <text name="CurrentTenant">المستاجر الحالى</text>
     <text name="NotSelected">لم يتم الاختيار</text>
     <text name="Change">تغيير</text>
     <text name="ChangeTenant">تغيير المستاجر</text>
-
     <text name="MultiLevelMenu">قائمة متعددة المستويات</text>
     <text name="Back">Back</text>
     <text name="SuccessfullyRegistered">تم التسجيل بنجاح</text>
@@ -72,5 +63,12 @@
     <text name="Edit">تعديل</text>
     <text name="Delete">حذف</text>
     <text name="Search">بحث</text>
+    <text name="Sample" value="Sample" />
+    <text name="Samples" value="Samples" />
+    <text name="Bio" value="Bio" />
+    <text name="SampleBioRequired" value="Bio is required" />
+    <text name="SampleNameMaxLength" value="Name cannot be more than 50 characters long" />
+    <text name="PublishDate" value="Publish date" />
+    <text name="SamplePublishDateRequired" value="Publish date is required" />
   </texts>
 </localizationDictionary>

@@ -1,4 +1,4 @@
-﻿import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
@@ -34,8 +34,13 @@ import { RightSideBarComponent } from '@app/layout/right-sidebar.component';
 import { MaterialInput } from '@shared/directives/material-input.directive';
 import { PaginationComponent} from '@shared/pagination/pagination.component';
 import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
+import { SamplesComponent } from '@app/samples/samples.component';
+import { SampleFormComponent } from '@app/samples/sample-form/sample-form.component';
 @NgModule({
     declarations: [
+		SamplesComponent,
+		SampleFormComponent,
+
         AppComponent,
         PaginationComponent,
         HomeComponent,

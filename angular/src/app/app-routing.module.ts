@@ -1,4 +1,4 @@
-﻿import { NgModule } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppComponent } from './app.component';
 import { AppRouteGuard } from '@shared/auth/auth-route-guard';
@@ -7,6 +7,7 @@ import { AboutComponent } from './about/about.component';
 import { UsersComponent } from './users/users.component';
 import { TenantsComponent } from './tenants/tenants.component';
 import { RolesComponent } from "app/roles/roles.component";
+import { SamplesComponent } from '@app/samples/samples.component';
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -14,6 +15,8 @@ import { RolesComponent } from "app/roles/roles.component";
                 path: '',
                 component: AppComponent,
                 children: [
+					{ path: 'samples', component: SamplesComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
+
                     { path: 'home', component: HomeComponent,  canActivate: [AppRouteGuard] },
                     { path: 'users', component: UsersComponent, data: { permission: 'Pages.Users' }, canActivate: [AppRouteGuard] },
                     { path: 'roles', component: RolesComponent, data: { permission: 'Pages.Roles' }, canActivate: [AppRouteGuard] },

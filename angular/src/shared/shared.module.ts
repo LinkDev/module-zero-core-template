@@ -66,7 +66,8 @@ export function getRemoteServiceBaseUrl(): string {
         InputComponent,
         ValidateComponent
     ],
-    providers:[	
+    providers:[	{provide: 'SampleServiceProxy', useClass: Proxies.SampleServiceProxy},
+	
     Proxies.ValidationServiceProxy,    
     {provide: 'RoleServiceProxy', useExisting: Proxies.RoleServiceProxy}
 ]

@@ -1,13 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <localizationDictionary culture="ja">
   <texts>
     <text name="HomePage" value="ホームページ" />
     <text name="About" value="我々について" />
     <text name="WellcomeMessage" value="ようこそ AbpProjectName へ!" />
-
     <text name="FormIsNotValidMessage" value="フォームは無効です。エラーを修正してください。" />
     <text name="TenantNameCanNotBeEmpty" value="テナント名を空にすることはできません" />
-
     <text name="InvalidUserNameOrPassword" value="無効なユーザー名またはパスワードです" />
     <text name="ThereIsNoTenantDefinedWithName{0}" value="テナント名前 {0} の定義がありません。" />
     <text name="TenantIsNotActive" value="テナント {0} はアクティブではありません。 " />
@@ -18,15 +16,12 @@
     <text name="Password" value="パスワード" />
     <text name="RememberMe" value="ログイン情報を記憶する" />
     <text name="LogIn" value="ログイン" />
-
     <text name="LoginFailed" value="ログイン失敗!" />
-
     <text name="NameSurname" value="名 姓" />
     <text name="UserName" value="ユーザ名" />
     <text name="Name" value="名前" />
     <text name="Surname" value="姓" />
     <text name="EmailAddress" value="E-mailアドレス" />
-
     <text name="Tenants" value="テナント" />
     <text name="SavedSuccessfully" value="保存成功" />
     <text name="CreateNewTenant" value="新規テナント作成" />
@@ -42,9 +37,7 @@
     <text name="TenantSelection" value="テナント選択" />
     <text name="TenantSelection_Detail" value="次のテナントの 1 つを選択してください。" />
     <text name="Logout" value="ログアウト" />
-
     <text name="RegisterFormUserNameInvalidMessage">ユーザのメールアドレスを入力しないでください。</text>
-
     <text name="DatabaseConnectionString" value="データベース接続文字列" />
     <text name="Users" value="ユーザ" />
     <text name="IsActive" value="アクティブ" />
@@ -53,5 +46,12 @@
     <text name="Yes" value="はい" />
     <text name="No" value="いいえ" />
     <text name="Optional" value="オプション" />
+    <text name="Sample" value="Sample" />
+    <text name="Samples" value="Samples" />
+    <text name="Bio" value="Bio" />
+    <text name="SampleBioRequired" value="Bio is required" />
+    <text name="SampleNameMaxLength" value="Name cannot be more than 50 characters long" />
+    <text name="PublishDate" value="Publish date" />
+    <text name="SamplePublishDateRequired" value="Publish date is required" />
   </texts>
 </localizationDictionary>

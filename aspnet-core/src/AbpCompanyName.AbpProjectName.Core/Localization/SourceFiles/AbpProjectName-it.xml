@@ -1,13 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <localizationDictionary culture="it">
   <texts>
     <text name="HomePage" value="Home page" />
     <text name="About" value="Chi siamo" />
     <text name="WellcomeMessage" value="Benvenuti su My New House!" />
-
     <text name="FormIsNotValidMessage" value="I dati non sono corretti. Verifica gli errori." />
     <text name="TenantNameCanNotBeEmpty" value="Il Dominio non può essere vuoto" />
-
     <text name="InvalidUserNameOrPassword" value="Username o password errati" />
     <text name="ThereIsNoTenantDefinedWithName{0}" value="Il dominio {0} non esiste" />
     <text name="TenantIsNotActive" value="Il dominio {0} non è attivo." />
@@ -20,15 +18,12 @@
     <text name="Password" value="Password" />
     <text name="RememberMe" value="Ricordati di me" />
     <text name="LogIn" value="Log in" />
-
     <text name="LoginFailed" value="Login errato!" />
-
     <text name="NameSurname" value="Nome e Cognome" />
     <text name="UserName" value="Username" />
     <text name="Name" value="Nome" />
     <text name="Surname" value="Cognome" />
     <text name="EmailAddress" value="Email" />
-
     <text name="Tenants" value="Dominio" />
     <text name="SavedSuccessfully" value="Salvato" />
     <text name="CreateNewTenant" value="Crea un nuovo dominio" />
@@ -44,7 +39,6 @@
     <text name="TenantSelection" value="Selezione dominio" />
     <text name="TenantSelection_Detail" value="Seleziona uno dei seguenti domini." />
     <text name="Logout" value="Logout" />
-
     <text name="DatabaseConnectionString" value="String connession Database" />
     <text name="Users" value="Utenti" />
     <text name="IsActive" value="Attivo" />
@@ -53,5 +47,12 @@
     <text name="Yes" value="Sì" />
     <text name="No" value="No" />
     <text name="Optional" value="Opzionale" />
+    <text name="Sample" value="Sample" />
+    <text name="Samples" value="Samples" />
+    <text name="Bio" value="Bio" />
+    <text name="SampleBioRequired" value="Bio is required" />
+    <text name="SampleNameMaxLength" value="Name cannot be more than 50 characters long" />
+    <text name="PublishDate" value="Publish date" />
+    <text name="SamplePublishDateRequired" value="Publish date is required" />
   </texts>
 </localizationDictionary>

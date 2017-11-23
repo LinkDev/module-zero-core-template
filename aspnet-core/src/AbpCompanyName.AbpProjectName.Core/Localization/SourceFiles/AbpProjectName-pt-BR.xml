@@ -1,13 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <localizationDictionary culture="pt-BR">
   <texts>
     <text name="HomePage" value="Página Inicial" />
     <text name="About" value="Sobre" />
     <text name="WellcomeMessage" value="Bem Vindo ao AbpProjectName!" />
-    
     <text name="FormIsNotValidMessage" value="Formulário não é válido. Por favor, verifique e corrija os erros." />
     <text name="TenantNameCanNotBeEmpty" value="Tenant não pode estar vazio" />
-
     <text name="InvalidUserNameOrPassword" value="Nome de usuário ou senha inválida" />
     <text name="ThereIsNoTenantDefinedWithName{0}" value="Não há Tenant definido com o nome {0}" />
     <text name="TenantIsNotActive" value="Tenant {0} não está ativo." />
@@ -18,15 +16,12 @@
     <text name="Password" value="Senha" />
     <text name="RememberMe" value="Lembre de mim" />
     <text name="LogIn" value="Entrar" />
-
     <text name="LoginFailed" value="Falha no login!" />
-
     <text name="NameSurname" value="Nome sobrenome" />
     <text name="UserName" value="Nome de usuário" />
     <text name="Name" value="Nome" />
     <text name="Surname" value="Sobrenome" />
     <text name="EmailAddress" value="Endereço de e-mail" />
-
     <text name="Tenants" value="Tenants" />
     <text name="SavedSuccessfully" value="Salvo com sucesso" />
     <text name="CreateNewTenant" value="Crie um novo tenant" />
@@ -42,6 +37,12 @@
     <text name="TenantSelection" value="Seleção de Tenant" />
     <text name="TenantSelection_Detail" value="Por favor selecione um dos seguintes tenants." />
     <text name="Logout" value="Sair" />
-
+    <text name="Sample" value="Sample" />
+    <text name="Samples" value="Samples" />
+    <text name="Bio" value="Bio" />
+    <text name="SampleBioRequired" value="Bio is required" />
+    <text name="SampleNameMaxLength" value="Name cannot be more than 50 characters long" />
+    <text name="PublishDate" value="Publish date" />
+    <text name="SamplePublishDateRequired" value="Publish date is required" />
   </texts>
 </localizationDictionary>
