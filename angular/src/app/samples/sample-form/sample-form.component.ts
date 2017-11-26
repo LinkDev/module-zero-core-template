@@ -1,31 +1,37 @@
-import { Component, ViewChild, Injector, Output, EventEmitter, ElementRef, OnInit, AfterViewInit,ViewChildren,QueryList } from '@angular/core';
+import { Component, ViewChild, Injector, Output, EventEmitter, ElementRef, OnInit, AfterViewInit, ViewChildren, QueryList } from '@angular/core';
 import { ModalDirective } from 'ngx-bootstrap';
 import * as moment from 'moment';
 import { SampleServiceProxy, SampleDto, PagedResultDtoOfSampleDto } from '@shared/service-proxies/service-proxies';
 import { FormComponentBase } from '@shared/form-component-base';
 import * as _ from "lodash";
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'sample-form-modal',
-  templateUrl: './sample-form.component.html'
+    selector: 'sample-form-modal',
+    templateUrl: './sample-form.component.html'
 })
 export class SampleFormComponent extends FormComponentBase<SampleDto> implements OnInit, AfterViewInit {
-	
+
+    sampleForm: FormGroup = new FormGroup({
+        Bio: new FormControl(),
+        Name: new FormControl(),
+        publishDate: new FormControl()
+    });
     constructor(
         injector: Injector,
-			private _sampleService: SampleServiceProxy    ) {
+        private _sampleService: SampleServiceProxy) {
         super(injector);
     }
 
-	ngOnInit() {
+    ngOnInit() {
     }
 
-	show(id?:number): void {
+    show(id?: number): void {
         if (!id) {
             this.active = true;
             this.modal.show();
             this.item = new SampleDto({
-				id: 0,
+                id: 0
             });
             this.isNew = true;
         }
@@ -41,10 +47,15 @@ export class SampleFormComponent extends FormComponentBase<SampleDto> implements
         }
     }
 
-	save(): void {
-        console.log(this.item);
+    save(): void {
         this.saving = true;
-
+        Object.keys(this.sampleForm.controls).forEach(key => {
+            this.sampleForm.get(key).updateValueAndValidity();
+        });
+        if (this.sampleForm.invalid) {
+            this.saving = false;
+            return;
+        }
         if (this.isNew) {
             this._sampleService.create(this.item)
                 .finally(() => { this.saving = false; })

@@ -14,7 +14,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     template: `
     <div class='form-group'>
         <mat-form-field class="full-width" >
-            <input matInput [formControl]="Model" [matDatepicker]="picker" [name]="name" [id]="id" [min]="min" [max]="max" [placeholder]="l(placeholder)" [(ngModel)]="value">
+            <input matInput [matDatepicker]="picker" [name]="name" [id]="id" [min]="min" [max]="max" [placeholder]="l(placeholder)" [(ngModel)]="value">
             <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
             <mat-datepicker #picker></mat-datepicker>
         </mat-form-field>

@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule,ReactiveFormsModule } from '@angular/forms';
 import { HttpModule, JsonpModule } from '@angular/http';
 
 import { ModalModule } from 'ngx-bootstrap';
@@ -64,6 +64,7 @@ import { SampleFormComponent } from '@app/samples/sample-form/sample-form.compon
     imports: [
         CommonModule,
         FormsModule,
+        ReactiveFormsModule,
         HttpModule,
         JsonpModule,
         ModalModule.forRoot(),

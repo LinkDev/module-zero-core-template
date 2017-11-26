@@ -10,7 +10,7 @@ const noop = () => {
 
 export class InputComponentBase extends AppComponentBase implements OnInit,ControlValueAccessor {
     
-    Model: FormControl=new FormControl();
+    @Input() Model: FormControl;
     
     @Input() placeholder: string;
     @Input() name: string;
@@ -57,7 +57,7 @@ export class InputComponentBase extends AppComponentBase implements OnInit,Contr
             }
         }
         else{
-            this.Model = new FormControl(this.innerValue);
+            this.Model = new FormControl(this.innerValue);;
         }
     }
     protected setValidation() {
@@ -83,7 +83,9 @@ export class InputComponentBase extends AppComponentBase implements OnInit,Contr
 
             });
         }
-        this.Model = new FormControl(this.value, validations);
+        this.Model.setValue(this.value);
+        this.Model.setValidators(validations);
+        this.Model.markAsDirty();
     }
 
 

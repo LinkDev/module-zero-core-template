@@ -17,7 +17,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     template: `
     <div class="form-group form-float">
         <label>{{placeholder}}</label>
-        <div [formControl]="Model" [froalaEditor] [id]="id" [(ngModel)]="value">
+        <div [froalaEditor] [id]="id" [(ngModel)]="value">
         </div>
     </div>
     `,

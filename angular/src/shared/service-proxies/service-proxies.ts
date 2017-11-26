@@ -2324,7 +2324,7 @@ export class SampleDto implements ISampleDto {
     publishDate: moment.Moment;
     id: number;
 
-    constructor(data?: ISampleDto) {
+    constructor(data?: any) {
         if (data) {
             for (var property in data) {
                 if (data.hasOwnProperty(property))

@@ -19,7 +19,7 @@ export const CUSTOM_INPUT_CONTROL_VALUE_ACCESSOR: any = {
     template: `
     <div class="form-group form-float">
         <mat-form-field class="full-width">
-            <input matInput [name]="name" [formControl]="Model" [type]="type" [id]="id" [placeholder]="l(placeholder)" [(ngModel)]="value" >
+            <input matInput [name]="name" [type]="type" [id]="id" [placeholder]="l(placeholder)" [(ngModel)]="value" >
         </mat-form-field>
         <!--
         <div [ngClass]="{error:Model && Model.errors && (Model.dirty || Model.touched)}"  class="form-line">
