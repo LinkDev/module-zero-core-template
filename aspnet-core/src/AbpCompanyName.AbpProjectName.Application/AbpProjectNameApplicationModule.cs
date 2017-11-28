@@ -1,7 +1,6 @@
 ﻿using Abp.AutoMapper;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
-using AbpCompanyName.AbpProjectName.Authorization;
 
 namespace AbpCompanyName.AbpProjectName
 {
@@ -12,7 +11,7 @@ namespace AbpCompanyName.AbpProjectName
     {
         public override void PreInitialize()
         {
-            Configuration.Authorization.Providers.Add<AbpProjectNameAuthorizationProvider>();
+            //Configuration.Authorization.Providers.Add<AbpProjectNameAuthorizationProvider>();
         }
 
         public override void Initialize()

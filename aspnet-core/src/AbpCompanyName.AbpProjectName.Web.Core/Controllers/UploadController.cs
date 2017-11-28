@@ -1,8 +1,4 @@
 ﻿using Abp.MultiTenancy;
-using AbpCompanyName.AbpProjectName.Authentication.External;
-using AbpCompanyName.AbpProjectName.Authentication.JwtBearer;
-using AbpCompanyName.AbpProjectName.Authorization;
-using AbpCompanyName.AbpProjectName.Authorization.Users;
 using Microsoft.Extensions.Configuration;
 using Microsoft.AspNetCore.Hosting;
 using AbpCompanyName.AbpProjectName.Configuration;
@@ -16,30 +12,11 @@ namespace AbpCompanyName.AbpProjectName.Controllers
     [Route("api/[controller]/[action]")]
     public class UploadController : AbpProjectNameControllerBase
     {
-        private readonly LogInManager _logInManager;
-        private readonly ITenantCache _tenantCache;
-        private readonly AbpLoginResultTypeHelper _abpLoginResultTypeHelper;
-        private readonly TokenAuthConfiguration _configuration;
-        private readonly IExternalAuthConfiguration _externalAuthConfiguration;
-        private readonly IExternalAuthManager _externalAuthManager;
-        private readonly UserRegistrationManager _userRegistrationManager;
         private readonly IConfigurationRoot _appConfiguration;
         public UploadController(
-            LogInManager logInManager,
-            ITenantCache tenantCache,
-            AbpLoginResultTypeHelper abpLoginResultTypeHelper,
-            TokenAuthConfiguration configuration,
-            IExternalAuthConfiguration externalAuthConfiguration,
-            IExternalAuthManager externalAuthManager,
-            UserRegistrationManager userRegistrationManager, IHostingEnvironment env)
+            IHostingEnvironment env)
         {
-            _logInManager = logInManager;
-            _tenantCache = tenantCache;
-            _abpLoginResultTypeHelper = abpLoginResultTypeHelper;
-            _configuration = configuration;
-            _externalAuthConfiguration = externalAuthConfiguration;
-            _externalAuthManager = externalAuthManager;
-            _userRegistrationManager = userRegistrationManager;
+
             _appConfiguration = env.GetAppConfiguration();
         }
 

@@ -1,4 +1,4 @@
-﻿import { Component, Injector, ViewEncapsulation } from '@angular/core';
+import { Component, Injector, ViewEncapsulation } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
 
 @Component({
@@ -17,6 +17,6 @@ export class SideBarFooterComponent extends AppComponentBase {
         super(injector);
 
         this.currentYear = new Date().getFullYear();
-        this.versionText = this.appSession.application.version + ' [' + this.appSession.application.releaseDate.format('YYYYDDMM') + ']';
+        this.versionText = "";
     }
 }

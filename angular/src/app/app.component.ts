@@ -1,4 +1,4 @@
-﻿import { Component, ViewContainerRef, Injector, OnInit, AfterViewInit } from '@angular/core';
+import { Component, ViewContainerRef, Injector, OnInit, AfterViewInit } from '@angular/core';
 import { AppConsts } from '@shared/AppConsts';
 import { AppComponentBase } from '@shared/app-component-base';
 
@@ -18,10 +18,6 @@ export class AppComponent extends AppComponentBase implements OnInit, AfterViewI
   }
 
   ngOnInit(): void {
-    if (this.appSession.application.features['SignalR']) {
-      SignalRHelper.initSignalR();
-    }
-
     abp.event.on('abp.notifications.received', userNotification => {
       abp.notifications.showUiNotifyForUserNotification(userNotification);
 

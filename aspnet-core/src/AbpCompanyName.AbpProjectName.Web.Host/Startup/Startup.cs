@@ -11,9 +11,8 @@ using Swashbuckle.AspNetCore.Swagger;
 using Abp.AspNetCore;
 using Abp.Castle.Logging.Log4Net;
 using Abp.Extensions;
-using AbpCompanyName.AbpProjectName.Authentication.JwtBearer;
 using AbpCompanyName.AbpProjectName.Configuration;
-using AbpCompanyName.AbpProjectName.Identity;
+
 
 #if FEATURE_SIGNALR
 using Microsoft.AspNet.SignalR;
@@ -44,7 +43,7 @@ namespace AbpCompanyName.AbpProjectName.Web.Host.Startup
                 options.Filters.Add(new CorsAuthorizationFilterFactory(_defaultCorsPolicyName));
             });
 
-            IdentityRegistrar.Register(services);
+            //IdentityRegistrar.Register(services);
             AuthConfigurer.Configure(services, _appConfiguration);
 
             // Configure CORS for angular2 UI
@@ -92,14 +91,14 @@ namespace AbpCompanyName.AbpProjectName.Web.Host.Startup
 
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
         {
-            app.UseAbp(options => { options.UseAbpRequestLocalization = false; }); // Initializes ABP framework.
+            app.UseAbp(); // Initializes ABP framework.
 
             app.UseCors(_defaultCorsPolicyName); // Enable CORS!
 
             app.UseStaticFiles();
 
             app.UseAuthentication();
-            app.UseJwtTokenMiddleware();
+
 
             app.UseAbpRequestLocalization();
 

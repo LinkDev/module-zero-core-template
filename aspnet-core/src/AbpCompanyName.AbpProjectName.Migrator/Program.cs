@@ -24,10 +24,10 @@ namespace AbpCompanyName.AbpProjectName.Migrator
 
                 bootstrapper.Initialize();
 
-                using (var migrateExecuter = bootstrapper.IocManager.ResolveAsDisposable<MultiTenantMigrateExecuter>())
-                {
-                    migrateExecuter.Object.Run(_skipConnVerification);
-                }
+                //using (var migrateExecuter = bootstrapper.IocManager.ResolveAsDisposable<MultiTenantMigrateExecuter>())
+                //{
+                //    migrateExecuter.Object.Run(_skipConnVerification);
+                //}
 
                 Console.WriteLine("Press ENTER to exit...");
                 Console.ReadLine();

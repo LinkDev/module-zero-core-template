@@ -1,14 +1,13 @@
 ﻿using Abp.EntityFrameworkCore.Configuration;
 using Abp.Modules;
 using Abp.Reflection.Extensions;
-using Abp.Zero.EntityFrameworkCore;
-using AbpCompanyName.AbpProjectName.EntityFrameworkCore.Seed;
+using Abp.EntityFrameworkCore;
 
 namespace AbpCompanyName.AbpProjectName.EntityFrameworkCore
 {
     [DependsOn(
-        typeof(AbpProjectNameCoreModule), 
-        typeof(AbpZeroCoreEntityFrameworkCoreModule))]
+        typeof(AbpProjectNameCoreModule), typeof(AbpEntityFrameworkCoreModule)
+        )]
     public class AbpProjectNameEntityFrameworkModule : AbpModule
     {
         /* Used it tests to skip dbcontext registration, in order to use in-memory database of EF Core */
@@ -39,12 +38,6 @@ namespace AbpCompanyName.AbpProjectName.EntityFrameworkCore
             IocManager.RegisterAssemblyByConvention(typeof(AbpProjectNameEntityFrameworkModule).GetAssembly());
         }
 
-        public override void PostInitialize()
-        {
-            if (!SkipDbSeed)
-            {
-                SeedHelper.SeedHostDb(IocManager);
-            }
-        }
+       
     }
 }

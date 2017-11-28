@@ -13,16 +13,13 @@ export class SideBarUserAreaComponent extends AppComponentBase implements OnInit
 
     constructor(
         injector: Injector,
-        private _authService: AppAuthService
     ) {
         super(injector);
     }
 
     ngOnInit() {
-        this.shownLoginName = this.appSession.getShownLoginName();
+        //this.shownLoginName = this.appSession.getShownLoginName();
     }
 
-    logout(): void {
-        this._authService.logout();
-    }
+
 }

@@ -19,19 +19,8 @@ export class AppRouteGuard implements CanActivate, CanActivateChild {
     ) { }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean {
-        if (!this._sessionService.user) {
-            this._router.navigate(['/account/login']);
-            return false;
-        }
-
-        if (!route.data || !route.data["permission"]) {
-            return true;
-        }
-
-        if (this._permissionChecker.isGranted(route.data["permission"])) {
-            return true;
-        }
-
+        
+        console.log("Best Route:"+this.selectBestRoute())
         this._router.navigate([this.selectBestRoute()]);
         return false;
     }
@@ -41,14 +30,7 @@ export class AppRouteGuard implements CanActivate, CanActivateChild {
     }
 
     selectBestRoute(): string {
-        if (!this._sessionService.user) {
-            return '/account/login';
-        }
         
-        if (this._permissionChecker.isGranted('Pages.Users')) {
-            return '/app/admin/users';
-        }
-
         return '/app/home';
     }
 }
