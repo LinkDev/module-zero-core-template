@@ -1,6 +1,6 @@
 import { Component, OnInit, Injector, ViewEncapsulation } from '@angular/core';
 import { AppComponentBase } from '@shared/app-component-base';
-import { UserServiceProxy, ChangeUserLanguageDto } from '@shared/service-proxies/service-proxies';
+import {  ChangeUserLanguageDto } from '@shared/service-proxies/service-proxies';
 
 import * as _ from 'lodash';
 
@@ -16,7 +16,6 @@ export class TopBarLanguageSwitchComponent extends AppComponentBase implements O
   
   constructor(
       injector: Injector,
-      private _userService: UserServiceProxy
   ) {
     super(injector);
   }
