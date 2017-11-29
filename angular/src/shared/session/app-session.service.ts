@@ -47,9 +47,6 @@ export class AppSessionService {
         return new Promise<boolean>((resolve, reject) => {
             this._sessionService.getCurrentLoginInformations().toPromise().then((result: GetCurrentLoginInformationsOutput) => {
                 this._application = result.application;
-                this._user = result.user;
-                this._tenant = result.tenant;
-                
                 resolve(true);
             }, (err) => {
                 reject(err);

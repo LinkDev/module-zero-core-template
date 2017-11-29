@@ -29,16 +29,6 @@ export class TopBarLanguageSwitchComponent extends AppComponentBase implements O
   changeLanguage(languageName: string): void {
       const input = new ChangeUserLanguageDto();
       input.languageName = languageName;
-
-      this._userService.changeLanguage(input).subscribe(() => {
-          abp.utils.setCookieValue(
-              'Abp.Localization.CultureName',
-              languageName,
-              new Date(new Date().getTime() + 5 * 365 * 86400000), //5 year
-              abp.appPath
-          );
-
-          window.location.reload();
-      });
+      window.location.reload();
   }
 }

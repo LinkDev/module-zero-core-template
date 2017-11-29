@@ -518,7 +518,8 @@ export class SessionServiceProxy {
     getCurrentLoginInformations(): Observable<GetCurrentLoginInformationsOutput> {
         let url_ = this.baseUrl + "/api/services/app/Session/GetCurrentLoginInformations";
         url_ = url_.replace(/[?&]$/, "");
-
+        console.log(this.baseUrl);
+        
         let options_ : any = {
             method: "get",
             headers: new Headers({
@@ -2052,8 +2053,6 @@ export interface IPagedResultDtoOfRoleDto {
 
 export class GetCurrentLoginInformationsOutput implements IGetCurrentLoginInformationsOutput {
     application: ApplicationInfoDto;
-    user: UserLoginInfoDto;
-    tenant: TenantLoginInfoDto;
 
     constructor(data?: IGetCurrentLoginInformationsOutput) {
         if (data) {
@@ -2067,8 +2066,6 @@ export class GetCurrentLoginInformationsOutput implements IGetCurrentLoginInform
     init(data?: any) {
         if (data) {
             this.application = data["application"] ? ApplicationInfoDto.fromJS(data["application"]) : <any>undefined;
-            this.user = data["user"] ? UserLoginInfoDto.fromJS(data["user"]) : <any>undefined;
-            this.tenant = data["tenant"] ? TenantLoginInfoDto.fromJS(data["tenant"]) : <any>undefined;
         }
     }
 
@@ -2081,8 +2078,6 @@ export class GetCurrentLoginInformationsOutput implements IGetCurrentLoginInform
     toJSON(data?: any) {
         data = typeof data === 'object' ? data : {};
         data["application"] = this.application ? this.application.toJSON() : <any>undefined;
-        data["user"] = this.user ? this.user.toJSON() : <any>undefined;
-        data["tenant"] = this.tenant ? this.tenant.toJSON() : <any>undefined;
         return data; 
     }
 
@@ -2096,8 +2091,6 @@ export class GetCurrentLoginInformationsOutput implements IGetCurrentLoginInform
 
 export interface IGetCurrentLoginInformationsOutput {
     application: ApplicationInfoDto;
-    user: UserLoginInfoDto;
-    tenant: TenantLoginInfoDto;
 }
 
 export class ApplicationInfoDto implements IApplicationInfoDto {

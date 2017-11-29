@@ -6,7 +6,9 @@ import { Type, CompilerOptions, NgModuleRef } from '@angular/core';
 export class AppPreBootstrap {
 
     static run(callback: () => void): void {
-        AppPreBootstrap.getUserConfiguration(callback);
+        AppPreBootstrap.getApplicationConfig(() => {
+            AppPreBootstrap.getUserConfiguration(callback);
+        });
     }
 
     static bootstrap<TM>(moduleType: Type<TM>, compilerOptions?: CompilerOptions | CompilerOptions[]): Promise<NgModuleRef<TM>> {
@@ -17,9 +19,7 @@ export class AppPreBootstrap {
         return abp.ajax({
             url: '/assets/appconfig.json',
             method: 'GET',
-            headers: {
-                'Abp.TenantId': abp.multiTenancy.getTenantIdCookie()
-            }
+            
         }).done(result => {
             AppConsts.appBaseUrl = result.appBaseUrl;
             AppConsts.remoteServiceBaseUrl = result.remoteServiceBaseUrl;
