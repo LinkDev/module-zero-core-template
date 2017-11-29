@@ -4,9 +4,7 @@ import { AppComponent } from './app.component';
 import { AppRouteGuard } from '@shared/auth/auth-route-guard';
 import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
-import { UsersComponent } from './users/users.component';
-import { TenantsComponent } from './tenants/tenants.component';
-import { RolesComponent } from "app/roles/roles.component";
+
 @NgModule({
     imports: [
         RouterModule.forChild([
@@ -15,9 +13,6 @@ import { RolesComponent } from "app/roles/roles.component";
                 component: AppComponent,
                 children: [
                     { path: 'home', component: HomeComponent },
-                    { path: 'users', component: UsersComponent, data: { permission: 'Pages.Users' }},
-                    { path: 'roles', component: RolesComponent, data: { permission: 'Pages.Roles' }},
-                    { path: 'tenants', component: TenantsComponent, data: { permission: 'Pages.Tenants' } },
                     { path: 'about', component: AboutComponent }
                 ]
             }

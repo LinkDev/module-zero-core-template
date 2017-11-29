@@ -16,15 +16,6 @@ import { SharedModule } from '@shared/shared.module';
 
 import { HomeComponent } from '@app/home/home.component';
 import { AboutComponent } from '@app/about/about.component';
-import { UsersComponent } from '@app/users/users.component';
-import { CreateUserComponent } from '@app/users/create-user/create-user.component';
-import { EditUserComponent } from './users/edit-user/edit-user.component';
-import { RolesComponent } from '@app/roles/roles.component';
-import { CreateRoleComponent } from '@app/roles/create-role/create-role.component';
-import { EditRoleComponent } from './roles/edit-role/edit-role.component';
-import { TenantsComponent } from '@app/tenants/tenants.component';
-import { CreateTenantComponent } from './tenants/create-tenant/create-tenant.component';
-import { EditTenantComponent } from './tenants/edit-tenant/edit-tenant.component';
 import { TopBarComponent } from '@app/layout/topbar.component';
 import { TopBarLanguageSwitchComponent } from '@app/layout/topbar-languageswitch.component';
 import { SideBarUserAreaComponent } from '@app/layout/sidebar-user-area.component';
@@ -40,15 +31,6 @@ import { FroalaEditorModule, FroalaViewModule } from 'angular-froala-wysiwyg';
         PaginationComponent,
         HomeComponent,
         AboutComponent,
-        TenantsComponent,
-		CreateTenantComponent,
-		EditTenantComponent,
-        UsersComponent,
-		CreateUserComponent,
-		EditUserComponent,
-      	RolesComponent,        
-		CreateRoleComponent,
-		EditRoleComponent,
         TopBarComponent,
         TopBarLanguageSwitchComponent,
         SideBarUserAreaComponent,
