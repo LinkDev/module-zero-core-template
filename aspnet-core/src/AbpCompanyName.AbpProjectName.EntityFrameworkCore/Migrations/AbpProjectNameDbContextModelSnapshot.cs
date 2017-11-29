@@ -924,51 +924,6 @@ namespace AbpCompanyName.AbpProjectName.Migrations
                     b.ToTable("AbpTenants");
                 });
 
-            modelBuilder.Entity("AbpCompanyName.AbpProjectName.Sample", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<string>("Bio")
-                        .IsRequired();
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(50);
-
-                    b.Property<DateTime>("PublishDate");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Samples");
-                });
-
-            modelBuilder.Entity("AbpCompanyName.AbpProjectName.Student", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd();
-
-                    b.Property<int>("Age");
-
-                    b.Property<string>("Bio")
-                        .IsRequired();
-
-                    b.Property<bool>("IsActive");
-
-                    b.Property<bool>("IsDeleted");
-
-                    b.Property<string>("Name")
-                        .HasMaxLength(50);
-
-                    b.Property<int?>("ParentId");
-
-                    b.Property<int?>("RoleId")
-                        .IsRequired();
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Students");
-                });
-
             modelBuilder.Entity("Abp.Application.Features.EditionFeatureSetting", b =>
                 {
                     b.HasBaseType("Abp.Application.Features.FeatureSetting");
