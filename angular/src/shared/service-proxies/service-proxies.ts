@@ -794,12 +794,6 @@ export interface IValidationTypes {
     maxLength: number;
 }
 
-export enum IsTenantAvailableOutputState {
-    _1 = 1, 
-    _2 = 2, 
-    _3 = 3, 
-}
-
 export class SwaggerException extends Error {
     message: string;
     status: number; 
