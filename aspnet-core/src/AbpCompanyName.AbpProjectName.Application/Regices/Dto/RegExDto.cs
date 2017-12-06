@@ -20,7 +20,7 @@ namespace AbpCompanyName.AbpProjectName.Regices.Dto
 		public string NameEn { get; set; }
 						
 		[Required(ErrorMessage = "RegExRegExRequired")]
-		public string RegEx { get; set; }
+		public string RegEx1 { get; set; }
 						
 		public Guid? CategoryId { get; set; }
 				public string CategoryName { get; set; }

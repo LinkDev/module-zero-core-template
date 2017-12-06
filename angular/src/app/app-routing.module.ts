@@ -246,6 +246,162 @@ import { WorkingDataByUsersComponent } from '@app/working-data-by-users/working-
 
 					{ path: 'announcements', component: AnnouncementsComponent},
 
+					{ path: 'workingdatabyusers', component: WorkingDataByUsersComponent},
+
+					{ path: 'violatedvalidationrules', component: ViolatedValidationRulesComponent},
+
+					{ path: 'validationrules', component: ValidationRulesComponent},
+
+					{ path: 'usersurveystemplates', component: UserSurveysTemplatesComponent},
+
+					{ path: 'usersassignments', component: UsersAssignmentsComponent},
+
+					{ path: 'usersactivedomains', component: UsersActiveDomainsComponent},
+
+					{ path: 'userprofilesprogresses', component: UserProfilesProgressesComponent},
+
+					{ path: 'userprofiles', component: UserProfilesComponent},
+
+					{ path: 'userlocationbydomainshistories', component: UserLocationByDomainsHistoriesComponent},
+
+					{ path: 'userlocationbydomains', component: UserLocationByDomainsComponent},
+
+					{ path: 'userdomains', component: UserDomainsComponent},
+
+					{ path: 'userapplications', component: UserApplicationsComponent},
+
+					{ path: 'uploadedreports', component: UploadedReportsComponent},
+
+					{ path: 'uploadedreportroles', component: UploadedReportRolesComponent},
+
+					{ path: 'trainingresults', component: TrainingResultsComponent},
+
+					{ path: 'trainingprogramdocuments', component: TrainingProgramDocumentsComponent},
+
+					{ path: 'trainingexams', component: TrainingExamsComponent},
+
+					{ path: 'trainingcenterusers', component: TrainingCenterUsersComponent},
+
+					{ path: 'trainingprograms', component: TrainingProgramsComponent},
+
+					{ path: 'trainingmembers', component: TrainingMembersComponent},
+
+					{ path: 'trainingattendances', component: TrainingAttendancesComponent},
+
+					{ path: 'tempfilteredresponses', component: TempFilteredResponsesComponent},
+
+					{ path: 'synclogs', component: SyncLogsComponent},
+
+					{ path: 'similaritypercentages', component: SimilarityPercentagesComponent},
+
+					{ path: 'similaritydatabyqualities', component: SimilarityDataByQualitiesComponent},
+
+					{ path: 'similaritydatabycallcenters', component: SimilarityDataByCallCentersComponent},
+
+					{ path: 'responsesubstatuses', component: ResponseSubStatusesComponent},
+
+					{ path: 'reporttypes', component: ReportTypesComponent},
+
+					{ path: 'regexcategories', component: RegExCategoriesComponent},
+
+					{ path: 'regices', component: RegicesComponent},
+
+					{ path: 'randomizedregulardatabydomains', component: RandomizedRegularDataByDomainsComponent},
+
+					{ path: 'randomizedregulardata', component: RandomizedRegularDataComponent},
+
+					{ path: 'questiontemplatevalidationrules', component: QuestionTemplateValidationRulesComponent},
+
+					{ path: 'questiontemplatecategories', component: QuestionTemplateCategoriesComponent},
+
+					{ path: 'questiontemplatesubcategories', component: QuestionTemplateSubCategoriesComponent},
+
+					{ path: 'questiontemplates', component: QuestionTemplatesComponent},
+
+					{ path: 'questiontemplateanswers', component: QuestionTemplateAnswersComponent},
+
+					{ path: 'questionnairequestionattachments', component: QuestionnaireQuestionAttachmentsComponent},
+
+					{ path: 'questionnairequestions', component: QuestionnaireQuestionsComponent},
+
+					{ path: 'questionnairequestionanswers', component: QuestionnaireQuestionAnswersComponent},
+
+					{ path: 'questionnaires', component: QuestionnairesComponent},
+
+					{ path: 'questionnaireexamresults', component: QuestionnaireExamResultsComponent},
+
+					{ path: 'questionattachments', component: QuestionAttachmentsComponent},
+
+					{ path: 'questionanswers', component: QuestionAnswersComponent},
+
+					{ path: 'qualitycallbackresponses', component: QualityCallBackResponsesComponent},
+
+					{ path: 'qualitycallbackresponseanswers', component: QualityCallBackResponseAnswersComponent},
+
+					{ path: 'phasesurveys', component: PhaseSurveysComponent},
+
+					{ path: 'phasequestions', component: PhaseQuestionsComponent},
+
+					{ path: 'onlineregistrationresponses', component: OnlineRegistrationResponsesComponent},
+
+					{ path: 'logs', component: LogsComponent},
+
+					{ path: 'logactiontypes', component: LogActionTypesComponent},
+
+					{ path: 'locationtrackings', component: LocationTrackingsComponent},
+
+					{ path: 'inspections', component: InspectionsComponent},
+
+					{ path: 'examresults', component: ExamResultsComponent},
+
+					{ path: 'encodingresponses', component: EncodingResponsesComponent},
+
+					{ path: 'encodingmapperquestions', component: EncodingMapperQuestionsComponent},
+
+					{ path: 'trainingcenters', component: TrainingCentersComponent},
+
+					{ path: 'domaintrainingcenters', component: DomainTrainingCentersComponent},
+
+					{ path: 'domainsettings', component: DomainSettingsComponent},
+
+					{ path: 'questiongroups', component: QuestionGroupsComponent},
+
+					{ path: 'questions', component: QuestionsComponent},
+
+					{ path: 'responses', component: ResponsesComponent},
+
+					{ path: 'comments', component: CommentsComponent},
+
+					{ path: 'samples', component: SamplesComponent},
+
+					{ path: 'surveys', component: SurveysComponent},
+
+					{ path: 'callbackresponses', component: CallBackResponsesComponent},
+
+					{ path: 'assettypes', component: AssetTypesComponent},
+
+					{ path: 'approvalrequeststeps', component: ApprovalRequestStepsComponent},
+
+					{ path: 'approvalsteps', component: ApprovalStepsComponent},
+
+					{ path: 'approvalrequests', component: ApprovalRequestsComponent},
+
+					{ path: 'phases', component: PhasesComponent},
+
+					{ path: 'applications', component: ApplicationsComponent},
+
+					{ path: 'applicationcategories', component: ApplicationCategoriesComponent},
+
+					{ path: 'domaingroupcategories', component: DomainGroupCategoriesComponent},
+
+					{ path: 'domaingroupsubcategories', component: DomainGroupSubCategoriesComponent},
+
+					{ path: 'domaingroups', component: DomainGroupsComponent},
+
+					{ path: 'domains', component: DomainsComponent},
+
+					{ path: 'announcements', component: AnnouncementsComponent},
+
                     { path: 'home', component: HomeComponent },
                     { path: 'about', component: AboutComponent }
                 ]
