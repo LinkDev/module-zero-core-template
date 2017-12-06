@@ -1,0 +1,32 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #uploadedReportRoleForm="ngForm" id="frm_edit_uploadedReportRole" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Uploaded report role")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="roleId" dto="UploadedReportRoleDto"  type="string" name="RoleId" [(ngModel)]="item.roleId"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

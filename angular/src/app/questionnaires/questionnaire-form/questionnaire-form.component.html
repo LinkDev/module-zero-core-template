@@ -1,0 +1,50 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #questionnaireForm="ngForm" id="frm_edit_questionnaire" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Questionnaire")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="title" dto="QuestionnaireDto"  type="string" name="Title" [(ngModel)]="item.title"></input-text>
+
+					<input-text id="description" dto="QuestionnaireDto"  type="string" name="Description" [(ngModel)]="item.description"></input-text>
+
+					<input-text id="type" dto="QuestionnaireDto"  type="number" name="Type" [(ngModel)]="item.type"></input-text>
+
+	
+					<input-date id="createdDate" dto="QuestionnaireDto" name="createdDate" [placeholder]="l('Created date')" [(ngModel)]="item.createdDate"></input-date>
+		
+                        
+						<input-select dto="QuestionnaireDto"  name="PhaseId"  proxy="PhaseServiceProxy"  [placeholder]="l('Phase')"  
+							[(ngModel)]="item.phaseId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<div class="form-group">
+                        <input id="isActive" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="item.isActive" checked />
+                        <label for="isActive" class="form-label">{{l("Is active")}}</label>
+                    </div>
+					<input-text id="questionsCount" dto="QuestionnaireDto"  type="number" name="QuestionsCount" [(ngModel)]="item.questionsCount"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

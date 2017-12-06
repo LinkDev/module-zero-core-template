@@ -1,0 +1,56 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #commentForm="ngForm" id="frm_edit_comment" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Comment")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                        
+						<input-select dto="CommentDto"  name="ResponseId"  proxy="ResponseServiceProxy"  [placeholder]="l('Response')"  
+							[(ngModel)]="item.responseId" dataValue="id"  dataText="name">
+                        </input-select>
+
+                        
+						<input-select dto="CommentDto"  name="QuestionId"  proxy="QuestionServiceProxy"  [placeholder]="l('Question')"  
+							[(ngModel)]="item.questionId" dataValue="id"  dataText="name">
+                        </input-select>
+
+                        
+						<input-select dto="CommentDto"  name="QuestionGroupId"  proxy="QuestionGroupServiceProxy"  [placeholder]="l('Question group')"  
+							[(ngModel)]="item.questionGroupId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="userId" dto="CommentDto"  type="string" name="UserId" [(ngModel)]="item.userId"></input-text>
+
+					<input-text id="userName" dto="CommentDto"  type="string" name="UserName" [(ngModel)]="item.userName"></input-text>
+
+					<input-text id="title" dto="CommentDto"  type="string" name="Title" [(ngModel)]="item.title"></input-text>
+
+					<input-text id="body" dto="CommentDto"  type="string" name="Body" [(ngModel)]="item.body"></input-text>
+
+	
+					<input-date id="date" dto="CommentDto" name="date" [placeholder]="l('Date')" [(ngModel)]="item.date"></input-date>
+		
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

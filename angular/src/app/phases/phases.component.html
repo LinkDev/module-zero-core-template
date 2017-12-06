@@ -1,0 +1,143 @@
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+                <h2>
+                    {{l('Phases')}}
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <i class="fa fa-spin fa-spinner" *ngIf="isTableLoading"></i>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block()" (click)="refresh();"><i class="material-icons">refresh</i> {{l('Refresh')}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+			<div class="body table-responsive">
+				<div class="filters row">
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Name')" name="NameFilter" [(ngModel)]="nameFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+
+							<input-select multiple="true" name="ApplicationId" proxy="ApplicationServiceProxy"  [placeholder]="l('Application')"  
+							[(ngModel)]="applicationIdFilter"  dataValue="id"  dataText="name">
+                        </input-select>
+
+					</div>
+
+					<div class="col-sm-3">
+                            <input-date [id]="'FromFromFilter'" [name]="'FromFromFilter'" [placeholder]="l('From From')" [(ngModel)]="fromFromFilter"></input-date>
+                    </div>
+					<div class="col-sm-3">
+                            <input-date id="FromToFilter" name="FromToFilter" [placeholder]="l('To From')" [(ngModel)]="fromToFilter"></input-date>
+                    </div>
+					
+
+					<div class="col-sm-3">
+                            <input-date [id]="'ToFromFilter'" [name]="'ToFromFilter'" [placeholder]="l('From To')" [(ngModel)]="toFromFilter"></input-date>
+                    </div>
+					<div class="col-sm-3">
+                            <input-date id="ToToFilter" name="ToToFilter" [placeholder]="l('To To')" [(ngModel)]="toToFilter"></input-date>
+                    </div>
+					
+
+					<div class="col-sm-3">
+							<input-select name="IsActive" dataText="name" dataValue="value" [placeholder]="l('Is active')"
+							[items]="trueFalseList" [(ngModel)]="isActiveFilter"></input-select>
+					</div>
+				
+					<div class="col-sm-3">
+
+							<input-select multiple="true" name="BaseDomainGroupId" proxy="BaseDomainGroupServiceProxy"  [placeholder]="l('Base domain group')"  
+							[(ngModel)]="baseDomainGroupIdFilter"  dataValue="id"  dataText="name">
+                        </input-select>
+
+					</div>
+				
+					<div class="col-sm-3">
+
+							<input-select multiple="true" name="DomainGroupId" proxy="DomainGroupServiceProxy"  [placeholder]="l('Domain group')"  
+							[(ngModel)]="domainGroupIdFilter"  dataValue="id"  dataText="name">
+                        </input-select>
+
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Default survey id')" name="DefaultSurveyIdFilter" [(ngModel)]="defaultSurveyIdFilter"></input-text>
+					</div>
+
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<button (click)="search()" class="btn btn-primary waves-effect">{{l('Search')}}</button>
+							</div>
+					</div>
+				</div>
+            <!-- ******************************************************** -->
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th class="btn-link sort" (click)="order('Name',$event)"><a>{{l('Name')}}</a></th>
+							<th class="btn-link sort" (click)="order('ApplicationName',$event)"><a>{{l('Application name')}}</a></th>
+                            <th class="btn-link sort" (click)="order('From',$event)"><a>{{l('From')}}</a></th>
+                            <th class="btn-link sort" (click)="order('To',$event)"><a>{{l('To')}}</a></th>
+                            <th class="btn-link sort" (click)="order('IsActive',$event)"><a>{{l('Is active')}}</a></th>
+							<th class="btn-link sort" (click)="order('BaseDomainGroupName',$event)"><a>{{l('Base domain group name')}}</a></th>
+							<th class="btn-link sort" (click)="order('DomainGroupName',$event)"><a>{{l('Domain group name')}}</a></th>
+                            <th class="btn-link sort" (click)="order('DefaultSurveyId',$event)"><a>{{l('Default survey id')}}</a></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalItems }">
+                            <td>{{item.name}}</td>
+							<td>{{item.applicationName}}</td>
+                            <td>{{item.from}}</td>
+                            <td>{{item.to}}</td>
+                            <td align="center">
+                                <i class="material-icons" *ngIf="item.isActive" style="color:green;">check_box</i>
+                                <i class="material-icons" *ngIf="!item.isActive" style="color:red;">indeterminate_check_box</i>
+                            </td>
+							<td>{{item.baseDomainGroupName}}</td>
+							<td>{{item.domainGroupName}}</td>
+                            <td>{{item.defaultSurveyId}}</td>
+                            <td class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">menu</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="edit(item)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(item)"><i class="material-icons">delete_sweep</i>{{l('Delete')}}</a></li>
+									<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="navigate('/app/applications?key=currentPhaseId&value=' + item.id)"><i class="material-icons">list</i>{{l('Applications')}}</a></li>
+									<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="navigate('/app/callbackresponses?key=phaseId&value=' + item.id)"><i class="material-icons">list</i>{{l('Call back responses')}}</a></li>
+									<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="navigate('/app/inspections?key=phaseId&value=' + item.id)"><i class="material-icons">list</i>{{l('Inspections')}}</a></li>
+									<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="navigate('/app/phasequestions?key=phaseId&value=' + item.id)"><i class="material-icons">list</i>{{l('Phase questions')}}</a></li>
+									<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="navigate('/app/phasesurveys?key=phaseId&value=' + item.id)"><i class="material-icons">list</i>{{l('Phase surveys')}}</a></li>
+									<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="navigate('/app/questionnaires?key=phaseId&value=' + item.id)"><i class="material-icons">list</i>{{l('Questionnaires')}}</a></li>
+									<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="navigate('/app/trainingprograms?key=phaseId&value=' + item.id)"><i class="material-icons">list</i>{{l('Training programs')}}</a></li>
+									<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="navigate('/app/uploadedreports?key=phaseId&value=' + item.id)"><i class="material-icons">list</i>{{l('Uploaded reports')}}</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <!-- ******************************************************** -->
+
+                <div class="text-align: center;" *ngIf="totalItems > pageSize">
+                    <pagination (pageChange)="getDataPage($event)" id="server"></pagination>
+                </div>
+                <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="create()">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<phase-form-modal #phaseFormModal (modalSave)="refresh()"></phase-form-modal>

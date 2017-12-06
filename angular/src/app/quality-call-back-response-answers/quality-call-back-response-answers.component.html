@@ -1,0 +1,115 @@
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+                <h2>
+                    {{l('Quality call back response answers')}}
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <i class="fa fa-spin fa-spinner" *ngIf="isTableLoading"></i>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block()" (click)="refresh();"><i class="material-icons">refresh</i> {{l('Refresh')}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+			<div class="body table-responsive">
+				<div class="filters row">
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Response answer id')" name="ResponseAnswerIdFilter" [(ngModel)]="responseAnswerIdFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Question id')" name="QuestionIdFilter" [(ngModel)]="questionIdFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Question answer id')" name="QuestionAnswerIdFilter" [(ngModel)]="questionAnswerIdFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Answer value')" name="AnswerValueFilter" [(ngModel)]="answerValueFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Answer number')" name="AnswerNumberFilter" [(ngModel)]="answerNumberFilter"></input-text>
+					</div>
+
+					<div class="col-sm-3">
+                            <input-date [id]="'AnswerTimeFromFilter'" [name]="'AnswerTimeFromFilter'" [placeholder]="l('From Answer time')" [(ngModel)]="answerTimeFromFilter"></input-date>
+                    </div>
+					<div class="col-sm-3">
+                            <input-date id="AnswerTimeToFilter" name="AnswerTimeToFilter" [placeholder]="l('To Answer time')" [(ngModel)]="answerTimeToFilter"></input-date>
+                    </div>
+					
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Response id')" name="ResponseIdFilter" [(ngModel)]="responseIdFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Status')" name="StatusFilter" [(ngModel)]="statusFilter"></input-text>
+					</div>
+
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<button (click)="search()" class="btn btn-primary waves-effect">{{l('Search')}}</button>
+							</div>
+					</div>
+				</div>
+            <!-- ******************************************************** -->
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th class="btn-link sort" (click)="order('ResponseAnswerId',$event)"><a>{{l('Response answer id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('QuestionId',$event)"><a>{{l('Question id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('QuestionAnswerId',$event)"><a>{{l('Question answer id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('AnswerValue',$event)"><a>{{l('Answer value')}}</a></th>
+                            <th class="btn-link sort" (click)="order('AnswerNumber',$event)"><a>{{l('Answer number')}}</a></th>
+                            <th class="btn-link sort" (click)="order('AnswerTime',$event)"><a>{{l('Answer time')}}</a></th>
+                            <th class="btn-link sort" (click)="order('ResponseId',$event)"><a>{{l('Response id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('Status',$event)"><a>{{l('Status')}}</a></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalItems }">
+                            <td>{{item.responseAnswerId}}</td>
+                            <td>{{item.questionId}}</td>
+                            <td>{{item.questionAnswerId}}</td>
+                            <td>{{item.answerValue}}</td>
+                            <td>{{item.answerNumber}}</td>
+                            <td>{{item.answerTime}}</td>
+                            <td>{{item.responseId}}</td>
+                            <td>{{item.status}}</td>
+                            <td class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">menu</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="edit(item)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(item)"><i class="material-icons">delete_sweep</i>{{l('Delete')}}</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <!-- ******************************************************** -->
+
+                <div class="text-align: center;" *ngIf="totalItems > pageSize">
+                    <pagination (pageChange)="getDataPage($event)" id="server"></pagination>
+                </div>
+                <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="create()">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<quality-call-back-response-answer-form-modal #qualityCallBackResponseAnswerFormModal (modalSave)="refresh()"></quality-call-back-response-answer-form-modal>

@@ -1,0 +1,63 @@
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+                <h2>
+                    {{l('Validation rules')}}
+                </h2>
+            </div>
+			<div class="body table-responsive">
+            <!-- ******************************************************** -->
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th class="btn-link sort" (click)="order('questionGroupId',$event)"><a>{{l('Question group id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('answers',$event)"><a>{{l('Answers')}}</a></th>
+                            <th class="btn-link sort" (click)="order('dependentQuestionId',$event)"><a>{{l('Dependent question id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('dependentAnswers',$event)"><a>{{l('Dependent answers')}}</a></th>
+                            <th class="btn-link sort" (click)="order('dependentQuestions',$event)"><a>{{l('Dependent questions')}}</a></th>
+                            <th class="btn-link sort" (click)="order('ruleType',$event)"><a>{{l('Rule type')}}</a></th>
+                            <th class="btn-link sort" (click)="order('errorMessage',$event)"><a>{{l('Error message')}}</a></th>
+                            <th class="btn-link sort" (click)="order('isActive',$event)"><a>{{l('Is active')}}</a></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalItems }">
+                            <td>{{item.questionGroupId}}</td>
+                            <td>{{item.answers}}</td>
+                            <td>{{item.dependentQuestionId}}</td>
+                            <td>{{item.dependentAnswers}}</td>
+                            <td>{{item.dependentQuestions}}</td>
+                            <td>{{item.ruleType}}</td>
+                            <td>{{item.errorMessage}}</td>
+                            <td align="center">
+                                <i class="material-icons" *ngIf="item.isActive" style="color:green;">check_box</i>
+                                <i class="material-icons" *ngIf="!item.isActive" style="color:red;">indeterminate_check_box</i>
+                            </td>
+                            <td class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">menu</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="edit(item)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(item)"><i class="material-icons">delete_sweep</i>{{l('Delete')}}</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <!-- ******************************************************** -->
+
+                <div class="text-align: center;" *ngIf="totalItems > pageSize">
+                    <pagination (pageChange)="getDataPage($event)" id="server"></pagination>
+                </div>
+                <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="create()">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<validation-rule-form-modal #validationRuleFormModal (saveItem)="onSaveItem($event)" (modalSave)="refresh()"></validation-rule-form-modal>

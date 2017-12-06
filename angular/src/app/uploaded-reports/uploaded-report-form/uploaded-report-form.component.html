@@ -1,0 +1,56 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #uploadedReportForm="ngForm" id="frm_edit_uploadedReport" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Uploaded report")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="name" dto="UploadedReportDto"  type="string" name="Name" [(ngModel)]="item.name"></input-text>
+
+                        
+						<input-select dto="UploadedReportDto"  name="ReportTypeId"  proxy="ReportTypeServiceProxy"  [placeholder]="l('Report type')"  
+							[(ngModel)]="item.reportTypeId" dataValue="id"  dataText="name">
+                        </input-select>
+
+                        
+						<input-select dto="UploadedReportDto"  name="DomainId"  proxy="DomainServiceProxy"  [placeholder]="l('Domain')"  
+							[(ngModel)]="item.domainId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="rating" dto="UploadedReportDto"  type="number" name="Rating" [(ngModel)]="item.rating"></input-text>
+
+					<input-text id="file" dto="UploadedReportDto"  type="string" name="File" [(ngModel)]="item.file"></input-text>
+
+	
+					<input-date id="createdDate" dto="UploadedReportDto" name="createdDate" [placeholder]="l('Created date')" [(ngModel)]="item.createdDate"></input-date>
+		
+					<input-text id="createdBy" dto="UploadedReportDto"  type="string" name="CreatedBy" [(ngModel)]="item.createdBy"></input-text>
+
+                        
+						<input-select dto="UploadedReportDto"  name="PhaseId"  proxy="PhaseServiceProxy"  [placeholder]="l('Phase')"  
+							[(ngModel)]="item.phaseId" dataValue="id"  dataText="name">
+                        </input-select>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

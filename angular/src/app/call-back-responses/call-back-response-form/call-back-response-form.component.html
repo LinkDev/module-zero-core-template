@@ -1,0 +1,97 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #callBackResponseForm="ngForm" id="frm_edit_callBackResponse" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Call back response")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="responseId" dto="CallBackResponseDto"  type="string" name="ResponseId" [(ngModel)]="item.responseId"></input-text>
+
+                        
+						<input-select dto="CallBackResponseDto"  name="SurveyId"  proxy="SurveyServiceProxy"  [placeholder]="l('Survey')"  
+							[(ngModel)]="item.surveyId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="userId" dto="CallBackResponseDto"  type="string" name="UserId" [(ngModel)]="item.userId"></input-text>
+
+	
+					<input-date id="dateSubmitted" dto="CallBackResponseDto" name="dateSubmitted" [placeholder]="l('Date submitted')" [(ngModel)]="item.dateSubmitted"></input-date>
+		
+					<input-text id="parentResponseId" dto="CallBackResponseDto"  type="string" name="ParentResponseId" [(ngModel)]="item.parentResponseId"></input-text>
+
+					<input-text id="code" dto="CallBackResponseDto"  type="string" name="Code" [(ngModel)]="item.code"></input-text>
+
+                        
+						<input-select dto="CallBackResponseDto"  name="DomainId"  proxy="DomainServiceProxy"  [placeholder]="l('Domain')"  
+							[(ngModel)]="item.domainId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="status" dto="CallBackResponseDto"  type="number" name="Status" [(ngModel)]="item.status"></input-text>
+
+					<input-text id="title" dto="CallBackResponseDto"  type="string" name="Title" [(ngModel)]="item.title"></input-text>
+
+					<input-text id="order" dto="CallBackResponseDto"  type="number" name="Order" [(ngModel)]="item.order"></input-text>
+
+	
+					<input-date id="lastUpdateTime" dto="CallBackResponseDto" name="lastUpdateTime" [placeholder]="l('Last update time')" [(ngModel)]="item.lastUpdateTime"></input-date>
+		
+					<input-text id="subCode" dto="CallBackResponseDto"  type="string" name="SubCode" [(ngModel)]="item.subCode"></input-text>
+
+                        
+						<input-select dto="CallBackResponseDto"  name="PhaseId"  proxy="PhaseServiceProxy"  [placeholder]="l('Phase')"  
+							[(ngModel)]="item.phaseId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="gISUniqueCode" dto="CallBackResponseDto"  type="string" name="GISUniqueCode" [(ngModel)]="item.gISUniqueCode"></input-text>
+
+					<div class="form-group">
+                        <input id="isPrinted" class="form-control" type="checkbox" name="IsPrinted" [(ngModel)]="item.isPrinted" checked />
+                        <label for="isPrinted" class="form-label">{{l("Is printed")}}</label>
+                    </div>
+                        
+						<input-select dto="CallBackResponseDto"  name="SampleID"  proxy="SampleServiceProxy"  [placeholder]="l('Sample')"  
+							[(ngModel)]="item.sampleID" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="resIdx" dto="CallBackResponseDto"  type="number" name="ResIdx" [(ngModel)]="item.resIdx"></input-text>
+
+					<div class="form-group">
+                        <input id="hvResponsesAnswer" class="form-control" type="checkbox" name="HvResponsesAnswer" [(ngModel)]="item.hvResponsesAnswer" checked />
+                        <label for="hvResponsesAnswer" class="form-label">{{l("Hv responses answer")}}</label>
+                    </div>
+					<input-text id="similarityPercentage" dto="CallBackResponseDto"  type="number" name="SimilarityPercentage" [(ngModel)]="item.similarityPercentage"></input-text>
+
+					<div class="form-group">
+                        <input id="correspondence" class="form-control" type="checkbox" name="Correspondence" [(ngModel)]="item.correspondence" checked />
+                        <label for="correspondence" class="form-label">{{l("Correspondence")}}</label>
+                    </div>
+                        
+						<input-select dto="CallBackResponseDto"  name="CbParentResponseId"  proxy="CbParentResponseServiceProxy"  [placeholder]="l('Cb parent response')"  
+							[(ngModel)]="item.cbParentResponseId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="responseStatus" dto="CallBackResponseDto"  type="number" name="ResponseStatus" [(ngModel)]="item.responseStatus"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

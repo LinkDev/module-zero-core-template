@@ -1,0 +1,51 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #syncLogForm="ngForm" id="frm_edit_syncLog" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Sync log")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="status" dto="SyncLogDto"  type="number" name="Status" [(ngModel)]="item.status"></input-text>
+
+	
+					<input-date id="time" dto="SyncLogDto" name="time" [placeholder]="l('Time')" [(ngModel)]="item.time"></input-date>
+		
+					<div class="form-group">
+                        <input id="isServer" class="form-control" type="checkbox" name="IsServer" [(ngModel)]="item.isServer" checked />
+                        <label for="isServer" class="form-label">{{l("Is server")}}</label>
+                    </div>
+					<input-text id="count" dto="SyncLogDto"  type="number" name="Count" [(ngModel)]="item.count"></input-text>
+
+					<input-text id="userId" dto="SyncLogDto"  type="string" name="UserId" [(ngModel)]="item.userId"></input-text>
+
+					<input-text id="message" dto="SyncLogDto"  type="string" name="Message" [(ngModel)]="item.message"></input-text>
+
+					<input-text id="service" dto="SyncLogDto"  type="string" name="Service" [(ngModel)]="item.service"></input-text>
+
+					<input-text id="domainCode" dto="SyncLogDto"  type="string" name="DomainCode" [(ngModel)]="item.domainCode"></input-text>
+
+					<input-text id="arabicErrorDescription" dto="SyncLogDto"  type="string" name="ArabicErrorDescription" [(ngModel)]="item.arabicErrorDescription"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

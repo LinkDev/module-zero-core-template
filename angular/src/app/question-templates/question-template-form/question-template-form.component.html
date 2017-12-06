@@ -1,0 +1,61 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #questionTemplateForm="ngForm" id="frm_edit_questionTemplate" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Question template")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                        
+						<input-select dto="QuestionTemplateDto"  name="QuestionTemplateSubCategoryId"  proxy="QuestionTemplateSubCategoryServiceProxy"  [placeholder]="l('Question template sub category')"  
+							[(ngModel)]="item.questionTemplateSubCategoryId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="name" dto="QuestionTemplateDto"  type="string" name="Name" [(ngModel)]="item.name"></input-text>
+
+					<input-text id="nameEn" dto="QuestionTemplateDto"  type="string" name="NameEn" [(ngModel)]="item.nameEn"></input-text>
+
+					<input-text id="type" dto="QuestionTemplateDto"  type="number" name="Type" [(ngModel)]="item.type"></input-text>
+
+					<input-text id="code" dto="QuestionTemplateDto"  type="string" name="Code" [(ngModel)]="item.code"></input-text>
+
+					<div class="form-group">
+                        <input id="isRequired" class="form-control" type="checkbox" name="IsRequired" [(ngModel)]="item.isRequired" checked />
+                        <label for="isRequired" class="form-label">{{l("Is required")}}</label>
+                    </div>
+					<input-text id="description" dto="QuestionTemplateDto"  type="string" name="Description" [(ngModel)]="item.description"></input-text>
+
+					<input-text id="descriptionEn" dto="QuestionTemplateDto"  type="string" name="DescriptionEn" [(ngModel)]="item.descriptionEn"></input-text>
+
+					<input-text id="help" dto="QuestionTemplateDto"  type="string" name="Help" [(ngModel)]="item.help"></input-text>
+
+					<input-text id="helpEn" dto="QuestionTemplateDto"  type="string" name="HelpEn" [(ngModel)]="item.helpEn"></input-text>
+
+					<input-text id="domainGroupId" dto="QuestionTemplateDto"  type="string" name="DomainGroupId" [(ngModel)]="item.domainGroupId"></input-text>
+
+					<input-text id="domainGroupLevelsNumber" dto="QuestionTemplateDto"  type="number" name="DomainGroupLevelsNumber" [(ngModel)]="item.domainGroupLevelsNumber"></input-text>
+
+					<input-text id="order" dto="QuestionTemplateDto"  type="number" name="Order" [(ngModel)]="item.order"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

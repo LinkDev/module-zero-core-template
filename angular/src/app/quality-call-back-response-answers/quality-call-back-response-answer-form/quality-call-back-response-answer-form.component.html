@@ -1,0 +1,47 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #qualityCallBackResponseAnswerForm="ngForm" id="frm_edit_qualityCallBackResponseAnswer" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Quality call back response answer")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="responseAnswerId" dto="QualityCallBackResponseAnswerDto"  type="string" name="ResponseAnswerId" [(ngModel)]="item.responseAnswerId"></input-text>
+
+					<input-text id="questionId" dto="QualityCallBackResponseAnswerDto"  type="string" name="QuestionId" [(ngModel)]="item.questionId"></input-text>
+
+					<input-text id="questionAnswerId" dto="QualityCallBackResponseAnswerDto"  type="string" name="QuestionAnswerId" [(ngModel)]="item.questionAnswerId"></input-text>
+
+					<input-text id="answerValue" dto="QualityCallBackResponseAnswerDto"  type="string" name="AnswerValue" [(ngModel)]="item.answerValue"></input-text>
+
+					<input-text id="answerNumber" dto="QualityCallBackResponseAnswerDto"  type="number" name="AnswerNumber" [(ngModel)]="item.answerNumber"></input-text>
+
+	
+					<input-date id="answerTime" dto="QualityCallBackResponseAnswerDto" name="answerTime" [placeholder]="l('Answer time')" [(ngModel)]="item.answerTime"></input-date>
+		
+					<input-text id="responseId" dto="QualityCallBackResponseAnswerDto"  type="string" name="ResponseId" [(ngModel)]="item.responseId"></input-text>
+
+					<input-text id="status" dto="QualityCallBackResponseAnswerDto"  type="number" name="Status" [(ngModel)]="item.status"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

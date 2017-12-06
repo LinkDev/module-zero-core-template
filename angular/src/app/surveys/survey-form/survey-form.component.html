@@ -1,0 +1,72 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #surveyForm="ngForm" id="frm_edit_survey" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Survey")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="name" dto="SurveyDto"  type="string" name="Name" [(ngModel)]="item.name"></input-text>
+
+					<div class="form-group">
+                        <input id="isActive" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="item.isActive" checked />
+                        <label for="isActive" class="form-label">{{l("Is active")}}</label>
+                    </div>
+                        
+						<input-select dto="SurveyDto"  name="ParentSurveyId"  proxy="ParentSurveyServiceProxy"  [placeholder]="l('Parent survey')"  
+							[(ngModel)]="item.parentSurveyId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="parentSurveyRelation" dto="SurveyDto"  type="number" name="ParentSurveyRelation" [(ngModel)]="item.parentSurveyRelation"></input-text>
+
+					<div class="form-group">
+                        <input id="isEnabled" class="form-control" type="checkbox" name="IsEnabled" [(ngModel)]="item.isEnabled" checked />
+                        <label for="isEnabled" class="form-label">{{l("Is enabled")}}</label>
+                    </div>
+					<input-text id="code" dto="SurveyDto"  type="string" name="Code" [(ngModel)]="item.code"></input-text>
+
+					<input-text id="icon" dto="SurveyDto"  type="string" name="Icon" [(ngModel)]="item.icon"></input-text>
+
+					<div class="form-group">
+                        <input id="allowAddResponse" class="form-control" type="checkbox" name="AllowAddResponse" [(ngModel)]="item.allowAddResponse" checked />
+                        <label for="allowAddResponse" class="form-label">{{l("Allow add response")}}</label>
+                    </div>
+					<input-text id="typeText" dto="SurveyDto"  type="string" name="TypeText" [(ngModel)]="item.typeText"></input-text>
+
+					<input-text id="serialDigitsCount" dto="SurveyDto"  type="number" name="SerialDigitsCount" [(ngModel)]="item.serialDigitsCount"></input-text>
+
+	
+					<input-date id="lastUpdateTime" dto="SurveyDto" name="lastUpdateTime" [placeholder]="l('Last update time')" [(ngModel)]="item.lastUpdateTime"></input-date>
+		
+					<input-text id="minMinutes" dto="SurveyDto"  type="number" name="MinMinutes" [(ngModel)]="item.minMinutes"></input-text>
+
+					<input-text id="progressCalculationType" dto="SurveyDto"  type="number" name="ProgressCalculationType" [(ngModel)]="item.progressCalculationType"></input-text>
+
+					<input-text id="dailyTarget" dto="SurveyDto"  type="number" name="DailyTarget" [(ngModel)]="item.dailyTarget"></input-text>
+
+					<div class="form-group">
+                        <input id="isTemplate" class="form-control" type="checkbox" name="IsTemplate" [(ngModel)]="item.isTemplate" checked />
+                        <label for="isTemplate" class="form-label">{{l("Is template")}}</label>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #announcementForm="ngForm" id="frm_edit_announcement" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Announcement")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="message" dto="AnnouncementDto"  type="string" name="Message" [(ngModel)]="item.message"></input-text>
+
+                        
+						<input-select dto="AnnouncementDto"  name="DomainId"  proxy="DomainServiceProxy"  [placeholder]="l('Domain')"  
+							[(ngModel)]="item.domainId" dataValue="id"  dataText="name">
+                        </input-select>
+
+	
+					<input-date id="date" dto="AnnouncementDto" name="date" [placeholder]="l('Date')" [(ngModel)]="item.date"></input-date>
+		
+					<input-text id="senderId" dto="AnnouncementDto"  type="string" name="SenderId" [(ngModel)]="item.senderId"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

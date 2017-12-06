@@ -1,0 +1,39 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #trainingProgramDocumentForm="ngForm" id="frm_edit_trainingProgramDocument" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Training program document")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                        
+						<input-select dto="TrainingProgramDocumentDto"  name="TrainingProgramId"  proxy="TrainingProgramServiceProxy"  [placeholder]="l('Training program')"  
+							[(ngModel)]="item.trainingProgramId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="name" dto="TrainingProgramDocumentDto"  type="string" name="Name" [(ngModel)]="item.name"></input-text>
+
+					<input-text id="file" dto="TrainingProgramDocumentDto"  type="string" name="File" [(ngModel)]="item.file"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

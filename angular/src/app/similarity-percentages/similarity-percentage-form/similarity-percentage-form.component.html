@@ -1,0 +1,52 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #similarityPercentageForm="ngForm" id="frm_edit_similarityPercentage" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Similarity percentage")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="qualityParentResponseId" dto="SimilarityPercentageDto"  type="string" name="QualityParentResponseId" [(ngModel)]="item.qualityParentResponseId"></input-text>
+
+					<input-text id="qualityResponseCode" dto="SimilarityPercentageDto"  type="string" name="QualityResponseCode" [(ngModel)]="item.qualityResponseCode"></input-text>
+
+					<input-text id="realResponseId" dto="SimilarityPercentageDto"  type="string" name="RealResponseId" [(ngModel)]="item.realResponseId"></input-text>
+
+					<input-text id="realParentResponseId" dto="SimilarityPercentageDto"  type="string" name="RealParentResponseId" [(ngModel)]="item.realParentResponseId"></input-text>
+
+					<input-text id="realResponseCode" dto="SimilarityPercentageDto"  type="string" name="RealResponseCode" [(ngModel)]="item.realResponseCode"></input-text>
+
+					<input-text id="surveyId" dto="SimilarityPercentageDto"  type="string" name="SurveyId" [(ngModel)]="item.surveyId"></input-text>
+
+					<input-text id="similarResponseAnswersCount" dto="SimilarityPercentageDto"  type="number" name="SimilarResponseAnswersCount" [(ngModel)]="item.similarResponseAnswersCount"></input-text>
+
+					<input-text id="allResponseAnswersCount" dto="SimilarityPercentageDto"  type="number" name="AllResponseAnswersCount" [(ngModel)]="item.allResponseAnswersCount"></input-text>
+
+					<input-text id="relationCode" dto="SimilarityPercentageDto"  type="number" name="RelationCode" [(ngModel)]="item.relationCode"></input-text>
+
+					<input-text id="typeCode" dto="SimilarityPercentageDto"  type="number" name="TypeCode" [(ngModel)]="item.typeCode"></input-text>
+
+					<input-text id="age" dto="SimilarityPercentageDto"  type="number" name="Age" [(ngModel)]="item.age"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -66,8 +66,9 @@ export function getRemoteServiceBaseUrl(): string {
 		InputComponent,
 		ValidateComponent
 	],
-	providers: [
-		Proxies.ValidationServiceProxy
+	providers:[
+		Proxies.ValidationServiceProxy,
+		{provide: 'DomainServiceProxy', useClass: Proxies.DomainServiceProxy}
 	]
 })
 export class SharedModule {

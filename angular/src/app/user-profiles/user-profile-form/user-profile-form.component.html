@@ -1,0 +1,51 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #userProfileForm="ngForm" id="frm_edit_userProfile" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("User profile")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="userId" dto="UserProfileDto"  type="string" name="UserId" [(ngModel)]="item.userId"></input-text>
+
+					<input-text id="fullName" dto="UserProfileDto"  type="string" name="FullName" [(ngModel)]="item.fullName"></input-text>
+
+					<input-text id="nationalId" dto="UserProfileDto"  type="string" name="NationalId" [(ngModel)]="item.nationalId"></input-text>
+
+					<input-text id="contractType" dto="UserProfileDto"  type="number" name="ContractType" [(ngModel)]="item.contractType"></input-text>
+
+					<input-text id="paymentNumber" dto="UserProfileDto"  type="string" name="PaymentNumber" [(ngModel)]="item.paymentNumber"></input-text>
+
+					<input-text id="bankName" dto="UserProfileDto"  type="number" name="BankName" [(ngModel)]="item.bankName"></input-text>
+
+					<input-text id="bankAccount" dto="UserProfileDto"  type="string" name="BankAccount" [(ngModel)]="item.bankAccount"></input-text>
+
+					<div class="form-group">
+                        <input id="isActive" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="item.isActive" checked />
+                        <label for="isActive" class="form-label">{{l("Is active")}}</label>
+                    </div>
+	
+					<input-date id="createdDate" dto="UserProfileDto" name="createdDate" [placeholder]="l('Created date')" [(ngModel)]="item.createdDate"></input-date>
+		
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

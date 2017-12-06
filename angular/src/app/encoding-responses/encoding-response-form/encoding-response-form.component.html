@@ -1,0 +1,62 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #encodingResponseForm="ngForm" id="frm_edit_encodingResponse" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Encoding response")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="responseCode" dto="EncodingResponseDto"  type="string" name="ResponseCode" [(ngModel)]="item.responseCode"></input-text>
+
+					<input-text id="surveyId" dto="EncodingResponseDto"  type="string" name="SurveyId" [(ngModel)]="item.surveyId"></input-text>
+
+					<input-text id="domainId" dto="EncodingResponseDto"  type="string" name="DomainId" [(ngModel)]="item.domainId"></input-text>
+
+					<input-text id="domainName" dto="EncodingResponseDto"  type="string" name="DomainName" [(ngModel)]="item.domainName"></input-text>
+
+					<input-text id="title" dto="EncodingResponseDto"  type="string" name="Title" [(ngModel)]="item.title"></input-text>
+
+					<input-text id="userName" dto="EncodingResponseDto"  type="string" name="UserName" [(ngModel)]="item.userName"></input-text>
+
+					<input-text id="coderId" dto="EncodingResponseDto"  type="string" name="CoderId" [(ngModel)]="item.coderId"></input-text>
+
+					<input-text id="coderName" dto="EncodingResponseDto"  type="string" name="CoderName" [(ngModel)]="item.coderName"></input-text>
+
+	
+					<input-date id="dateCoded" dto="EncodingResponseDto" name="dateCoded" [placeholder]="l('Date coded')" [(ngModel)]="item.dateCoded"></input-date>
+		
+					<input-text id="reviewerId" dto="EncodingResponseDto"  type="string" name="ReviewerId" [(ngModel)]="item.reviewerId"></input-text>
+
+					<input-text id="reviewerName" dto="EncodingResponseDto"  type="string" name="ReviewerName" [(ngModel)]="item.reviewerName"></input-text>
+
+	
+					<input-date id="dateReviewed" dto="EncodingResponseDto" name="dateReviewed" [placeholder]="l('Date reviewed')" [(ngModel)]="item.dateReviewed"></input-date>
+		
+					<input-text id="status" dto="EncodingResponseDto"  type="number" name="Status" [(ngModel)]="item.status"></input-text>
+
+					<input-text id="index" dto="EncodingResponseDto"  type="number" name="Index" [(ngModel)]="item.index"></input-text>
+
+					<input-text id="responseAnswers" dto="EncodingResponseDto"  type="string" name="ResponseAnswers" [(ngModel)]="item.responseAnswers"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

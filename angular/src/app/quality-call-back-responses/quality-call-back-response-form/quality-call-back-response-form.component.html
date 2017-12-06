@@ -1,0 +1,73 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #qualityCallBackResponseForm="ngForm" id="frm_edit_qualityCallBackResponse" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Quality call back response")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="responseId" dto="QualityCallBackResponseDto"  type="string" name="ResponseId" [(ngModel)]="item.responseId"></input-text>
+
+					<input-text id="surveyId" dto="QualityCallBackResponseDto"  type="string" name="SurveyId" [(ngModel)]="item.surveyId"></input-text>
+
+					<input-text id="userId" dto="QualityCallBackResponseDto"  type="string" name="UserId" [(ngModel)]="item.userId"></input-text>
+
+					<input-text id="parentResponseId" dto="QualityCallBackResponseDto"  type="string" name="ParentResponseId" [(ngModel)]="item.parentResponseId"></input-text>
+
+	
+					<input-date id="startTime" dto="QualityCallBackResponseDto" name="startTime" [placeholder]="l('Start time')" [(ngModel)]="item.startTime"></input-date>
+		
+	
+					<input-date id="endTime" dto="QualityCallBackResponseDto" name="endTime" [placeholder]="l('End time')" [(ngModel)]="item.endTime"></input-date>
+		
+					<input-text id="code" dto="QualityCallBackResponseDto"  type="string" name="Code" [(ngModel)]="item.code"></input-text>
+
+					<input-text id="domainId" dto="QualityCallBackResponseDto"  type="string" name="DomainId" [(ngModel)]="item.domainId"></input-text>
+
+					<input-text id="status" dto="QualityCallBackResponseDto"  type="number" name="Status" [(ngModel)]="item.status"></input-text>
+
+					<input-text id="title" dto="QualityCallBackResponseDto"  type="string" name="Title" [(ngModel)]="item.title"></input-text>
+
+	
+					<input-date id="lastUpdateTime" dto="QualityCallBackResponseDto" name="lastUpdateTime" [placeholder]="l('Last update time')" [(ngModel)]="item.lastUpdateTime"></input-date>
+		
+					<div class="form-group">
+                        <input id="isReal" class="form-control" type="checkbox" name="IsReal" [(ngModel)]="item.isReal" checked />
+                        <label for="isReal" class="form-label">{{l("Is real")}}</label>
+                    </div>
+					<input-text id="phaseId" dto="QualityCallBackResponseDto"  type="string" name="PhaseId" [(ngModel)]="item.phaseId"></input-text>
+
+					<input-text id="creationPhaseId" dto="QualityCallBackResponseDto"  type="string" name="CreationPhaseId" [(ngModel)]="item.creationPhaseId"></input-text>
+
+					<input-text id="skipReason" dto="QualityCallBackResponseDto"  type="number" name="SkipReason" [(ngModel)]="item.skipReason"></input-text>
+
+					<input-text id="skipComment" dto="QualityCallBackResponseDto"  type="string" name="SkipComment" [(ngModel)]="item.skipComment"></input-text>
+
+					<input-text id="calledByCallCenter" dto="QualityCallBackResponseDto"  type="number" name="CalledByCallCenter" [(ngModel)]="item.calledByCallCenter"></input-text>
+
+					<input-text id="callCenterComment" dto="QualityCallBackResponseDto"  type="string" name="CallCenterComment" [(ngModel)]="item.callCenterComment"></input-text>
+
+					<input-text id="similarityPercentage" dto="QualityCallBackResponseDto"  type="number" name="SimilarityPercentage" [(ngModel)]="item.similarityPercentage"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

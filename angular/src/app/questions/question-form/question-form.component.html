@@ -1,0 +1,84 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #questionForm="ngForm" id="frm_edit_question" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Question")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="title" dto="QuestionDto"  type="string" name="Title" [(ngModel)]="item.title"></input-text>
+
+					<div class="form-group">
+                        <input id="isActive" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="item.isActive" checked />
+                        <label for="isActive" class="form-label">{{l("Is active")}}</label>
+                    </div>
+					<input-text id="order" dto="QuestionDto"  type="number" name="Order" [(ngModel)]="item.order"></input-text>
+
+					<input-text id="questionType" dto="QuestionDto"  type="number" name="QuestionType" [(ngModel)]="item.questionType"></input-text>
+
+                        
+						<input-select dto="QuestionDto"  name="DomainGroupId"  proxy="DomainGroupServiceProxy"  [placeholder]="l('Domain group')"  
+							[(ngModel)]="item.domainGroupId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="domainGroupLevelsNumber" dto="QuestionDto"  type="number" name="DomainGroupLevelsNumber" [(ngModel)]="item.domainGroupLevelsNumber"></input-text>
+
+                        
+						<input-select dto="QuestionDto"  name="QuestionGroupId"  proxy="QuestionGroupServiceProxy"  [placeholder]="l('Question group')"  
+							[(ngModel)]="item.questionGroupId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="code" dto="QuestionDto"  type="string" name="Code" [(ngModel)]="item.code"></input-text>
+
+					<div class="form-group">
+                        <input id="isRequired" class="form-control" type="checkbox" name="IsRequired" [(ngModel)]="item.isRequired" checked />
+                        <label for="isRequired" class="form-label">{{l("Is required")}}</label>
+                    </div>
+					<div class="form-group">
+                        <input id="isHidden" class="form-control" type="checkbox" name="IsHidden" [(ngModel)]="item.isHidden" checked />
+                        <label for="isHidden" class="form-label">{{l("Is hidden")}}</label>
+                    </div>
+					<input-text id="description" dto="QuestionDto"  type="string" name="Description" [(ngModel)]="item.description"></input-text>
+
+					<input-text id="questionNumber" dto="QuestionDto"  type="string" name="QuestionNumber" [(ngModel)]="item.questionNumber"></input-text>
+
+					<input-text id="help" dto="QuestionDto"  type="string" name="Help" [(ngModel)]="item.help"></input-text>
+
+					<input-text id="defaultAnswerValue" dto="QuestionDto"  type="string" name="DefaultAnswerValue" [(ngModel)]="item.defaultAnswerValue"></input-text>
+
+					<div class="form-group">
+                        <input id="isUsedInCallBack" class="form-control" type="checkbox" name="IsUsedInCallBack" [(ngModel)]="item.isUsedInCallBack" checked />
+                        <label for="isUsedInCallBack" class="form-label">{{l("Is used in call back")}}</label>
+                    </div>
+					<div class="form-group">
+                        <input id="isUsedInEncoding" class="form-control" type="checkbox" name="IsUsedInEncoding" [(ngModel)]="item.isUsedInEncoding" checked />
+                        <label for="isUsedInEncoding" class="form-label">{{l("Is used in encoding")}}</label>
+                    </div>
+
+					<div class="form-group">
+                        <question-answer [items]="item.questionAnswers"></question-answer>
+                    </div>
+					<div class="form-group">
+                        <validation-rule [items]="item.validationRules"></validation-rule>
+                    </div>
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

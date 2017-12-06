@@ -1,0 +1,58 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #approvalRequestForm="ngForm" id="frm_edit_approvalRequest" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Approval request")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="type" dto="ApprovalRequestDto"  type="string" name="Type" [(ngModel)]="item.type"></input-text>
+
+					<input-text id="title" dto="ApprovalRequestDto"  type="string" name="Title" [(ngModel)]="item.title"></input-text>
+
+	
+					<input-date id="dateRequested" dto="ApprovalRequestDto" name="dateRequested" [placeholder]="l('Date requested')" [(ngModel)]="item.dateRequested"></input-date>
+		
+					<input-text id="requestedBy" dto="ApprovalRequestDto"  type="string" name="RequestedBy" [(ngModel)]="item.requestedBy"></input-text>
+
+					<input-text id="contentId" dto="ApprovalRequestDto"  type="string" name="ContentId" [(ngModel)]="item.contentId"></input-text>
+
+					<input-text id="action" dto="ApprovalRequestDto"  type="string" name="Action" [(ngModel)]="item.action"></input-text>
+
+					<input-text id="routeData" dto="ApprovalRequestDto"  type="string" name="RouteData" [(ngModel)]="item.routeData"></input-text>
+
+                        
+						<input-select dto="ApprovalRequestDto"  name="ApprovalStepId"  proxy="ApprovalStepServiceProxy"  [placeholder]="l('Approval step')"  
+							[(ngModel)]="item.approvalStepId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<div class="form-group">
+                        <input id="isApproved" class="form-control" type="checkbox" name="IsApproved" [(ngModel)]="item.isApproved" checked />
+                        <label for="isApproved" class="form-label">{{l("Is approved")}}</label>
+                    </div>
+					<input-text id="approvalAction" dto="ApprovalRequestDto"  type="string" name="ApprovalAction" [(ngModel)]="item.approvalAction"></input-text>
+
+					<input-text id="rejectionAction" dto="ApprovalRequestDto"  type="string" name="RejectionAction" [(ngModel)]="item.rejectionAction"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

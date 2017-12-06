@@ -1,13 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <localizationDictionary culture="zh-CN">
   <texts>
     <text name="HomePage" value="主页" />
     <text name="About" value="关于我们" />
     <text name="WellcomeMessage" value="欢迎使用 AbpProjectName!" />
-    
     <text name="FormIsNotValidMessage" value="部分输入信息不符合要求，请检查并改正.." />
     <text name="TenantNameCanNotBeEmpty" value="租户名不能为空" />
-
     <text name="InvalidUserNameOrPassword" value="用户名或密码无效" />
     <text name="ThereIsNoTenantDefinedWithName{0}" value="租户 {0}不存在" />
     <text name="TenantIsNotActive" value="租户 {0} 未激活." />
@@ -18,8 +16,756 @@
     <text name="Password" value="密码" />
     <text name="RememberMe" value="记住我" />
     <text name="LogIn" value="登录" />
-
     <text name="LoginFailed" value="登录失败!" />
-    
+    <text name="Announcement" value="Announcement" />
+    <text name="Announcements" value="Announcements" />
+    <text name="Message" value="Message" />
+    <text name="AnnouncementMessageRequired" value="Message is required" />
+    <text name="AnnouncementMessageMaxLength" value="Message cannot be more than 4000 characters long" />
+    <text name="Domain" value="Domain" />
+    <text name="Date" value="Date" />
+    <text name="SenderId" value="Sender id" />
+    <text name="AnnouncementSenderIdMaxLength" value="Sender id cannot be more than 128 characters long" />
+    <text name="Domains" value="Domains" />
+    <text name="Name" value="Name" />
+    <text name="DomainNameMaxLength" value="Name cannot be more than 2000 characters long" />
+    <text name="Code" value="Code" />
+    <text name="DomainCodeMaxLength" value="Code cannot be more than 50 characters long" />
+    <text name="Parent domain" value="Parent domain" />
+    <text name="Domain group" value="Domain group" />
+    <text name="UR" value="UR" />
+    <text name="NameHierachy" value="Name hierachy" />
+    <text name="DomainNameHierachyMaxLength" value="Name hierachy cannot be more than 500 characters long" />
+    <text name="Domain groups" value="Domain groups" />
+    <text name="DomainGroupNameRequired" value="Name is required" />
+    <text name="DomainGroupNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="Type" value="Type" />
+    <text name="Sub category" value="Sub category" />
+    <text name="IsActive" value="Is active" />
+    <text name="CreatedDate" value="Created date" />
+    <text name="LastUpdateTime" value="Last update time" />
+    <text name="Domain group sub category" value="Domain group sub category" />
+    <text name="Domain group sub categories" value="Domain group sub categories" />
+    <text name="DomainGroupSubCategoryNameRequired" value="Name is required" />
+    <text name="DomainGroupSubCategoryNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="NameEn" value="Name en" />
+    <text name="DomainGroupSubCategoryNameEnMaxLength" value="Name en cannot be more than 200 characters long" />
+    <text name="Domain group category" value="Domain group category" />
+    <text name="Domain group categories" value="Domain group categories" />
+    <text name="DomainGroupCategoryNameRequired" value="Name is required" />
+    <text name="DomainGroupCategoryNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="DomainGroupCategoryNameEnMaxLength" value="Name en cannot be more than 200 characters long" />
+    <text name="DomainGroupCategoryTypeRequired" value="Type is required" />
+    <text name="IsAdministrative" value="Is administrative" />
+    <text name="Application category" value="Application category" />
+    <text name="Application categories" value="Application categories" />
+    <text name="ApplicationCategoryNameRequired" value="Name is required" />
+    <text name="ApplicationCategoryNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="ApplicationCategoryNameEnMaxLength" value="Name en cannot be more than 200 characters long" />
+    <text name="Application" value="Application" />
+    <text name="Applications" value="Applications" />
+    <text name="ApplicationNameRequired" value="Name is required" />
+    <text name="ApplicationNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="Current phase" value="Current phase" />
+    <text name="IsEnabled" value="Is enabled" />
+    <text name="ApplicationIsActiveRequired" value="Is active is required" />
+    <text name="Logo" value="Logo" />
+    <text name="ApplicationLogoMaxLength" value="Logo cannot be more than 500 characters long" />
+    <text name="Category" value="Category" />
+    <text name="AvailableFor" value="Available for" />
+    <text name="Phase" value="Phase" />
+    <text name="Phases" value="Phases" />
+    <text name="PhaseNameRequired" value="Name is required" />
+    <text name="PhaseNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="From" value="From" />
+    <text name="To" value="To" />
+    <text name="Order" value="Order" />
+    <text name="PhaseOrderRequired" value="Order is required" />
+    <text name="PhaseIsActiveRequired" value="Is active is required" />
+    <text name="Base domain group" value="Base domain group" />
+    <text name="DefaultSurveyId" value="Default survey id" />
+    <text name="Application setting" value="Application setting" />
+    <text name="Application settings" value="Application settings" />
+    <text name="ApplicationSettingId" value="Application setting id" />
+    <text name="ApplicationSettingApplicationSettingIdRequired" value="Application setting id is required" />
+    <text name="Key" value="Key" />
+    <text name="ApplicationSettingKeyMaxLength" value="Key cannot be more than 250 characters long" />
+    <text name="Value" value="Value" />
+    <text name="Approval request" value="Approval request" />
+    <text name="Approval requests" value="Approval requests" />
+    <text name="ApprovalRequestTypeRequired" value="Type is required" />
+    <text name="ApprovalRequestTypeMaxLength" value="Type cannot be more than 500 characters long" />
+    <text name="Title" value="Title" />
+    <text name="ApprovalRequestTitleRequired" value="Title is required" />
+    <text name="ApprovalRequestTitleMaxLength" value="Title cannot be more than 500 characters long" />
+    <text name="DateRequested" value="Date requested" />
+    <text name="RequestedBy" value="Requested by" />
+    <text name="ApprovalRequestRequestedByMaxLength" value="Requested by cannot be more than 128 characters long" />
+    <text name="ContentId" value="Content id" />
+    <text name="ApprovalRequestContentIdRequired" value="Content id is required" />
+    <text name="Action" value="Action" />
+    <text name="ApprovalRequestActionRequired" value="Action is required" />
+    <text name="RouteData" value="Route data" />
+    <text name="Approval step" value="Approval step" />
+    <text name="IsApproved" value="Is approved" />
+    <text name="ApprovalAction" value="Approval action" />
+    <text name="RejectionAction" value="Rejection action" />
+    <text name="Approval steps" value="Approval steps" />
+    <text name="WorkflowId" value="Workflow id" />
+    <text name="ApprovalStepWorkflowIdRequired" value="Workflow id is required" />
+    <text name="ApprovalStepOrderRequired" value="Order is required" />
+    <text name="RoleId" value="Role id" />
+    <text name="ApprovalStepRoleIdMaxLength" value="Role id cannot be more than 128 characters long" />
+    <text name="GroupId" value="Group id" />
+    <text name="ApprovalStepIsActiveRequired" value="Is active is required" />
+    <text name="Approval request step" value="Approval request step" />
+    <text name="Approval request steps" value="Approval request steps" />
+    <text name="ApprovalRequestStepIsApprovedRequired" value="Is approved is required" />
+    <text name="DateApproved" value="Date approved" />
+    <text name="ApprovalRequestStepDateApprovedRequired" value="Date approved is required" />
+    <text name="ApprovedBy" value="Approved by" />
+    <text name="ApprovalRequestStepApprovedByRequired" value="Approved by is required" />
+    <text name="ApprovalRequestStepApprovedByMaxLength" value="Approved by cannot be more than 128 characters long" />
+    <text name="Comments" value="Comments" />
+    <text name="Asset type" value="Asset type" />
+    <text name="Asset types" value="Asset types" />
+    <text name="AssetTypeNameRequired" value="Name is required" />
+    <text name="AssetTypeNameMaxLength" value="Name cannot be more than 50 characters long" />
+    <text name="AssetTypeIsActiveRequired" value="Is active is required" />
+    <text name="Call back response" value="Call back response" />
+    <text name="Call back responses" value="Call back responses" />
+    <text name="ResponseId" value="Response id" />
+    <text name="CallBackResponseResponseIdRequired" value="Response id is required" />
+    <text name="Survey" value="Survey" />
+    <text name="UserId" value="User id" />
+    <text name="CallBackResponseUserIdMaxLength" value="User id cannot be more than 128 characters long" />
+    <text name="DateSubmitted" value="Date submitted" />
+    <text name="ParentResponseId" value="Parent response id" />
+    <text name="CallBackResponseCodeMaxLength" value="Code cannot be more than 50 characters long" />
+    <text name="Status" value="Status" />
+    <text name="SubCode" value="Sub code" />
+    <text name="CallBackResponseSubCodeMaxLength" value="Sub code cannot be more than 50 characters long" />
+    <text name="GISUniqueCode" value="GIS unique code" />
+    <text name="CallBackResponseGISUniqueCodeMaxLength" value="GIS unique code cannot be more than 50 characters long" />
+    <text name="IsPrinted" value="Is printed" />
+    <text name="Sample" value="Sample" />
+    <text name="ResIdx" value="Res idx" />
+    <text name="HvResponsesAnswer" value="Hv responses answer" />
+    <text name="SimilarityPercentage" value="Similarity percentage" />
+    <text name="Correspondence" value="Correspondence" />
+    <text name="Cb parent response" value="Cb parent response" />
+    <text name="ResponseStatus" value="Response Status" />
+    <text name="Surveys" value="Surveys" />
+    <text name="SurveyNameRequired" value="Name is required" />
+    <text name="SurveyNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="SurveyIsActiveRequired" value="Is active is required" />
+    <text name="Parent survey" value="Parent survey" />
+    <text name="ParentSurveyRelation" value="Parent survey relation" />
+    <text name="SurveyIsEnabledRequired" value="Is enabled is required" />
+    <text name="SurveyCodeMaxLength" value="Code cannot be more than 50 characters long" />
+    <text name="Icon" value="Icon" />
+    <text name="SurveyIconMaxLength" value="Icon cannot be more than 200 characters long" />
+    <text name="AllowAddResponse" value="Allow add response" />
+    <text name="SurveyAllowAddResponseRequired" value="Allow add response is required" />
+    <text name="TypeText" value="Type text" />
+    <text name="SurveyTypeTextMaxLength" value="Type text cannot be more than 50 characters long" />
+    <text name="SerialDigitsCount" value="Serial digits count" />
+    <text name="MinMinutes" value="Min minutes" />
+    <text name="ProgressCalculationType" value="Progress calculation type" />
+    <text name="SurveyProgressCalculationTypeRequired" value="Progress calculation type is required" />
+    <text name="DailyTarget" value="Daily target" />
+    <text name="IsTemplate" value="Is template" />
+    <text name="Samples" value="Samples" />
+    <text name="CreateBy" value="Create by" />
+    <text name="SampleCreateByRequired" value="Create by is required" />
+    <text name="SampleCreateByMaxLength" value="Create by cannot be more than 128 characters long" />
+    <text name="AssignedUserId" value="Assigned user id" />
+    <text name="SampleAssignedUserIdRequired" value="Assigned user id is required" />
+    <text name="SampleAssignedUserIdMaxLength" value="Assigned user id cannot be more than 128 characters long" />
+    <text name="SampleSize" value="Sample size" />
+    <text name="SampleSampleSizeRequired" value="Sample size is required" />
+    <text name="SampleDate" value="Sample date" />
+    <text name="SampleSampleDateRequired" value="Sample date is required" />
+    <text name="Properties" value="Properties" />
+    <text name="SamplePropertiesRequired" value="Properties is required" />
+    <text name="SamplePropertiesMaxLength" value="Properties cannot be more than 1000 characters long" />
+    <text name="TypeOfSample" value="Type of sample" />
+    <text name="SampleTypeOfSampleRequired" value="Type of sample is required" />
+    <text name="Comment" value="Comment" />
+    <text name="Response" value="Response" />
+    <text name="Question" value="Question" />
+    <text name="Question group" value="Question group" />
+    <text name="CommentUserIdRequired" value="User id is required" />
+    <text name="CommentUserIdMaxLength" value="User id cannot be more than 128 characters long" />
+    <text name="UserName" value="User name" />
+    <text name="CommentUserNameRequired" value="User name is required" />
+    <text name="CommentUserNameMaxLength" value="User name cannot be more than 500 characters long" />
+    <text name="CommentTitleMaxLength" value="Title cannot be more than 500 characters long" />
+    <text name="Body" value="Body" />
+    <text name="CommentBodyRequired" value="Body is required" />
+    <text name="Responses" value="Responses" />
+    <text name="SurveyId" value="Survey id" />
+    <text name="ResponseSurveyIdRequired" value="Survey id is required" />
+    <text name="ResponseUserIdMaxLength" value="User id cannot be more than 128 characters long" />
+    <text name="StartTime" value="Start time" />
+    <text name="EndTime" value="End time" />
+    <text name="Location" value="Location" />
+    <text name="UserLocation" value="User location" />
+    <text name="ResponseCodeRequired" value="Code is required" />
+    <text name="ResponseCodeMaxLength" value="Code cannot be more than 50 characters long" />
+    <text name="DomainId" value="Domain id" />
+    <text name="ResponseDomainIdRequired" value="Domain id is required" />
+    <text name="ResponseStatusRequired" value="Status is required" />
+    <text name="SubStatusId" value="Sub status id" />
+    <text name="ResponseOrderRequired" value="Order is required" />
+    <text name="UserStartLocation" value="User start location" />
+    <text name="IsReal" value="Is real" />
+    <text name="ResponseIsRealRequired" value="Is real is required" />
+    <text name="IsNew" value="Is new" />
+    <text name="ResponseIsNewRequired" value="Is new is required" />
+    <text name="ResponseSubCodeMaxLength" value="Sub code cannot be more than 50 characters long" />
+    <text name="PhaseId" value="Phase id" />
+    <text name="ResponsePhaseIdRequired" value="Phase id is required" />
+    <text name="CreationPhaseId" value="Creation phase id" />
+    <text name="DeletionPhaseId" value="Deletion phase id" />
+    <text name="ResponseGISUniqueCodeMaxLength" value="GIS unique code cannot be more than 50 characters long" />
+    <text name="SkipReason" value="Skip reason" />
+    <text name="SkipComment" value="Skip comment" />
+    <text name="ResponseSkipCommentMaxLength" value="Skip comment cannot be more than 500 characters long" />
+    <text name="CalledByCallCenter" value="Called by call center" />
+    <text name="ResponseCalledByCallCenterRequired" value="Called by call center is required" />
+    <text name="CallCenterComment" value="Call center comment" />
+    <text name="ResponseCallCenterCommentMaxLength" value="Call center comment cannot be more than 500 characters long" />
+    <text name="IsPulled" value="Is pulled" />
+    <text name="CodeToPartition" value="Code to partition" />
+    <text name="Source" value="Source" />
+    <text name="ResponseSourceRequired" value="Source is required" />
+    <text name="Questions" value="Questions" />
+    <text name="QuestionTitleRequired" value="Title is required" />
+    <text name="QuestionIsActiveRequired" value="Is active is required" />
+    <text name="QuestionOrderRequired" value="Order is required" />
+    <text name="QuestionType" value="Question type" />
+    <text name="QuestionQuestionTypeRequired" value="Question type is required" />
+    <text name="DomainGroupLevelsNumber" value="Domain group levels number" />
+    <text name="QuestionCodeMaxLength" value="Code cannot be more than 50 characters long" />
+    <text name="IsRequired" value="Is required" />
+    <text name="IsHidden" value="Is hidden" />
+    <text name="Description" value="Description" />
+    <text name="QuestionDescriptionMaxLength" value="Description cannot be more than 500 characters long" />
+    <text name="QuestionNumber" value="Question number" />
+    <text name="QuestionQuestionNumberMaxLength" value="Question number cannot be more than 50 characters long" />
+    <text name="Help" value="Help" />
+    <text name="DefaultAnswerValue" value="Default answer value" />
+    <text name="IsUsedInCallBack" value="Is used in call back" />
+    <text name="IsUsedInEncoding" value="Is used in encoding" />
+    <text name="Question groups" value="Question groups" />
+    <text name="QuestionGroupNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="QuestionGroupIsActiveRequired" value="Is active is required" />
+    <text name="QuestionGroupOrderRequired" value="Order is required" />
+    <text name="QuestionGroupCodeMaxLength" value="Code cannot be more than 50 characters long" />
+    <text name="DescriptionEnglish" value="Description english" />
+    <text name="Domain setting" value="Domain setting" />
+    <text name="Domain settings" value="Domain settings" />
+    <text name="DomainSettingKeyRequired" value="Key is required" />
+    <text name="DomainSettingKeyMaxLength" value="Key cannot be more than 200 characters long" />
+    <text name="DomainSettingValueRequired" value="Value is required" />
+    <text name="DomainSettingValueMaxLength" value="Value cannot be more than 500 characters long" />
+    <text name="Domain training center" value="Domain training center" />
+    <text name="Domain training centers" value="Domain training centers" />
+    <text name="Training center" value="Training center" />
+    <text name="Training centers" value="Training centers" />
+    <text name="TrainingCenterNameRequired" value="Name is required" />
+    <text name="TrainingCenterNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="TrainingCenterIsActiveRequired" value="Is active is required" />
+    <text name="Encoding mapper question" value="Encoding mapper question" />
+    <text name="Encoding mapper questions" value="Encoding mapper questions" />
+    <text name="CollectorQuestionId" value="Collector question id" />
+    <text name="EncodingMapperQuestionCollectorQuestionIdRequired" value="Collector question id is required" />
+    <text name="EncoderQuestionId" value="Encoder question id" />
+    <text name="EncodingMapperQuestionEncoderQuestionIdRequired" value="Encoder question id is required" />
+    <text name="ReviewerQuestionId" value="Reviewer question id" />
+    <text name="EncodingMapperQuestionReviewerQuestionIdRequired" value="Reviewer question id is required" />
+    <text name="CollectorDetailsQuestionId" value="Collector details question id" />
+    <text name="EncodingMapperQuestionCollectorDetailsQuestionIdRequired" value="Collector details question id is required" />
+    <text name="Encoding response" value="Encoding response" />
+    <text name="Encoding responses" value="Encoding responses" />
+    <text name="ResponseCode" value="Response code" />
+    <text name="EncodingResponseResponseCodeRequired" value="Response code is required" />
+    <text name="EncodingResponseResponseCodeMaxLength" value="Response code cannot be more than 50 characters long" />
+    <text name="EncodingResponseSurveyIdRequired" value="Survey id is required" />
+    <text name="EncodingResponseDomainIdRequired" value="Domain id is required" />
+    <text name="DomainName" value="Domain name" />
+    <text name="EncodingResponseDomainNameMaxLength" value="Domain name cannot be more than 4000 characters long" />
+    <text name="EncodingResponseTitleRequired" value="Title is required" />
+    <text name="EncodingResponseTitleMaxLength" value="Title cannot be more than 4000 characters long" />
+    <text name="EncodingResponseUserNameRequired" value="User name is required" />
+    <text name="EncodingResponseUserNameMaxLength" value="User name cannot be more than 100 characters long" />
+    <text name="CoderId" value="Coder id" />
+    <text name="EncodingResponseCoderIdMaxLength" value="Coder id cannot be more than 128 characters long" />
+    <text name="CoderName" value="Coder name" />
+    <text name="EncodingResponseCoderNameMaxLength" value="Coder name cannot be more than 100 characters long" />
+    <text name="DateCoded" value="Date coded" />
+    <text name="ReviewerId" value="Reviewer id" />
+    <text name="EncodingResponseReviewerIdMaxLength" value="Reviewer id cannot be more than 128 characters long" />
+    <text name="ReviewerName" value="Reviewer name" />
+    <text name="EncodingResponseReviewerNameMaxLength" value="Reviewer name cannot be more than 100 characters long" />
+    <text name="DateReviewed" value="Date reviewed" />
+    <text name="EncodingResponseStatusRequired" value="Status is required" />
+    <text name="Index" value="Index" />
+    <text name="EncodingResponseIndexRequired" value="Index is required" />
+    <text name="ResponseAnswers" value="Response answers" />
+    <text name="Exam result" value="Exam result" />
+    <text name="Exam results" value="Exam results" />
+    <text name="ExamResultUserIdRequired" value="User id is required" />
+    <text name="QuestionnaireId" value="Questionnaire id" />
+    <text name="ExamResultQuestionnaireIdRequired" value="Questionnaire id is required" />
+    <text name="Score" value="Score" />
+    <text name="ExamResultScoreRequired" value="Score is required" />
+    <text name="Failed user id" value="Failed user id" />
+    <text name="Failed user ids" value="Failed user ids" />
+    <text name="FailedUserIdUserIdRequired" value="User id is required" />
+    <text name="FailedUserIdUserIdMaxLength" value="User id cannot be more than 128 characters long" />
+    <text name="DomainCode" value="Domain code" />
+    <text name="FailedUserIdDomainCodeMaxLength" value="Domain code cannot be more than 50 characters long" />
+    <text name="Inspection" value="Inspection" />
+    <text name="Inspections" value="Inspections" />
+    <text name="InspectorId" value="Inspector id" />
+    <text name="InspectionInspectorIdRequired" value="Inspector id is required" />
+    <text name="InspectionInspectorIdMaxLength" value="Inspector id cannot be more than 128 characters long" />
+    <text name="InspectionUserIdRequired" value="User id is required" />
+    <text name="InspectionUserIdMaxLength" value="User id cannot be more than 128 characters long" />
+    <text name="Rating" value="Rating" />
+    <text name="Location tracking" value="Location tracking" />
+    <text name="Location trackings" value="Location trackings" />
+    <text name="ObjectId" value="Object id" />
+    <text name="LocationTrackingObjectIdRequired" value="Object id is required" />
+    <text name="LocationTrackingObjectIdMaxLength" value="Object id cannot be more than 128 characters long" />
+    <text name="Time" value="Time" />
+    <text name="LocationTrackingLocationRequired" value="Location is required" />
+    <text name="IsInArea" value="Is in area" />
+    <text name="IsLast" value="Is last" />
+    <text name="LocationTrackingIsLastRequired" value="Is last is required" />
+    <text name="Log action type" value="Log action type" />
+    <text name="Log action types" value="Log action types" />
+    <text name="LogActionTypeNameMaxLength" value="Name cannot be more than 150 characters long" />
+    <text name="Log" value="Log" />
+    <text name="Logs" value="Logs" />
+    <text name="ActionTypeId" value="Action type id" />
+    <text name="ActionDate" value="Action date" />
+    <text name="CreatedById" value="Created by id" />
+    <text name="LogCreatedByIdMaxLength" value="Created by id cannot be more than 128 characters long" />
+    <text name="LogUserIdMaxLength" value="User id cannot be more than 128 characters long" />
+    <text name="DomainsIds" value="Domains ids" />
+    <text name="DomainsNames" value="Domains names" />
+    <text name="Online registration response" value="Online registration response" />
+    <text name="Online registration responses" value="Online registration responses" />
+    <text name="NationalId" value="National id" />
+    <text name="OnlineRegistrationResponseNationalIdRequired" value="National id is required" />
+    <text name="OnlineRegistrationResponseNationalIdMaxLength" value="National id cannot be more than 50 characters long" />
+    <text name="PhoneNumber" value="Phone number" />
+    <text name="OnlineRegistrationResponsePhoneNumberRequired" value="Phone number is required" />
+    <text name="OnlineRegistrationResponsePhoneNumberMaxLength" value="Phone number cannot be more than 50 characters long" />
+    <text name="OnlineRegistrationResponseCodeMaxLength" value="Code cannot be more than 50 characters long" />
+    <text name="UnitType" value="Unit type" />
+    <text name="Phase question" value="Phase question" />
+    <text name="Phase questions" value="Phase questions" />
+    <text name="Phase survey" value="Phase survey" />
+    <text name="Phase surveys" value="Phase surveys" />
+    <text name="Quality call back response answer" value="Quality call back response answer" />
+    <text name="Quality call back response answers" value="Quality call back response answers" />
+    <text name="ResponseAnswerId" value="Response answer id" />
+    <text name="QualityCallBackResponseAnswerResponseAnswerIdRequired" value="Response answer id is required" />
+    <text name="QuestionId" value="Question id" />
+    <text name="QualityCallBackResponseAnswerQuestionIdRequired" value="Question id is required" />
+    <text name="QuestionAnswerId" value="Question answer id" />
+    <text name="AnswerValue" value="Answer value" />
+    <text name="QualityCallBackResponseAnswerAnswerValueMaxLength" value="Answer value cannot be more than 800 characters long" />
+    <text name="AnswerNumber" value="Answer number" />
+    <text name="AnswerTime" value="Answer time" />
+    <text name="Quality call back response" value="Quality call back response" />
+    <text name="Quality call back responses" value="Quality call back responses" />
+    <text name="QualityCallBackResponseResponseIdRequired" value="Response id is required" />
+    <text name="QualityCallBackResponseSurveyIdRequired" value="Survey id is required" />
+    <text name="QualityCallBackResponseUserIdMaxLength" value="User id cannot be more than 128 characters long" />
+    <text name="QualityCallBackResponseCodeRequired" value="Code is required" />
+    <text name="QualityCallBackResponseCodeMaxLength" value="Code cannot be more than 50 characters long" />
+    <text name="QualityCallBackResponseDomainIdRequired" value="Domain id is required" />
+    <text name="QualityCallBackResponseStatusRequired" value="Status is required" />
+    <text name="QualityCallBackResponseTitleMaxLength" value="Title cannot be more than 250 characters long" />
+    <text name="QualityCallBackResponseIsRealRequired" value="Is real is required" />
+    <text name="QualityCallBackResponsePhaseIdRequired" value="Phase id is required" />
+    <text name="QualityCallBackResponseSkipCommentMaxLength" value="Skip comment cannot be more than 500 characters long" />
+    <text name="QualityCallBackResponseCalledByCallCenterRequired" value="Called by call center is required" />
+    <text name="QualityCallBackResponseCallCenterCommentMaxLength" value="Call center comment cannot be more than 500 characters long" />
+    <text name="Question answer" value="Question answer" />
+    <text name="Question answers" value="Question answers" />
+    <text name="QuestionAnswerTitleRequired" value="Title is required" />
+    <text name="QuestionAnswerIsActiveRequired" value="Is active is required" />
+    <text name="QuestionAnswerOrderRequired" value="Order is required" />
+    <text name="QuestionAnswerCodeMaxLength" value="Code cannot be more than 50 characters long" />
+    <text name="AllowText" value="Allow text" />
+    <text name="QuestionAnswerAllowTextRequired" value="Allow text is required" />
+    <text name="Question attachment" value="Question attachment" />
+    <text name="Question attachments" value="Question attachments" />
+    <text name="QuestionAttachmentNameMaxLength" value="Name cannot be more than 255 characters long" />
+    <text name="Path" value="Path" />
+    <text name="QuestionAttachmentPathRequired" value="Path is required" />
+    <text name="QuestionAttachmentPathMaxLength" value="Path cannot be more than 500 characters long" />
+    <text name="QuestionAttachmentOrderRequired" value="Order is required" />
+    <text name="QuestionAttachmentTypeRequired" value="Type is required" />
+    <text name="Questionnaire exam result" value="Questionnaire exam result" />
+    <text name="Questionnaire exam results" value="Questionnaire exam results" />
+    <text name="QuestionnaireExamResultUserIdRequired" value="User id is required" />
+    <text name="QuestionnaireExamResultUserIdMaxLength" value="User id cannot be more than 244 characters long" />
+    <text name="Questionnaire" value="Questionnaire" />
+    <text name="UserScore" value="User score" />
+    <text name="QuestionnaireExamResultUserScoreRequired" value="User score is required" />
+    <text name="TotalScore" value="Total score" />
+    <text name="QuestionnaireExamResultTotalScoreRequired" value="Total score is required" />
+    <text name="SubmitDate" value="Submit date" />
+    <text name="QuestionnaireExamResultSubmitDateRequired" value="Submit date is required" />
+    <text name="Questionnaires" value="Questionnaires" />
+    <text name="QuestionnaireTitleRequired" value="Title is required" />
+    <text name="QuestionnaireTitleMaxLength" value="Title cannot be more than 255 characters long" />
+    <text name="QuestionnaireIsActiveRequired" value="Is active is required" />
+    <text name="QuestionsCount" value="Questions count" />
+    <text name="QuestionnaireQuestionsCountRequired" value="Questions count is required" />
+    <text name="Questionnaire question answer" value="Questionnaire question answer" />
+    <text name="Questionnaire question answers" value="Questionnaire question answers" />
+    <text name="QuestionnaireQuestionAnswerTitleRequired" value="Title is required" />
+    <text name="IsTrue" value="Is true" />
+    <text name="QuestionnaireQuestionAnswerIsTrueRequired" value="Is true is required" />
+    <text name="QuestionnaireQuestionAnswerOrderRequired" value="Order is required" />
+    <text name="Questionnaire question" value="Questionnaire question" />
+    <text name="Questionnaire questions" value="Questionnaire questions" />
+    <text name="QuestionnaireQuestionTitleRequired" value="Title is required" />
+    <text name="QuestionnaireQuestionTitleMaxLength" value="Title cannot be more than 500 characters long" />
+    <text name="Brief" value="Brief" />
+    <text name="AnswerType" value="Answer type" />
+    <text name="QuestionnaireQuestionAnswerTypeRequired" value="Answer type is required" />
+    <text name="QuestionnaireQuestionScoreRequired" value="Score is required" />
+    <text name="QuestionnaireQuestionOrderRequired" value="Order is required" />
+    <text name="Questionnaire question attachment" value="Questionnaire question attachment" />
+    <text name="Questionnaire question attachments" value="Questionnaire question attachments" />
+    <text name="QuestionnaireQuestionAttachmentNameMaxLength" value="Name cannot be more than 255 characters long" />
+    <text name="QuestionnaireQuestionAttachmentPathRequired" value="Path is required" />
+    <text name="QuestionnaireQuestionAttachmentPathMaxLength" value="Path cannot be more than 500 characters long" />
+    <text name="QuestionnaireQuestionAttachmentOrderRequired" value="Order is required" />
+    <text name="QuestionnaireQuestionAttachmentTypeRequired" value="Type is required" />
+    <text name="Question template answer" value="Question template answer" />
+    <text name="Question template answers" value="Question template answers" />
+    <text name="Question template" value="Question template" />
+    <text name="QuestionTemplateAnswerNameRequired" value="Name is required" />
+    <text name="QuestionTemplateAnswerNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="QuestionTemplateAnswerNameEnMaxLength" value="Name en cannot be more than 200 characters long" />
+    <text name="QuestionTemplateAnswerCodeMaxLength" value="Code cannot be more than 50 characters long" />
+    <text name="Question templates" value="Question templates" />
+    <text name="Question template sub category" value="Question template sub category" />
+    <text name="QuestionTemplateNameRequired" value="Name is required" />
+    <text name="QuestionTemplateNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="QuestionTemplateNameEnMaxLength" value="Name en cannot be more than 200 characters long" />
+    <text name="QuestionTemplateTypeRequired" value="Type is required" />
+    <text name="QuestionTemplateCodeMaxLength" value="Code cannot be more than 50 characters long" />
+    <text name="QuestionTemplateIsRequiredRequired" value="Is required is required" />
+    <text name="QuestionTemplateDescriptionMaxLength" value="Description cannot be more than 500 characters long" />
+    <text name="DescriptionEn" value="Description en" />
+    <text name="QuestionTemplateDescriptionEnMaxLength" value="Description en cannot be more than 500 characters long" />
+    <text name="QuestionTemplateHelpMaxLength" value="Help cannot be more than 500 characters long" />
+    <text name="HelpEn" value="Help en" />
+    <text name="QuestionTemplateHelpEnMaxLength" value="Help en cannot be more than 500 characters long" />
+    <text name="DomainGroupId" value="Domain group id" />
+    <text name="Question template sub categories" value="Question template sub categories" />
+    <text name="Question template category" value="Question template category" />
+    <text name="QuestionTemplateSubCategoryNameRequired" value="Name is required" />
+    <text name="QuestionTemplateSubCategoryNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="QuestionTemplateSubCategoryNameEnMaxLength" value="Name en cannot be more than 200 characters long" />
+    <text name="Question template categories" value="Question template categories" />
+    <text name="QuestionTemplateCategoryNameRequired" value="Name is required" />
+    <text name="QuestionTemplateCategoryNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="QuestionTemplateCategoryNameEnMaxLength" value="Name en cannot be more than 200 characters long" />
+    <text name="Question template validation rule" value="Question template validation rule" />
+    <text name="Question template validation rules" value="Question template validation rules" />
+    <text name="RuleType" value="Rule type" />
+    <text name="QuestionTemplateValidationRuleRuleTypeRequired" value="Rule type is required" />
+    <text name="ErrorMessage" value="Error message" />
+    <text name="QuestionTemplateValidationRuleErrorMessageMaxLength" value="Error message cannot be more than 500 characters long" />
+    <text name="Answers" value="Answers" />
+    <text name="Randomized regular datum" value="Randomized regular datum" />
+    <text name="Randomized regular data" value="Randomized regular data" />
+    <text name="MinRange" value="Min range" />
+    <text name="RandomizedRegularDatumMinRangeRequired" value="Min range is required" />
+    <text name="MaxRange" value="Max range" />
+    <text name="RandomizedRegularDatumMaxRangeRequired" value="Max range is required" />
+    <text name="Percentage" value="Percentage" />
+    <text name="RandomizedRegularDatumPercentageRequired" value="Percentage is required" />
+    <text name="Interval" value="Interval" />
+    <text name="RandomizedRegularDatumIntervalRequired" value="Interval is required" />
+    <text name="Randomized regular data by domain" value="Randomized regular data by domain" />
+    <text name="Randomized regular data by domains" value="Randomized regular data by domains" />
+    <text name="RandomizedRegularDataByDomainDomainCodeRequired" value="Domain code is required" />
+    <text name="RandomizedRegularDataByDomainDomainCodeMaxLength" value="Domain code cannot be more than 50 characters long" />
+    <text name="PersonsCount" value="Persons count" />
+    <text name="RandomizedRegularDataByDomainPersonsCountRequired" value="Persons count is required" />
+    <text name="SampleInterval" value="Sample interval" />
+    <text name="RandomizedRegularDataByDomainSampleIntervalRequired" value="Sample interval is required" />
+    <text name="Reg ex" value="Reg ex" />
+    <text name="Regices" value="Regices" />
+    <text name="RegExNameRequired" value="Name is required" />
+    <text name="RegExNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="RegExNameEnMaxLength" value="Name en cannot be more than 200 characters long" />
+    <text name="RegEx" value="Reg ex" />
+    <text name="RegExRegExRequired" value="Reg ex is required" />
+    <text name="Reg ex category" value="Reg ex category" />
+    <text name="Reg ex categories" value="Reg ex categories" />
+    <text name="RegExCategoryNameRequired" value="Name is required" />
+    <text name="RegExCategoryNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="RegExCategoryNameEnMaxLength" value="Name en cannot be more than 200 characters long" />
+    <text name="Report type" value="Report type" />
+    <text name="Report types" value="Report types" />
+    <text name="ReportTypeNameRequired" value="Name is required" />
+    <text name="ReportTypeNameMaxLength" value="Name cannot be more than 250 characters long" />
+    <text name="Response answer" value="Response answer" />
+    <text name="Response answers" value="Response answers" />
+    <text name="ResponseAnswerResponseAnswerIdRequired" value="Response answer id is required" />
+    <text name="ResponseAnswerQuestionIdRequired" value="Question id is required" />
+    <text name="ResponseAnswerAnswerValueMaxLength" value="Answer value cannot be more than 4000 characters long" />
+    <text name="IsDeleted" value="Is deleted" />
+    <text name="ResponseAnswerIsDeletedRequired" value="Is deleted is required" />
+    <text name="Response sub status" value="Response sub status" />
+    <text name="Response sub statuses" value="Response sub statuses" />
+    <text name="ResponseSubStatusNameRequired" value="Name is required" />
+    <text name="ResponseSubStatusNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="ResponseSubStatusNameEnMaxLength" value="Name en cannot be more than 200 characters long" />
+    <text name="Similarity data by call center" value="Similarity data by call center" />
+    <text name="Similarity data by call centers" value="Similarity data by call centers" />
+    <text name="SimilarityDataByCallCenterDomainIdRequired" value="Domain id is required" />
+    <text name="ParentDomainId" value="Parent domain id" />
+    <text name="SimilarityDataByCallCenterDomainNameRequired" value="Domain name is required" />
+    <text name="SimilarityDataByCallCenterDomainNameMaxLength" value="Domain name cannot be more than 128 characters long" />
+    <text name="SimilarityDataByCallCenterDomainCodeRequired" value="Domain code is required" />
+    <text name="SimilarityDataByCallCenterDomainCodeMaxLength" value="Domain code cannot be more than 50 characters long" />
+    <text name="SimilarityDataByCallCenterPhaseIdRequired" value="Phase id is required" />
+    <text name="SimilarityDataByCallCenterSurveyIdRequired" value="Survey id is required" />
+    <text name="SimilarityDataByCallCenterQuestionIdRequired" value="Question id is required" />
+    <text name="SimilarResponseAnswersCount" value="Similar response answers count" />
+    <text name="SimilarityDataByCallCenterSimilarResponseAnswersCountRequired" value="Similar response answers count is required" />
+    <text name="AllResponseAnswersCount" value="All response answers count" />
+    <text name="SimilarityDataByCallCenterAllResponseAnswersCountRequired" value="All response answers count is required" />
+    <text name="Similarity data by quality" value="Similarity data by quality" />
+    <text name="Similarity data by qualities" value="Similarity data by qualities" />
+    <text name="SimilarityDataByQualityDomainIdRequired" value="Domain id is required" />
+    <text name="SimilarityDataByQualityDomainNameRequired" value="Domain name is required" />
+    <text name="SimilarityDataByQualityDomainNameMaxLength" value="Domain name cannot be more than 128 characters long" />
+    <text name="SimilarityDataByQualityDomainCodeRequired" value="Domain code is required" />
+    <text name="SimilarityDataByQualityDomainCodeMaxLength" value="Domain code cannot be more than 50 characters long" />
+    <text name="SimilarityDataByQualityPhaseIdRequired" value="Phase id is required" />
+    <text name="SimilarityDataByQualitySurveyIdRequired" value="Survey id is required" />
+    <text name="SimilarityDataByQualityQuestionIdRequired" value="Question id is required" />
+    <text name="SimilarityDataByQualitySimilarResponseAnswersCountRequired" value="Similar response answers count is required" />
+    <text name="SimilarityDataByQualityAllResponseAnswersCountRequired" value="All response answers count is required" />
+    <text name="Similarity percentage" value="Similarity percentage" />
+    <text name="Similarity percentages" value="Similarity percentages" />
+    <text name="QualityParentResponseId" value="Quality parent response id" />
+    <text name="QualityResponseCode" value="Quality response code" />
+    <text name="SimilarityPercentageQualityResponseCodeRequired" value="Quality response code is required" />
+    <text name="SimilarityPercentageQualityResponseCodeMaxLength" value="Quality response code cannot be more than 50 characters long" />
+    <text name="RealResponseId" value="Real response id" />
+    <text name="RealParentResponseId" value="Real parent response id" />
+    <text name="RealResponseCode" value="Real response code" />
+    <text name="SimilarityPercentageRealResponseCodeMaxLength" value="Real response code cannot be more than 50 characters long" />
+    <text name="SimilarityPercentageSurveyIdRequired" value="Survey id is required" />
+    <text name="SimilarityPercentageSimilarResponseAnswersCountRequired" value="Similar response answers count is required" />
+    <text name="SimilarityPercentageAllResponseAnswersCountRequired" value="All response answers count is required" />
+    <text name="RelationCode" value="Relation code" />
+    <text name="TypeCode" value="Type code" />
+    <text name="Age" value="Age" />
+    <text name="Success user id" value="Success user id" />
+    <text name="Success user ids" value="Success user ids" />
+    <text name="SuccessUserIdUserIdRequired" value="User id is required" />
+    <text name="SuccessUserIdUserIdMaxLength" value="User id cannot be more than 128 characters long" />
+    <text name="SuccessUserIdDomainCodeMaxLength" value="Domain code cannot be more than 50 characters long" />
+    <text name="Sync log" value="Sync log" />
+    <text name="Sync logs" value="Sync logs" />
+    <text name="SyncLogStatusRequired" value="Status is required" />
+    <text name="IsServer" value="Is server" />
+    <text name="SyncLogIsServerRequired" value="Is server is required" />
+    <text name="Count" value="Count" />
+    <text name="SyncLogCountRequired" value="Count is required" />
+    <text name="SyncLogUserIdRequired" value="User id is required" />
+    <text name="SyncLogUserIdMaxLength" value="User id cannot be more than 128 characters long" />
+    <text name="Service" value="Service" />
+    <text name="SyncLogServiceMaxLength" value="Service cannot be more than 128 characters long" />
+    <text name="SyncLogDomainCodeMaxLength" value="Domain code cannot be more than 50 characters long" />
+    <text name="ArabicErrorDescription" value="Arabic error description" />
+    <text name="Temp filtered response" value="Temp filtered response" />
+    <text name="Temp filtered responses" value="Temp filtered responses" />
+    <text name="TempFilteredResponseCodeRequired" value="Code is required" />
+    <text name="TempFilteredResponseCodeMaxLength" value="Code cannot be more than 100 characters long" />
+    <text name="RowIndex" value="Row index" />
+    <text name="TempFilteredResponseRowIndexRequired" value="Row index is required" />
+    <text name="Training attendance" value="Training attendance" />
+    <text name="Training attendances" value="Training attendances" />
+    <text name="Training member" value="Training member" />
+    <text name="Training program" value="Training program" />
+    <text name="Training members" value="Training members" />
+    <text name="TrainingMemberNameRequired" value="Name is required" />
+    <text name="TrainingMemberNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="TrainingMemberAgeRequired" value="Age is required" />
+    <text name="Telephone" value="Telephone" />
+    <text name="TrainingMemberTelephoneRequired" value="Telephone is required" />
+    <text name="TrainingMemberTelephoneMaxLength" value="Telephone cannot be more than 50 characters long" />
+    <text name="Email" value="Email" />
+    <text name="TrainingMemberEmailMaxLength" value="Email cannot be more than 50 characters long" />
+    <text name="TrainingMemberNationalIdRequired" value="National id is required" />
+    <text name="TrainingMemberNationalIdMaxLength" value="National id cannot be more than 50 characters long" />
+    <text name="Address" value="Address" />
+    <text name="TrainingMemberAddressMaxLength" value="Address cannot be more than 500 characters long" />
+    <text name="DateCreated" value="Date created" />
+    <text name="TrainingMemberCreatedByIdRequired" value="Created by id is required" />
+    <text name="TrainingMemberCreatedByIdMaxLength" value="Created by id cannot be more than 128 characters long" />
+    <text name="Training programs" value="Training programs" />
+    <text name="TrainingProgramNameRequired" value="Name is required" />
+    <text name="TrainingProgramNameMaxLength" value="Name cannot be more than 200 characters long" />
+    <text name="TrainingProgramIsActiveRequired" value="Is active is required" />
+    <text name="AttendanceTime" value="Attendance time" />
+    <text name="TrainingProgramAttendanceTimeMaxLength" value="Attendance time cannot be more than 200 characters long" />
+    <text name="TrainingProgramRoleIdMaxLength" value="Role id cannot be more than 128 characters long" />
+    <text name="Training center user" value="Training center user" />
+    <text name="Training center users" value="Training center users" />
+    <text name="Training exam" value="Training exam" />
+    <text name="Training exams" value="Training exams" />
+    <text name="TrainingExamNameRequired" value="Name is required" />
+    <text name="TrainingExamNameMaxLength" value="Name cannot be more than 250 characters long" />
+    <text name="TrainingExamIsActiveRequired" value="Is active is required" />
+    <text name="TrainingExamOrderRequired" value="Order is required" />
+    <text name="Training program document" value="Training program document" />
+    <text name="Training program documents" value="Training program documents" />
+    <text name="TrainingProgramDocumentNameRequired" value="Name is required" />
+    <text name="TrainingProgramDocumentNameMaxLength" value="Name cannot be more than 250 characters long" />
+    <text name="File" value="File" />
+    <text name="TrainingProgramDocumentFileRequired" value="File is required" />
+    <text name="TrainingProgramDocumentFileMaxLength" value="File cannot be more than 500 characters long" />
+    <text name="Training result" value="Training result" />
+    <text name="Training results" value="Training results" />
+    <text name="TrainingResultScoreRequired" value="Score is required" />
+    <text name="Uploaded report role" value="Uploaded report role" />
+    <text name="Uploaded report roles" value="Uploaded report roles" />
+    <text name="Uploaded report" value="Uploaded report" />
+    <text name="Uploaded reports" value="Uploaded reports" />
+    <text name="UploadedReportNameRequired" value="Name is required" />
+    <text name="UploadedReportNameMaxLength" value="Name cannot be more than 250 characters long" />
+    <text name="UploadedReportFileRequired" value="File is required" />
+    <text name="UploadedReportFileMaxLength" value="File cannot be more than 500 characters long" />
+    <text name="CreatedBy" value="Created by" />
+    <text name="UploadedReportCreatedByRequired" value="Created by is required" />
+    <text name="UploadedReportCreatedByMaxLength" value="Created by cannot be more than 128 characters long" />
+    <text name="User application" value="User application" />
+    <text name="User applications" value="User applications" />
+    <text name="User domain" value="User domain" />
+    <text name="User domains" value="User domains" />
+    <text name="User location by domain" value="User location by domain" />
+    <text name="User location by domains" value="User location by domains" />
+    <text name="UserLocationByDomainDomainIdRequired" value="Domain id is required" />
+    <text name="UserLocationByDomainDomainNameRequired" value="Domain name is required" />
+    <text name="UserLocationByDomainDomainNameMaxLength" value="Domain name cannot be more than 800 characters long" />
+    <text name="UserLocationByDomainDomainCodeRequired" value="Domain code is required" />
+    <text name="UserLocationByDomainDomainCodeMaxLength" value="Domain code cannot be more than 50 characters long" />
+    <text name="InAreaLocationCount" value="In area location count" />
+    <text name="UserLocationByDomainInAreaLocationCountRequired" value="In area location count is required" />
+    <text name="OutOfAreaLocationCount" value="Out of area location count" />
+    <text name="UserLocationByDomainOutOfAreaLocationCountRequired" value="Out of area location count is required" />
+    <text name="UnavailableAreaLocationCount" value="Unavailable area location count" />
+    <text name="UserLocationByDomainUnavailableAreaLocationCountRequired" value="Unavailable area location count is required" />
+    <text name="User location by domains history" value="User location by domains history" />
+    <text name="User location by domains histories" value="User location by domains histories" />
+    <text name="UserLocationByDomainsHistoryDomainIdRequired" value="Domain id is required" />
+    <text name="UserLocationByDomainsHistoryDomainNameRequired" value="Domain name is required" />
+    <text name="UserLocationByDomainsHistoryDomainNameMaxLength" value="Domain name cannot be more than 800 characters long" />
+    <text name="UserLocationByDomainsHistoryDomainCodeRequired" value="Domain code is required" />
+    <text name="UserLocationByDomainsHistoryDomainCodeMaxLength" value="Domain code cannot be more than 50 characters long" />
+    <text name="UserLocationByDomainsHistoryInAreaLocationCountRequired" value="In area location count is required" />
+    <text name="UserLocationByDomainsHistoryOutOfAreaLocationCountRequired" value="Out of area location count is required" />
+    <text name="UserLocationByDomainsHistoryUnavailableAreaLocationCountRequired" value="Unavailable area location count is required" />
+    <text name="UserLocationByDomainsHistoryDateRequired" value="Date is required" />
+    <text name="User profile" value="User profile" />
+    <text name="User profiles" value="User profiles" />
+    <text name="UserProfileUserIdMaxLength" value="User id cannot be more than 128 characters long" />
+    <text name="FullName" value="Full name" />
+    <text name="UserProfileFullNameMaxLength" value="Full name cannot be more than 400 characters long" />
+    <text name="UserProfileNationalIdMaxLength" value="National id cannot be more than 50 characters long" />
+    <text name="ContractType" value="Contract type" />
+    <text name="PaymentNumber" value="Payment number" />
+    <text name="UserProfilePaymentNumberMaxLength" value="Payment number cannot be more than 400 characters long" />
+    <text name="BankName" value="Bank name" />
+    <text name="BankAccount" value="Bank account" />
+    <text name="UserProfileBankAccountMaxLength" value="Bank account cannot be more than 400 characters long" />
+    <text name="User profiles progress" value="User profiles progress" />
+    <text name="User profiles progresses" value="User profiles progresses" />
+    <text name="UserProfileId" value="User profile id" />
+    <text name="UserProfilesProgressUserProfileIdMaxLength" value="User profile id cannot be more than 128 characters long" />
+    <text name="UserProfilesProgressUserIdRequired" value="User id is required" />
+    <text name="UserProfilesProgressUserIdMaxLength" value="User id cannot be more than 128 characters long" />
+    <text name="UserProfilesProgressUserNameRequired" value="User name is required" />
+    <text name="UserProfilesProgressUserNameMaxLength" value="User name cannot be more than 250 characters long" />
+    <text name="UserCode" value="User code" />
+    <text name="UserProfilesProgressUserCodeRequired" value="User code is required" />
+    <text name="UserProfilesProgressUserCodeMaxLength" value="User code cannot be more than 50 characters long" />
+    <text name="ManagerId" value="Manager id" />
+    <text name="UserProfilesProgressManagerIdMaxLength" value="Manager id cannot be more than 128 characters long" />
+    <text name="UserProfilesProgressSurveyIdRequired" value="Survey id is required" />
+    <text name="UserProfilesProgressCountRequired" value="Count is required" />
+    <text name="Users active domain" value="Users active domain" />
+    <text name="Users active domains" value="Users active domains" />
+    <text name="Users assignment" value="Users assignment" />
+    <text name="Users assignments" value="Users assignments" />
+    <text name="UsersAssignmentDomainCodeRequired" value="Domain code is required" />
+    <text name="UsersAssignmentDomainCodeMaxLength" value="Domain code cannot be more than 100 characters long" />
+    <text name="UsersAssignmentFromRequired" value="From is required" />
+    <text name="UsersAssignmentFromMaxLength" value="From cannot be more than 100 characters long" />
+    <text name="FromActual" value="From actual" />
+    <text name="UsersAssignmentFromActualRequired" value="From actual is required" />
+    <text name="UsersAssignmentFromActualMaxLength" value="From actual cannot be more than 100 characters long" />
+    <text name="UsersAssignmentToRequired" value="To is required" />
+    <text name="UsersAssignmentToMaxLength" value="To cannot be more than 100 characters long" />
+    <text name="ToActual" value="To actual" />
+    <text name="UsersAssignmentToActualRequired" value="To actual is required" />
+    <text name="UsersAssignmentToActualMaxLength" value="To actual cannot be more than 100 characters long" />
+    <text name="UsersAssignmentUserCodeRequired" value="User code is required" />
+    <text name="UsersAssignmentUserCodeMaxLength" value="User code cannot be more than 10 characters long" />
+    <text name="ValidInput" value="Valid input" />
+    <text name="InvalidError" value="Invalid error" />
+    <text name="UsersAssignmentInvalidErrorMaxLength" value="Invalid error cannot be more than 50 characters long" />
+    <text name="ISValid" value="IS valid" />
+    <text name="LastUpdatedUser" value="Last updated user" />
+    <text name="UsersAssignmentLastUpdatedUserMaxLength" value="Last updated user cannot be more than 128 characters long" />
+    <text name="User surveys template" value="User surveys template" />
+    <text name="User surveys templates" value="User surveys templates" />
+    <text name="Validation rule" value="Validation rule" />
+    <text name="Validation rules" value="Validation rules" />
+    <text name="QuestionGroupId" value="Question group id" />
+    <text name="DependentQuestionId" value="Dependent question id" />
+    <text name="DependentAnswers" value="Dependent answers" />
+    <text name="DependentQuestions" value="Dependent questions" />
+    <text name="ValidationRuleRuleTypeRequired" value="Rule type is required" />
+    <text name="ValidationRuleErrorMessageMaxLength" value="Error message cannot be more than 500 characters long" />
+    <text name="ValidationRuleIsActiveRequired" value="Is active is required" />
+    <text name="Violated validation rule" value="Violated validation rule" />
+    <text name="Violated validation rules" value="Violated validation rules" />
+    <text name="ViolatedValidationRuleResponseIdRequired" value="Response id is required" />
+    <text name="Working data by user" value="Working data by user" />
+    <text name="Working data by users" value="Working data by users" />
+    <text name="WorkingDataByUserUserIdRequired" value="User id is required" />
+    <text name="WorkingDataByUserUserIdMaxLength" value="User id cannot be more than 128 characters long" />
+    <text name="WorkingDataByUserUserNameRequired" value="User name is required" />
+    <text name="WorkingDataByUserUserNameMaxLength" value="User name cannot be more than 100 characters long" />
+    <text name="WorkingDataByUserUserCodeRequired" value="User code is required" />
+    <text name="WorkingDataByUserUserCodeMaxLength" value="User code cannot be more than 50 characters long" />
+    <text name="WorkingDataByUserManagerIdRequired" value="Manager id is required" />
+    <text name="WorkingDataByUserManagerIdMaxLength" value="Manager id cannot be more than 128 characters long" />
+    <text name="CompletedSurveys" value="Completed surveys" />
+    <text name="WorkingDataByUserCompletedSurveysRequired" value="Completed surveys is required" />
+    <text name="WorkingHours" value="Working hours" />
+    <text name="WorkingDataByUserWorkingHoursRequired" value="Working hours is required" />
+    <text name="WorkingDataByUserPhaseIdRequired" value="Phase id is required" />
   </texts>
 </localizationDictionary>

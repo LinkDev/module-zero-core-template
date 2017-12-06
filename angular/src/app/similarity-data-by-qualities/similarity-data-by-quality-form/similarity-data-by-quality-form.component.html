@@ -1,0 +1,48 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #similarityDataByQualityForm="ngForm" id="frm_edit_similarityDataByQuality" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Similarity data by quality")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="domainId" dto="SimilarityDataByQualityDto"  type="string" name="DomainId" [(ngModel)]="item.domainId"></input-text>
+
+					<input-text id="parentDomainId" dto="SimilarityDataByQualityDto"  type="string" name="ParentDomainId" [(ngModel)]="item.parentDomainId"></input-text>
+
+					<input-text id="domainName" dto="SimilarityDataByQualityDto"  type="string" name="DomainName" [(ngModel)]="item.domainName"></input-text>
+
+					<input-text id="domainCode" dto="SimilarityDataByQualityDto"  type="string" name="DomainCode" [(ngModel)]="item.domainCode"></input-text>
+
+					<input-text id="phaseId" dto="SimilarityDataByQualityDto"  type="string" name="PhaseId" [(ngModel)]="item.phaseId"></input-text>
+
+					<input-text id="surveyId" dto="SimilarityDataByQualityDto"  type="string" name="SurveyId" [(ngModel)]="item.surveyId"></input-text>
+
+					<input-text id="questionId" dto="SimilarityDataByQualityDto"  type="string" name="QuestionId" [(ngModel)]="item.questionId"></input-text>
+
+					<input-text id="similarResponseAnswersCount" dto="SimilarityDataByQualityDto"  type="number" name="SimilarResponseAnswersCount" [(ngModel)]="item.similarResponseAnswersCount"></input-text>
+
+					<input-text id="allResponseAnswersCount" dto="SimilarityDataByQualityDto"  type="number" name="AllResponseAnswersCount" [(ngModel)]="item.allResponseAnswersCount"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

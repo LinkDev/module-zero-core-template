@@ -1,0 +1,190 @@
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+                <h2>
+                    {{l('Quality call back responses')}}
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <i class="fa fa-spin fa-spinner" *ngIf="isTableLoading"></i>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block()" (click)="refresh();"><i class="material-icons">refresh</i> {{l('Refresh')}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+			<div class="body table-responsive">
+				<div class="filters row">
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Response id')" name="ResponseIdFilter" [(ngModel)]="responseIdFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Survey id')" name="SurveyIdFilter" [(ngModel)]="surveyIdFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('User id')" name="UserIdFilter" [(ngModel)]="userIdFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Parent response id')" name="ParentResponseIdFilter" [(ngModel)]="parentResponseIdFilter"></input-text>
+					</div>
+
+					<div class="col-sm-3">
+                            <input-date [id]="'StartTimeFromFilter'" [name]="'StartTimeFromFilter'" [placeholder]="l('From Start time')" [(ngModel)]="startTimeFromFilter"></input-date>
+                    </div>
+					<div class="col-sm-3">
+                            <input-date id="StartTimeToFilter" name="StartTimeToFilter" [placeholder]="l('To Start time')" [(ngModel)]="startTimeToFilter"></input-date>
+                    </div>
+					
+
+					<div class="col-sm-3">
+                            <input-date [id]="'EndTimeFromFilter'" [name]="'EndTimeFromFilter'" [placeholder]="l('From End time')" [(ngModel)]="endTimeFromFilter"></input-date>
+                    </div>
+					<div class="col-sm-3">
+                            <input-date id="EndTimeToFilter" name="EndTimeToFilter" [placeholder]="l('To End time')" [(ngModel)]="endTimeToFilter"></input-date>
+                    </div>
+					
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Code')" name="CodeFilter" [(ngModel)]="codeFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Domain id')" name="DomainIdFilter" [(ngModel)]="domainIdFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Status')" name="StatusFilter" [(ngModel)]="statusFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Title')" name="TitleFilter" [(ngModel)]="titleFilter"></input-text>
+					</div>
+
+					<div class="col-sm-3">
+                            <input-date [id]="'LastUpdateTimeFromFilter'" [name]="'LastUpdateTimeFromFilter'" [placeholder]="l('From Last update time')" [(ngModel)]="lastUpdateTimeFromFilter"></input-date>
+                    </div>
+					<div class="col-sm-3">
+                            <input-date id="LastUpdateTimeToFilter" name="LastUpdateTimeToFilter" [placeholder]="l('To Last update time')" [(ngModel)]="lastUpdateTimeToFilter"></input-date>
+                    </div>
+					
+
+					<div class="col-sm-3">
+							<input-select name="IsReal" dataText="name" dataValue="value" [placeholder]="l('Is real')"
+							[items]="trueFalseList" [(ngModel)]="isRealFilter"></input-select>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Phase id')" name="PhaseIdFilter" [(ngModel)]="phaseIdFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Creation phase id')" name="CreationPhaseIdFilter" [(ngModel)]="creationPhaseIdFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Skip reason')" name="SkipReasonFilter" [(ngModel)]="skipReasonFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Skip comment')" name="SkipCommentFilter" [(ngModel)]="skipCommentFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Called by call center')" name="CalledByCallCenterFilter" [(ngModel)]="calledByCallCenterFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Call center comment')" name="CallCenterCommentFilter" [(ngModel)]="callCenterCommentFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Similarity percentage')" name="SimilarityPercentageFilter" [(ngModel)]="similarityPercentageFilter"></input-text>
+					</div>
+
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<button (click)="search()" class="btn btn-primary waves-effect">{{l('Search')}}</button>
+							</div>
+					</div>
+				</div>
+            <!-- ******************************************************** -->
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th class="btn-link sort" (click)="order('ResponseId',$event)"><a>{{l('Response id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('SurveyId',$event)"><a>{{l('Survey id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('UserId',$event)"><a>{{l('User id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('ParentResponseId',$event)"><a>{{l('Parent response id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('StartTime',$event)"><a>{{l('Start time')}}</a></th>
+                            <th class="btn-link sort" (click)="order('EndTime',$event)"><a>{{l('End time')}}</a></th>
+                            <th class="btn-link sort" (click)="order('Code',$event)"><a>{{l('Code')}}</a></th>
+                            <th class="btn-link sort" (click)="order('DomainId',$event)"><a>{{l('Domain id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('Status',$event)"><a>{{l('Status')}}</a></th>
+                            <th class="btn-link sort" (click)="order('Title',$event)"><a>{{l('Title')}}</a></th>
+                            <th class="btn-link sort" (click)="order('LastUpdateTime',$event)"><a>{{l('Last update time')}}</a></th>
+                            <th class="btn-link sort" (click)="order('IsReal',$event)"><a>{{l('Is real')}}</a></th>
+                            <th class="btn-link sort" (click)="order('PhaseId',$event)"><a>{{l('Phase id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('CreationPhaseId',$event)"><a>{{l('Creation phase id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('SkipReason',$event)"><a>{{l('Skip reason')}}</a></th>
+                            <th class="btn-link sort" (click)="order('SkipComment',$event)"><a>{{l('Skip comment')}}</a></th>
+                            <th class="btn-link sort" (click)="order('CalledByCallCenter',$event)"><a>{{l('Called by call center')}}</a></th>
+                            <th class="btn-link sort" (click)="order('CallCenterComment',$event)"><a>{{l('Call center comment')}}</a></th>
+                            <th class="btn-link sort" (click)="order('SimilarityPercentage',$event)"><a>{{l('Similarity percentage')}}</a></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalItems }">
+                            <td>{{item.responseId}}</td>
+                            <td>{{item.surveyId}}</td>
+                            <td>{{item.userId}}</td>
+                            <td>{{item.parentResponseId}}</td>
+                            <td>{{item.startTime}}</td>
+                            <td>{{item.endTime}}</td>
+                            <td>{{item.code}}</td>
+                            <td>{{item.domainId}}</td>
+                            <td>{{item.status}}</td>
+                            <td>{{item.title}}</td>
+                            <td>{{item.lastUpdateTime}}</td>
+                            <td>{{item.isReal}}</td>
+                            <td>{{item.phaseId}}</td>
+                            <td>{{item.creationPhaseId}}</td>
+                            <td>{{item.skipReason}}</td>
+                            <td>{{item.skipComment}}</td>
+                            <td>{{item.calledByCallCenter}}</td>
+                            <td>{{item.callCenterComment}}</td>
+                            <td>{{item.similarityPercentage}}</td>
+                            <td class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">menu</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="edit(item)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(item)"><i class="material-icons">delete_sweep</i>{{l('Delete')}}</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <!-- ******************************************************** -->
+
+                <div class="text-align: center;" *ngIf="totalItems > pageSize">
+                    <pagination (pageChange)="getDataPage($event)" id="server"></pagination>
+                </div>
+                <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="create()">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<quality-call-back-response-form-modal #qualityCallBackResponseFormModal (modalSave)="refresh()"></quality-call-back-response-form-modal>

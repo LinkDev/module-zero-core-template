@@ -1,0 +1,45 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #questionnaireQuestionForm="ngForm" id="frm_edit_questionnaireQuestion" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Questionnaire question")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="title" dto="QuestionnaireQuestionDto"  type="string" name="Title" [(ngModel)]="item.title"></input-text>
+
+					<input-text id="brief" dto="QuestionnaireQuestionDto"  type="string" name="Brief" [(ngModel)]="item.brief"></input-text>
+
+                        
+						<input-select dto="QuestionnaireQuestionDto"  name="QuestionnaireId"  proxy="QuestionnaireServiceProxy"  [placeholder]="l('Questionnaire')"  
+							[(ngModel)]="item.questionnaireId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="answerType" dto="QuestionnaireQuestionDto"  type="number" name="AnswerType" [(ngModel)]="item.answerType"></input-text>
+
+					<input-text id="score" dto="QuestionnaireQuestionDto"  type="number" name="Score" [(ngModel)]="item.score"></input-text>
+
+					<input-text id="order" dto="QuestionnaireQuestionDto"  type="number" name="Order" [(ngModel)]="item.order"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

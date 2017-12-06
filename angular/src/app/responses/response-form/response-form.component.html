@@ -1,0 +1,96 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #responseForm="ngForm" id="frm_edit_response" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Response")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="surveyId" dto="ResponseDto"  type="string" name="SurveyId" [(ngModel)]="item.surveyId"></input-text>
+
+					<input-text id="userId" dto="ResponseDto"  type="string" name="UserId" [(ngModel)]="item.userId"></input-text>
+
+	
+					<input-date id="dateSubmitted" dto="ResponseDto" name="dateSubmitted" [placeholder]="l('Date submitted')" [(ngModel)]="item.dateSubmitted"></input-date>
+		
+					<input-text id="parentResponseId" dto="ResponseDto"  type="string" name="ParentResponseId" [(ngModel)]="item.parentResponseId"></input-text>
+
+	
+					<input-date id="startTime" dto="ResponseDto" name="startTime" [placeholder]="l('Start time')" [(ngModel)]="item.startTime"></input-date>
+		
+	
+					<input-date id="endTime" dto="ResponseDto" name="endTime" [placeholder]="l('End time')" [(ngModel)]="item.endTime"></input-date>
+		
+					<input-text id="code" dto="ResponseDto"  type="string" name="Code" [(ngModel)]="item.code"></input-text>
+
+					<input-text id="domainId" dto="ResponseDto"  type="string" name="DomainId" [(ngModel)]="item.domainId"></input-text>
+
+					<input-text id="status" dto="ResponseDto"  type="number" name="Status" [(ngModel)]="item.status"></input-text>
+
+					<input-text id="subStatusId" dto="ResponseDto"  type="string" name="SubStatusId" [(ngModel)]="item.subStatusId"></input-text>
+
+					<input-text id="title" dto="ResponseDto"  type="string" name="Title" [(ngModel)]="item.title"></input-text>
+
+					<input-text id="order" dto="ResponseDto"  type="number" name="Order" [(ngModel)]="item.order"></input-text>
+
+	
+					<input-date id="lastUpdateTime" dto="ResponseDto" name="lastUpdateTime" [placeholder]="l('Last update time')" [(ngModel)]="item.lastUpdateTime"></input-date>
+		
+					<div class="form-group">
+                        <input id="isReal" class="form-control" type="checkbox" name="IsReal" [(ngModel)]="item.isReal" checked />
+                        <label for="isReal" class="form-label">{{l("Is real")}}</label>
+                    </div>
+					<div class="form-group">
+                        <input id="isNew" class="form-control" type="checkbox" name="IsNew" [(ngModel)]="item.isNew" checked />
+                        <label for="isNew" class="form-label">{{l("Is new")}}</label>
+                    </div>
+					<input-text id="subCode" dto="ResponseDto"  type="string" name="SubCode" [(ngModel)]="item.subCode"></input-text>
+
+					<input-text id="phaseId" dto="ResponseDto"  type="string" name="PhaseId" [(ngModel)]="item.phaseId"></input-text>
+
+					<input-text id="creationPhaseId" dto="ResponseDto"  type="string" name="CreationPhaseId" [(ngModel)]="item.creationPhaseId"></input-text>
+
+					<input-text id="deletionPhaseId" dto="ResponseDto"  type="string" name="DeletionPhaseId" [(ngModel)]="item.deletionPhaseId"></input-text>
+
+					<input-text id="gISUniqueCode" dto="ResponseDto"  type="string" name="GISUniqueCode" [(ngModel)]="item.gISUniqueCode"></input-text>
+
+					<input-text id="skipReason" dto="ResponseDto"  type="number" name="SkipReason" [(ngModel)]="item.skipReason"></input-text>
+
+					<input-text id="skipComment" dto="ResponseDto"  type="string" name="SkipComment" [(ngModel)]="item.skipComment"></input-text>
+
+					<input-text id="calledByCallCenter" dto="ResponseDto"  type="number" name="CalledByCallCenter" [(ngModel)]="item.calledByCallCenter"></input-text>
+
+					<input-text id="callCenterComment" dto="ResponseDto"  type="string" name="CallCenterComment" [(ngModel)]="item.callCenterComment"></input-text>
+
+					<input-text id="similarityPercentage" dto="ResponseDto"  type="number" name="SimilarityPercentage" [(ngModel)]="item.similarityPercentage"></input-text>
+
+					<div class="form-group">
+                        <input id="isPulled" class="form-control" type="checkbox" name="IsPulled" [(ngModel)]="item.isPulled" checked />
+                        <label for="isPulled" class="form-label">{{l("Is pulled")}}</label>
+                    </div>
+					<input-text id="codeToPartition" dto="ResponseDto"  type="number" name="CodeToPartition" [(ngModel)]="item.codeToPartition"></input-text>
+
+					<input-text id="source" dto="ResponseDto"  type="number" name="Source" [(ngModel)]="item.source"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,42 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #trainingResultForm="ngForm" id="frm_edit_trainingResult" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Training result")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+                        
+						<input-select dto="TrainingResultDto"  name="TrainingMemberId"  proxy="TrainingMemberServiceProxy"  [placeholder]="l('Training member')"  
+							[(ngModel)]="item.trainingMemberId" dataValue="id"  dataText="name">
+                        </input-select>
+
+                        
+						<input-select dto="TrainingResultDto"  name="TrainingExamId"  proxy="TrainingExamServiceProxy"  [placeholder]="l('Training exam')"  
+							[(ngModel)]="item.trainingExamId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="score" dto="TrainingResultDto"  type="number" name="Score" [(ngModel)]="item.score"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,47 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #workingDataByUserForm="ngForm" id="frm_edit_workingDataByUser" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Working data by user")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="userId" dto="WorkingDataByUserDto"  type="string" name="UserId" [(ngModel)]="item.userId"></input-text>
+
+					<input-text id="userName" dto="WorkingDataByUserDto"  type="string" name="UserName" [(ngModel)]="item.userName"></input-text>
+
+					<input-text id="userCode" dto="WorkingDataByUserDto"  type="string" name="UserCode" [(ngModel)]="item.userCode"></input-text>
+
+					<input-text id="managerId" dto="WorkingDataByUserDto"  type="string" name="ManagerId" [(ngModel)]="item.managerId"></input-text>
+
+					<input-text id="completedSurveys" dto="WorkingDataByUserDto"  type="number" name="CompletedSurveys" [(ngModel)]="item.completedSurveys"></input-text>
+
+					<input-text id="workingHours" dto="WorkingDataByUserDto"  type="number" name="WorkingHours" [(ngModel)]="item.workingHours"></input-text>
+
+	
+					<input-date id="date" dto="WorkingDataByUserDto" name="date" [placeholder]="l('Date')" [(ngModel)]="item.date"></input-date>
+		
+					<input-text id="phaseId" dto="WorkingDataByUserDto"  type="string" name="PhaseId" [(ngModel)]="item.phaseId"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

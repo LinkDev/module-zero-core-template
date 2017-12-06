@@ -1,0 +1,41 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #regExForm="ngForm" id="frm_edit_regEx" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Reg ex")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="name" dto="RegExDto"  type="string" name="Name" [(ngModel)]="item.name"></input-text>
+
+					<input-text id="nameEn" dto="RegExDto"  type="string" name="NameEn" [(ngModel)]="item.nameEn"></input-text>
+
+					<input-text id="regEx" dto="RegExDto"  type="string" name="RegEx" [(ngModel)]="item.regEx"></input-text>
+
+                        
+						<input-select dto="RegExDto"  name="CategoryId"  proxy="CategoryServiceProxy"  [placeholder]="l('Category')"  
+							[(ngModel)]="item.categoryId" dataValue="id"  dataText="name">
+                        </input-select>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

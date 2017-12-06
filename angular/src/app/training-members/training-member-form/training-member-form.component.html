@@ -1,0 +1,57 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #trainingMemberForm="ngForm" id="frm_edit_trainingMember" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Training member")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="name" dto="TrainingMemberDto"  type="string" name="Name" [(ngModel)]="item.name"></input-text>
+
+					<input-text id="age" dto="TrainingMemberDto"  type="number" name="Age" [(ngModel)]="item.age"></input-text>
+
+					<input-text id="telephone" dto="TrainingMemberDto"  type="string" name="Telephone" [(ngModel)]="item.telephone"></input-text>
+
+					<input-text id="email" dto="TrainingMemberDto"  type="string" name="Email" [(ngModel)]="item.email"></input-text>
+
+					<input-text id="nationalId" dto="TrainingMemberDto"  type="string" name="NationalId" [(ngModel)]="item.nationalId"></input-text>
+
+					<input-text id="address" dto="TrainingMemberDto"  type="string" name="Address" [(ngModel)]="item.address"></input-text>
+
+	
+					<input-date id="dateCreated" dto="TrainingMemberDto" name="dateCreated" [placeholder]="l('Date created')" [(ngModel)]="item.dateCreated"></input-date>
+		
+					<input-text id="createdById" dto="TrainingMemberDto"  type="string" name="CreatedById" [(ngModel)]="item.createdById"></input-text>
+
+                        
+						<input-select dto="TrainingMemberDto"  name="TrainingCenterId"  proxy="TrainingCenterServiceProxy"  [placeholder]="l('Training center')"  
+							[(ngModel)]="item.trainingCenterId" dataValue="id"  dataText="name">
+                        </input-select>
+
+                        
+						<input-select dto="TrainingMemberDto"  name="TrainingProgramId"  proxy="TrainingProgramServiceProxy"  [placeholder]="l('Training program')"  
+							[(ngModel)]="item.trainingProgramId" dataValue="id"  dataText="name">
+                        </input-select>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,125 @@
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+                <h2>
+                    {{l('Users assignments')}}
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <i class="fa fa-spin fa-spinner" *ngIf="isTableLoading"></i>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block()" (click)="refresh();"><i class="material-icons">refresh</i> {{l('Refresh')}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+			<div class="body table-responsive">
+				<div class="filters row">
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Domain code')" name="DomainCodeFilter" [(ngModel)]="domainCodeFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('From')" name="FromFilter" [(ngModel)]="fromFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('From actual')" name="FromActualFilter" [(ngModel)]="fromActualFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('To')" name="ToFilter" [(ngModel)]="toFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('To actual')" name="ToActualFilter" [(ngModel)]="toActualFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('User code')" name="UserCodeFilter" [(ngModel)]="userCodeFilter"></input-text>
+					</div>
+
+					<div class="col-sm-3">
+							<input-select name="ValidInput" dataText="name" dataValue="value" [placeholder]="l('Valid input')"
+							[items]="trueFalseList" [(ngModel)]="validInputFilter"></input-select>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Invalid error')" name="InvalidErrorFilter" [(ngModel)]="invalidErrorFilter"></input-text>
+					</div>
+
+					<div class="col-sm-3">
+							<input-select name="ISValid" dataText="name" dataValue="value" [placeholder]="l('IS valid')"
+							[items]="trueFalseList" [(ngModel)]="iSValidFilter"></input-select>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Last updated user')" name="LastUpdatedUserFilter" [(ngModel)]="lastUpdatedUserFilter"></input-text>
+					</div>
+
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<button (click)="search()" class="btn btn-primary waves-effect">{{l('Search')}}</button>
+							</div>
+					</div>
+				</div>
+            <!-- ******************************************************** -->
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th class="btn-link sort" (click)="order('DomainCode',$event)"><a>{{l('Domain code')}}</a></th>
+                            <th class="btn-link sort" (click)="order('From',$event)"><a>{{l('From')}}</a></th>
+                            <th class="btn-link sort" (click)="order('FromActual',$event)"><a>{{l('From actual')}}</a></th>
+                            <th class="btn-link sort" (click)="order('To',$event)"><a>{{l('To')}}</a></th>
+                            <th class="btn-link sort" (click)="order('ToActual',$event)"><a>{{l('To actual')}}</a></th>
+                            <th class="btn-link sort" (click)="order('UserCode',$event)"><a>{{l('User code')}}</a></th>
+                            <th class="btn-link sort" (click)="order('ValidInput',$event)"><a>{{l('Valid input')}}</a></th>
+                            <th class="btn-link sort" (click)="order('InvalidError',$event)"><a>{{l('Invalid error')}}</a></th>
+                            <th class="btn-link sort" (click)="order('ISValid',$event)"><a>{{l('IS valid')}}</a></th>
+                            <th class="btn-link sort" (click)="order('LastUpdatedUser',$event)"><a>{{l('Last updated user')}}</a></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalItems }">
+                            <td>{{item.domainCode}}</td>
+                            <td>{{item.from}}</td>
+                            <td>{{item.fromActual}}</td>
+                            <td>{{item.to}}</td>
+                            <td>{{item.toActual}}</td>
+                            <td>{{item.userCode}}</td>
+                            <td>{{item.validInput}}</td>
+                            <td>{{item.invalidError}}</td>
+                            <td>{{item.iSValid}}</td>
+                            <td>{{item.lastUpdatedUser}}</td>
+                            <td class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">menu</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="edit(item)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(item)"><i class="material-icons">delete_sweep</i>{{l('Delete')}}</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <!-- ******************************************************** -->
+
+                <div class="text-align: center;" *ngIf="totalItems > pageSize">
+                    <pagination (pageChange)="getDataPage($event)" id="server"></pagination>
+                </div>
+                <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="create()">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<users-assignment-form-modal #usersAssignmentFormModal (modalSave)="refresh()"></users-assignment-form-modal>

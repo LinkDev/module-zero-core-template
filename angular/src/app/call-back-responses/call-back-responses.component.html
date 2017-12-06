@@ -1,0 +1,221 @@
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+                <h2>
+                    {{l('Call back responses')}}
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <i class="fa fa-spin fa-spinner" *ngIf="isTableLoading"></i>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block()" (click)="refresh();"><i class="material-icons">refresh</i> {{l('Refresh')}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+			<div class="body table-responsive">
+				<div class="filters row">
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Response id')" name="ResponseIdFilter" [(ngModel)]="responseIdFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+
+							<input-select multiple="true" name="SurveyId" proxy="SurveyServiceProxy"  [placeholder]="l('Survey')"  
+							[(ngModel)]="surveyIdFilter"  dataValue="id"  dataText="name">
+                        </input-select>
+
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('User id')" name="UserIdFilter" [(ngModel)]="userIdFilter"></input-text>
+					</div>
+
+					<div class="col-sm-3">
+                            <input-date [id]="'DateSubmittedFromFilter'" [name]="'DateSubmittedFromFilter'" [placeholder]="l('From Date submitted')" [(ngModel)]="dateSubmittedFromFilter"></input-date>
+                    </div>
+					<div class="col-sm-3">
+                            <input-date id="DateSubmittedToFilter" name="DateSubmittedToFilter" [placeholder]="l('To Date submitted')" [(ngModel)]="dateSubmittedToFilter"></input-date>
+                    </div>
+					
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Parent response id')" name="ParentResponseIdFilter" [(ngModel)]="parentResponseIdFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Code')" name="CodeFilter" [(ngModel)]="codeFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+
+							<input-select multiple="true" name="DomainId" proxy="DomainServiceProxy"  [placeholder]="l('Domain')"  
+							[(ngModel)]="domainIdFilter"  dataValue="id"  dataText="name">
+                        </input-select>
+
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Status')" name="StatusFilter" [(ngModel)]="statusFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Title')" name="TitleFilter" [(ngModel)]="titleFilter"></input-text>
+					</div>
+
+					<div class="col-sm-3">
+                            <input-date [id]="'LastUpdateTimeFromFilter'" [name]="'LastUpdateTimeFromFilter'" [placeholder]="l('From Last update time')" [(ngModel)]="lastUpdateTimeFromFilter"></input-date>
+                    </div>
+					<div class="col-sm-3">
+                            <input-date id="LastUpdateTimeToFilter" name="LastUpdateTimeToFilter" [placeholder]="l('To Last update time')" [(ngModel)]="lastUpdateTimeToFilter"></input-date>
+                    </div>
+					
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Sub code')" name="SubCodeFilter" [(ngModel)]="subCodeFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+
+							<input-select multiple="true" name="PhaseId" proxy="PhaseServiceProxy"  [placeholder]="l('Phase')"  
+							[(ngModel)]="phaseIdFilter"  dataValue="id"  dataText="name">
+                        </input-select>
+
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('GIS unique code')" name="GISUniqueCodeFilter" [(ngModel)]="gISUniqueCodeFilter"></input-text>
+					</div>
+
+					<div class="col-sm-3">
+							<input-select name="IsPrinted" dataText="name" dataValue="value" [placeholder]="l('Is printed')"
+							[items]="trueFalseList" [(ngModel)]="isPrintedFilter"></input-select>
+					</div>
+				
+					<div class="col-sm-3">
+
+							<input-select multiple="true" name="SampleID" proxy="SampleServiceProxy"  [placeholder]="l('Sample')"  
+							[(ngModel)]="sampleIDFilter"  dataValue="id"  dataText="name">
+                        </input-select>
+
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Res idx')" name="ResIdxFilter" [(ngModel)]="resIdxFilter"></input-text>
+					</div>
+
+					<div class="col-sm-3">
+							<input-select name="HvResponsesAnswer" dataText="name" dataValue="value" [placeholder]="l('Hv responses answer')"
+							[items]="trueFalseList" [(ngModel)]="hvResponsesAnswerFilter"></input-select>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Similarity percentage')" name="SimilarityPercentageFilter" [(ngModel)]="similarityPercentageFilter"></input-text>
+					</div>
+
+					<div class="col-sm-3">
+							<input-select name="Correspondence" dataText="name" dataValue="value" [placeholder]="l('Correspondence')"
+							[items]="trueFalseList" [(ngModel)]="correspondenceFilter"></input-select>
+					</div>
+				
+					<div class="col-sm-3">
+
+							<input-select multiple="true" name="CbParentResponseId" proxy="CbParentResponseServiceProxy"  [placeholder]="l('Cb parent response')"  
+							[(ngModel)]="cbParentResponseIdFilter"  dataValue="id"  dataText="name">
+                        </input-select>
+
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Response Status')" name="ResponseStatusFilter" [(ngModel)]="responseStatusFilter"></input-text>
+					</div>
+
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<button (click)="search()" class="btn btn-primary waves-effect">{{l('Search')}}</button>
+							</div>
+					</div>
+				</div>
+            <!-- ******************************************************** -->
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th class="btn-link sort" (click)="order('ResponseId',$event)"><a>{{l('Response id')}}</a></th>
+							<th class="btn-link sort" (click)="order('SurveyName',$event)"><a>{{l('Survey name')}}</a></th>
+                            <th class="btn-link sort" (click)="order('UserId',$event)"><a>{{l('User id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('DateSubmitted',$event)"><a>{{l('Date submitted')}}</a></th>
+                            <th class="btn-link sort" (click)="order('ParentResponseId',$event)"><a>{{l('Parent response id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('Code',$event)"><a>{{l('Code')}}</a></th>
+							<th class="btn-link sort" (click)="order('DomainName',$event)"><a>{{l('Domain name')}}</a></th>
+                            <th class="btn-link sort" (click)="order('Status',$event)"><a>{{l('Status')}}</a></th>
+                            <th class="btn-link sort" (click)="order('Title',$event)"><a>{{l('Title')}}</a></th>
+                            <th class="btn-link sort" (click)="order('LastUpdateTime',$event)"><a>{{l('Last update time')}}</a></th>
+                            <th class="btn-link sort" (click)="order('SubCode',$event)"><a>{{l('Sub code')}}</a></th>
+							<th class="btn-link sort" (click)="order('PhaseName',$event)"><a>{{l('Phase name')}}</a></th>
+                            <th class="btn-link sort" (click)="order('GISUniqueCode',$event)"><a>{{l('GIS unique code')}}</a></th>
+                            <th class="btn-link sort" (click)="order('IsPrinted',$event)"><a>{{l('Is printed')}}</a></th>
+							<th class="btn-link sort" (click)="order('SampleCreateBy',$event)"><a>{{l('Sample createby')}}</a></th>
+                            <th class="btn-link sort" (click)="order('ResIdx',$event)"><a>{{l('Res idx')}}</a></th>
+                            <th class="btn-link sort" (click)="order('HvResponsesAnswer',$event)"><a>{{l('Hv responses answer')}}</a></th>
+                            <th class="btn-link sort" (click)="order('SimilarityPercentage',$event)"><a>{{l('Similarity percentage')}}</a></th>
+                            <th class="btn-link sort" (click)="order('Correspondence',$event)"><a>{{l('Correspondence')}}</a></th>
+							<th class="btn-link sort" (click)="order('cbParentResponseUserId',$event)"><a>{{l('Cb parent response userid')}}</a></th>
+                            <th class="btn-link sort" (click)="order('ResponseStatus',$event)"><a>{{l('Response Status')}}</a></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalItems }">
+                            <td>{{item.responseId}}</td>
+							<td>{{item.surveyName}}</td>
+                            <td>{{item.userId}}</td>
+                            <td>{{item.dateSubmitted}}</td>
+                            <td>{{item.parentResponseId}}</td>
+                            <td>{{item.code}}</td>
+							<td>{{item.domainName}}</td>
+                            <td>{{item.status}}</td>
+                            <td>{{item.title}}</td>
+                            <td>{{item.lastUpdateTime}}</td>
+                            <td>{{item.subCode}}</td>
+							<td>{{item.phaseName}}</td>
+                            <td>{{item.gISUniqueCode}}</td>
+                            <td>{{item.isPrinted}}</td>
+							<td>{{item.sampleCreateBy}}</td>
+                            <td>{{item.resIdx}}</td>
+                            <td>{{item.hvResponsesAnswer}}</td>
+                            <td>{{item.similarityPercentage}}</td>
+                            <td>{{item.correspondence}}</td>
+							<td>{{item.cbParentResponseUserId}}</td>
+                            <td>{{item.responseStatus}}</td>
+                            <td class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">menu</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="edit(item)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(item)"><i class="material-icons">delete_sweep</i>{{l('Delete')}}</a></li>
+									<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="navigate('/app/callbackresponses?key=cbParentResponseId&value=' + item.id)"><i class="material-icons">list</i>{{l('Call back responses')}}</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <!-- ******************************************************** -->
+
+                <div class="text-align: center;" *ngIf="totalItems > pageSize">
+                    <pagination (pageChange)="getDataPage($event)" id="server"></pagination>
+                </div>
+                <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="create()">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<call-back-response-form-modal #callBackResponseFormModal (modalSave)="refresh()"></call-back-response-form-modal>

@@ -1,0 +1,45 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #questionAttachmentForm="ngForm" id="frm_edit_questionAttachment" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Question attachment")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="name" dto="QuestionAttachmentDto"  type="string" name="Name" [(ngModel)]="item.name"></input-text>
+
+					<input-text id="description" dto="QuestionAttachmentDto"  type="string" name="Description" [(ngModel)]="item.description"></input-text>
+
+					<input-text id="path" dto="QuestionAttachmentDto"  type="string" name="Path" [(ngModel)]="item.path"></input-text>
+
+					<input-text id="order" dto="QuestionAttachmentDto"  type="number" name="Order" [(ngModel)]="item.order"></input-text>
+
+                        
+						<input-select dto="QuestionAttachmentDto"  name="QuestionId"  proxy="QuestionServiceProxy"  [placeholder]="l('Question')"  
+							[(ngModel)]="item.questionId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="type" dto="QuestionAttachmentDto"  type="number" name="Type" [(ngModel)]="item.type"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

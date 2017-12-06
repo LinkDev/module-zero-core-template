@@ -1,0 +1,40 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #domainGroupCategoryForm="ngForm" id="frm_edit_domainGroupCategory" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Domain group category")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="name" dto="DomainGroupCategoryDto"  type="string" name="Name" [(ngModel)]="item.name"></input-text>
+
+					<input-text id="nameEn" dto="DomainGroupCategoryDto"  type="string" name="NameEn" [(ngModel)]="item.nameEn"></input-text>
+
+					<input-text id="type" dto="DomainGroupCategoryDto"  type="number" name="Type" [(ngModel)]="item.type"></input-text>
+
+					<div class="form-group">
+                        <input id="isAdministrative" class="form-control" type="checkbox" name="IsAdministrative" [(ngModel)]="item.isAdministrative" checked />
+                        <label for="isAdministrative" class="form-label">{{l("Is administrative")}}</label>
+                    </div>
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

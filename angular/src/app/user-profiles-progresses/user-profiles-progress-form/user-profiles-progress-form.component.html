@@ -1,0 +1,50 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #userProfilesProgressForm="ngForm" id="frm_edit_userProfilesProgress" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("User profiles progress")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="userProfileId" dto="UserProfilesProgressDto"  type="string" name="UserProfileId" [(ngModel)]="item.userProfileId"></input-text>
+
+					<div class="form-group">
+                        <input id="isActive" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="item.isActive" checked />
+                        <label for="isActive" class="form-label">{{l("Is active")}}</label>
+                    </div>
+					<input-text id="userId" dto="UserProfilesProgressDto"  type="string" name="UserId" [(ngModel)]="item.userId"></input-text>
+
+					<input-text id="userName" dto="UserProfilesProgressDto"  type="string" name="UserName" [(ngModel)]="item.userName"></input-text>
+
+					<input-text id="userCode" dto="UserProfilesProgressDto"  type="string" name="UserCode" [(ngModel)]="item.userCode"></input-text>
+
+					<input-text id="managerId" dto="UserProfilesProgressDto"  type="string" name="ManagerId" [(ngModel)]="item.managerId"></input-text>
+
+					<input-text id="surveyId" dto="UserProfilesProgressDto"  type="string" name="SurveyId" [(ngModel)]="item.surveyId"></input-text>
+
+					<input-text id="count" dto="UserProfilesProgressDto"  type="number" name="Count" [(ngModel)]="item.count"></input-text>
+
+					<input-text id="creationPhaseId" dto="UserProfilesProgressDto"  type="string" name="CreationPhaseId" [(ngModel)]="item.creationPhaseId"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

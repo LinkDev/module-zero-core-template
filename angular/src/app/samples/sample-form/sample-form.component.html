@@ -1,0 +1,43 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #sampleForm="ngForm" id="frm_edit_sample" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Sample")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="createBy" dto="SampleDto"  type="string" name="CreateBy" [(ngModel)]="item.createBy"></input-text>
+
+					<input-text id="assignedUserId" dto="SampleDto"  type="string" name="AssignedUserId" [(ngModel)]="item.assignedUserId"></input-text>
+
+					<input-text id="sampleSize" dto="SampleDto"  type="number" name="SampleSize" [(ngModel)]="item.sampleSize"></input-text>
+
+	
+					<input-date id="sampleDate" dto="SampleDto" name="sampleDate" [placeholder]="l('Sample date')" [(ngModel)]="item.sampleDate"></input-date>
+		
+					<input-text id="properties" dto="SampleDto"  type="string" name="Properties" [(ngModel)]="item.properties"></input-text>
+
+					<input-text id="typeOfSample" dto="SampleDto"  type="number" name="TypeOfSample" [(ngModel)]="item.typeOfSample"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+using System;
+using System.Threading.Tasks;
+using Abp.Application.Services;
+using Abp.Application.Services.Dto;
+using AbpCompanyName.AbpProjectName.WorkingDataByUsers.Dto;
+
+namespace AbpCompanyName.AbpProjectName.WorkingDataByUsers
+{
+	public interface IWorkingDataByUserAppService : IFilteredAppService<WorkingDataByUserDto, Guid, FilteredResultRequestDto>
+	{
+		
+	}
+}

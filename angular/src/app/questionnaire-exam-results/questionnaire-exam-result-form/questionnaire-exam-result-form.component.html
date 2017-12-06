@@ -1,0 +1,44 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #questionnaireExamResultForm="ngForm" id="frm_edit_questionnaireExamResult" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Questionnaire exam result")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="userId" dto="QuestionnaireExamResultDto"  type="string" name="UserId" [(ngModel)]="item.userId"></input-text>
+
+                        
+						<input-select dto="QuestionnaireExamResultDto"  name="QuestionnaireId"  proxy="QuestionnaireServiceProxy"  [placeholder]="l('Questionnaire')"  
+							[(ngModel)]="item.questionnaireId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="userScore" dto="QuestionnaireExamResultDto"  type="number" name="UserScore" [(ngModel)]="item.userScore"></input-text>
+
+					<input-text id="totalScore" dto="QuestionnaireExamResultDto"  type="number" name="TotalScore" [(ngModel)]="item.totalScore"></input-text>
+
+	
+					<input-date id="submitDate" dto="QuestionnaireExamResultDto" name="submitDate" [placeholder]="l('Submit date')" [(ngModel)]="item.submitDate"></input-date>
+		
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

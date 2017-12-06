@@ -1,0 +1,44 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #userLocationByDomainForm="ngForm" id="frm_edit_userLocationByDomain" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("User location by domain")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="domainId" dto="UserLocationByDomainDto"  type="string" name="DomainId" [(ngModel)]="item.domainId"></input-text>
+
+					<input-text id="parentDomainId" dto="UserLocationByDomainDto"  type="string" name="ParentDomainId" [(ngModel)]="item.parentDomainId"></input-text>
+
+					<input-text id="domainName" dto="UserLocationByDomainDto"  type="string" name="DomainName" [(ngModel)]="item.domainName"></input-text>
+
+					<input-text id="domainCode" dto="UserLocationByDomainDto"  type="string" name="DomainCode" [(ngModel)]="item.domainCode"></input-text>
+
+					<input-text id="inAreaLocationCount" dto="UserLocationByDomainDto"  type="number" name="InAreaLocationCount" [(ngModel)]="item.inAreaLocationCount"></input-text>
+
+					<input-text id="outOfAreaLocationCount" dto="UserLocationByDomainDto"  type="number" name="OutOfAreaLocationCount" [(ngModel)]="item.outOfAreaLocationCount"></input-text>
+
+					<input-text id="unavailableAreaLocationCount" dto="UserLocationByDomainDto"  type="number" name="UnavailableAreaLocationCount" [(ngModel)]="item.unavailableAreaLocationCount"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

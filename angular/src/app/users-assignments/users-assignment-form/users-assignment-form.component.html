@@ -1,0 +1,54 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #usersAssignmentForm="ngForm" id="frm_edit_usersAssignment" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Users assignment")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="domainCode" dto="UsersAssignmentDto"  type="string" name="DomainCode" [(ngModel)]="item.domainCode"></input-text>
+
+					<input-text id="from" dto="UsersAssignmentDto"  type="string" name="From" [(ngModel)]="item.from"></input-text>
+
+					<input-text id="fromActual" dto="UsersAssignmentDto"  type="string" name="FromActual" [(ngModel)]="item.fromActual"></input-text>
+
+					<input-text id="to" dto="UsersAssignmentDto"  type="string" name="To" [(ngModel)]="item.to"></input-text>
+
+					<input-text id="toActual" dto="UsersAssignmentDto"  type="string" name="ToActual" [(ngModel)]="item.toActual"></input-text>
+
+					<input-text id="userCode" dto="UsersAssignmentDto"  type="string" name="UserCode" [(ngModel)]="item.userCode"></input-text>
+
+					<div class="form-group">
+                        <input id="validInput" class="form-control" type="checkbox" name="ValidInput" [(ngModel)]="item.validInput" checked />
+                        <label for="validInput" class="form-label">{{l("Valid input")}}</label>
+                    </div>
+					<input-text id="invalidError" dto="UsersAssignmentDto"  type="string" name="InvalidError" [(ngModel)]="item.invalidError"></input-text>
+
+					<div class="form-group">
+                        <input id="iSValid" class="form-control" type="checkbox" name="ISValid" [(ngModel)]="item.iSValid" checked />
+                        <label for="iSValid" class="form-label">{{l("IS valid")}}</label>
+                    </div>
+					<input-text id="lastUpdatedUser" dto="UsersAssignmentDto"  type="string" name="LastUpdatedUser" [(ngModel)]="item.lastUpdatedUser"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

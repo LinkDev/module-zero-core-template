@@ -1,0 +1,45 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #logForm="ngForm" id="frm_edit_log" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Log")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="actionTypeId" dto="LogDto"  type="number" name="ActionTypeId" [(ngModel)]="item.actionTypeId"></input-text>
+
+	
+					<input-date id="actionDate" dto="LogDto" name="actionDate" [placeholder]="l('Action date')" [(ngModel)]="item.actionDate"></input-date>
+		
+					<input-text id="createdById" dto="LogDto"  type="string" name="CreatedById" [(ngModel)]="item.createdById"></input-text>
+
+					<input-text id="userId" dto="LogDto"  type="string" name="UserId" [(ngModel)]="item.userId"></input-text>
+
+					<input-text id="domainsIds" dto="LogDto"  type="string" name="DomainsIds" [(ngModel)]="item.domainsIds"></input-text>
+
+					<input-text id="domainsNames" dto="LogDto"  type="string" name="DomainsNames" [(ngModel)]="item.domainsNames"></input-text>
+
+					<input-text id="properties" dto="LogDto"  type="string" name="Properties" [(ngModel)]="item.properties"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

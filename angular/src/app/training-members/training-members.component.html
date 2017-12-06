@@ -1,0 +1,137 @@
+<div class="row clearfix" [@routerTransition]>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+        <div class="card main-content">
+            <div class="header">
+                <h2>
+                    {{l('Training members')}}
+                </h2>
+                <ul class="header-dropdown m-r--5">
+                    <i class="fa fa-spin fa-spinner" *ngIf="isTableLoading"></i>
+                    <li class="dropdown">
+                        <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <i class="material-icons">more_vert</i>
+                        </a>
+                        <ul class="dropdown-menu pull-right">
+                            <li><a href="javascript:void(0);" class=" waves-effect waves-block()" (click)="refresh();"><i class="material-icons">refresh</i> {{l('Refresh')}}</a></li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+			<div class="body table-responsive">
+				<div class="filters row">
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Name')" name="NameFilter" [(ngModel)]="nameFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Age')" name="AgeFilter" [(ngModel)]="ageFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Telephone')" name="TelephoneFilter" [(ngModel)]="telephoneFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Email')" name="EmailFilter" [(ngModel)]="emailFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('National id')" name="NationalIdFilter" [(ngModel)]="nationalIdFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Address')" name="AddressFilter" [(ngModel)]="addressFilter"></input-text>
+					</div>
+
+					<div class="col-sm-3">
+                            <input-date [id]="'DateCreatedFromFilter'" [name]="'DateCreatedFromFilter'" [placeholder]="l('From Date created')" [(ngModel)]="dateCreatedFromFilter"></input-date>
+                    </div>
+					<div class="col-sm-3">
+                            <input-date id="DateCreatedToFilter" name="DateCreatedToFilter" [placeholder]="l('To Date created')" [(ngModel)]="dateCreatedToFilter"></input-date>
+                    </div>
+					
+				
+					<div class="col-sm-3">
+						<input-text type="text" [placeholder]="l('Created by id')" name="CreatedByIdFilter" [(ngModel)]="createdByIdFilter"></input-text>
+					</div>
+				
+					<div class="col-sm-3">
+
+							<input-select multiple="true" name="TrainingCenterId" proxy="TrainingCenterServiceProxy"  [placeholder]="l('Training center')"  
+							[(ngModel)]="trainingCenterIdFilter"  dataValue="id"  dataText="name">
+                        </input-select>
+
+					</div>
+				
+					<div class="col-sm-3">
+
+							<input-select multiple="true" name="TrainingProgramId" proxy="TrainingProgramServiceProxy"  [placeholder]="l('Training program')"  
+							[(ngModel)]="trainingProgramIdFilter"  dataValue="id"  dataText="name">
+                        </input-select>
+
+					</div>
+
+					<div class="col-sm-3">
+						<div class="form-group form-float">
+							<button (click)="search()" class="btn btn-primary waves-effect">{{l('Search')}}</button>
+							</div>
+					</div>
+				</div>
+            <!-- ******************************************************** -->
+                <table class="table table-hover table-striped">
+                    <thead>
+                        <tr>
+                            <th class="btn-link sort" (click)="order('Name',$event)"><a>{{l('Name')}}</a></th>
+                            <th class="btn-link sort" (click)="order('Age',$event)"><a>{{l('Age')}}</a></th>
+                            <th class="btn-link sort" (click)="order('Telephone',$event)"><a>{{l('Telephone')}}</a></th>
+                            <th class="btn-link sort" (click)="order('Email',$event)"><a>{{l('Email')}}</a></th>
+                            <th class="btn-link sort" (click)="order('NationalId',$event)"><a>{{l('National id')}}</a></th>
+                            <th class="btn-link sort" (click)="order('Address',$event)"><a>{{l('Address')}}</a></th>
+                            <th class="btn-link sort" (click)="order('DateCreated',$event)"><a>{{l('Date created')}}</a></th>
+                            <th class="btn-link sort" (click)="order('CreatedById',$event)"><a>{{l('Created by id')}}</a></th>
+							<th class="btn-link sort" (click)="order('TrainingCenterName',$event)"><a>{{l('Training center name')}}</a></th>
+							<th class="btn-link sort" (click)="order('TrainingProgramName',$event)"><a>{{l('Training program name')}}</a></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of items | paginate: { id: 'server', itemsPerPage: pageSize, currentPage: pageNumber, totalItems: totalItems }">
+                            <td>{{item.name}}</td>
+                            <td>{{item.age}}</td>
+                            <td>{{item.telephone}}</td>
+                            <td>{{item.email}}</td>
+                            <td>{{item.nationalId}}</td>
+                            <td>{{item.address}}</td>
+                            <td>{{item.dateCreated}}</td>
+                            <td>{{item.createdById}}</td>
+							<td>{{item.trainingCenterName}}</td>
+							<td>{{item.trainingProgramName}}</td>
+                            <td class="dropdown">
+                                <a href="javascript:void(0);" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                                    <i class="material-icons">menu</i>
+                                </a>
+                                <ul class="dropdown-menu pull-right">
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="edit(item)"><i class="material-icons">create</i>{{l('Edit')}}</a></li>
+                                    <li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="delete(item)"><i class="material-icons">delete_sweep</i>{{l('Delete')}}</a></li>
+									<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="navigate('/app/trainingattendances?key=trainingMemberId&value=' + item.id)"><i class="material-icons">list</i>{{l('Training attendances')}}</a></li>
+									<li><a href="javascript:void(0);" class="waves-effect waves-block" (click)="navigate('/app/trainingresults?key=trainingMemberId&value=' + item.id)"><i class="material-icons">list</i>{{l('Training results')}}</a></li>
+                                </ul>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            <!-- ******************************************************** -->
+
+                <div class="text-align: center;" *ngIf="totalItems > pageSize">
+                    <pagination (pageChange)="getDataPage($event)" id="server"></pagination>
+                </div>
+                <button type="button" data-toggle="modal" class="btn btn-primary btn-circle waves-effect waves-circle waves-float pull-right" (click)="create()">
+                    <i class="material-icons">add</i>
+                </button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<training-member-form-modal #trainingMemberFormModal (modalSave)="refresh()"></training-member-form-modal>

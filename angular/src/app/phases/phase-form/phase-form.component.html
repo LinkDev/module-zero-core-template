@@ -1,0 +1,61 @@
+<div bsModal #FormModal="bs-modal" class="modal fade" (onShown)="onShown()" tabindex="-1" role="dialog" aria-labelledby="FormModal" aria-hidden="true" [config]="{backdrop: 'static'}">
+    <div class="modal-dialog">
+
+        <div #modalContent class="modal-content">
+
+            <form *ngIf="active" #phaseForm="ngForm" id="frm_edit_phase" novalidate (ngSubmit)="save()">
+
+                <div class="modal-header">
+                    <button type="button" class="close" (click)="close()" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    <h4 class="modal-title">
+                        <span>{{l("Phase")}}</span>
+                    </h4>
+                </div>
+
+                <div class="modal-body">
+					<input-text id="name" dto="PhaseDto"  type="string" name="Name" [(ngModel)]="item.name"></input-text>
+
+                        
+						<input-select dto="PhaseDto"  name="ApplicationId"  proxy="ApplicationServiceProxy"  [placeholder]="l('Application')"  
+							[(ngModel)]="item.applicationId" dataValue="id"  dataText="name">
+                        </input-select>
+
+	
+					<input-date id="from" dto="PhaseDto" name="from" [placeholder]="l('From')" [(ngModel)]="item.from"></input-date>
+		
+	
+					<input-date id="to" dto="PhaseDto" name="to" [placeholder]="l('To')" [(ngModel)]="item.to"></input-date>
+		
+					<input-text id="order" dto="PhaseDto"  type="number" name="Order" [(ngModel)]="item.order"></input-text>
+
+					<div class="form-group">
+                        <input id="isActive" class="form-control" type="checkbox" name="IsActive" [(ngModel)]="item.isActive" checked />
+                        <label for="isActive" class="form-label">{{l("Is active")}}</label>
+                    </div>
+                        
+						<input-select dto="PhaseDto"  name="BaseDomainGroupId"  proxy="BaseDomainGroupServiceProxy"  [placeholder]="l('Base domain group')"  
+							[(ngModel)]="item.baseDomainGroupId" dataValue="id"  dataText="name">
+                        </input-select>
+
+                        
+						<input-select dto="PhaseDto"  name="DomainGroupId"  proxy="DomainGroupServiceProxy"  [placeholder]="l('Domain group')"  
+							[(ngModel)]="item.domainGroupId" dataValue="id"  dataText="name">
+                        </input-select>
+
+					<input-text id="defaultSurveyId" dto="PhaseDto"  type="string" name="DefaultSurveyId" [(ngModel)]="item.defaultSurveyId"></input-text>
+
+
+                </div>
+
+                <div class="modal-footer">
+                    <button [disabled]="saving" type="button" class="btn btn-default" (click)="close()">{{l("Cancel")}}</button>
+                    <button [disabled]="saving" type="submit" class="btn btn-primary blue">{{l("Save")}}</button>
+                </div>
+
+            </form>
+
+        </div>
+    </div>
+</div>

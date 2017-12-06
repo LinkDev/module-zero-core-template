@@ -45,7 +45,8 @@ export class SelectInput extends InputComponentBase{
     ngOnInit() {
         if (this.proxy !== undefined && this.proxy !== null && this.proxy !== "") {
             let service = this.injector.get(this.proxy);
-            service.getAll().subscribe((data) => {
+            console.log(service);
+            service.getAll(99999,0).subscribe((data) => {
                 this.items = data.items;
             });
         }
